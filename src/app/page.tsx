@@ -2,21 +2,21 @@
 
 /**
  * IFM | Home Page
- * A billionaire-dollar football gaming ecosystem launch platform.
- * Architectural Rule: Conceptual ecosystem only, no transactional UI.
+ * A billion-dollar football gaming ecosystem launch platform.
+ * Architectural Rule: Narrative-only, no transactional marketplace UI.
  */
 
 import Image from "next/image"
-import Link from "next/link"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Trophy, Users, Shield, Zap, TrendingUp, Cpu, Play, Globe, Target, ArrowRight, ChevronRight, Activity } from "lucide-react"
+import { Trophy, Shield, Zap, Cpu, Play, Globe, Target, ArrowRight, Activity } from "lucide-react"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { cn } from "@/lib/utils"
 
 export default function Home() {
   const containerRef = useRef(null)
@@ -29,13 +29,12 @@ export default function Home() {
   })
 
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
   return (
     <div ref={containerRef} className="flex flex-col w-full bg-background relative">
       <Navbar />
       
-      {/* Cinematic Hero Section */}
+      {/* Cinematic Broadcast Hero Section */}
       <section className="relative h-[110vh] min-h-[900px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
           <Image
@@ -68,8 +67,8 @@ export default function Home() {
                 transition={{ delay: 0.5 }}
                 className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-2"
               >
-                <Badge variant="outline" className="bg-secondary/20 text-secondary border-secondary/40 text-[9px] uppercase tracking-widest px-3">Live Status</Badge>
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">Ecosystem Initialized</span>
+                <Badge variant="outline" className="bg-secondary/20 text-secondary border-secondary/40 text-[9px] uppercase tracking-widest px-3">Protocol Status</Badge>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">Ecosystem Online</span>
                 <Activity className="h-3 w-3 text-secondary animate-pulse" />
               </motion.div>
               
@@ -94,7 +93,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* System Telemetry Bar */}
+          {/* Broadcast Telemetry Bar */}
           <motion.div 
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,9 +101,9 @@ export default function Home() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-32 max-w-5xl mx-auto"
           >
             {[
-              { label: "Network Capacity", value: "340K+", sub: "Verified Owners" },
-              { label: "Global Leagues", value: "1,200", sub: "Operational Divisions" },
-              { label: "Reward Pool", value: "$4.2M", sub: "Season 1 Allocation" },
+              { label: "Network Capacity", value: "340K+", sub: "Verified Managers" },
+              { label: "Global Leagues", value: "1,200", sub: "Active Divisions" },
+              { label: "Reward Pool", value: "$4.2M", sub: "Season 1 Stakes" },
               { label: "Asset Security", value: "ERC-721", sub: "Immutable Deeds" },
             ].map((stat, i) => (
               <GlassCard key={i} className="py-8 px-6 border-white/5 bg-white/5 text-left" hoverable={true}>
@@ -117,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Narrative Section: The Core Engine */}
+      {/* Narrative Section: Beyond Simulation */}
       <section className="py-64 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-32">
@@ -130,10 +129,10 @@ export default function Home() {
               <div className="space-y-6">
                 <Badge className="bg-secondary/10 text-secondary border-secondary/20 px-6 py-2 uppercase tracking-[0.4em] text-[10px] font-bold">Managerial Excellence</Badge>
                 <h2 className="text-7xl md:text-8xl font-bold font-headline uppercase leading-none tracking-tighter">
-                  BEYOND THE <br /><span className="text-secondary italic">SIMULATION</span>
+                  MASTER YOUR <br /><span className="text-secondary italic">LEGACY</span>
                 </h2>
                 <p className="text-2xl text-muted-foreground font-light leading-relaxed max-w-xl">
-                  IFM is not a game—it is an ecosystem designed for the next generation of professional football managers. Build, own, and lead your club to global dominance in a tiered competitive system.
+                  IFM is the first professional sports infrastructure for the decentralized era. Build, own, and lead your club to global dominance in a tiered competitive system.
                 </p>
               </div>
 
@@ -172,7 +171,7 @@ export default function Home() {
                 />
                 <div className="absolute -bottom-10 -left-10 z-20">
                   <GlassCard className="p-10 border-accent/30 bg-accent/5 backdrop-blur-3xl glow-gold border-2">
-                    <div className="text-[12px] font-bold text-accent uppercase tracking-[0.4em] mb-2">System Authority</div>
+                    <div className="text-[12px] font-bold text-accent uppercase tracking-[0.4em] mb-2">Authority Level</div>
                     <div className="text-4xl font-headline font-bold text-white">GENESIS MGR</div>
                   </GlassCard>
                 </div>
@@ -182,21 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ecosystem Ribbon */}
-      <section className="py-20 bg-white/5 border-y border-white/5 relative overflow-hidden">
-        <div className="flex whitespace-nowrap gap-16 items-center animate-scroll-text">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex items-center gap-16">
-              <span className="text-5xl font-headline font-bold text-white/5 uppercase italic tracking-widest">Ownership Economy</span>
-              <div className="h-2 w-2 rounded-full bg-secondary/20" />
-              <span className="text-5xl font-headline font-bold text-white/5 uppercase tracking-widest">Broadcast Infrastructure</span>
-              <div className="h-2 w-2 rounded-full bg-secondary/20" />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Final Billion-Dollar CTA */}
+      {/* Final Call to Ownership */}
       <section className="py-80 relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
@@ -220,7 +205,7 @@ export default function Home() {
               APPLY FOR LICENSE
             </Button>
             <Button size="lg" variant="ghost" className="h-24 px-16 text-2xl font-bold hover:bg-white/5 rounded-3xl border border-white/10 gap-4">
-              <Users className="h-8 w-8" /> COMMAND CENTER
+              COMMAND CENTER
             </Button>
           </div>
         </div>

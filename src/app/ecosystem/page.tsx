@@ -3,7 +3,7 @@
 /**
  * IFM | Ecosystem Blueprint
  * Narrative-driven explanation of the football management economy.
- * Architectural Rule: NO Marketplace UI. Functional conceptualization only.
+ * Architectural Rule: NO Marketplace UI. Conceptual economy only.
  */
 
 import * as React from "react"
@@ -14,7 +14,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { Globe, Shield, Zap, TrendingUp, Layers, Cpu, ArrowRight, ShieldCheck, Database, Award } from "lucide-react"
+import { TrendingUp, Cpu, ArrowRight, ShieldCheck, Database, Award, Layers, Zap } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function EcosystemPage() {
@@ -24,7 +24,7 @@ export default function EcosystemPage() {
     <div className="flex flex-col w-full min-h-screen bg-background">
       <Navbar />
       
-      {/* Cinematic Narrative Hero */}
+      {/* Cinematic Protocol Hero */}
       <section className="relative pt-48 pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -55,7 +55,7 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* Ownership Pillars */}
+      {/* Ownership Blueprint */}
       <section className="py-32 relative border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center mb-40">
@@ -66,7 +66,7 @@ export default function EcosystemPage() {
               className="space-y-12"
             >
               <div className="space-y-6">
-                <h2 className="text-5xl font-headline font-bold uppercase leading-none tracking-tighter">Digital Asset <br /><span className="text-secondary italic">Sovereignty</span></h2>
+                <h2 className="text-5xl font-headline font-bold uppercase leading-none tracking-tighter">Asset <br /><span className="text-secondary italic">Sovereignty</span></h2>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed">
                   Every functional asset in the IFM ecosystem is a verified blockchain asset. Unlike traditional games, you hold permanent deeds to your club licenses and player contracts.
                 </p>
@@ -96,7 +96,7 @@ export default function EcosystemPage() {
               <GlassCard className="h-full border-white/5 flex items-center justify-center group overflow-hidden" glowColor="blue">
                 <Image 
                   src={PlaceHolderImages.find(i => i.id === "token-visual")?.imageUrl || ""} 
-                  alt="Protocol Visual" 
+                  alt="Value Flow" 
                   width={600} 
                   height={600} 
                   className="animate-float grayscale brightness-125 group-hover:grayscale-0 transition-all duration-1000"
@@ -105,6 +105,7 @@ export default function EcosystemPage() {
             </div>
           </div>
 
+          {/* Economy Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Governance", icon: Cpu, desc: "Protocol-level voting on league expansions, treasury management, and competitive rule-sets." },
@@ -123,11 +124,11 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* Billion-Dollar Infrastructure Vision */}
+      {/* Value Flow Infrastructure */}
       <section className="py-48 bg-white/5 border-y border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-12">
-            <Badge variant="outline" className="border-secondary/50 text-secondary uppercase tracking-[0.5em] px-8 py-2 text-[10px] font-bold">Visionary Narrative</Badge>
+            <Badge variant="outline" className="border-secondary/50 text-secondary uppercase tracking-[0.5em] px-8 py-2 text-[10px] font-bold">Value Architecture</Badge>
             <h2 className="text-6xl md:text-[9rem] font-headline font-bold uppercase tracking-tighter leading-none">THE <span className="text-secondary italic">FUTURE</span> PITCH</h2>
             <p className="text-2xl md:text-3xl text-muted-foreground font-light leading-relaxed">
               We are building the first professional sports infrastructure for the decentralized era. IFM isn't just a game; it's the foundation of a global digital football empire.

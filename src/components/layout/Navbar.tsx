@@ -11,7 +11,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 const navItems = [
   { name: "About", href: "/about", icon: Shield },
@@ -52,7 +52,7 @@ export function Navbar() {
             <div className="absolute inset-0 rounded-2xl animate-pulse bg-secondary/30 -z-10 blur-md" />
           </div>
           <div className="flex flex-col">
-            <span className="font-headline text-3xl font-bold tracking-tighter text-white leading-none">IFM</span>
+            <span className="font-headline text-3xl font-bold tracking-tighter text-white leading-none uppercase">IFM</span>
             <span className="text-[10px] font-bold tracking-[0.4em] text-secondary">ECOSYSTEM</span>
           </div>
         </Link>
