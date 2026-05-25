@@ -3,9 +3,11 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { Twitter, Linkedin, Github, Trophy } from "lucide-react"
+import { Twitter, Linkedin, Github } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
+import { Badge } from "@/components/ui/badge"
 
 const teamMembers = [
   {
@@ -47,11 +49,11 @@ export function TeamSection() {
     <section className="py-32 relative overflow-hidden" id="team">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-24 space-y-6">
-          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-ifm-green/10 border border-ifm-green/20 text-ifm-green text-xs font-bold uppercase tracking-[0.4em]">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-[0.4em] text-[10px] font-bold">
             Elite Personnel
-          </div>
+          </Badge>
           <h2 className="text-6xl md:text-8xl font-bold font-headline tracking-tighter uppercase leading-[0.8]">
-            THE <span className="text-ifm-green italic">ELITE</span> UNIT
+            THE <span className="text-primary italic">ELITE</span> UNIT
           </h2>
           <p className="text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
             A specialized coalition of veterans from AAA gaming, professional football, and blockchain infrastructure.
@@ -74,7 +76,6 @@ export function TeamSection() {
                     alt={member.name} 
                     fill 
                     className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                    data-ai-hint="team member"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ifm-dark via-ifm-dark/20 to-transparent opacity-80" />
                   
@@ -88,7 +89,7 @@ export function TeamSection() {
 
                 <div className="p-8 space-y-4">
                   <div>
-                    <div className="text-[10px] text-ifm-green font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
+                    <div className="text-[10px] text-primary font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
                     <h4 className="text-2xl font-bold font-headline tracking-tighter uppercase">{member.name}</h4>
                   </div>
                   <p className="text-sm text-muted-foreground font-light leading-relaxed min-h-[60px]">
@@ -108,7 +109,7 @@ function LinkIcon({ icon: Icon, href }: { icon: any; href: string }) {
   return (
     <Link 
       href={href} 
-      className="h-10 w-10 flex items-center justify-center rounded-xl bg-ifm-green text-ifm-dark hover:scale-110 transition-transform shadow-lg"
+      className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary text-primary-foreground hover:scale-110 transition-transform shadow-lg"
     >
       <Icon className="h-5 w-5" />
     </Link>
