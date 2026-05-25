@@ -41,6 +41,24 @@
       "description": "Crowded esports arena during a football championship",
       "imageUrl": "https://picsum.photos/seed/ifm-esports/1200/800",
       "imageHint": "esports arena"
+    },
+    {
+      "id": "roadmap-visual",
+      "description": "Abstract futuristic tech roadmap background",
+      "imageUrl": "https://picsum.photos/seed/ifm-roadmap/1200/800",
+      "imageHint": "futuristic timeline"
+    },
+    {
+      "id": "marketplace-hero",
+      "description": "Futuristic digital trade floor for football assets",
+      "imageUrl": "https://picsum.photos/seed/ifm-market/1920/1080",
+      "imageHint": "digital marketplace"
+    },
+    {
+      "id": "about-hero",
+      "description": "Cinematic shot of a football being scanned by lasers",
+      "imageUrl": "https://picsum.photos/seed/ifm-about/1920/1080",
+      "imageHint": "cinematic football"
     }
   ]
 }

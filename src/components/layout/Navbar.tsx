@@ -4,7 +4,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Shield, LayoutGrid, Coins, Map, Users, Store, Menu, X, Trophy } from "lucide-react"
+import { Shield, Coins, Map, Users, Store, Menu, Trophy, MessageSquare } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,6 +12,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { name: "About", href: "/about", icon: Shield },
@@ -35,9 +36,11 @@ export function Navbar() {
   }, [])
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
+        "fixed top-0 z-50 w-full transition-all duration-500",
         isScrolled 
           ? "bg-background/80 backdrop-blur-lg border-b border-white/10 py-3" 
           : "bg-transparent py-6"
@@ -53,7 +56,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md rounded-full px-2 py-1 border border-white/10">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href
@@ -62,14 +65,18 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors hover:text-secondary group",
-                  isActive ? "text-secondary" : "text-muted-foreground"
+                  "relative flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all hover:text-white group",
+                  isActive ? "text-white" : "text-muted-foreground"
                 )}
               >
-                <Icon className={cn("h-4 w-4", isActive ? "animate-pulse" : "group-hover:animate-pulse")} />
+                <Icon className={cn("h-3.5 w-3.5", isActive ? "text-secondary" : "group-hover:text-secondary")} />
                 {item.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-secondary glow-blue" />
+                  <motion.span 
+                    layoutId="nav-active"
+                    className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
                 )}
               </Link>
             )
@@ -77,41 +84,45 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button variant="outline" className="hidden lg:flex border-secondary/50 hover:bg-secondary/10 hover:border-secondary transition-all">
-            Join Community
+          <Button variant="ghost" className="hidden xl:flex text-muted-foreground hover:text-white hover:bg-white/5">
+            <MessageSquare className="h-4 w-4 mr-2" />
+            Discord
           </Button>
-          <Button className="bg-primary hover:bg-primary/90 glow-blue text-white font-semibold">
-            Launch App
+          <Button className="bg-secondary hover:bg-secondary/90 glow-blue text-white font-bold h-11 px-6 rounded-xl">
+            LAUNCH APP
           </Button>
 
           {/* Mobile Nav */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="lg:hidden bg-white/5 border border-white/10">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background border-l border-white/10">
-              <nav className="flex flex-col gap-4 mt-8">
+            <SheetContent side="right" className="bg-background border-l border-white/10 w-[300px]">
+              <nav className="flex flex-col gap-2 mt-12">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all group"
+                    className={cn(
+                      "flex items-center gap-4 p-4 rounded-xl transition-all group",
+                      pathname === item.href ? "bg-secondary/20 text-white" : "hover:bg-white/5 text-muted-foreground"
+                    )}
                   >
-                    <item.icon className="h-6 w-6 text-secondary group-hover:scale-110 transition-transform" />
-                    <span className="font-headline text-lg font-medium">{item.name}</span>
+                    <item.icon className="h-5 w-5 text-secondary" />
+                    <span className="font-headline text-lg font-bold">{item.name}</span>
                   </Link>
                 ))}
-                <div className="flex flex-col gap-3 mt-8">
-                  <Button variant="outline" className="w-full">Discord</Button>
-                  <Button className="w-full">Play Now</Button>
+                <div className="flex flex-col gap-3 mt-8 pt-8 border-t border-white/10">
+                  <Button variant="outline" className="w-full h-12 border-white/10">Whitepaper</Button>
+                  <Button className="w-full h-12 bg-secondary">Join Discord</Button>
                 </div>
               </nav>
             </SheetContent>
           </Sheet>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }
