@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -12,7 +11,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 const navItems = [
   { name: "About", href: "/about", icon: Shield },
@@ -29,7 +28,7 @@ export function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -40,23 +39,23 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-500",
+        "fixed top-0 z-50 w-full transition-all duration-700",
         isScrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-white/10 py-3" 
-          : "bg-transparent py-6"
+          ? "bg-background/40 backdrop-blur-2xl border-b border-white/5 py-3" 
+          : "bg-transparent py-8"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative h-10 w-10 flex items-center justify-center rounded-lg bg-primary glow-blue transition-transform group-hover:scale-110">
-            <Trophy className="h-6 w-6 text-white" />
-            <div className="absolute inset-0 rounded-lg animate-pulse bg-secondary/20 -z-10" />
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative h-12 w-12 flex items-center justify-center rounded-2xl bg-primary glow-blue transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-2xl">
+            <Trophy className="h-7 w-7 text-white" />
+            <div className="absolute inset-0 rounded-2xl animate-pulse bg-secondary/30 -z-10 blur-sm" />
           </div>
-          <span className="font-headline text-2xl font-bold tracking-tighter text-white">IFM</span>
+          <span className="font-headline text-3xl font-bold tracking-tighter text-white">IFM</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md rounded-full px-2 py-1 border border-white/10">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-3xl rounded-full px-3 py-1.5 border border-white/5 shadow-2xl">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href
@@ -65,11 +64,11 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all hover:text-white group",
+                  "relative flex items-center gap-2.5 px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.2em] transition-all hover:text-white group",
                   isActive ? "text-white" : "text-muted-foreground"
                 )}
               >
-                <Icon className={cn("h-3.5 w-3.5", isActive ? "text-secondary" : "group-hover:text-secondary")} />
+                <Icon className={cn("h-4 w-4 transition-colors", isActive ? "text-secondary" : "group-hover:text-secondary")} />
                 {item.name}
                 {isActive && (
                   <motion.span 
@@ -83,40 +82,40 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden xl:flex text-muted-foreground hover:text-white hover:bg-white/5">
+        <div className="flex items-center gap-6">
+          <Button variant="ghost" className="hidden xl:flex text-muted-foreground hover:text-white hover:bg-white/5 font-bold tracking-widest text-xs">
             <MessageSquare className="h-4 w-4 mr-2" />
-            Discord
+            COMMAND CENTER
           </Button>
-          <Button className="bg-secondary hover:bg-secondary/90 glow-blue text-white font-bold h-11 px-6 rounded-xl">
-            LAUNCH APP
+          <Button className="bg-secondary hover:bg-secondary/90 glow-blue text-white font-bold h-14 px-10 rounded-2xl transition-all duration-500 uppercase tracking-widest text-xs">
+            LAUNCH SYSTEM
           </Button>
 
           {/* Mobile Nav */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden bg-white/5 border border-white/10">
+              <Button variant="ghost" size="icon" className="lg:hidden bg-white/5 border border-white/5 h-12 w-12 rounded-xl">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background border-l border-white/10 w-[300px]">
-              <nav className="flex flex-col gap-2 mt-12">
+            <SheetContent side="right" className="bg-background/95 backdrop-blur-3xl border-l border-white/5 w-[350px]">
+              <nav className="flex flex-col gap-3 mt-16">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-4 p-4 rounded-xl transition-all group",
-                      pathname === item.href ? "bg-secondary/20 text-white" : "hover:bg-white/5 text-muted-foreground"
+                      "flex items-center gap-5 p-6 rounded-2xl transition-all group",
+                      pathname === item.href ? "bg-secondary/10 text-white border border-secondary/30" : "hover:bg-white/5 text-muted-foreground"
                     )}
                   >
-                    <item.icon className="h-5 w-5 text-secondary" />
-                    <span className="font-headline text-lg font-bold">{item.name}</span>
+                    <item.icon className="h-6 w-6 text-secondary" />
+                    <span className="font-headline text-2xl font-bold tracking-tight uppercase">{item.name}</span>
                   </Link>
                 ))}
-                <div className="flex flex-col gap-3 mt-8 pt-8 border-t border-white/10">
-                  <Button variant="outline" className="w-full h-12 border-white/10">Whitepaper</Button>
-                  <Button className="w-full h-12 bg-secondary">Join Discord</Button>
+                <div className="flex flex-col gap-4 mt-10 pt-10 border-t border-white/5">
+                  <Button variant="outline" className="w-full h-16 border-white/10 text-lg rounded-2xl font-headline">WHITEPAPER</Button>
+                  <Button className="w-full h-16 bg-secondary text-lg rounded-2xl font-headline">JOIN DISCORD</Button>
                 </div>
               </nav>
             </SheetContent>
