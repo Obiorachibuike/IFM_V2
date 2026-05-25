@@ -18,9 +18,9 @@ export function GlassCard({
   return (
     <div
       className={cn(
-        "relative rounded-[2rem] transition-all duration-500 overflow-hidden",
+        "relative rounded-[2rem] transition-all duration-700 overflow-hidden",
         variant === "default" ? "glass" : "glass-blue",
-        hoverable && "hover:-translate-y-3 hover:border-secondary/40 hover:shadow-2xl",
+        hoverable && "hover:-translate-y-4 hover:border-secondary/50 hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]",
         glowColor === "blue" && "glow-blue",
         glowColor === "gold" && "glow-gold",
         className
@@ -28,8 +28,17 @@ export function GlassCard({
       {...props}
     >
       {/* Subtle internal gradient sweep */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
-      {children}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+      
+      {/* Tactical UI Corners */}
+      <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-white/20 pointer-events-none" />
+      <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-white/20 pointer-events-none" />
+      <div className="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-white/20 pointer-events-none" />
+      <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-white/20 pointer-events-none" />
+      
+      <div className="relative z-10 h-full w-full">
+        {children}
+      </div>
     </div>
   )
 }
