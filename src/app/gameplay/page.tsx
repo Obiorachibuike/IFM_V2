@@ -1,9 +1,10 @@
+
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Target, Activity, Cpu, Play, BarChart3, Users2, Zap, Layout, Globe } from "lucide-react"
+import { Shield, Target, Activity, Cpu, Play, BarChart3, Users2, Zap, Layout, Globe, Trophy } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
