@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 const roadmapPhases = [
   {
     phase: "01",
-    status: "COMPLETED",
+    status: "LIVE PHASE",
     title: "FOUNDATION LAYER",
     items: [
       "Whitepaper v4 release",
@@ -20,11 +20,11 @@ const roadmapPhases = [
       "Strategic investment rounds"
     ],
     icon: Shield,
-    current: false
+    current: true
   },
   {
     phase: "02",
-    status: "LIVE PHASE",
+    status: "UPCOMING",
     title: "GENESIS AWAKENING",
     items: [
       "Founding Manager Whitelist",
@@ -33,7 +33,7 @@ const roadmapPhases = [
       "Tactical Simulation Alpha"
     ],
     icon: Rocket,
-    current: true
+    current: false
   },
   {
     phase: "03",
@@ -68,17 +68,17 @@ export function RoadmapSection() {
     <section className="py-32 relative bg-ifm-dark/40 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-24 space-y-6">
-          <Badge className="bg-ifm-gold/10 text-ifm-gold border-ifm-gold/30 px-6 py-2 uppercase tracking-[0.5em] text-[10px] font-bold">
+          <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-[0.5em] text-[10px] font-bold">
             Project Timeline
           </Badge>
           <h2 className="text-6xl md:text-8xl font-bold font-headline tracking-tighter uppercase leading-[0.8]">
-            THE PATH TO <br /><span className="text-ifm-gold italic">DOMINANCE</span>
+            THE PATH TO <br /><span className="text-accent italic">DOMINANCE</span>
           </h2>
         </div>
 
         <div className="relative">
           {/* Timeline Connector */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-ifm-gold/40 via-white/5 to-transparent hidden lg:block -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/40 via-white/5 to-transparent hidden lg:block -translate-x-1/2" />
 
           <div className="space-y-24 lg:space-y-48">
             {roadmapPhases.map((phase, i) => {
@@ -90,9 +90,9 @@ export function RoadmapSection() {
                   <div className="absolute left-1/2 -translate-x-1/2 top-0 z-20 hidden lg:flex items-center justify-center">
                     <div className={cn(
                       "h-16 w-16 rounded-full border-4 border-ifm-dark flex items-center justify-center transition-all duration-700 shadow-2xl",
-                      phase.current ? "bg-ifm-gold scale-125 glow-gold" : phase.status === 'COMPLETED' ? "bg-ifm-green shadow-[0_0_40px_-5px_rgba(57,255,136,0.6)]" : "bg-white/5 border-white/10"
+                      phase.current ? "bg-primary scale-125 glow-blue" : "bg-white/5 border-white/10"
                     )}>
-                      {phase.status === 'COMPLETED' ? <CheckCircle2 className="h-8 w-8 text-ifm-dark" /> : <Icon className={cn("h-8 w-8", phase.current ? "text-ifm-dark" : "text-white/40")} />}
+                      <Icon className={cn("h-8 w-8", phase.current ? "text-white" : "text-white/40")} />
                     </div>
                   </div>
 
@@ -109,21 +109,20 @@ export function RoadmapSection() {
                       <GlassCard 
                         className={cn(
                           "p-12 border-white/5 bg-ifm-surface/20",
-                          phase.current && "border-ifm-gold/40 glow-gold bg-ifm-gold/5"
+                          phase.current && "border-primary/40 glow-blue bg-primary/5"
                         )}
                         hoverable={true}
                       >
                         <div className={cn("flex flex-col gap-6", isEven ? "lg:items-end" : "lg:items-start")}>
                           <div className="flex items-center gap-4">
-                            {!isEven && <span className="text-4xl font-headline font-bold text-ifm-gold/20">PHASE {phase.phase}</span>}
+                            {!isEven && <span className="text-4xl font-headline font-bold text-primary/20">PHASE {phase.phase}</span>}
                             <Badge className={cn(
                               "px-4 py-1.5 uppercase text-[10px] font-bold tracking-[0.2em]",
-                              phase.status === 'COMPLETED' ? "bg-ifm-green text-ifm-dark" : 
-                              phase.current ? "bg-ifm-gold text-ifm-dark animate-pulse" : "bg-white/5 text-muted-foreground border-white/10"
+                              phase.current ? "bg-primary text-white animate-pulse" : "bg-white/5 text-muted-foreground border-white/10"
                             )}>
                               {phase.status}
                             </Badge>
-                            {isEven && <span className="text-4xl font-headline font-bold text-ifm-gold/20">PHASE {phase.phase}</span>}
+                            {isEven && <span className="text-4xl font-headline font-bold text-primary/20">PHASE {phase.phase}</span>}
                           </div>
                           
                           <h3 className="text-4xl font-bold font-headline uppercase leading-none tracking-tighter">{phase.title}</h3>
@@ -134,15 +133,15 @@ export function RoadmapSection() {
                                 {isEven ? (
                                   <>
                                     <span>{item}</span>
-                                    <div className="h-2 w-2 rounded-full bg-ifm-gold shrink-0 hidden lg:block" />
+                                    <div className="h-2 w-2 rounded-full bg-primary shrink-0 hidden lg:block" />
                                   </>
                                 ) : (
                                   <>
-                                    <div className="h-2 w-2 rounded-full bg-ifm-gold shrink-0" />
+                                    <div className="h-2 w-2 rounded-full bg-primary shrink-0" />
                                     <span>{item}</span>
                                   </>
                                 )}
-                                <div className="h-2 w-2 rounded-full bg-ifm-gold shrink-0 lg:hidden" />
+                                <div className="h-2 w-2 rounded-full bg-primary shrink-0 lg:hidden" />
                               </li>
                             ))}
                           </ul>
@@ -152,9 +151,9 @@ export function RoadmapSection() {
                     
                     {/* Visual Placeholder for alternate side */}
                     <div className={cn("hidden lg:block h-64 relative", isEven ? "order-2" : "order-1")}>
-                       <div className="absolute inset-0 bg-ifm-gold/5 blur-[80px] rounded-full" />
+                       <div className="absolute inset-0 bg-primary/5 blur-[80px] rounded-full" />
                        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                          <Icon className="w-48 h-48 text-ifm-gold" />
+                          <Icon className="w-48 h-48 text-primary" />
                        </div>
                     </div>
                   </div>

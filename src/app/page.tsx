@@ -62,7 +62,7 @@ export default function HomePage() {
                 transition={{ delay: 0.5 }}
                 className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-full px-6 py-2"
               >
-                <Badge className="bg-primary/20 text-primary border-primary/40 text-[9px] uppercase tracking-widest px-3">Ecosystem Online</Badge>
+                <Badge className="bg-primary/20 text-primary border-primary/40 text-[9px] uppercase tracking-widest px-3">Phase 1: Foundation</Badge>
                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/80">Protocol Status</span>
                 <Activity className="h-3.5 w-3.5 text-primary animate-pulse" />
               </motion.div>
@@ -74,7 +74,7 @@ export default function HomePage() {
               
               <p className="text-xl md:text-3xl text-secondary-foreground max-w-4xl mx-auto leading-relaxed font-light tracking-wide opacity-70">
                 Experience the premier high-fidelity blockchain management ecosystem. <br className="hidden md:block" />
-                Play-to-Earn mechanics meets professional digital ownership.
+                Phase 1 Enrollment is now live for Founding Managers.
               </p>
             </div>
 
@@ -181,10 +181,10 @@ export default function HomePage() {
                       <div className="text-[10px] font-bold text-accent uppercase tracking-[0.5em] mb-2">Genesis Launch</div>
                       <h3 className="text-3xl font-bold font-headline uppercase tracking-tighter">CLUB LICENSE MINTING</h3>
                     </div>
-                    <Badge className="bg-accent/10 text-accent border-accent/30 px-4 py-1">PHASE 2</Badge>
+                    <Badge className="bg-accent/10 text-accent border-accent/30 px-4 py-1">PHASE 2 PREVIEW</Badge>
                   </div>
                   <p className="text-secondary-foreground font-light leading-relaxed">
-                    Founding managers can mint their persistent Club Licenses. Every license is a unique digital asset providing permanent access to the IFM Pro League.
+                    Founding managers can mint their persistent Club Licenses in the next phase. Secure your foundation license today by joining the Phase 1 whitelist.
                   </p>
                 </div>
               </GlassCard>
