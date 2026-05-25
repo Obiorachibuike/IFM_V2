@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -69,7 +70,7 @@ export function TeamSection() {
               transition={{ delay: i * 0.1 }}
             >
               <GlassCard className="group p-10 border-white/5 bg-secondary/30 text-center" glowColor="gold">
-                <div className="relative h-32 w-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors duration-500">
+                <div className="relative h-24 w-24 mx-auto mb-8 rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors duration-500">
                   <Image 
                     src={member.img} 
                     alt={member.name} 

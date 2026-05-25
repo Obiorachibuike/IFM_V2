@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -11,6 +12,13 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { RoadmapSection } from "@/components/sections/RoadmapSection"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const comparisonData = [
   { feature: "Digital Ownership", trad: "None (License Only)", ifm: "Full (On-Chain Assets)" },
@@ -18,6 +26,14 @@ const comparisonData = [
   { feature: "Asset Persistence", trad: "Seasonal Reset", ifm: "Lifetime Verification" },
   { feature: "Governance", trad: "Developer Controlled", ifm: "Manager DAO Voting" },
   { feature: "Match Engine", trad: "Standard Simulation", ifm: "Neural AI Processing" },
+]
+
+const nftGenesisAssets = [
+  { id: 1, name: "Alpha Striker #001", tier: "Mythic", price: "2.5 ETH", img: "https://picsum.photos/seed/ifm-player1/600/800", hint: "football player" },
+  { id: 2, name: "Neo London Stadium", tier: "Legendary", price: "15.0 ETH", img: "https://picsum.photos/seed/ifm-stadium1/600/800", hint: "futuristic stadium" },
+  { id: 3, name: "Cyber Keeper Gen-Z", tier: "Elite", price: "1.2 ETH", img: "https://picsum.photos/seed/ifm-player2/600/800", hint: "goal keeper" },
+  { id: 4, name: "Founders Club License", tier: "Founder", price: "Exclusive", img: "https://picsum.photos/seed/ifm-badge1/600/800", hint: "gold badge" },
+  { id: 5, name: "Tactical AI Brain", tier: "Legendary", price: "4.8 ETH", img: "https://picsum.photos/seed/ifm-tech1/600/800", hint: "hologram brain" },
 ]
 
 export default function HomePage() {
@@ -75,8 +91,81 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. THE IFM MISSION - WHAT IS IFM */}
-      <section className="py-32 relative bg-background">
+      {/* 2. NFT GENESIS CAROUSEL */}
+      <section className="py-32 relative bg-background overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+            <div className="space-y-4">
+              <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1">SOVEREIGNTY PROTOCOL</Badge>
+              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
+                GENESIS <span className="text-accent italic">ASSETS</span>
+              </h2>
+              <p className="text-xl text-muted-foreground font-light max-w-xl">
+                Verified digital infrastructure. Rare assets that grant permanent utility and voting power within the IFM DAO.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <Button asChild variant="outline" className="border-white/10 hover:bg-white/5 rounded-xl">
+                <Link href="/marketplace">VIEW MARKETPLACE</Link>
+              </Button>
+            </div>
+          </div>
+
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {nftGenesisAssets.map((asset) => (
+                <CarouselItem key={asset.id} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <GlassCard 
+                      className="p-0 border-white/10 overflow-hidden group" 
+                      glowColor={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'gold' : 'blue'}
+                    >
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <Image 
+                          src={asset.img} 
+                          alt={asset.name} 
+                          fill 
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          data-ai-hint={asset.hint}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                        <div className="absolute top-4 right-4">
+                          <Badge className={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'bg-accent text-background font-bold' : 'bg-primary text-white font-bold'}>
+                            {asset.tier}
+                          </Badge>
+                        </div>
+                      </div>
+                      <div className="p-6 space-y-4">
+                        <h3 className="text-xl font-bold font-headline uppercase tracking-tighter">{asset.name}</h3>
+                        <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                          <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Mint Price</div>
+                          <div className="text-lg font-bold text-accent">{asset.price}</div>
+                        </div>
+                      </div>
+                    </GlassCard>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 text-white" />
+              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 text-white" />
+            </div>
+          </Carousel>
+        </div>
+      </section>
+
+      {/* 3. THE IFM MISSION */}
+      <section className="py-32 relative bg-card/10">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
             <motion.div 
@@ -119,27 +208,10 @@ export default function HomePage() {
               </GlassCard>
             </motion.div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Shield, title: "Squad Building", desc: "Scout and mint the next generation of legendary players." },
-              { icon: Target, title: "Tactical Mastery", desc: "Adjust your formations in real-time with our neural engine." },
-              { icon: Activity, title: "Progression", desc: "Advance your club through 5 tiers of professional competition." },
-              { icon: Zap, title: "Ownership", desc: "Every club and player is an immutable digital asset." }
-            ].map((card, i) => (
-              <GlassCard key={i} className="p-10 border-white/5 hover:bg-primary/5 group">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
-                  <card.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-2xl font-bold font-headline uppercase mb-4">{card.title}</h3>
-                <p className="text-muted-foreground font-light text-sm leading-relaxed">{card.desc}</p>
-              </GlassCard>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* 3. COMPARISON SECTION - INVESTOR READY */}
+      {/* 4. COMPARISON SECTION */}
       <section className="py-32 relative bg-card/20 border-y border-white/5">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="text-center mb-20 space-y-4">
@@ -169,40 +241,6 @@ export default function HomePage() {
               </table>
             </div>
           </GlassCard>
-        </div>
-      </section>
-
-      {/* 4. GENESIS COLLECTION PREVIEW */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-24 space-y-4">
-            <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">GENESIS <span className="text-accent italic">TIERS</span></h2>
-            <p className="text-muted-foreground text-xl font-light opacity-70">Securing your foundation status in the digital football empire.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { tier: "Academy", color: "blue", rarity: "Foundation", supply: "Unlimited" },
-              { tier: "Professional", color: "blue", rarity: "Premium", supply: "10,000 Units" },
-              { tier: "Elite", color: "gold", rarity: "Legendary", supply: "2,500 Units" },
-              { tier: "Invincible", color: "gold", rarity: "Mythic", supply: "1,000 Units" },
-            ].map((card, i) => (
-              <GlassCard key={i} className="p-0 border-white/10 group overflow-hidden" glowColor={card.color === 'gold' ? 'gold' : 'blue'}>
-                <div className="p-10 text-center space-y-6">
-                  <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.4em]">{card.rarity}</div>
-                  <h3 className="text-3xl font-bold font-headline uppercase tracking-tighter">{card.tier}</h3>
-                  <div className="h-40 relative flex items-center justify-center">
-                    <div className={`h-24 w-24 rounded-full blur-3xl absolute opacity-30 ${card.color === 'gold' ? 'bg-accent' : 'bg-primary'}`} />
-                    <Trophy className={`h-20 w-20 transition-transform group-hover:scale-110 ${card.color === 'gold' ? 'text-accent' : 'text-primary'}`} />
-                  </div>
-                  <div className="pt-4 border-t border-white/5 space-y-2">
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Supply Model</div>
-                    <div className="font-bold text-white">{card.supply}</div>
-                  </div>
-                </div>
-              </GlassCard>
-            ))}
-          </div>
         </div>
       </section>
 
