@@ -3,11 +3,10 @@
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Target, Activity, Cpu, Play, BarChart3, Users2, Zap, Layout, Globe, Trophy, Coins } from "lucide-react"
+import { Shield, Target, Activity, Cpu, Trophy, Coins, Zap, Globe } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
-import { cn } from "@/lib/utils"
 
 export default function GameplayPage() {
   return (
@@ -37,7 +36,7 @@ export default function GameplayPage() {
             <h1 className="text-6xl md:text-9xl font-bold font-headline tracking-tighter uppercase leading-[0.8]">
               ELITE <br /><span className="text-primary italic">TACTICAL DEPTH</span>
             </h1>
-            <p className="text-xl md:text-2xl text-secondary-foreground leading-relaxed max-w-3xl font-light opacity-80">
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl font-light opacity-80">
               Experience the deepest management simulation on the blockchain. From real-time pitch adjustments to neural scouting, every decision determines your empire's value.
             </p>
           </motion.div>
@@ -49,7 +48,7 @@ export default function GameplayPage() {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-24 space-y-4">
             <h2 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase">THE <span className="text-primary">REWARD</span> CYCLE</h2>
-            <p className="text-secondary-foreground text-xl font-light opacity-70">How tactical mastery translates to persistent ecosystem value.</p>
+            <p className="text-muted-foreground text-xl font-light opacity-70">How tactical mastery translates to persistent ecosystem value.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -81,7 +80,7 @@ export default function GameplayPage() {
                   <span className="text-4xl font-headline font-bold text-white/10">{item.step}</span>
                 </div>
                 <h3 className="text-2xl font-bold font-headline uppercase tracking-widest mb-4">{item.title}</h3>
-                <p className="text-secondary-foreground font-light leading-relaxed opacity-80">{item.desc}</p>
+                <p className="text-muted-foreground font-light leading-relaxed opacity-80">{item.desc}</p>
               </GlassCard>
             ))}
           </div>
