@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -69,9 +68,8 @@ export function TeamSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <GlassCard className="group p-8 border-white/5 bg-ifm-surface/30 text-center" glowColor="blue">
-                {/* Reduced and Rounded Image */}
-                <div className="relative h-32 w-32 mx-auto mb-8 rounded-[2rem] overflow-hidden border-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500">
+              <GlassCard className="group p-8 border-white/5 bg-ifm-surface/30 text-center" glowColor="gold">
+                <div className="relative h-28 w-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors duration-500">
                   <Image 
                     src={member.img} 
                     alt={member.name} 
@@ -82,14 +80,13 @@ export function TeamSection() {
 
                 <div className="space-y-4">
                   <div>
-                    <div className="text-[10px] text-primary font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
+                    <div className="text-[10px] text-accent font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
                     <h4 className="text-2xl font-bold font-headline tracking-tighter uppercase">{member.name}</h4>
                   </div>
                   <p className="text-sm text-muted-foreground font-light leading-relaxed min-h-[60px]">
                     {member.bio}
                   </p>
                   
-                  {/* Subtle Social Links */}
                   <div className="flex justify-center gap-4 pt-2">
                     {member.twitter && <LinkIcon icon={Twitter} href={member.twitter} />}
                     {member.linkedin && <LinkIcon icon={Linkedin} href={member.linkedin} />}
@@ -109,7 +106,7 @@ function LinkIcon({ icon: Icon, href }: { icon: any; href: string }) {
   return (
     <Link 
       href={href} 
-      className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-primary/20"
+      className="h-10 w-10 flex items-center justify-center rounded-xl bg-accent/10 text-accent hover:bg-accent hover:text-background transition-all duration-300 border border-accent/20"
     >
       <Icon className="h-4 w-4" />
     </Link>

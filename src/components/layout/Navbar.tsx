@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -45,8 +44,8 @@ export function Navbar() {
       <div className={cn(
         "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-6 py-2 transition-all duration-500",
         isScrolled 
-          ? "bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl" 
-          : "bg-background/40 backdrop-blur-md border border-white/5"
+          ? "bg-ifm-blueBrand/90 backdrop-blur-2xl border border-white/10 shadow-2xl" 
+          : "bg-ifm-blueBrand/40 backdrop-blur-md border border-white/5"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-accent text-background glow-gold transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">

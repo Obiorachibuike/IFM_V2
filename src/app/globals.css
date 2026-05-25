@@ -10,7 +10,7 @@
     --card-foreground: 0 0% 100%;
     --popover: 225 44% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 217 91% 60%; /* #3B82F6 - UI Blue */
+    --primary: 217 91% 60%; /* #3B82F6 - Interactive Blue */
     --primary-foreground: 225 44% 4%;
     --secondary: 225 64% 33%; /* #1E3A8A - Brand Blue */
     --secondary-foreground: 0 0% 100%;
@@ -45,7 +45,9 @@
 }
 
 .glass {
-  @apply bg-card/60 backdrop-blur-3xl border border-white/10;
+  background: rgba(10, 15, 28, 0.6);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 80px -15px rgba(0, 0, 0, 0.9);
 }
 

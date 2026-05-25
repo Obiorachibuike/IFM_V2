@@ -6,7 +6,6 @@ import { motion } from "framer-motion"
 import { Shield, Target, Activity, Cpu, Play, BarChart3, Users2, Zap, Layout, Globe, Trophy, Coins } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { cn } from "@/lib/utils"
 
@@ -89,73 +88,24 @@ export default function GameplayPage() {
         </div>
       </section>
 
-      {/* 3. BUILD YOUR CLUB */}
-      <section className="py-32 relative">
+      {/* 3. TACTICAL PILLARS */}
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-10">
-              <div className="space-y-6">
-                <h2 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase leading-none">
-                  BUILD YOUR <br /><span className="text-primary italic">DYNASTY</span>
-                </h2>
-                <p className="text-xl text-secondary-foreground font-light leading-relaxed opacity-80">
-                  Manage every facet of your club license. From negotiating contracts to designing tactical blueprints, your legacy is built through detail.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  { icon: Zap, title: "Liquid Transfers", desc: "A peer-to-peer market powered by real match data." },
-                  { icon: Layout, title: "Squad Synergy", desc: "Dynamic chemistry based on manager tactical style." },
-                  { icon: Target, title: "Tactical Maps", desc: "Over 50+ preset formations and custom AI logic." },
-                  { icon: Users2, title: "Staff Networks", desc: "Hire coaches to boost player development curves." },
-                ].map((item, i) => (
-                  <GlassCard key={i} className="p-8 border-white/5 bg-card/20">
-                    <div className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary mb-6">
-                      <item.icon className="h-5 w-5" />
-                    </div>
-                    <h4 className="text-lg font-bold uppercase tracking-tight mb-2">{item.title}</h4>
-                    <p className="text-xs text-secondary-foreground font-light leading-relaxed opacity-70">{item.desc}</p>
-                  </GlassCard>
-                ))}
-              </div>
-            </div>
-
-            <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue" hoverable={false}>
-               <div className="bg-background/80 p-6 border-b border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-                      <BarChart3 className="h-5 w-5" />
-                    </div>
-                    <span className="font-bold text-xs tracking-widest uppercase">Squad Performance Radar</span>
-                  </div>
-                  <Badge className="bg-primary/20 text-primary border-primary/30">LIVE DATA</Badge>
-               </div>
-               <div className="p-10 space-y-8">
-                  {[
-                    { label: "Tactical Execution", value: 82, color: "bg-primary" },
-                    { label: "Squad Morale", value: 95, color: "bg-blue-400" },
-                    { label: "Fitness Levels", value: 76, color: "bg-accent" },
-                    { label: "Scouting Reach", value: 61, color: "bg-slate-600" },
-                  ].map((stat, i) => (
-                    <div key={i} className="space-y-3">
-                      <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
-                        <span>{stat.label}</span>
-                        <span>{stat.value}%</span>
-                      </div>
-                      <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${stat.value}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: i * 0.1 }}
-                          className={cn("h-full", stat.color)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-               </div>
-            </GlassCard>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Pro League", icon: Trophy, desc: "Standard tiered league system with weekly promotion and relegation." },
+              { icon: Activity, title: "Ranked Seasons", desc: "Monthly competitive sprints for global leaderboard dominance." },
+              { icon: Cpu, title: "AI Tournaments", desc: "Manager-less simulation cups testing pure tactical depth." },
+              { icon: Globe, title: "World Series", desc: "Professional esports tournaments with massive ecosystem prize pools." },
+            ].map((pillar, i) => (
+              <GlassCard key={i} className="p-8 border-white/5 hover:bg-primary/5 group">
+                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <pillar.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold font-headline mb-2 uppercase">{pillar.title}</h3>
+                <p className="text-muted-foreground text-sm font-light leading-relaxed">{pillar.desc}</p>
+              </GlassCard>
+            ))}
           </div>
         </div>
       </section>
