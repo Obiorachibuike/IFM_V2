@@ -1,15 +1,14 @@
-
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Coins, Database, Layers, ArrowRight, Zap, Trophy, Cpu, Target } from "lucide-react"
+import { Shield, Coins, Database, Layers, ArrowRight, Zap, Trophy, Cpu, Target, BarChart3 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { FAQSection } from "@/components/sections/FAQSection"
+import { cn } from "@/lib/utils"
 
 export default function EcosystemPage() {
   return (
