@@ -2,6 +2,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { GlassCard } from "@/components/ui/glass-card"
@@ -148,8 +149,12 @@ export default function AboutPage() {
           <h2 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase">START YOUR <span className="text-secondary italic">LEGACY</span></h2>
           <p className="text-xl text-muted-foreground">The premier division is waiting for its next great manager. Will you lead the ecosystem?</p>
           <div className="flex flex-wrap justify-center gap-6 pt-8">
-            <Button size="lg" className="h-16 px-12 bg-secondary hover:bg-secondary/90 text-lg font-bold glow-blue">MINT CLUB LICENSE</Button>
-            <Button size="lg" variant="outline" className="h-16 px-12 border-white/20 hover:bg-white/5 text-lg font-bold">JOIN COMMUNITY</Button>
+            <Button asChild size="lg" className="h-16 px-12 bg-secondary hover:bg-secondary/90 text-lg font-bold glow-blue">
+              <Link href="/#early-access">JOIN EARLY ACCESS</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="h-16 px-12 border-white/20 hover:bg-white/5 text-lg font-bold">
+              <Link href="/community">JOIN COMMUNITY</Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -33,7 +33,7 @@ export default function HomePage() {
       <section className="relative h-[110vh] min-h-[900px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="absolute inset-0 z-0">
           <Image
-            src={heroImage?.imageUrl || ""}
+            src={heroImage?.imageUrl || "https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"}
             alt="Stadium"
             fill
             className="object-cover opacity-60"
@@ -79,8 +79,10 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
-              <Button size="lg" className="h-20 px-14 text-xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green group rounded-2xl shadow-2xl transition-all duration-500">
-                JOIN EARLY ACCESS <Rocket className="h-6 w-6 ml-4 group-hover:translate-x-1 transition-transform" />
+              <Button asChild size="lg" className="h-20 px-14 text-xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green group rounded-2xl shadow-2xl transition-all duration-500">
+                <Link href="#early-access">
+                  JOIN EARLY ACCESS <Rocket className="h-6 w-6 ml-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button size="lg" variant="outline" className="h-20 px-14 text-xl font-bold border-white/10 hover:bg-white/5 rounded-2xl backdrop-blur-3xl shadow-2xl transition-all">
                 WATCH TRAILER <Play className="h-6 w-6 ml-4" />
@@ -284,7 +286,7 @@ export default function HomePage() {
       <section className="py-80 relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage?.imageUrl || ""}
+            src={heroImage?.imageUrl || "https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"}
             alt="Stadium Footer"
             fill
             className="object-cover opacity-10 grayscale"
@@ -301,11 +303,15 @@ export default function HomePage() {
             The prime-division whitelist is closing. Join the elite network of managers shaping the future of the digital football empire.
           </p>
           <div className="flex flex-wrap justify-center gap-8 pt-10">
-            <Button size="lg" className="h-24 px-16 text-2xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green rounded-3xl shadow-3xl transition-all duration-700">
-              APPLY FOR LICENSE
+            <Button asChild size="lg" className="h-24 px-16 text-2xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green rounded-3xl shadow-3xl transition-all duration-700">
+              <Link href="#early-access">
+                APPLY FOR LICENSE
+              </Link>
             </Button>
-            <Button size="lg" variant="ghost" className="h-24 px-16 text-2xl font-bold hover:bg-white/5 rounded-3xl border border-white/10 gap-4 uppercase tracking-widest font-headline">
-              Command Center <ArrowRight className="h-6 w-6" />
+            <Button asChild size="lg" variant="ghost" className="h-24 px-16 text-2xl font-bold hover:bg-white/5 rounded-3xl border border-white/10 gap-4 uppercase tracking-widest font-headline">
+              <Link href="/ecosystem">
+                Command Center <ArrowRight className="h-6 w-6" />
+              </Link>
             </Button>
           </div>
         </div>
