@@ -44,16 +44,16 @@
       "imageHint": "esports arena"
     },
     {
-      "id": "roadmap-visual",
-      "description": "Abstract futuristic tech roadmap background",
-      "imageUrl": "https://picsum.photos/seed/ifm-roadmap/1200/800",
-      "imageHint": "futuristic timeline"
+      "id": "mint-preview",
+      "description": "Close up of a holographic football manager license minting",
+      "imageUrl": "https://picsum.photos/seed/ifm-mint/1200/800",
+      "imageHint": "holographic badge"
     },
     {
-      "id": "marketplace-hero",
-      "description": "Futuristic digital trade floor for football assets",
-      "imageUrl": "https://picsum.photos/seed/ifm-market/1920/1080",
-      "imageHint": "digital marketplace"
+      "id": "rewards-visual",
+      "description": "Golden IFM coins flowing into a digital vault",
+      "imageUrl": "https://picsum.photos/seed/ifm-rewards/1200/800",
+      "imageHint": "golden coins"
     },
     {
       "id": "about-hero",

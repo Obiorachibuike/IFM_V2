@@ -2,8 +2,6 @@
 "use client"
 
 import * as React from "react"
-import { Navbar } from "@/components/layout/Navbar"
-import { Footer } from "@/components/layout/Footer"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -23,7 +21,6 @@ const allocationData = [
 export default function TokenomicsPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D]">
-      <Navbar />
       
       {/* 1. TOKEN HERO - THE ENGINE */}
       <section className="relative pt-48 pb-32 overflow-hidden">
@@ -175,8 +172,6 @@ export default function TokenomicsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }

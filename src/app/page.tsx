@@ -1,10 +1,11 @@
+
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Shield, Play, ArrowRight, Activity, Trophy, Rocket, Coins, Wallet, Zap, Globe } from "lucide-react"
+import { Play, ArrowRight, Activity, Trophy, Rocket, Coins, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { GlassCard } from "@/components/ui/glass-card"
@@ -12,7 +13,6 @@ import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { RoadmapSection } from "@/components/sections/RoadmapSection"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { cn } from "@/lib/utils"
 
 export default function HomePage() {
   const containerRef = React.useRef(null)
@@ -29,7 +29,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.3])
 
   return (
-    <div ref={containerRef} className="flex flex-col w-full relative">
+    <div ref={containerRef} className="flex flex-col w-full relative bg-background">
       
       {/* 1. HERO SECTION */}
       <section className="relative h-[100vh] min-h-[800px] flex items-center justify-center overflow-hidden">
@@ -38,12 +38,12 @@ export default function HomePage() {
             src={heroImage?.imageUrl || ""}
             alt="Stadium"
             fill
-            className="object-cover opacity-50 grayscale-[0.2]"
+            className="object-cover opacity-60 brightness-75"
             priority
             data-ai-hint="futuristic stadium"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-transparent to-background" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-20" />
         </motion.div>
@@ -62,23 +62,23 @@ export default function HomePage() {
                 transition={{ delay: 0.5 }}
                 className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-full px-5 py-2"
               >
-                <Badge className="bg-primary/20 text-primary border-primary/40 text-[9px] uppercase tracking-widest px-3">Phase 1: LIVE</Badge>
+                <Badge className="bg-accent/20 text-accent border-accent/40 text-[9px] uppercase tracking-widest px-3">Phase 1: LIVE</Badge>
                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/80">Foundation Enrollment</span>
-                <Activity className="h-3.5 w-3.5 text-primary animate-pulse" />
+                <Activity className="h-3.5 w-3.5 text-accent animate-pulse" />
               </motion.div>
               
               <h1 className="text-6xl md:text-[9rem] font-bold font-headline leading-[0.8] tracking-tighter uppercase mb-2">
                 MASTER YOUR <br />
-                <span className="text-primary italic">FOOTBALL LEGACY</span>
+                <span className="text-accent italic">FOOTBALL LEGACY</span>
               </h1>
               
-              <p className="text-lg md:text-2xl text-secondary-foreground max-w-3xl mx-auto leading-relaxed font-light tracking-wide opacity-80">
+              <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
                 Lead the next generation of football clubs. Own your assets, control your tactics, and earn withdrawable rewards in a persistent digital empire.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
-              <Button asChild size="lg" className="h-16 px-12 text-lg font-bold bg-primary hover:bg-primary/90 text-white glow-blue group rounded-2xl shadow-2xl transition-all duration-500">
+              <Button asChild size="lg" className="h-16 px-12 text-lg font-bold bg-accent hover:bg-accent/90 text-background glow-gold group rounded-2xl transition-all duration-500">
                 <Link href="#early-access">
                   JOIN EARLY ACCESS <Rocket className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -104,9 +104,9 @@ export default function HomePage() {
               <div className="space-y-6">
                 <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-[0.4em] text-[10px] font-bold">Economic Infrastructure</Badge>
                 <h2 className="text-5xl md:text-6xl font-bold font-headline uppercase leading-none tracking-tighter">
-                  COMPETE & <br /><span className="text-primary italic">EARN REWARDS</span>
+                  COMPETE & <br /><span className="text-accent italic">EARN REWARDS</span>
                 </h2>
-                <p className="text-xl text-secondary-foreground font-light leading-relaxed opacity-80">
+                <p className="text-xl text-muted-foreground font-light leading-relaxed opacity-80">
                   Winning leagues and tournaments distributes $IFM tokens directly to your manager treasury. These rewards are verified on-chain and fully withdrawable.
                 </p>
               </div>
@@ -118,12 +118,12 @@ export default function HomePage() {
                   { icon: Zap, title: "Performance Multipliers", desc: "Elite club licenses grant tiered multipliers based on your on-pitch dominance." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 items-start group">
-                    <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                    <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent border border-accent/20 shrink-0 group-hover:bg-accent group-hover:text-background transition-all duration-500">
                       <item.icon className="h-6 w-6" />
                     </div>
                     <div>
                       <h4 className="text-lg font-bold text-white uppercase tracking-widest mb-1">{item.title}</h4>
-                      <p className="text-sm text-secondary-foreground leading-relaxed font-light opacity-70">{item.desc}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-light opacity-70">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -136,7 +136,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <GlassCard className="p-4 border-white/10 glow-blue" hoverable={false}>
+              <GlassCard className="p-4 border-white/10 glow-gold" hoverable={false}>
                 <Image 
                   src={rewardsImage?.imageUrl || ""} 
                   alt="Rewards Visual" 
@@ -184,7 +184,7 @@ export default function HomePage() {
                     </div>
                     <Badge className="bg-accent/10 text-accent border-accent/30 px-4 py-1">PHASE 2 PREVIEW</Badge>
                   </div>
-                  <p className="text-secondary-foreground font-light leading-relaxed opacity-80">
+                  <p className="text-muted-foreground font-light leading-relaxed opacity-80">
                     Founding managers can mint their persistent Club Licenses in Phase 2. Secure your priority whitelist spot by joining the Foundation enrollment today.
                   </p>
                 </div>
@@ -214,7 +214,7 @@ export default function HomePage() {
                   <div key={i} className="space-y-3">
                     <div className="h-1 w-10 bg-accent/30 rounded-full" />
                     <h4 className="text-sm font-bold text-white uppercase tracking-widest">{perk.title}</h4>
-                    <p className="text-xs text-secondary-foreground leading-relaxed font-light opacity-70">{perk.desc}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed font-light opacity-70">{perk.desc}</p>
                   </div>
                 ))}
               </div>
@@ -248,10 +248,10 @@ export default function HomePage() {
         <div className="container relative z-10 mx-auto px-6 text-center max-w-4xl space-y-12">
           <h2 className="text-5xl md:text-[8rem] font-bold font-headline leading-[0.8] tracking-tighter uppercase">
             OWN THE <br />
-            <span className="text-primary italic">EMPIRE</span>
+            <span className="text-accent italic">EMPIRE</span>
           </h2>
           <div className="flex justify-center pt-8">
-            <Button asChild size="lg" className="h-20 px-16 text-2xl font-bold bg-primary hover:bg-primary/90 text-white glow-blue rounded-3xl shadow-3xl transition-all duration-700">
+            <Button asChild size="lg" className="h-20 px-16 text-2xl font-bold bg-accent hover:bg-accent/90 text-background rounded-3xl glow-gold transition-all duration-700">
               <Link href="#early-access">
                 JOIN PHASE 1 NOW
               </Link>

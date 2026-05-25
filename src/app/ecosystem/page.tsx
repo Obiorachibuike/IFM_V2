@@ -9,14 +9,10 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { FAQSection } from "@/components/sections/FAQSection"
-import { Navbar } from "@/components/layout/Navbar"
-import { Footer } from "@/components/layout/Footer"
-import { cn } from "@/lib/utils"
 
 export default function EcosystemPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D]">
-      <Navbar />
       
       {/* 1. ECOSYSTEM HERO */}
       <section className="relative pt-48 pb-32 overflow-hidden">
@@ -128,7 +124,6 @@ export default function EcosystemPage() {
 
       <EarlyAccessForm />
       <FAQSection />
-      <Footer />
     </div>
   )
 }

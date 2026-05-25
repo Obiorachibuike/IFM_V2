@@ -3,8 +3,6 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { Navbar } from "@/components/layout/Navbar"
-import { Footer } from "@/components/layout/Footer"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -17,7 +15,6 @@ export default function CommunityPage() {
 
   return (
     <div className="flex flex-col w-full min-h-screen">
-      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
@@ -37,19 +34,19 @@ export default function CommunityPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl space-y-8"
           >
-            <Badge className="bg-secondary/20 text-secondary border-secondary/30">MANAGER ECOSYSTEM</Badge>
+            <Badge className="bg-accent/20 text-accent border-accent/30 px-4">MANAGER ECOSYSTEM</Badge>
             <h1 className="text-6xl md:text-8xl font-bold font-headline tracking-tighter leading-none uppercase">
               OWN THE <br />
-              <span className="text-secondary italic">CONVERSATION</span>
+              <span className="text-accent italic">CONVERSATION</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
               Join a global network of elite football managers. Collaborate on tactics, vote on governance, and compete for prestige.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="h-16 px-10 bg-secondary hover:bg-secondary/90 glow-blue gap-3 font-bold">
+              <Button size="lg" className="h-16 px-10 bg-accent hover:bg-accent/90 text-background glow-gold gap-3 font-bold rounded-2xl">
                 <MessageSquare className="h-5 w-5" /> JOIN DISCORD
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-10 border-white/20 hover:bg-white/5 gap-3 font-bold">
+              <Button size="lg" variant="outline" className="h-16 px-10 border-white/20 hover:bg-white/5 gap-3 font-bold rounded-2xl">
                 <Twitter className="h-5 w-5" /> FOLLOW ON X
               </Button>
             </div>
@@ -87,7 +84,7 @@ export default function CommunityPage() {
               className="flex-1 space-y-8"
             >
               <h2 className="text-4xl md:text-5xl font-bold font-headline uppercase leading-none tracking-tighter">
-                ESPORTS <br /><span className="text-secondary italic text-gradient">GRADE COMPETITION</span>
+                ESPORTS <br /><span className="text-accent italic">GRADE COMPETITION</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 The IFM Championship Series is the ultimate stage for football managers. With prize pools exceeding $1.5M, our seasonal tournaments define the elite of the ecosystem.
@@ -99,7 +96,7 @@ export default function CommunityPage() {
                   { icon: Radio, title: "Live Streaming", desc: "Key matches are broadcasted live with professional commentary." },
                 ].map((item, i) => (
                   <GlassCard key={i} className="p-6 border-white/5 bg-white/5 flex gap-6 items-start">
-                    <div className="h-12 w-12 flex items-center justify-center rounded-xl bg-secondary/10 text-secondary shrink-0">
+                    <div className="h-12 w-12 flex items-center justify-center rounded-xl bg-accent/10 text-accent shrink-0">
                       <item.icon className="h-6 w-6" />
                     </div>
                     <div>
@@ -117,11 +114,11 @@ export default function CommunityPage() {
               viewport={{ once: true }}
               className="flex-1 relative"
             >
-              <div className="absolute -inset-4 bg-secondary/20 blur-3xl rounded-full" />
-              <GlassCard className="p-4 border-white/10 glow-blue overflow-hidden">
+              <div className="absolute -inset-4 bg-accent/20 blur-3xl rounded-full" />
+              <GlassCard className="p-4 border-white/10 glow-gold overflow-hidden" hoverable={false}>
                 <div className="flex items-center justify-between mb-4 px-4">
                   <h4 className="font-bold text-white uppercase tracking-widest text-sm">Top Managers (Season 4)</h4>
-                  <Badge variant="outline" className="border-secondary text-secondary">LIVE</Badge>
+                  <Badge variant="outline" className="border-accent text-accent">LIVE</Badge>
                 </div>
                 <div className="space-y-2">
                   {[
@@ -133,7 +130,7 @@ export default function CommunityPage() {
                   ].map((manager) => (
                     <div key={manager.rank} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
                       <div className="flex items-center gap-4">
-                        <span className="font-headline font-bold text-secondary">#{manager.rank}</span>
+                        <span className="font-headline font-bold text-accent">#{manager.rank}</span>
                         <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold">M</div>
                         <div>
                           <div className="font-bold text-sm text-white">{manager.name}</div>
@@ -147,7 +144,7 @@ export default function CommunityPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </GlassCard>
             </motion.div>
           </div>
         </div>
@@ -163,12 +160,12 @@ export default function CommunityPage() {
               { icon: Users, title: "Manager DAO", desc: "Participate in governance proposals and help shape the future of IFM.", label: "Vote Now" },
             ].map((channel, i) => (
               <GlassCard key={i} className="p-10 border-white/5 bg-white/5 group text-center space-y-6">
-                <div className="h-20 w-20 mx-auto flex items-center justify-center rounded-3xl bg-secondary/10 text-secondary border border-secondary/20 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-500">
+                <div className="h-20 w-20 mx-auto flex items-center justify-center rounded-3xl bg-accent/10 text-accent border border-accent/20 group-hover:scale-110 group-hover:bg-accent group-hover:text-background transition-all duration-500">
                   <channel.icon className="h-10 w-10" />
                 </div>
                 <h3 className="text-2xl font-bold font-headline uppercase">{channel.title}</h3>
                 <p className="text-muted-foreground">{channel.desc}</p>
-                <Button variant="outline" className="w-full h-12 border-white/10 hover:bg-secondary/20 hover:border-secondary gap-2">
+                <Button variant="outline" className="w-full h-12 border-white/10 hover:bg-accent/20 hover:border-accent gap-2 rounded-xl">
                   {channel.label} <ArrowRight className="h-4 w-4" />
                 </Button>
               </GlassCard>
@@ -176,8 +173,6 @@ export default function CommunityPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }
