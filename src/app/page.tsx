@@ -29,11 +29,46 @@ const comparisonData = [
 ]
 
 const nftGenesisAssets = [
-  { id: 1, name: "Alpha Striker #001", tier: "Mythic", price: "2.5 ETH", img: "https://picsum.photos/seed/ifm-player1/600/800", hint: "football player" },
-  { id: 2, name: "Neo London Stadium", tier: "Legendary", price: "15.0 ETH", img: "https://picsum.photos/seed/ifm-stadium1/600/800", hint: "futuristic stadium" },
-  { id: 3, name: "Cyber Keeper Gen-Z", tier: "Elite", price: "1.2 ETH", img: "https://picsum.photos/seed/ifm-player2/600/800", hint: "goal keeper" },
-  { id: 4, name: "Founders Club License", tier: "Founder", price: "Exclusive", img: "https://picsum.photos/seed/ifm-badge1/600/800", hint: "gold badge" },
-  { id: 5, name: "Tactical AI Brain", tier: "Legendary", price: "4.8 ETH", img: "https://picsum.photos/seed/ifm-tech1/600/800", hint: "hologram brain" },
+  {
+    id: 1,
+    name: "Alpha Club License",
+    description: "The foundational permit required to register and manage a professional club in the IFM ecosystem.",
+    importance: "Grants permanent entry into the competitive league system and unlocks eligibility for $IFM rewards.",
+    requirement: "Whitelisted Founding Manager status and successful Phase 1 enrollment.",
+    img: "https://picsum.photos/seed/ifm-badge1/600/800",
+    hint: "gold badge",
+    tier: "Founder"
+  },
+  {
+    id: 2,
+    name: "Legendary Scout Bot",
+    description: "An advanced AI-driven scouting unit designed to identify high-potential youth talent across global networks.",
+    importance: "Drastically increases the efficiency of talent identification and reduces scouting overhead costs.",
+    requirement: "Active Tier 2 Management License or higher ecosystem standing.",
+    img: "https://picsum.photos/seed/ifm-tech1/600/800",
+    hint: "hologram brain",
+    tier: "Legendary"
+  },
+  {
+    id: 3,
+    name: "Neo London Stadium",
+    description: "A premium digital venue capable of hosting Tier 1 championship matches and community events.",
+    importance: "Unlock significant passive revenue streams from ticket sales and commercial matchday activities.",
+    requirement: "Ownership of at least 5 elite player contracts and stadium development tokens.",
+    img: "https://picsum.photos/seed/ifm-stadium1/600/800",
+    hint: "futuristic stadium",
+    tier: "Elite"
+  },
+  {
+    id: 4,
+    name: "Mythic Striker: 'Voltage'",
+    description: "A generation-zero player card featuring peak physical attributes and exclusive tactical traits.",
+    importance: "Provides a definitive competitive edge in high-stakes knockout tournaments and seasonal leagues.",
+    requirement: "Available exclusively through the limited Phase 2 Genesis Mint event.",
+    img: "https://picsum.photos/seed/ifm-player1/600/800",
+    hint: "football player",
+    tier: "Mythic"
+  }
 ]
 
 export default function HomePage() {
@@ -120,35 +155,49 @@ export default function HomePage() {
           >
             <CarouselContent className="-ml-4">
               {nftGenesisAssets.map((asset) => (
-                <CarouselItem key={asset.id} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={asset.id} className="pl-4 md:basis-1/2 lg:basis-1/2 xl:basis-1/3">
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <GlassCard 
-                      className="p-0 border-white/10 overflow-hidden group" 
+                      className="p-0 border-white/10 overflow-hidden group h-full flex flex-col" 
                       glowColor={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'gold' : 'blue'}
                     >
-                      <div className="relative aspect-[4/5] overflow-hidden">
-                        <Image 
-                          src={asset.img} 
-                          alt={asset.name} 
-                          fill 
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                          data-ai-hint={asset.hint}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                        <div className="absolute top-4 right-4">
-                          <Badge className={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'bg-accent text-background font-bold' : 'bg-primary text-white font-bold'}>
-                            {asset.tier}
-                          </Badge>
+                      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
+                          <Image 
+                            src={asset.img} 
+                            alt={asset.name} 
+                            fill 
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-ai-hint={asset.hint}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                          <div className="absolute top-4 right-4">
+                            <Badge className={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'bg-accent text-background font-bold' : 'bg-primary text-white font-bold'}>
+                              {asset.tier}
+                            </Badge>
+                          </div>
                         </div>
-                      </div>
-                      <div className="p-6 space-y-4">
-                        <h3 className="text-xl font-bold font-headline uppercase tracking-tighter">{asset.name}</h3>
-                        <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                          <div className="text-[10px] text-muted-foreground uppercase tracking-widest">Mint Price</div>
-                          <div className="text-lg font-bold text-accent">{asset.price}</div>
+                        <div className="p-8 flex flex-col justify-between bg-card/40">
+                          <div className="space-y-6">
+                            <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{asset.name}</h3>
+                            <div className="space-y-4">
+                              <div>
+                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">Description</div>
+                                <p className="text-xs text-muted-foreground leading-relaxed">{asset.description}</p>
+                              </div>
+                              <div>
+                                <div className="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Strategic Importance</div>
+                                <p className="text-xs text-white/80 leading-relaxed italic">{asset.importance}</p>
+                              </div>
+                              <div className="pt-4 border-t border-white/5">
+                                <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Requirement</div>
+                                <p className="text-[10px] font-bold text-white uppercase">{asset.requirement}</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </GlassCard>
