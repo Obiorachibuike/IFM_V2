@@ -45,8 +45,8 @@ export function Navbar() {
       <div className={cn(
         "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-6 py-2 transition-all duration-500",
         isScrolled 
-          ? "bg-[#1E3A8A]/90 backdrop-blur-2xl border border-white/10 shadow-2xl" 
-          : "bg-[#1E3A8A]/40 backdrop-blur-md border border-white/5"
+          ? "bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl" 
+          : "bg-background/40 backdrop-blur-md border border-white/5"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-accent text-background glow-gold transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
@@ -109,7 +109,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-6 right-6 lg:hidden glass rounded-[2rem] p-8 border border-white/10 z-40 bg-[#1E3A8A]/95"
+            className="absolute top-24 left-6 right-6 lg:hidden glass rounded-[2rem] p-8 border border-white/10 z-40 bg-card/95 backdrop-blur-xl"
           >
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
