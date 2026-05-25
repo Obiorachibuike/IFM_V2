@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --background: 225 44% 4%; /* #05070D - Deep Cinematic Black */
+    --background: 225 44% 4%; /* #05070D - Primary Background */
     --foreground: 0 0% 100%;
-    --card: 225 46% 7%; /* #0A0F1C */
+    --card: 225 46% 7%; /* #0A0F1C - Secondary Background */
     --card-foreground: 0 0% 100%;
     --popover: 225 44% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 217 91% 60%; /* #3B82F6 - Interactive Blue (PRIMARY) */
+    --primary: 217 91% 60%; /* #3B82F6 - Interactive Blue */
     --primary-foreground: 0 0% 100%;
-    --secondary: 225 64% 33%; /* #1E3A8A - Brand Blue */
+    --secondary: 225 64% 33%; /* #1E3A8A - Primary Blue Brand */
     --secondary-foreground: 0 0% 100%;
     --muted: 225 35% 15%;
     --muted-foreground: 215 15% 69%;
-    --accent: 38 91% 61%; /* #F5B041 - Gold (Premium Accent) */
+    --accent: 38 91% 61%; /* #F5B041 - Gold Primary */
     --accent-foreground: 225 44% 4%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -107,4 +107,12 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+.text-gradient-blue {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-primary;
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-accent to-accent;
 }

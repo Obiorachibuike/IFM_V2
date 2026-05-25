@@ -23,9 +23,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -36,24 +34,21 @@ export function Navbar() {
       animate={{ y: 0 }}
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
-        isScrolled 
-          ? "py-4 px-6" 
-          : "py-8 px-6"
+        isScrolled ? "py-4 px-6" : "py-8 px-6"
       )}
     >
       <div className={cn(
         "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-6 py-2 transition-all duration-500",
-        isScrolled 
-          ? "bg-secondary/90 backdrop-blur-2xl border border-white/10 shadow-2xl" 
-          : "bg-secondary/40 backdrop-blur-md border border-white/5"
+        "bg-secondary/40 backdrop-blur-2xl border border-white/10",
+        isScrolled && "shadow-2xl bg-secondary/80"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-primary text-white glow-blue transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-primary text-white glow-blue transition-transform group-hover:scale-110">
             <Trophy className="h-6 w-6" />
           </div>
           <div className="flex flex-col">
             <span className="font-headline text-2xl font-bold tracking-tighter text-white leading-none">IFM</span>
-            <span className="text-[8px] font-bold tracking-[0.4em] text-primary uppercase">Ecosystem</span>
+            <span className="text-[8px] font-bold tracking-[0.4em] text-primary uppercase">Empire</span>
           </div>
         </Link>
 
@@ -67,7 +62,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full group",
+                  "relative flex items-center gap-2 px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-full group",
                   isActive ? "text-primary" : "text-white/70 hover:text-white"
                 )}
               >
@@ -86,16 +81,11 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button asChild className="hidden sm:flex bg-primary hover:bg-primary/90 text-white font-bold h-10 px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px] glow-blue">
+          <Button asChild className="hidden sm:flex bg-primary hover:bg-primary/90 text-white font-bold h-10 px-8 rounded-full transition-all uppercase tracking-widest text-[10px] glow-blue">
             <Link href="/#early-access">Early Access</Link>
           </Button>
 
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="lg:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+          <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>

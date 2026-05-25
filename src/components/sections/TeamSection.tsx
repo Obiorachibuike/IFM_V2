@@ -68,26 +68,26 @@ export function TeamSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <GlassCard className="group p-8 border-white/5 bg-ifm-surface/30 text-center" glowColor="gold">
-                <div className="relative h-28 w-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors duration-500">
+              <GlassCard className="group p-10 border-white/5 bg-secondary/30 text-center" glowColor="gold">
+                <div className="relative h-32 w-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors duration-500">
                   <Image 
                     src={member.img} 
                     alt={member.name} 
                     fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                   />
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div>
-                    <div className="text-[10px] text-accent font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
+                    <div className="text-[10px] text-accent font-bold uppercase tracking-[0.3em] mb-2">{member.role}</div>
                     <h4 className="text-2xl font-bold font-headline tracking-tighter uppercase">{member.name}</h4>
                   </div>
                   <p className="text-sm text-muted-foreground font-light leading-relaxed min-h-[60px]">
                     {member.bio}
                   </p>
                   
-                  <div className="flex justify-center gap-4 pt-2">
+                  <div className="flex justify-center gap-4 pt-4">
                     {member.twitter && <LinkIcon icon={Twitter} href={member.twitter} />}
                     {member.linkedin && <LinkIcon icon={Linkedin} href={member.linkedin} />}
                     {member.github && <LinkIcon icon={Github} href={member.github} />}
