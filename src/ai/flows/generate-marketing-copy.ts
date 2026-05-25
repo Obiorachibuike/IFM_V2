@@ -64,6 +64,9 @@ const prompt = ai.definePrompt({
   prompt: `You are an expert marketing copywriter for a futuristic Blockchain Football Manager Game called "IFM".
 Your goal is to create compelling, 'investor-ready', and 'cinematic' marketing copy that aligns with the brand direction.
 
+CRITICAL ARCHITECTURAL RULE:
+This website MUST NOT include a functional marketplace UI. All economic systems should be presented as conceptual ecosystem explanations, not transactional interfaces. Do not generate copy that implies direct 'buy now' buttons for players or items; focus on ownership narratives and ecosystem participation.
+
 OVERALL BRAND DIRECTION:
 "Football Manager meets Web3 esports startup." Not cartoonish, not casual gaming, not mobile-game style.
 

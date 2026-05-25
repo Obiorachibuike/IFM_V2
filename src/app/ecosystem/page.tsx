@@ -1,5 +1,11 @@
 "use client"
 
+/**
+ * NOTE: This website MUST NOT include a functional marketplace UI. 
+ * All economic systems should be presented as conceptual ecosystem explanations, 
+ * not transactional interfaces.
+ */
+
 import * as React from "react"
 import Image from "next/image"
 import { Navbar } from "@/components/layout/Navbar"

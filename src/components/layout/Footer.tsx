@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import { Trophy, Twitter, Github, Send, MessageSquare, ShieldCheck } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -37,7 +36,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li><Link href="/about" className="text-muted-foreground hover:text-secondary transition-all">Game Mechanics</Link></li>
               <li><Link href="/nft-clubs" className="text-muted-foreground hover:text-secondary transition-all">Club Ownership</Link></li>
-              <li><Link href="/marketplace" className="text-muted-foreground hover:text-secondary transition-all">Transfer Market</Link></li>
+              <li><Link href="/ecosystem" className="text-muted-foreground hover:text-secondary transition-all">Economy Blueprint</Link></li>
               <li><Link href="/tokenomics" className="text-muted-foreground hover:text-secondary transition-all">Token Utility</Link></li>
             </ul>
           </div>

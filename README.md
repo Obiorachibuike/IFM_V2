@@ -1,5 +1,12 @@
-# Firebase Studio
+# IFM | Global Blockchain Football Empire
 
-This is a NextJS starter in Firebase Studio.
+This is a premium, cinematic marketing platform for IFM, a futuristic football management ecosystem.
 
-To get started, take a look at src/app/page.tsx.
+## Core Architectural Rule
+**This website MUST NOT include a functional marketplace UI. All economic systems should be presented as conceptual ecosystem explanations, not transactional interfaces.**
+
+## Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS + ShadCN UI
+- **Animation**: Framer Motion
+- **AI**: Genkit (for cinematic marketing copy)
