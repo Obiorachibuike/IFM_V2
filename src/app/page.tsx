@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -13,6 +12,7 @@ import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { RoadmapSection } from "@/components/sections/RoadmapSection"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { cn } from "@/lib/utils"
 
 export default function HomePage() {
   const containerRef = React.useRef(null)
@@ -62,24 +62,24 @@ export default function HomePage() {
                 transition={{ delay: 0.5 }}
                 className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-full px-6 py-2"
               >
-                <Badge variant="outline" className="bg-ifm-green/20 text-ifm-green border-ifm-green/40 text-[9px] uppercase tracking-widest px-3">Ecosystem Online</Badge>
+                <Badge variant="outline" className="bg-ifm-blue/20 text-ifm-blue border-ifm-blue/40 text-[9px] uppercase tracking-widest px-3">Ecosystem Online</Badge>
                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/80">Protocol Status</span>
-                <Activity className="h-3 w-3 text-ifm-green animate-pulse" />
+                <Activity className="h-3.5 w-3.5 text-ifm-blue animate-pulse" />
               </motion.div>
               
               <h1 className="text-7xl md:text-[12rem] font-bold font-headline leading-[0.8] tracking-tighter uppercase mb-2">
                 OWN YOUR <br />
-                <span className="text-ifm-green italic">FOOTBALL LEGACY</span>
+                <span className="text-ifm-blue italic">FOOTBALL LEGACY</span>
               </h1>
               
-              <p className="text-xl md:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light tracking-wide opacity-70">
+              <p className="text-xl md:text-3xl text-ifm-textSecondary max-w-4xl mx-auto leading-relaxed font-light tracking-wide opacity-70">
                 Experience the premier high-fidelity blockchain management ecosystem. <br className="hidden md:block" />
                 True digital ownership meets elite esports performance.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
-              <Button asChild size="lg" className="h-20 px-14 text-xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green group rounded-2xl shadow-2xl transition-all duration-500">
+              <Button asChild size="lg" className="h-20 px-14 text-xl font-bold bg-ifm-blue hover:bg-ifm-blue/90 text-white glow-blue group rounded-2xl shadow-2xl transition-all duration-500">
                 <Link href="#early-access">
                   JOIN EARLY ACCESS <Rocket className="h-6 w-6 ml-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -104,9 +104,9 @@ export default function HomePage() {
               { label: "PROTOCOL LAYER", value: "ERC-721", sub: "Immutable Assets" },
             ].map((stat, i) => (
               <GlassCard key={i} className="py-8 px-6 border-white/5 bg-ifm-surface/40 text-left" hoverable={true}>
-                <div className="text-[8px] text-muted-foreground uppercase tracking-[0.4em] mb-2 font-bold">{stat.label}</div>
+                <div className="text-[8px] text-ifm-textSecondary uppercase tracking-[0.4em] mb-2 font-bold">{stat.label}</div>
                 <div className="text-4xl font-headline font-bold text-white tracking-tighter mb-1">{stat.value}</div>
-                <div className="text-[9px] text-ifm-green font-bold uppercase tracking-widest">{stat.sub}</div>
+                <div className="text-[9px] text-ifm-blue font-bold uppercase tracking-widest">{stat.sub}</div>
               </GlassCard>
             ))}
           </motion.div>
@@ -124,11 +124,11 @@ export default function HomePage() {
               className="flex-1 space-y-12"
             >
               <div className="space-y-6">
-                <Badge className="bg-ifm-green/10 text-ifm-green border-ifm-green/20 px-6 py-2 uppercase tracking-[0.4em] text-[10px] font-bold">Managerial Excellence</Badge>
+                <Badge className="bg-ifm-blue/10 text-ifm-blue border-ifm-blue/20 px-6 py-2 uppercase tracking-[0.4em] text-[10px] font-bold">Managerial Excellence</Badge>
                 <h2 className="text-7xl md:text-8xl font-bold font-headline uppercase leading-none tracking-tighter">
-                  MASTER YOUR <br /><span className="text-ifm-green italic">LEGACY</span>
+                  MASTER YOUR <br /><span className="text-ifm-blue italic">LEGACY</span>
                 </h2>
-                <p className="text-2xl text-muted-foreground font-light leading-relaxed max-w-xl">
+                <p className="text-2xl text-ifm-textSecondary font-light leading-relaxed max-w-xl">
                   IFM is the first professional sports infrastructure for the decentralized era. Build, own, and lead your club to global dominance in a tiered competitive system.
                 </p>
               </div>
@@ -141,11 +141,11 @@ export default function HomePage() {
                   { icon: Cpu, title: "AI Scouting", desc: "Neural networks process raw data into actionable scouting insights." },
                 ].map((item, i) => (
                   <div key={i} className="space-y-4 group">
-                    <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-ifm-green/5 border border-ifm-green/20 group-hover:bg-ifm-green group-hover:text-ifm-dark transition-all duration-500">
+                    <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-ifm-blue/5 border border-ifm-blue/20 group-hover:bg-ifm-blue group-hover:text-white transition-all duration-500">
                       <item.icon className="h-7 w-7" />
                     </div>
                     <h4 className="font-bold text-white uppercase text-sm tracking-widest">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-ifm-textSecondary leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -157,8 +157,8 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="flex-1 relative"
             >
-              <div className="absolute -inset-20 bg-ifm-green/10 blur-[150px] rounded-full opacity-50" />
-              <GlassCard className="p-4 border-white/10 glow-green rotate-2 relative z-10">
+              <div className="absolute -inset-20 bg-ifm-blue/10 blur-[150px] rounded-full opacity-50" />
+              <GlassCard className="p-4 border-white/10 glow-blue rotate-2 relative z-10">
                 <Image
                   src="https://picsum.photos/seed/ifm-tactical/800/600"
                   alt="IFM Tactical"
@@ -184,7 +184,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6 max-w-6xl">
            <div className="text-center mb-24 space-y-6">
             <h2 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase leading-none">
-              TRADITIONAL SIM <br /><span className="text-ifm-green italic">VS IFM ECOSYSTEM</span>
+              TRADITIONAL SIM <br /><span className="text-ifm-blue italic">VS IFM ECOSYSTEM</span>
             </h2>
           </div>
           
@@ -193,9 +193,9 @@ export default function HomePage() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-white/10 bg-white/5">
-                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground">Feature</th>
-                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground">Traditional Sim</th>
-                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-ifm-green">IFM Protocol</th>
+                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-ifm-textSecondary">Feature</th>
+                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-ifm-textSecondary">Traditional Sim</th>
+                    <th className="p-8 text-sm font-bold uppercase tracking-[0.3em] text-ifm-blue">IFM Protocol</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
@@ -208,8 +208,8 @@ export default function HomePage() {
                   ].map((row, i) => (
                     <tr key={i} className="hover:bg-white/5 transition-colors">
                       <td className="p-8 text-lg font-bold uppercase tracking-tight text-white">{row.feature}</td>
-                      <td className="p-8 text-muted-foreground font-light">{row.trad}</td>
-                      <td className="p-8 font-bold text-ifm-green">{row.ifm}</td>
+                      <td className="p-8 text-ifm-textSecondary font-light">{row.trad}</td>
+                      <td className="p-8 font-bold text-ifm-blue">{row.ifm}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -229,7 +229,7 @@ export default function HomePage() {
                 PRECISION <span className="text-ifm-gold italic">TIERS</span>
               </h2>
             </div>
-            <p className="text-xl text-muted-foreground max-w-md font-light">
+            <p className="text-xl text-ifm-textSecondary max-w-md font-light">
               Each Club License tier grants specific protocol rights, treasury access, and competitive multipliers.
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { tier: "Academy", rarity: "Common", supply: "10,000", color: "blue" },
-              { tier: "Professional", rarity: "Rare", supply: "2,500", color: "green" },
+              { tier: "Professional", rarity: "Rare", supply: "2,500", color: "blue" },
               { tier: "Elite", rarity: "Legendary", supply: "500", color: "gold" },
               { tier: "Invincible", rarity: "Mythic", supply: "50", color: "gold" },
             ].map((item, i) => (
@@ -248,7 +248,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <GlassCard className="p-0 border-white/5 group" glowColor={item.color as any}>
+                <GlassCard key={i} className="p-0 border-white/5 group" glowColor={item.color as any}>
                   <div className="relative aspect-[3/4] overflow-hidden">
                     <Image 
                       src={`https://picsum.photos/seed/ifm-tier-${i}/400/533`}
@@ -266,7 +266,7 @@ export default function HomePage() {
                   </div>
                   <div className="p-8 space-y-4">
                     <h3 className="text-3xl font-bold font-headline uppercase tracking-tighter">{item.tier}</h3>
-                    <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground border-t border-white/5 pt-4">
+                    <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-ifm-textSecondary border-t border-white/5 pt-4">
                       <span>Protocol Supply</span>
                       <span className="text-white">{item.supply}</span>
                     </div>
@@ -297,13 +297,13 @@ export default function HomePage() {
         <div className="container relative z-10 mx-auto px-6 text-center max-w-5xl space-y-16">
           <h2 className="text-7xl md:text-[11rem] font-bold font-headline leading-[0.8] tracking-tighter uppercase">
             SECURE YOUR <br />
-            <span className="text-ifm-green italic">EMPIRE</span>
+            <span className="text-ifm-blue italic">EMPIRE</span>
           </h2>
-          <p className="text-2xl text-muted-foreground font-light max-w-3xl mx-auto opacity-70 leading-relaxed">
+          <p className="text-2xl text-ifm-textSecondary font-light max-w-3xl mx-auto opacity-70 leading-relaxed">
             The prime-division whitelist is closing. Join the elite network of managers shaping the future of the digital football empire.
           </p>
           <div className="flex flex-wrap justify-center gap-8 pt-10">
-            <Button asChild size="lg" className="h-24 px-16 text-2xl font-bold bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark glow-green rounded-3xl shadow-3xl transition-all duration-700">
+            <Button asChild size="lg" className="h-24 px-16 text-2xl font-bold bg-ifm-blue hover:bg-ifm-blue/90 text-white glow-blue rounded-3xl shadow-3xl transition-all duration-700">
               <Link href="#early-access">
                 APPLY FOR LICENSE
               </Link>

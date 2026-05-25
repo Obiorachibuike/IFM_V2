@@ -39,7 +39,7 @@ export default function EcosystemPage() {
             <h1 className="text-7xl md:text-9xl font-bold font-headline tracking-tighter uppercase leading-[0.8]">
               DIGITAL <br /><span className="text-ifm-gold italic">SOVEREIGNTY</span>
             </h1>
-            <p className="text-2xl text-muted-foreground leading-relaxed max-w-3xl font-light">
+            <p className="text-2xl text-ifm-textSecondary leading-relaxed max-w-3xl font-light">
               IFM represents the convergence of professional football management and decentralized economic infrastructure. Own your assets, control your destiny, and lead the global empire.
             </p>
           </motion.div>
@@ -62,14 +62,14 @@ export default function EcosystemPage() {
                 rarity: "Common", 
                 perks: ["Entry League Access", "Basic Scout Network", "Standard Reward Multiplier"],
                 supply: "10,000 Units",
-                color: "border-blue-500/20"
+                color: "border-ifm-blue/20"
               },
               { 
                 tier: "Professional", 
                 rarity: "Rare", 
                 perks: ["Advanced Scouting", "Governance Tier 1", "1.5x Reward Multiplier", "Staking Access"],
                 supply: "2,500 Units",
-                color: "border-ifm-green/20"
+                color: "border-ifm-blue/20"
               },
               { 
                 tier: "Elite", 
@@ -95,14 +95,14 @@ export default function EcosystemPage() {
                     </div>
                     <ul className="space-y-3">
                       {tier.perks.map((perk, j) => (
-                        <li key={j} className="flex items-center gap-3 text-muted-foreground font-light text-sm">
+                        <li key={j} className="flex items-center gap-3 text-ifm-textSecondary font-light text-sm">
                           <Zap className="h-3 w-3 text-ifm-gold" /> {perk}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="text-right space-y-2">
-                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Protocol Supply</div>
+                    <div className="text-[10px] font-bold text-ifm-textSecondary uppercase tracking-widest">Protocol Supply</div>
                     <div className="text-2xl font-headline font-bold text-white">{tier.supply}</div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function EcosystemPage() {
                 <h2 className="text-6xl font-bold font-headline uppercase leading-none tracking-tighter">
                   THE <span className="text-ifm-blue italic">$IFM TOKEN</span>
                 </h2>
-                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                <p className="text-xl text-ifm-textSecondary font-light leading-relaxed">
                   The $IFM token powers every layer of the ecosystem, from managerial operations to decentralized protocol governance.
                 </p>
               </div>
@@ -139,7 +139,7 @@ export default function EcosystemPage() {
                       <item.icon className="h-5 w-5" />
                     </div>
                     <h4 className="font-bold uppercase tracking-tight mb-2">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <p className="text-xs text-ifm-textSecondary leading-relaxed">{item.desc}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -150,10 +150,10 @@ export default function EcosystemPage() {
                <div className="space-y-8">
                   {[
                     { label: "Ecosystem Rewards", value: 35, color: "bg-ifm-blue" },
-                    { label: "Community & DAO", value: 20, color: "bg-ifm-green" },
+                    { label: "Community & DAO", value: 20, color: "bg-blue-900" },
                     { label: "Strategic Partners", value: 15, color: "bg-ifm-gold" },
-                    { label: "Treasury Fund", value: 15, color: "bg-purple-500" },
-                    { label: "Team & Advisors", value: 15, color: "bg-pink-500" },
+                    { label: "Treasury Fund", value: 15, color: "bg-blue-400" },
+                    { label: "Team & Advisors", value: 15, color: "bg-slate-700" },
                   ].map((alloc, i) => (
                     <div key={i} className="space-y-3">
                       <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest">
@@ -182,22 +182,22 @@ export default function EcosystemPage() {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-32 space-y-6">
             <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">
-              VALUE <span className="text-ifm-green italic">ARCHITECTURE</span>
+              VALUE <span className="text-ifm-blue italic">ARCHITECTURE</span>
             </h2>
-            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
+            <p className="text-xl text-ifm-textSecondary font-light max-w-2xl mx-auto">
               IFM is engineered for long-term sustainability. Match data feeds player value, which drives ecosystem growth.
             </p>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
              {/* Connectors (Abstract) */}
-             <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-ifm-green/0 via-ifm-green/20 to-ifm-green/0 hidden md:block -translate-y-1/2" />
+             <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-ifm-blue/0 via-ifm-blue/20 to-ifm-blue/0 hidden md:block -translate-y-1/2" />
              
              {[
-               { icon: Target, label: "Gameplay", color: "green" },
+               { icon: Target, label: "Gameplay", color: "blue" },
                { icon: Cpu, label: "Match Logic", color: "blue" },
                { icon: BarChart3, label: "Performance", color: "gold" },
-               { icon: Database, label: "Progression", color: "green" },
+               { icon: Database, label: "Progression", color: "blue" },
                { icon: Trophy, label: "Rewards", color: "blue" },
                { icon: Shield, label: "Legacy", color: "gold" }
              ].map((step, i) => (
@@ -211,7 +211,6 @@ export default function EcosystemPage() {
                >
                  <div className={cn(
                    "h-24 w-24 rounded-full flex flex-col items-center justify-center border-2 shadow-2xl transition-all duration-500 hover:scale-110 cursor-default",
-                   step.color === 'green' ? 'border-ifm-green bg-ifm-green/10 text-ifm-green glow-green' :
                    step.color === 'blue' ? 'border-ifm-blue bg-ifm-blue/10 text-ifm-blue glow-blue' :
                    'border-ifm-gold bg-ifm-gold/10 text-ifm-gold glow-gold'
                  )}>

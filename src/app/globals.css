@@ -1,35 +1,29 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 225 40% 4%; /* #05070D */
+    --background: 225 44% 4%; /* #05070D */
     --foreground: 0 0% 100%;
-    --card: 225 35% 8%; /* #0A0F1C */
+    --card: 225 46% 7%; /* #0A0F1C */
     --card-foreground: 0 0% 100%;
-    --popover: 225 40% 4%;
+    --popover: 225 44% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 144 100% 61%; /* #39FF88 - Neon Green */
-    --primary-foreground: 225 40% 4%;
-    --secondary: 217 91% 60%; /* #3B82F6 - Blue */
+    --primary: 217 91% 60%; /* #3B82F6 - UI Blue */
+    --primary-foreground: 225 44% 4%;
+    --secondary: 225 64% 33%; /* #1E3A8A - Brand Blue */
     --secondary-foreground: 0 0% 100%;
     --muted: 225 35% 15%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 42 90% 64%; /* #F5C451 - Gold */
-    --accent-foreground: 225 40% 4%;
+    --muted-foreground: 215 15% 69%; /* #A0AEC0 approximation */
+    --accent: 38 91% 61%; /* #F5B041 - Gold */
+    --accent-foreground: 225 44% 4%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 225 35% 15%;
+    --border: 0 0% 100% / 0.08;
     --input: 225 35% 15%;
-    --ring: 144 100% 61%;
+    --ring: 217 91% 60%;
     --radius: 1.5rem;
-    --chart-1: 144 100% 61%;
-    --chart-2: 217 91% 60%;
-    --chart-3: 42 90% 64%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 160 60% 45%;
   }
 }
 
@@ -39,8 +33,9 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image: radial-gradient(circle at 50% 0%, rgba(57, 255, 136, 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 0% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 0% 50%, rgba(30, 58, 138, 0.1) 0%, transparent 40%);
     cursor: default;
     overflow-x: hidden;
   }
@@ -50,24 +45,16 @@
 }
 
 .glass {
-  @apply bg-card/40 backdrop-blur-3xl border border-white/10;
+  @apply bg-card/60 backdrop-blur-3xl border border-white/10;
   box-shadow: 0 20px 80px -15px rgba(0, 0, 0, 0.8);
 }
 
-.glow-green {
-  box-shadow: 0 0 60px -20px rgba(57, 255, 136, 0.5);
-}
-
 .glow-blue {
-  box-shadow: 0 0 60px -20px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 60px -20px rgba(59, 130, 246, 0.4);
 }
 
 .glow-gold {
-  box-shadow: 0 0 60px -20px rgba(245, 196, 81, 0.4);
-}
-
-.text-gradient-green {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-ifm-green to-ifm-green;
+  box-shadow: 0 0 60px -20px rgba(245, 176, 65, 0.35);
 }
 
 .football-grid {
@@ -81,7 +68,7 @@
   position: absolute;
   width: 1px;
   height: 150%;
-  background: linear-gradient(to bottom, transparent, rgba(57, 255, 136, 0.3), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.3), transparent);
   transform: rotate(25deg);
   filter: blur(10px);
   animation: light-sweep 12s infinite ease-in-out;

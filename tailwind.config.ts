@@ -1,4 +1,3 @@
-
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -56,13 +55,17 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        // Custom IFM Colors
+        // Locked IFM Design System
         ifm: {
-          green: '#39FF88',
-          gold: '#F5C451',
           blue: '#3B82F6',
+          blueBrand: '#1E3A8A',
+          gold: '#F5B041',
+          goldDeep: '#D99A2B',
           dark: '#05070D',
           surface: '#0A0F1C',
+          overlay: '#070B14',
+          textSecondary: '#A0AEC0',
+          textMuted: '#6B7280',
         }
       },
       borderRadius: {
