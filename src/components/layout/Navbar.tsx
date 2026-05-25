@@ -13,6 +13,7 @@ const navItems = [
   { name: "Home", href: "/", icon: Rocket },
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
+  { name: "Tokenomics", href: "/tokenomics", icon: Coins },
   { name: "Roadmap", href: "/roadmap", icon: Map },
   { name: "Team", href: "/team", icon: Users },
 ]
@@ -43,15 +44,15 @@ export function Navbar() {
     >
       <div className={cn(
         "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-6 py-2 transition-all duration-500",
-        isScrolled ? "bg-ifm-dark/60 backdrop-blur-2xl border border-white/10 shadow-2xl" : "bg-transparent"
+        isScrolled ? "bg-[#05070D]/60 backdrop-blur-2xl border border-white/10 shadow-2xl" : "bg-transparent"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-ifm-green text-ifm-dark glow-green transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-accent text-[#05070D] glow-gold transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
             <Trophy className="h-6 w-6" />
           </div>
           <div className="flex flex-col">
             <span className="font-headline text-2xl font-bold tracking-tighter text-white leading-none">IFM</span>
-            <span className="text-[8px] font-bold tracking-[0.4em] text-ifm-green uppercase">Ecosystem</span>
+            <span className="text-[8px] font-bold tracking-[0.4em] text-accent uppercase">Ecosystem</span>
           </div>
         </Link>
 
@@ -66,10 +67,10 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   "relative flex items-center gap-2 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full group",
-                  isActive ? "text-ifm-green" : "text-muted-foreground hover:text-white"
+                  isActive ? "text-accent" : "text-muted-foreground hover:text-white"
                 )}
               >
-                <Icon className={cn("h-3.5 w-3.5 transition-colors", isActive ? "text-ifm-green" : "group-hover:text-ifm-green")} />
+                <Icon className={cn("h-3.5 w-3.5 transition-colors", isActive ? "text-accent" : "group-hover:text-accent")} />
                 {item.name}
                 {isActive && (
                   <motion.span 
@@ -84,8 +85,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button className="hidden sm:flex bg-ifm-green hover:bg-ifm-green/90 text-ifm-dark font-bold h-10 px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px] glow-green">
-            Early Access
+          <Button asChild className="hidden sm:flex bg-accent hover:bg-accent/90 text-[#05070D] font-bold h-10 px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px] glow-gold">
+            <Link href="/#early-access">Early Access</Link>
           </Button>
 
           <Button 
@@ -116,15 +117,15 @@ export function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "flex items-center gap-4 p-4 rounded-2xl transition-all",
-                    pathname === item.href ? "bg-ifm-green/10 text-ifm-green" : "text-muted-foreground"
+                    pathname === item.href ? "bg-accent/10 text-accent" : "text-muted-foreground"
                   )}
                 >
                   <item.icon className="h-5 w-5" />
                   <span className="font-headline text-xl font-bold uppercase tracking-tight">{item.name}</span>
                 </Link>
               ))}
-              <Button className="w-full h-14 bg-ifm-green text-ifm-dark font-headline text-lg mt-4 glow-green rounded-2xl">
-                EARLY ACCESS
+              <Button asChild className="w-full h-14 bg-accent text-[#05070D] font-headline text-lg mt-4 glow-gold rounded-2xl">
+                <Link href="/#early-access">EARLY ACCESS</Link>
               </Button>
             </nav>
           </motion.div>
