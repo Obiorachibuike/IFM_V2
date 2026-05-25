@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-stadium",
+      "description": "Futuristic high-tech football stadium at night",
+      "imageUrl": "https://picsum.photos/seed/ifm-stadium/1920/1080",
+      "imageHint": "futuristic stadium"
+    },
+    {
+      "id": "manager-silhouette",
+      "description": "Professional football manager silhouette looking at data holograms",
+      "imageUrl": "https://picsum.photos/seed/ifm-manager/800/600",
+      "imageHint": "football manager"
+    },
+    {
+      "id": "nft-club-1",
+      "description": "Elite NFT Football Club Badge",
+      "imageUrl": "https://picsum.photos/seed/ifm-club1/400/400",
+      "imageHint": "football badge"
+    },
+    {
+      "id": "nft-club-2",
+      "description": "Legendary NFT Football Club Badge",
+      "imageUrl": "https://picsum.photos/seed/ifm-club2/400/400",
+      "imageHint": "luxury badge"
+    },
+    {
+      "id": "player-card-gold",
+      "description": "Futuristic gold football player card",
+      "imageUrl": "https://picsum.photos/seed/ifm-player/400/600",
+      "imageHint": "football player"
+    },
+    {
+      "id": "token-visual",
+      "description": "IFM Governance Token floating in digital space",
+      "imageUrl": "https://picsum.photos/seed/ifm-token/600/600",
+      "imageHint": "crypto token"
+    },
+    {
+      "id": "esports-tournament",
+      "description": "Crowded esports arena during a football championship",
+      "imageUrl": "https://picsum.photos/seed/ifm-esports/1200/800",
+      "imageHint": "esports arena"
+    }
+  ]
 }
