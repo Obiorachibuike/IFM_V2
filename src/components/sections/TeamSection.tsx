@@ -69,25 +69,18 @@ export function TeamSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <GlassCard className="group p-0 border-white/5 bg-ifm-surface/30 overflow-hidden" glowColor="blue">
-                <div className="relative aspect-square overflow-hidden">
+              <GlassCard className="group p-8 border-white/5 bg-ifm-surface/30 text-center" glowColor="blue">
+                {/* Reduced and Rounded Image */}
+                <div className="relative h-32 w-32 mx-auto mb-8 rounded-[2rem] overflow-hidden border-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500">
                   <Image 
                     src={member.img} 
                     alt={member.name} 
                     fill 
                     className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ifm-dark via-ifm-dark/20 to-transparent opacity-80" />
-                  
-                  {/* Social Overlay */}
-                  <div className="absolute bottom-6 left-6 right-6 flex justify-center gap-4 translate-y-20 group-hover:translate-y-0 transition-transform duration-500">
-                    {member.twitter && <LinkIcon icon={Twitter} href={member.twitter} />}
-                    {member.linkedin && <LinkIcon icon={Linkedin} href={member.linkedin} />}
-                    {member.github && <LinkIcon icon={Github} href={member.github} />}
-                  </div>
                 </div>
 
-                <div className="p-8 space-y-4">
+                <div className="space-y-4">
                   <div>
                     <div className="text-[10px] text-primary font-bold uppercase tracking-[0.3em] mb-1">{member.role}</div>
                     <h4 className="text-2xl font-bold font-headline tracking-tighter uppercase">{member.name}</h4>
@@ -95,6 +88,13 @@ export function TeamSection() {
                   <p className="text-sm text-muted-foreground font-light leading-relaxed min-h-[60px]">
                     {member.bio}
                   </p>
+                  
+                  {/* Subtle Social Links */}
+                  <div className="flex justify-center gap-4 pt-2">
+                    {member.twitter && <LinkIcon icon={Twitter} href={member.twitter} />}
+                    {member.linkedin && <LinkIcon icon={Linkedin} href={member.linkedin} />}
+                    {member.github && <LinkIcon icon={Github} href={member.github} />}
+                  </div>
                 </div>
               </GlassCard>
             </motion.div>
@@ -109,9 +109,9 @@ function LinkIcon({ icon: Icon, href }: { icon: any; href: string }) {
   return (
     <Link 
       href={href} 
-      className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary text-primary-foreground hover:scale-110 transition-transform shadow-lg"
+      className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-primary/20"
     >
-      <Icon className="h-5 w-5" />
+      <Icon className="h-4 w-4" />
     </Link>
   )
 }
