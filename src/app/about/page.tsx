@@ -1,4 +1,3 @@
-
 "use client"
 
 import Image from "next/image"
@@ -7,7 +6,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { Shield, Trophy, Users, Cpu, Target, Globe, Zap, Rocket, BarChart3 } from "lucide-react"
+import { Shield, Trophy, Users, Cpu, Target, Globe, Zap, Rocket, BarChart3, Coins } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function AboutPage() {
