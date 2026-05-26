@@ -1,155 +1,154 @@
-
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { Shield, Target, Wallet, Rocket, Zap, Trophy, Coins, Cpu, Lock, Globe, TrendingUp, BarChart3, Sparkles, LayoutDashboard } from "lucide-react"
+import { 
+  Globe, Shield, Zap, Coins, Rocket, 
+  Trophy, Users, Target, Activity, 
+  Search, Microscope, Network, BarChart3,
+  ChevronRight, ArrowRight, LayoutDashboard,
+  ShieldCheck, History, Sparkles, Star
+} from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
-import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
-import { FAQSection } from "@/components/sections/FAQSection"
+import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { cn } from "@/lib/utils"
 
-export default function EcosystemPage() {
-  const tokenImg = PlaceHolderImages.find(i => i.id === "token-visual")
-  const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
-  const nftImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
-  const aboutHero = PlaceHolderImages.find(i => i.id === "about-hero")
-  const mintImg = PlaceHolderImages.find(i => i.id === "mint-preview")
-  const stadiumImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+}
 
-  const rarityTiers = [
-    { name: "Common", color: "bg-muted text-muted-foreground", glow: "none" },
-    { name: "Rare", color: "bg-blue-600 text-white", glow: "blue" },
-    { name: "Elite", color: "bg-primary text-white", glow: "blue" },
-    { name: "Legendary", color: "bg-accent text-background font-bold", glow: "gold" },
-    { name: "Iconic", color: "bg-purple-600 text-white font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]", glow: "none" }
-  ]
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { 
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true }
+}
+
+export default function EcosystemPage() {
+  const universeImg = PlaceHolderImages.find(i => i.id === "ecosystem-network")
+  const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
+  const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
+  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
+  const stadiumImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const academyImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
+  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
+  const devImg = PlaceHolderImages.find(i => i.id === "development-tree")
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-background">
+    <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-primary selection:text-white overflow-x-hidden">
       
-      {/* 1. ECOSYSTEM HERO */}
-      <section className="relative pt-48 pb-32 overflow-hidden min-h-[60vh] flex items-center">
+      {/* 1. CINEMATIC ECOSYSTEM HERO */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-background" />
-          <Image 
-            src={aboutHero?.imageUrl || ""}
-            alt="Ecosystem Hero"
-            fill
-            className="object-cover opacity-20 grayscale brightness-50"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-          <div className="absolute inset-0 radial-glow-blue opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
+          {universeImg && (
+            <Image 
+              src={universeImg.imageUrl} 
+              alt="IFM Universe" 
+              fill 
+              className="object-cover opacity-20 grayscale brightness-50"
+              priority
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent" />
+          <div className="stadium-light-sweep" />
+          <div className="absolute inset-0 radial-glow-blue opacity-40" />
         </div>
 
-        <div className="container relative z-10 px-6 max-w-7xl mx-auto">
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl space-y-10"
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+            className="flex flex-col items-center text-center space-y-12"
           >
-            <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-[0.5em] text-[10px] font-bold">The Sovereignty Protocol</Badge>
-            <h1 className="text-6xl md:text-9xl font-bold font-headline tracking-tighter uppercase leading-[0.8]">
-              DIGITAL <br /><span className="text-primary italic">OWNERSHIP</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl font-light opacity-80">
-              IFM merges elite football management with the power of decentralized assets. Own your club, control your rewards, and build a permanent legacy on the blockchain.
-            </p>
+            <motion.div variants={fadeIn}>
+              <Badge className="bg-primary/10 text-primary border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl">
+                The Living Universe
+              </Badge>
+            </motion.div>
+            
+            <motion.h1 
+              variants={fadeIn}
+              className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
+            >
+              A WORLD OF <br />
+              <span className="text-gradient-blue italic">SOVEREIGNTY.</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={fadeIn}
+              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
+            >
+              Every decision, every match, and every player development shapes your club’s long-term legacy in a persistent football economy.
+            </motion.p>
+
+            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
+              <Button asChild size="lg" className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest">
+                <Link href="/early-access">START YOUR CLUB</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
+                <Link href="#loop">VIEW PROTOCOL</Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. THE NFT ASSET LAYER */}
-      <section className="py-32 relative border-t border-white/5 bg-card/10">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-24">
-            <div className="space-y-4">
-              <Badge className="bg-accent/10 text-accent border-accent/30 px-4 py-1 uppercase tracking-widest text-[10px] font-bold">Structural Assets</Badge>
-              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">PROGRESSION <span className="text-accent italic">VERIFIED</span></h2>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {[
-              { 
-                title: "Player NFT Cards", 
-                desc: "Unique on-chain representations of your squad. Each card evolves its stats, potential, and history based on performance and training.",
-                img: nftImg,
-                rarity: "Legendary"
-              },
-              { 
-                title: "Club License NFTs", 
-                desc: "The structural permit for your empire. Grants permanent entry into the competitive league system and eligibility for seasonal payouts.",
-                img: mintImg,
-                rarity: "Elite"
-              },
-              { 
-                title: "Stadium & Facility NFTs", 
-                desc: "Visual and functional infrastructure that evolves. Upgrade your capacity and facilities to unlock higher passive revenue tiers.",
-                img: stadiumImg,
-                rarity: "Rare"
-              }
-            ].map((asset, i) => (
-              <GlassCard key={i} className="group p-0" glowColor={asset.rarity === 'Legendary' ? 'gold' : 'blue'}>
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  {asset.img && (
-                    <Image src={asset.img.imageUrl} alt={asset.title} fill className="object-cover brightness-75 group-hover:scale-110 transition-transform duration-700" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                  <div className="absolute top-6 right-6">
-                    <Badge className={cn(
-                      "font-bold uppercase tracking-widest px-4 py-1",
-                      rarityTiers.find(t => t.name === asset.rarity)?.color
-                    )}>
-                      {asset.rarity}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="p-8 space-y-4">
-                  <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{asset.title}</h3>
-                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{asset.desc}</p>
-                </div>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. RARITY & PROGRESSION INFOGRAPHIC */}
-      <section className="py-32 relative overflow-hidden">
+      {/* 2. CORE ECOSYSTEM LOOP - VISUAL FLOW */}
+      <section id="loop" className="py-48 relative overflow-hidden bg-background">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <div className="space-y-12">
-              <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter leading-none">THE HIERARCHY OF <br /><span className="text-primary italic">RARITY</span></h2>
-              <p className="text-xl text-muted-foreground font-light">
-                Every asset in IFM is categorized by rarity, directly influencing progression speed, market value, and visual depth.
-              </p>
-              <div className="space-y-4">
-                {rarityTiers.map((tier, k) => (
-                  <div key={k} className="flex items-center gap-6 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/20 transition-all">
-                    <div className={cn("h-4 w-4 rounded-full", tier.color.split(' ')[0])} />
-                    <div className="flex-1 flex justify-between items-center">
-                      <span className="font-bold uppercase tracking-widest text-sm">{tier.name}</span>
-                      <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Multiplier: x{1 + k*0.5}</span>
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+              <div className="space-y-12">
+                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Temporal Cycle</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">THE ENDLESS <br /><span className="text-gradient-gold italic">PROGRESSION.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  The IFM ecosystem is a closed-loop universe designed for long-term sustainability. Success on the pitch fuels club growth, which in turn unlocks higher-stakes competition.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { label: "Play & Compete", desc: "Participate in 22 seasonal league fixtures.", icon: Activity },
+                    { label: "Earn Rewards", desc: "Performance yields $IFM from the global treasury.", icon: Coins },
+                    { label: "Upgrade Systems", desc: "Invest in facilities, academy, and stadium.", icon: Rocket },
+                    { label: "Increase Value", desc: "Permanent on-chain growth for your digital assets.", icon: TrendingUp }
+                  ].map((step, i) => (
+                    <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5 group hover:border-accent/30 transition-all">
+                      <div className="h-12 w-12 shrink-0 rounded-xl bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-background transition-colors">
+                        <step.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg uppercase tracking-tight">{step.label}</div>
+                        <div className="text-sm text-muted-foreground font-light">{step.desc}</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-               <GlassCard className="p-12 border-white/10 bg-card/60 relative overflow-hidden h-[600px] flex flex-col justify-center items-center text-center space-y-12" glowColor="gold">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full animate-pulse" />
-                    <Trophy className="h-40 w-40 text-accent relative z-10" />
-                  </div>
-                  <div className="space-y-6">
-                    <h3 className="text-4xl font-headline font-bold uppercase tracking-tighter">ICONIC STATUS</h3>
-                    <p className="text-muted-foreground font-light max-w-md">The pinnacle of digital ownership. Only 100 Iconic Player Cards exist in the Genesis Cycle.</p>
-                    <Badge className="bg-purple-600 text-white font-bold px-8 py-2">VERIFIED OWNERSHIP</Badge>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+               <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square" hoverable={false}>
+                  {economyImg && (
+                    <Image src={economyImg.imageUrl} alt="Economy Flow" fill className="object-cover opacity-60" />
+                  )}
+                  <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
+                     <div className="space-y-6">
+                        <Badge className="bg-accent text-background font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Verified Loop v1.0</Badge>
+                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white">THE REWARD <br />ENGINE</h3>
+                        <p className="text-muted-foreground text-sm font-light">Watch your club's valuation grow as you progress through the divisions. Every win is a permanent investment.</p>
+                     </div>
                   </div>
                </GlassCard>
             </motion.div>
@@ -157,53 +156,186 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 4. TOKEN & ECOSYSTEM REWARDS */}
-      <section className="py-32 relative bg-card/10 border-y border-white/5 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full" />
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-             >
-                <GlassCard className="p-0 border-white/10 overflow-hidden shadow-2xl" glowColor="blue">
-                    {tokenImg && <Image src={tokenImg.imageUrl} alt="Token Visual" width={800} height={800} className="w-full h-auto opacity-80" />}
-                </GlassCard>
-             </motion.div>
-             <div className="space-y-12">
-                <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">$IFM <br /><span className="text-primary italic">UTILITY HUB</span></h2>
-                <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  The $IFM token powers everything from transfer fees to stadium upgrades, ensuring all performance is rewarded with persistent value.
-                </p>
-                <div className="grid grid-cols-1 gap-6">
-                    {[
-                        { title: "Marketplace Liquidity", desc: "The primary currency for transfers and rare NFT acquisitions.", icon: BarChart3, img: aboutHero },
-                        { title: "Performance Yield", desc: "Earn directly from the treasury through seasonal performance.", icon: TrendingUp, img: rewardsImg },
-                    ].map((item, i) => (
-                        <GlassCard key={i} className="p-0 border-white/5 bg-white/5 flex h-32 overflow-hidden group">
-                            <div className="relative w-48 h-full">
-                               {item.img && (
-                                 <Image src={item.img.imageUrl} alt={item.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
-                               )}
-                               <div className="absolute inset-0 flex items-center justify-center text-primary">
-                                  <item.icon className="h-8 w-8" />
-                               </div>
-                            </div>
-                            <div className="p-6 flex flex-col justify-center">
-                                <h4 className="text-lg font-bold uppercase mb-1 tracking-tight">{item.title}</h4>
-                                <p className="text-sm text-muted-foreground font-light">{item.desc}</p>
-                            </div>
-                        </GlassCard>
-                    ))}
-                </div>
-             </div>
+      {/* 3. FOOTBALL-FIRST ECONOMY - REWARD CARDS */}
+      <section className="py-48 relative border-y border-white/5 bg-card/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-32 space-y-8">
+            <Badge className="bg-primary/10 text-primary border-primary/30 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Utility Hub</Badge>
+            <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">REWARDING <br /><span className="text-primary italic">BRILLIANCE</span></h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto opacity-80">
+              The IFM economy rewards tactical mastery, scouting intelligence, and long-term planning. There is no dependency on external speculation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "League Dividends", desc: "Direct seasonal payouts based on your final position in the pyramid.", icon: Trophy, theme: "blue", image: rewardsImg },
+              { title: "Marketplace Yield", desc: "Discover, develop, and flip talent in the most active football economy.", icon: BarChart3, theme: "gold", image: economyImg },
+              { title: "Ecosystem Staking", desc: "Commit to the universe to unlock higher multipliers and governance power.", icon: ShieldCheck, theme: "blue", image: universeImg }
+            ].map((card, i) => (
+              <GlassCard key={i} className="p-0 border-white/5 bg-black/40 group overflow-hidden h-full flex flex-col" glowColor={card.theme === "blue" ? "blue" : "gold"}>
+                 <div className="relative aspect-video">
+                    {card.image && (
+                      <Image src={card.image.imageUrl} alt={card.title} fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent" />
+                    <div className="absolute bottom-6 left-8">
+                       <div className={cn(
+                          "h-12 w-12 rounded-xl flex items-center justify-center border",
+                          card.theme === "blue" ? "bg-primary/10 text-primary border-primary/20" : "bg-accent/10 text-accent border-accent/20"
+                       )}>
+                          <card.icon className="h-6 w-6" />
+                       </div>
+                    </div>
+                 </div>
+                 <div className="p-8 space-y-4 flex-1">
+                    <h3 className="text-2xl font-bold font-headline uppercase">{card.title}</h3>
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed">{card.desc}</p>
+                 </div>
+              </GlassCard>
+            ))}
           </div>
         </div>
       </section>
 
-      <FAQSection />
-      <EarlyAccessForm />
+      {/* 4. THE ASSET LAYER - NFT SHOWCASE */}
+      <section className="py-48 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
+              <div className="space-y-12">
+                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Sovereignty Layer</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">FUNCTIONAL <br /><span className="text-gradient-gold italic">OWNERSHIP.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  NFTs in IFM are not collectibles. They are functional gameplay assets. You own your squad, your stadium, and your identity—verified on-chain and permanent.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {[
+                    { title: "Player Cards", desc: "Evolving stats, potential, and history.", icon: Star },
+                    { title: "Club Licenses", desc: "Access to the competitive pyramid.", icon: Shield },
+                    { title: "Stadium Units", desc: "Customizable, revenue-generating assets.", icon: LayoutDashboard },
+                    { title: "Academy Prospects", desc: "The future stars of your dynasty.", icon: Microscope }
+                  ].map((item, k) => (
+                    <div key={k} className="space-y-3">
+                       <div className="flex items-center gap-3">
+                          <item.icon className="h-5 w-5 text-accent" />
+                          <span className="font-bold uppercase tracking-tight text-sm">{item.title}</span>
+                       </div>
+                       <p className="text-xs text-muted-foreground font-light">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
+               <div className="relative aspect-[3/4] max-w-md mx-auto">
+                  <div className="absolute -inset-10 bg-accent/10 blur-[100px] rounded-full animate-pulse" />
+                  <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full relative group" hoverable={false}>
+                    {playerCardImg && (
+                      <Image src={playerCardImg.imageUrl} alt="NFT Card" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                    <div className="absolute top-8 right-8">
+                       <Badge className="bg-accent text-background font-bold px-6 py-2 uppercase tracking-[0.2em] shadow-2xl">LEGENDARY</Badge>
+                    </div>
+                    <div className="absolute bottom-10 left-10 right-10">
+                       <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4">
+                          <div className="flex justify-between items-end">
+                             <div>
+                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">On-Chain Asset</div>
+                                <div className="text-3xl font-bold font-headline uppercase leading-none">STORM v1.0</div>
+                             </div>
+                             <div className="text-right">
+                                <div className="text-[10px] text-muted-foreground font-bold uppercase">Potential</div>
+                                <div className="text-2xl font-bold text-accent">98</div>
+                             </div>
+                          </div>
+                          <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                             <div className="h-full w-4/5 bg-accent" />
+                          </div>
+                       </div>
+                    </div>
+                  </GlassCard>
+               </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. LEAGUE STRUCTURE - THE GLOBAL PYRAMID */}
+      <section className="py-48 relative border-t border-white/5 bg-card/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+               <div className="space-y-12">
+                  <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Global Pyramid</Badge>
+                  <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">COMPETITIVE <br /><span className="text-gradient-blue italic">HIERARCHY.</span></h2>
+                  <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                    8 Divisions. 22 Matches per season. One Elite. The IFM League is a massive decentralized competition structure with absolute promotion and relegation rules.
+                  </p>
+                  <div className="space-y-4">
+                    {[
+                      { title: "Division 1 (Alpha)", desc: "The pinnacle of the pyramid with the highest reward yields." },
+                      { title: "The Payout Cycle", desc: "Days 26-28 of every month are dedicated to treasury distributions." },
+                      { title: "Manager Ranking", desc: "Track your prestige against 85,000+ clubs worldwide." }
+                    ].map((item, k) => (
+                      <div key={k} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default">
+                        <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                          <Trophy className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <div className="font-bold text-sm uppercase tracking-tight">{item.title}</div>
+                          <div className="text-xs text-muted-foreground font-light">{item.desc}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+               </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
+                  {leagueImg && (
+                    <Image src={leagueImg.imageUrl} alt="League Pyramid" fill className="object-cover brightness-50" />
+                  )}
+                  <div className="absolute inset-0 flex flex-col justify-center items-center p-12 text-center bg-gradient-to-t from-background via-transparent to-background">
+                     <div className="p-8 bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 space-y-6">
+                        <Badge className="bg-primary text-white font-bold px-6 py-2">LIVE PYRAMID DATA</Badge>
+                        <h3 className="text-3xl font-headline font-bold uppercase tracking-tight leading-none text-white">85,420 CLUBS <br />ENROLLED</h3>
+                        <div className="flex gap-4 justify-center">
+                           <div className="h-2 w-2 rounded-full bg-red-500 animate-ping" />
+                           <span className="text-[10px] font-bold text-white uppercase tracking-widest">Global Session Active</span>
+                        </div>
+                     </div>
+                  </div>
+               </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL ECOSYSTEM CTA */}
+      <section className="py-64 relative text-center overflow-hidden">
+        <div className="absolute inset-0 radial-glow-blue opacity-20" />
+        <div className="container relative z-10 mx-auto px-6 max-w-5xl space-y-16">
+          <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+            <h2 className="text-7xl md:text-[12rem] font-bold font-headline tracking-tighter uppercase leading-[0.7] mb-12">
+              JOIN THE <br />
+              <span className="text-gradient-blue italic">NETWORK.</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row justify-center gap-8">
+              <Button asChild size="lg" className="h-24 px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-3xl glow-blue text-2xl uppercase tracking-[0.2em]">
+                <Link href="/early-access" className="flex items-center gap-6">
+                  CLAIM YOUR LICENSE <Rocket className="h-8 w-8" />
+                </Link>
+              </Button>
+            </div>
+            <p className="text-muted-foreground uppercase tracking-[0.5em] text-[10px] mt-12 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   )
 }

@@ -125,5 +125,11 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     "description": "Abstract 3D visualization of a global football economy flow",
     "imageUrl": "https://picsum.photos/seed/ifm-economy/800/600",
     "imageHint": "digital economy visualization"
+  },
+  {
+    "id": "ecosystem-network",
+    "description": "3D network graph showing connected football clubs and reward flows",
+    "imageUrl": "https://picsum.photos/seed/ifm-network/1200/800",
+    "imageHint": "global club network"
   }
 ];
