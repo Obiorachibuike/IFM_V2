@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -8,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { generateMarketingCopy, type GenerateMarketingCopyInput } from "@/ai/flows/generate-marketing-copy"
-import { Sparkles, Loader2, Copy, CheckCircle2 } from "lucide-react"
+import { Sparkles, Loader2, Copy, CheckCircle2, X } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 export default function CopyGenerator() {

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Target, Activity, Cpu, Trophy, Coins, Zap, Globe, BarChart3, Users } from "lucide-react"
+import { Shield, Target, Activity, Cpu, Trophy, Coins, Zap, Globe, BarChart3, Users, Play } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
