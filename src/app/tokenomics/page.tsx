@@ -51,6 +51,12 @@ export default function TokenomicsPage() {
   const tokenVisual = PlaceHolderImages.find(i => i.id === "token-visual")
   const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
+  
+  // Prevent hydration error with charting library
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-accent selection:text-background">
@@ -175,28 +181,34 @@ export default function TokenomicsPage() {
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
                <GlassCard className="p-12 border-white/10 bg-black/40 glow-gold h-[600px] flex flex-col justify-center" hoverable={false}>
                   <div className="h-full w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={allocationData}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={120}
-                          outerRadius={180}
-                          paddingAngle={8}
-                          dataKey="value"
-                          stroke="none"
-                        >
-                          {allocationData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
-                          ))}
-                        </Pie>
-                        <RechartsTooltip 
-                          contentStyle={{ backgroundColor: '#0A0F1C', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', color: '#fff' }}
-                          itemStyle={{ color: '#fff' }}
-                        />
-                      </PieChart>
-                    </ResponsiveContainer>
+                    {mounted ? (
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={allocationData}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={120}
+                            outerRadius={180}
+                            paddingAngle={8}
+                            dataKey="value"
+                            stroke="none"
+                          >
+                            {allocationData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.color} />
+                            ))}
+                          </Pie>
+                          <RechartsTooltip 
+                            contentStyle={{ backgroundColor: '#0A0F1C', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', color: '#fff' }}
+                            itemStyle={{ color: '#fff' }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    ) : (
+                      <div className="h-full w-full flex items-center justify-center text-muted-foreground animate-pulse">
+                        Analyzing Distribution Map...
+                      </div>
+                    )}
                   </div>
                </GlassCard>
             </motion.div>

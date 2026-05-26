@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -51,8 +50,8 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col w-full bg-background selection:bg-primary selection:text-white">
       
-      {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* 1. CINEMATIC BANNER - CLEAN BACKGROUND */}
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
           {genesisBanner && (
@@ -69,7 +68,10 @@ export default function HomePage() {
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-10" />
         </div>
+      </section>
 
+      {/* 2. CORE INTRO - THE MISSION */}
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden -mt-20">
         <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
           <motion.div 
             initial="initial"
@@ -124,7 +126,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+      {/* 3. "WHAT IS IFM?" - THE FANTASY */}
       <section className="py-48 relative border-y border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -167,7 +169,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. GAMEPLAY PILLARS GRID */}
+      {/* 4. GAMEPLAY PILLARS GRID */}
       <section className="py-48 bg-card/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-32 space-y-8">
@@ -204,7 +206,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. SEASONAL GAMEPLAY PREVIEW */}
+      {/* 5. SEASONAL GAMEPLAY PREVIEW */}
       <section className="py-48 relative overflow-hidden border-y border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32">
@@ -237,7 +239,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. MATCH ENGINE SHOWCASE */}
+      {/* 6. MATCH ENGINE SHOWCASE */}
       <section className="py-48 relative bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
