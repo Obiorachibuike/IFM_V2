@@ -1,14 +1,21 @@
+
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Target, Activity, Cpu, Trophy, Coins, Zap, Globe, BarChart3, Users, Play } from "lucide-react"
+import { Shield, Target, Activity, Cpu, Trophy, Zap, Play, LayoutDashboard, Microscope, Network } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export default function GameplayPage() {
+  const matchEngineImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
+  const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
+  const trainingImg = PlaceHolderImages.find(i => i.id === "training-facility")
+  const scoutingImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
+
   return (
     <div className="flex flex-col w-full bg-background">
       
@@ -24,6 +31,7 @@ export default function GameplayPage() {
             data-ai-hint="football manager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          <div className="absolute inset-0 radial-glow-blue opacity-20" />
         </div>
 
         <div className="container relative z-10 px-6 max-w-7xl mx-auto">
@@ -49,11 +57,25 @@ export default function GameplayPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden" hoverable={false}>
                <div className="relative aspect-video">
-                 <Image src="https://picsum.photos/seed/ifm-engine/1200/800" alt="Match Engine" fill className="object-cover brightness-50" />
+                 <Image 
+                    src={matchEngineImg?.imageUrl || ""} 
+                    alt="Match Engine Live" 
+                    fill 
+                    className="object-cover brightness-75" 
+                    data-ai-hint={matchEngineImg?.imageHint}
+                 />
                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="h-20 w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center animate-pulse">
                       <Play className="h-8 w-8 text-primary ml-1" />
                     </div>
+                 </div>
+                 <div className="absolute bottom-6 left-6 right-6">
+                    <GlassCard className="p-4 bg-black/60 backdrop-blur-md border-white/10">
+                        <div className="flex justify-between items-center text-[10px] font-bold text-white uppercase tracking-widest">
+                            <div className="flex items-center gap-2"><div className="h-2 w-2 rounded-full bg-red-500 animate-ping" /> LIVE SIMULATION</div>
+                            <div>MIN 74' • IFM LONDON 2 - 1 METRO FC</div>
+                        </div>
+                    </GlassCard>
                  </div>
                </div>
             </GlassCard>
@@ -84,31 +106,78 @@ export default function GameplayPage() {
         </div>
       </section>
 
-      {/* 3. COMPETITIVE INFRASTRUCTURE */}
-      <section className="py-32 relative">
+      {/* 3. TACTICAL DEPTH SHOWCASE */}
+      <section className="py-32 relative bg-card/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="order-2 lg:order-1 space-y-10">
+               <h2 className="text-5xl font-headline font-bold uppercase leading-none tracking-tighter">ELITE <br /><span className="text-primary italic">MANAGEMENT UI</span></h2>
+               <p className="text-lg text-muted-foreground font-light leading-relaxed">
+                 Experience a dashboard designed for tactical masters. Every metric, from xG (Expected Goals) to player positional heatmaps, is updated on-chain in real-time.
+               </p>
+               <div className="grid grid-cols-2 gap-6">
+                  <GlassCard className="p-6 border-white/5 bg-white/5">
+                    <LayoutDashboard className="h-6 w-6 text-primary mb-4" />
+                    <h4 className="text-sm font-bold uppercase mb-2">Tactical Hub</h4>
+                    <p className="text-[10px] text-muted-foreground">Comprehensive control over squad dynamics.</p>
+                  </GlassCard>
+                  <GlassCard className="p-6 border-white/5 bg-white/5">
+                    <Microscope className="h-6 w-6 text-primary mb-4" />
+                    <h4 className="text-sm font-bold uppercase mb-2">Bio-Analytics</h4>
+                    <p className="text-[10px] text-muted-foreground">Monitor fatigue and player psychological states.</p>
+                  </GlassCard>
+               </div>
+            </div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden shadow-2xl" hoverable={false}>
+                <Image 
+                  src={tacticsImg?.imageUrl || ""} 
+                  alt="Tactical UI" 
+                  width={1200} 
+                  height={800} 
+                  className="w-full h-auto brightness-90"
+                  data-ai-hint={tacticsImg?.imageHint}
+                />
+              </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PERFORMANCE & SCOUTING */}
+      <section className="py-32 relative border-y border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-24 space-y-4">
-             <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">ELITE <span className="text-primary">COMPETITION</span></h2>
-             <p className="text-muted-foreground text-xl font-light">From Sunday Leagues to the World Championship Series.</p>
+             <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">THE <span className="text-primary italic">GAFFER'S</span> SUITE</h2>
+             <p className="text-muted-foreground text-xl font-light">From data-driven scouting to high-performance facilities.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: BarChart3, title: "Pro Leagues", desc: "Standard 20-team tiers with weekly promotion and relegation systems." },
-              { icon: Trophy, title: "Championship Cups", desc: "High-stakes knockout tournaments with ecosystem-wide prize pools." },
-              { icon: Globe, title: "Global Masters", desc: "Annual professional esports tournament for the world's top 128 managers." },
-              { icon: Users, title: "Syndicate Wars", desc: "Cooperative club management where multiple managers control one empire." },
-              { icon: Activity, title: "Ranked Seasons", desc: "Monthly competitive sprints for global leaderboard supremacy." },
-              { icon: Cpu, title: "AI Gauntlet", desc: "Test your tactics against legendary manager-less AI profiles." },
-            ].map((mode, i) => (
-              <GlassCard key={i} className="p-10 border-white/5 hover:bg-primary/5 transition-all group">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
-                  <mode.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-2xl font-bold font-headline uppercase mb-4">{mode.title}</h3>
-                <p className="text-muted-foreground text-sm font-light leading-relaxed">{mode.desc}</p>
-              </GlassCard>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <GlassCard className="p-0 border-white/10 bg-black/40 group overflow-hidden" glowColor="blue">
+               <div className="relative aspect-[16/10]">
+                  <Image src={trainingImg?.imageUrl || ""} alt="Training" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={trainingImg?.imageHint} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <h3 className="text-2xl font-bold font-headline uppercase mb-2">Performance Labs</h3>
+                    <p className="text-sm text-muted-foreground font-light">Optimize player growth with specialized AI coaches and state-of-the-art facilities.</p>
+                  </div>
+               </div>
+            </GlassCard>
+            <GlassCard className="p-0 border-white/10 bg-black/40 group overflow-hidden" glowColor="blue">
+               <div className="relative aspect-[16/10]">
+                  <Image src={scoutingImg?.imageUrl || ""} alt="Scouting" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={scoutingImg?.imageHint} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <h3 className="text-2xl font-bold font-headline uppercase mb-2">Neural Scout Network</h3>
+                    <p className="text-sm text-muted-foreground font-light">Deploy global scouting bots to identify next-gen talent before the competition catches on.</p>
+                  </div>
+               </div>
+            </GlassCard>
           </div>
         </div>
       </section>

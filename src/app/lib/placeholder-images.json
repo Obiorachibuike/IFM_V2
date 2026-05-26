@@ -44,6 +44,30 @@
       "imageHint": "esports arena"
     },
     {
+      "id": "tactical-board",
+      "description": "High-tech tactical formation board with player heatmaps",
+      "imageUrl": "https://picsum.photos/seed/ifm-tactics/1200/800",
+      "imageHint": "tactical dashboard"
+    },
+    {
+      "id": "training-facility",
+      "description": "Futuristic training center with player performance metrics",
+      "imageUrl": "https://picsum.photos/seed/ifm-training/800/600",
+      "imageHint": "scifi gym"
+    },
+    {
+      "id": "scouting-ui",
+      "description": "Global talent identification interface with holographic map",
+      "imageUrl": "https://picsum.photos/seed/ifm-scout/800/600",
+      "imageHint": "hologram map"
+    },
+    {
+      "id": "match-engine-live",
+      "description": "Live match simulation with broadcast graphics",
+      "imageUrl": "https://picsum.photos/seed/ifm-live/1200/800",
+      "imageHint": "football broadcast"
+    },
+    {
       "id": "mint-preview",
       "description": "Close up of a holographic football manager license minting",
       "imageUrl": "https://picsum.photos/seed/ifm-mint/1200/800",
