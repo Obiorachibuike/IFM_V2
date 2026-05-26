@@ -3,13 +3,14 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { 
   Rocket, Shield, Trophy, Globe, 
   Cpu, Target, Zap, Coins, 
   TrendingUp, LayoutDashboard, 
   ArrowRight, Users, Sparkles,
-  ChevronRight, Activity, Microscope
+  ChevronRight, Activity, Microscope,
+  Network, BarChart3
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -109,6 +110,17 @@ const roadmapPhases = [
 
 export default function RoadmapPage() {
   const containerRef = React.useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  })
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
   const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
 
   return (
@@ -156,7 +168,7 @@ export default function RoadmapPage() {
               variants={fadeIn}
               className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
             >
-              From foundation layers to a global football empire. Explore the strategic evolution of the IFM persistent universe.
+              From foundation layers to a global football empire. Explore the strategic evolution of the IFM persistent universe as we build the next generation of management simulation.
             </motion.p>
 
             <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
@@ -181,9 +193,13 @@ export default function RoadmapPage() {
 
           <div className="relative">
             {/* Vertical Line Connector */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-transparent hidden lg:block" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-white/5 hidden lg:block" />
+            <motion.div 
+              style={{ scaleY }}
+              className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-transparent hidden lg:block origin-top z-10"
+            />
 
-            <div className="space-y-32">
+            <div className="space-y-48">
               {roadmapPhases.map((phase, i) => {
                 const Icon = phase.icon
                 const isEven = i % 2 === 0
@@ -260,6 +276,7 @@ export default function RoadmapPage() {
                               alt={phase.title} 
                               fill 
                               className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" 
+                              data-ai-hint={phaseImg.imageHint}
                             />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
@@ -289,7 +306,7 @@ export default function RoadmapPage() {
                 <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Systems Evolution</Badge>
                 <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">CONTINUOUS <br /><span className="text-gradient-blue italic">OPTIMIZATION.</span></h2>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  The IFM Match Engine and Academy protocols are designed to evolve. Every season brings new tactical depth, AI improvements, and system refinements.
+                  The IFM Match Engine and Academy protocols are designed to evolve based on real-world football trends and neural-network learning. Every season brings new tactical depth and visual refinements.
                 </p>
                 <div className="space-y-6">
                   {[
@@ -313,7 +330,13 @@ export default function RoadmapPage() {
             
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
-                  <Image src={PlaceHolderImages.find(img => img.id === "development-tree")?.imageUrl || ""} alt="Development Tree" fill className="object-cover opacity-60" />
+                  <Image 
+                    src={PlaceHolderImages.find(img => img.id === "development-tree")?.imageUrl || ""} 
+                    alt="Development Tree" 
+                    fill 
+                    className="object-cover opacity-60" 
+                    data-ai-hint="skill tree dashboard"
+                  />
                   <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
                      <div className="space-y-6">
                         <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Version 1.0 -> 5.0 Roadmap</Badge>
@@ -337,9 +360,9 @@ export default function RoadmapPage() {
 
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { title: "Governance Rights", desc: "Long-term managers will vote on league rules, reward distribution, and ecosystem expansion.", icon: Users, theme: "blue" },
-                { title: "Legacy Assets", desc: "Your club history and achievements are recorded on-chain, creating permanent football value.", icon: Shield, theme: "gold" },
-                { title: "Esports Pathway", desc: "From amateur leagues to global championships with esports-level prize pools and production.", icon: Trophy, theme: "blue" },
+                { title: "Governance Rights", desc: "Long-term managers will vote on league rules, reward distribution, and ecosystem expansion via the IFM DAO.", icon: Users, theme: "blue" },
+                { title: "Legacy Assets", desc: "Your club history, trophies, and player achievements are recorded on-chain, creating permanent football value.", icon: Shield, theme: "gold" },
+                { title: "Esports Pathway", desc: "From amateur leagues to global championships with professional prize pools and live broadcast production.", icon: Trophy, theme: "blue" },
               ].map((style, i) => (
                 <GlassCard 
                   key={i} 
