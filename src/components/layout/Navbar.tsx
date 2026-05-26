@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -100,7 +101,7 @@ export function Navbar() {
               ? "bg-primary hover:bg-primary/90 text-white glow-blue" 
               : "bg-white/10 hover:bg-white/20 text-white border border-white/10"
           )}>
-            <Link href="/#early-access">Early Access</Link>
+            <Link href="/early-access">Early Access</Link>
           </Button>
 
           <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -134,7 +135,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Button asChild className="w-full h-14 bg-primary text-white font-headline text-lg mt-4 glow-blue rounded-2xl">
-                <Link href="/#early-access">EARLY ACCESS</Link>
+                <Link href="/early-access">EARLY ACCESS</Link>
               </Button>
             </nav>
           </motion.div>
