@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --background: 225 44% 4%; /* #05070D - Primary Background */
+    --background: 225 44% 4%; /* #05070D */
     --foreground: 0 0% 100%;
-    --card: 225 46% 7%; /* #0A0F1C - Secondary Background */
+    --card: 225 46% 7%; /* #0A0F1C */
     --card-foreground: 0 0% 100%;
     --popover: 225 44% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 217 91% 60%; /* #3B82F6 - Interactive Blue */
+    --primary: 217 91% 60%; /* #3B82F6 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 225 64% 33%; /* #1E3A8A - Primary Blue Brand */
+    --secondary: 225 64% 33%; /* #1E3A8A */
     --secondary-foreground: 0 0% 100%;
     --muted: 225 35% 15%;
     --muted-foreground: 215 15% 69%;
-    --accent: 38 91% 61%; /* #F5B041 - Gold Primary */
+    --accent: 38 91% 61%; /* #F5B041 */
     --accent-foreground: 225 44% 4%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -33,9 +33,10 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image: 
-      radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 0% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 40%);
+    /* Cinematic Background System */
+    background: radial-gradient(circle at 50% -20%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 0% 50%, rgba(10, 15, 28, 0.5) 0%, transparent 40%),
+                #05070D;
     cursor: default;
     overflow-x: hidden;
   }
@@ -44,19 +45,29 @@
   }
 }
 
+@layer utilities {
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-primary;
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-accent to-accent;
+  }
+  .bg-glass-gradient {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+  .glow-blue {
+    box-shadow: 0 0 60px -20px rgba(59, 130, 246, 0.4);
+  }
+  .glow-gold {
+    box-shadow: 0 0 60px -20px rgba(245, 176, 65, 0.35);
+  }
+}
+
 .glass {
   background: rgba(10, 15, 28, 0.6);
   backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 80px -15px rgba(0, 0, 0, 0.9);
-}
-
-.glow-blue {
-  box-shadow: 0 0 60px -20px rgba(59, 130, 246, 0.4);
-}
-
-.glow-gold {
-  box-shadow: 0 0 60px -20px rgba(245, 176, 65, 0.35);
 }
 
 .football-grid {
@@ -107,12 +118,4 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
-}
-
-.text-gradient-blue {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-primary;
-}
-
-.text-gradient-gold {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-accent to-accent;
 }

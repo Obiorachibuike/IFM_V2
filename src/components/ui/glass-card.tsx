@@ -27,14 +27,17 @@ export function GlassCard({
       )}
       {...props}
     >
-      {/* Subtle internal gradient sweep */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+      {/* Premium Glass Gradient Layer */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+      
+      {/* High-fidelity Radial Highlight */}
+      <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
       
       {/* Tactical UI Corners - Fixed to Primary Blue */}
-      <div className="absolute top-6 left-6 w-3 h-3 border-t-2 border-l-2 border-primary/30 pointer-events-none" />
-      <div className="absolute top-6 right-6 w-3 h-3 border-t-2 border-r-2 border-primary/30 pointer-events-none" />
-      <div className="absolute bottom-6 left-6 w-3 h-3 border-b-2 border-l-2 border-primary/30 pointer-events-none" />
-      <div className="absolute bottom-6 right-6 w-3 h-3 border-b-2 border-r-2 border-primary/30 pointer-events-none" />
+      <div className="absolute top-6 left-6 w-3 h-3 border-t-2 border-l-2 border-primary/20 pointer-events-none" />
+      <div className="absolute top-6 right-6 w-3 h-3 border-t-2 border-r-2 border-primary/20 pointer-events-none" />
+      <div className="absolute bottom-6 left-6 w-3 h-3 border-b-2 border-l-2 border-primary/20 pointer-events-none" />
+      <div className="absolute bottom-6 right-6 w-3 h-3 border-b-2 border-r-2 border-primary/20 pointer-events-none" />
       
       <div className="relative z-10 h-full w-full">
         {children}

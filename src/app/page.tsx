@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -23,7 +22,6 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog"
 import Autoplay from "embla-carousel-autoplay"
 
@@ -99,14 +97,17 @@ export default function HomePage() {
             src="https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"
             alt="Cinematic Stadium"
             fill
-            className="object-cover brightness-50 grayscale-[0.2]"
+            className="object-cover brightness-[0.4] grayscale-[0.2]"
             priority
             data-ai-hint="futuristic stadium"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-20" />
+          
+          {/* Radial Glow Layer */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
         </motion.div>
 
         <div className="container relative z-10 px-6 max-w-7xl mx-auto text-center">
@@ -117,10 +118,10 @@ export default function HomePage() {
             className="space-y-12"
           >
             <div className="flex flex-col items-center gap-6">
-              <Badge className="bg-primary/20 text-primary border-primary/40 text-[10px] uppercase tracking-[0.4em] px-6 py-2">Phase 1: Foundation Enrollment</Badge>
+              <Badge className="bg-primary/20 text-primary border-primary/40 text-[10px] uppercase tracking-[0.4em] px-6 py-2 backdrop-blur-md">Phase 1: Foundation Enrollment</Badge>
               <h1 className="text-6xl md:text-[10rem] font-bold font-headline leading-[0.8] tracking-tighter uppercase mb-4">
                 OWN THE <br />
-                <span className="text-primary italic">EMPIRE</span>
+                <span className="text-gradient-blue italic">EMPIRE</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
                 Lead the next generation of football clubs. Master your tactics, own your assets, and convert success into persistent digital legacy.
@@ -140,13 +141,14 @@ export default function HomePage() {
       </section>
 
       {/* 2. NFT GENESIS CAROUSEL */}
-      <section className="py-32 relative bg-background overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="py-32 relative bg-background overflow-hidden border-y border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(245,176,65,0.03),transparent_50%)]" />
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
             <div className="space-y-4">
               <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1">SOVEREIGNTY PROTOCOL</Badge>
               <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
-                GENESIS <span className="text-accent italic">ASSETS</span>
+                GENESIS <span className="text-gradient-gold italic">ASSETS</span>
               </h2>
               <p className="text-xl text-muted-foreground font-light max-w-xl">
                 Verified digital infrastructure. Rare assets that grant permanent utility and voting power within the IFM DAO.
@@ -204,10 +206,10 @@ export default function HomePage() {
                             <div className="space-y-4">
                               <div>
                                 <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">Description</div>
-                                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">{asset.description}</p>
+                                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 font-light">{asset.description}</p>
                               </div>
                               <div className="pt-2">
-                                <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent">View Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
+                                <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent transition-colors">View Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
                               </div>
                             </div>
                           </div>
@@ -228,7 +230,7 @@ export default function HomePage() {
 
       {/* NFT DETAIL MODAL */}
       <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
-        <DialogContent className="max-w-4xl bg-background/95 border-white/10 backdrop-blur-3xl rounded-[2.5rem] overflow-hidden p-0 gap-0">
+        <DialogContent className="max-w-4xl bg-[#05070D]/95 border-white/10 backdrop-blur-[40px] rounded-[2.5rem] overflow-hidden p-0 gap-0">
           {selectedAsset && (
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
@@ -238,18 +240,21 @@ export default function HomePage() {
                   fill 
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-8 left-8">
-                  <Badge className={selectedAsset.tier === 'Mythic' || selectedAsset.tier === 'Founder' ? 'bg-accent text-background font-bold text-lg px-6 py-2' : 'bg-primary text-white font-bold text-lg px-6 py-2'}>
+                  <Badge className={selectedAsset.tier === 'Mythic' || selectedAsset.tier === 'Founder' ? 'bg-accent text-background font-bold text-lg px-6 py-2 shadow-2xl' : 'bg-primary text-white font-bold text-lg px-6 py-2 shadow-2xl'}>
                     {selectedAsset.tier}
                   </Badge>
                 </div>
               </div>
-              <div className="p-12 space-y-8 flex flex-col justify-center">
-                <DialogHeader className="space-y-4">
+              <div className="p-12 space-y-8 flex flex-col justify-center relative">
+                <div className="absolute top-0 right-0 p-8 opacity-5">
+                   <Trophy className="h-32 w-32 text-white" />
+                </div>
+                <div className="space-y-4">
                   <h2 className="text-4xl md:text-5xl font-bold font-headline uppercase tracking-tighter leading-none">{selectedAsset.name}</h2>
-                  <div className="h-1 w-20 bg-primary" />
-                </DialogHeader>
+                  <div className="h-1 w-20 bg-gradient-to-r from-primary to-transparent" />
+                </div>
                 
                 <div className="space-y-6">
                   <div>
@@ -260,7 +265,7 @@ export default function HomePage() {
                     <h4 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-3">Strategic Importance</h4>
                     <p className="text-lg text-white font-medium italic leading-relaxed">"{selectedAsset.importance}"</p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 bg-glass-gradient">
                     <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em] mb-2">Manager Requirement</h4>
                     <p className="text-sm font-bold text-white uppercase tracking-tight">{selectedAsset.requirement}</p>
                   </div>
@@ -270,7 +275,7 @@ export default function HomePage() {
                   <Button className="flex-1 h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue uppercase tracking-widest text-xs">
                     Apply for Minting
                   </Button>
-                  <Button variant="outline" className="flex-1 h-14 border-white/10 hover:bg-white/5 font-bold rounded-xl uppercase tracking-widest text-xs">
+                  <Button variant="outline" onClick={() => setSelectedAsset(null)} className="flex-1 h-14 border-white/10 hover:bg-white/5 font-bold rounded-xl uppercase tracking-widest text-xs">
                     Close Protocol
                   </Button>
                 </div>
@@ -282,7 +287,8 @@ export default function HomePage() {
 
       {/* 3. THE IFM MISSION */}
       <section className="py-32 relative bg-card/10">
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(59,130,246,0.05),transparent_50%)]" />
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -292,7 +298,7 @@ export default function HomePage() {
             >
               <Badge className="bg-primary/10 text-primary border-primary/20">The Ecosystem Vision</Badge>
               <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
-                REDEFINING <br /><span className="text-primary italic">MANAGEMENT</span>
+                REDEFINING <br /><span className="text-gradient-blue italic">MANAGEMENT</span>
               </h2>
               <p className="text-xl text-muted-foreground font-light leading-relaxed">
                 IFM merges the tactical depth of a world-class simulation with the sovereignty of blockchain ownership. Every decision you make is etched into your club's history.
@@ -304,11 +310,11 @@ export default function HomePage() {
                   { icon: Coins, title: "Earn Rewards", desc: "Convert performance into $IFM tokens." },
                   { icon: Activity, title: "Live Economy", desc: "A thriving marketplace for elite assets." },
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-center">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <div key={i} className="flex gap-4 items-center group">
+                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                       <item.icon className="h-5 w-5" />
                     </div>
-                    <span className="font-bold text-sm text-white uppercase tracking-widest">{item.title}</span>
+                    <span className="font-bold text-sm text-white uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -329,9 +335,10 @@ export default function HomePage() {
 
       {/* 4. COMPARISON SECTION */}
       <section className="py-32 relative bg-card/20 border-y border-white/5">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <div className="container mx-auto px-6 max-w-5xl relative z-10">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">THE <span className="text-primary">SOVEREIGNTY</span> GAP</h2>
+            <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">THE <span className="text-gradient-blue italic">SOVEREIGNTY</span> GAP</h2>
             <p className="text-muted-foreground text-lg font-light">Why traditional managers fail in the digital ownership era.</p>
           </div>
           
@@ -340,17 +347,17 @@ export default function HomePage() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-white/10 bg-white/5">
-                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground">Feature</th>
-                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground">Traditional Sims</th>
-                    <th className="p-8 font-headline uppercase tracking-widest text-primary italic">IFM Protocol</th>
+                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground text-xs">Feature</th>
+                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground text-xs">Traditional Sims</th>
+                    <th className="p-8 font-headline uppercase tracking-widest text-primary italic text-xs">IFM Protocol</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonData.map((row, i) => (
                     <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                      <td className="p-8 font-bold text-white uppercase tracking-tighter">{row.feature}</td>
-                      <td className="p-8 text-muted-foreground">{row.trad}</td>
-                      <td className="p-8 text-primary font-bold">{row.ifm}</td>
+                      <td className="p-8 font-bold text-white uppercase tracking-tighter text-sm">{row.feature}</td>
+                      <td className="p-8 text-muted-foreground text-sm font-light">{row.trad}</td>
+                      <td className="p-8 text-primary font-bold text-sm">{row.ifm}</td>
                     </tr>
                   ))}
                 </tbody>
