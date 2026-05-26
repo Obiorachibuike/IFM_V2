@@ -20,13 +20,16 @@ export default function RoadmapPage() {
         {/* Background System */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-background" />
-          <Image 
-            src={heroImg?.imageUrl || ""}
-            alt="Roadmap Hero"
-            fill
-            className="object-cover opacity-20 grayscale brightness-50"
-            priority
-          />
+          {heroImg?.imageUrl && (
+            <Image 
+              src={heroImg.imageUrl}
+              alt="Roadmap Hero"
+              fill
+              className="object-cover opacity-20 grayscale brightness-50"
+              priority
+              data-ai-hint="futuristic stadium"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-gold opacity-20" />
         </div>

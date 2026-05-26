@@ -14,22 +14,26 @@ export default function TeamPage() {
 
   return (
     <div className="flex flex-col w-full">
+      {/* HERO SECTION */}
       <section className="pt-48 pb-20 relative overflow-hidden bg-background min-h-[60vh] flex items-center">
         {/* Background System */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-          <Image 
-            src={heroImg?.imageUrl || ""}
-            alt="Team Hero"
-            fill
-            className="object-cover opacity-20 grayscale brightness-50"
-            priority
-          />
+          {heroImg?.imageUrl && (
+            <Image 
+              src={heroImg.imageUrl}
+              alt="Team Hero"
+              fill
+              className="object-cover opacity-20 grayscale brightness-50"
+              priority
+              data-ai-hint="esports arena crowd"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-blue opacity-10" />
         </div>
 
-        <div className="container mx-auto px-6 max-w-7xl text-center">
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
