@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -37,14 +38,10 @@ const staggerContainer = {
 export default function GameplayPage() {
   const matchEngineImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
-  const trainingImg = PlaceHolderImages.find(i => i.id === "training-facility")
-  const scoutingImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
   const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
-  const academyImg = PlaceHolderImages.find(i => i.id === "scouting-ui") // Fallback
-  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
+  const rewardsImg = PlaceHolderImages.find(i => i.id === "reward-flow-visual")
+  const academyImg = PlaceHolderImages.find(i => i.id === "academy-reveal")
   const devTreeImg = PlaceHolderImages.find(i => i.id === "development-tree")
-  const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
-  const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
 
   return (
     <div className="flex flex-col w-full bg-background font-body selection:bg-primary selection:text-white">
@@ -103,20 +100,6 @@ export default function GameplayPage() {
                 <Link href="#loop">VIEW PROTOCOLS</Link>
               </Button>
             </motion.div>
-
-            <motion.div variants={fadeIn} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-20">
-               {[
-                 { label: "Active Clubs", value: "85,420" },
-                 { label: "Matches Played", value: "1.2M+" },
-                 { label: "Players Minted", value: "240K" },
-                 { label: "Rewards Paid", value: "4.8M $IFM" }
-               ].map((stat, i) => (
-                 <div key={i} className="space-y-1">
-                   <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{stat.label}</div>
-                   <div className="text-3xl font-bold font-headline text-white">{stat.value}</div>
-                 </div>
-               ))}
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -171,9 +154,6 @@ export default function GameplayPage() {
                               <div className="text-2xl font-bold text-accent">LVL 14</div>
                            </div>
                         </div>
-                        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                           <div className="h-full w-4/5 bg-accent" />
-                        </div>
                      </div>
                   </div>
                </GlassCard>
@@ -198,7 +178,7 @@ export default function GameplayPage() {
                     { title: "Formations", desc: "Deploy classic or custom shapes.", icon: LayoutDashboard },
                     { title: "Player Roles", desc: "Assign specific tactical duties.", icon: Target },
                     { title: "Chemistry", desc: "Link players for performance boosts.", icon: Zap },
-                    { title: "Squad Depth", desc: "Manage fatigue across 22 fixtures.", icon: Users }
+                    { title: "Squad Depth", desc: "Manage fatigue across 2 fixtures.", icon: Users }
                   ].map((feat, k) => (
                     <div key={k} className="space-y-3">
                        <div className="flex items-center gap-3">
@@ -217,195 +197,9 @@ export default function GameplayPage() {
                   {tacticsImg && (
                     <Image src={tacticsImg.imageUrl} alt="Tactical Board" fill className="object-cover" />
                   )}
-                  <div className="absolute top-6 left-6">
-                    <Badge className="bg-primary/20 backdrop-blur-xl border-primary/40 text-primary">Tactical Hub v2.4</Badge>
-                  </div>
-                  <div className="absolute bottom-6 right-6">
-                     <div className="p-4 bg-black/60 backdrop-blur-md rounded-xl border border-white/10">
-                        <div className="text-[10px] font-bold text-white uppercase tracking-widest mb-2">Team Rating</div>
-                        <div className="text-3xl font-bold text-primary font-headline">88.4</div>
-                     </div>
-                  </div>
                </GlassCard>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* 4. MATCH ENGINE - THE NEURAL CORE */}
-      <section className="py-48 relative border-y border-white/5 bg-card/5">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-32 space-y-8">
-            <Badge className="bg-primary/10 text-primary border-primary/30 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Simulation Protocol</Badge>
-            <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE NEURAL <br /><span className="text-primary italic">CORE</span></h2>
-            <p className="text-xl text-muted-foreground font-light max-w-3xl mx-auto opacity-80">
-              Matches are not just static statistics. Our Neural Match Engine processes 15,000+ tactical variables per cycle, reflecting player psychology and physical authenticity.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden aspect-video relative group" hoverable={false}>
-                  {matchEngineImg && (
-                    <Image src={matchEngineImg.imageUrl} alt="Match Engine" fill className="object-cover brightness-75" />
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="h-24 w-24 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-xl animate-pulse cursor-pointer group-hover:scale-110 transition-transform">
-                        <Play className="h-10 w-10 text-primary ml-1" />
-                     </div>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                     <GlassCard className="p-4 bg-black/60 backdrop-blur-md border-white/10" hoverable={false}>
-                        <div className="flex justify-between items-center text-[10px] font-bold text-white uppercase tracking-widest">
-                           <div className="flex items-center gap-2"><div className="h-2 w-2 rounded-full bg-red-500 animate-ping" /> Live Simulation</div>
-                           <div>MIN 74' • NEO LONDON 2 - 1 METRO FC</div>
-                        </div>
-                     </GlassCard>
-                  </div>
-               </GlassCard>
-            </motion.div>
-            
-            <div className="space-y-12">
-               {[
-                 { title: "Real-Time Overrides", desc: "Adjust formation intensity and instructions mid-match to counter your opponent.", icon: Zap },
-                 { title: "Neural Fatigue", desc: "Players experience cognitive and physical drain based on match intensity.", icon: Activity },
-                 { title: "Physical Authenticity", desc: "Ball physics and player collisions simulated at 60Hz fidelity.", icon: Shield }
-               ].map((item, i) => (
-                 <div key={i} className="flex gap-8 group">
-                    <div className="h-14 w-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-background transition-colors border border-primary/20">
-                       <item.icon className="h-7 w-7" />
-                    </div>
-                    <div className="space-y-2">
-                       <h4 className="text-2xl font-bold font-headline uppercase tracking-tight">{item.title}</h4>
-                       <p className="text-muted-foreground font-light leading-relaxed">{item.desc}</p>
-                    </div>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. DEVELOPMENT & ACADEMY - THE FUTURE STARS */}
-      <section className="py-48 relative overflow-hidden bg-background">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-              <div className="space-y-12">
-                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Asset Evolution</Badge>
-                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">CULTIVATE <br /><span className="text-gradient-gold italic">LEGENDS.</span></h2>
-                <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  Every youth prospect is a unique NFT asset with hidden potential. Your training facilities and coaching staff determine how fast they reach their ceiling.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {[
-                    { title: "Training Protocols", desc: "Optimize specific player attributes.", icon: Microscope },
-                    { title: "Academy Reveal", desc: "Identify high-potential prospects.", icon: Sparkles },
-                    { title: "Coaching Staff", desc: "Upgrade mentors to speed up growth.", icon: Users },
-                    { title: "Progression History", desc: "Permanent on-chain growth tracking.", icon: History }
-                  ].map((feat, k) => (
-                    <div key={k} className="space-y-3">
-                       <div className="flex items-center gap-3 text-accent">
-                          <feat.icon className="h-5 w-5" />
-                          <span className="font-bold uppercase tracking-tight text-sm">{feat.title}</span>
-                       </div>
-                       <p className="text-xs text-muted-foreground font-light">{feat.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-               <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square" hoverable={false}>
-                  {devTreeImg && (
-                    <Image src={devTreeImg.imageUrl} alt="Development Tree" fill className="object-cover opacity-60" />
-                  )}
-                  <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
-                     <div className="p-8 bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 space-y-4">
-                        <div className="flex justify-between items-center">
-                           <Badge className="bg-accent text-background font-bold px-4 py-1">GENESIS PROSPECT</Badge>
-                           <span className="text-xs font-bold text-accent">POTENTIAL: 94-98</span>
-                        </div>
-                        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                           <div className="h-full w-2/3 bg-accent animate-pulse" />
-                        </div>
-                        <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest text-center">Development Active • Leveling Up</p>
-                     </div>
-                  </div>
-               </GlassCard>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. MARKET & MULTIPLAYER - THE GLOBAL PYRAMID */}
-      <section className="py-48 relative border-t border-white/5 bg-card/5">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-32 space-y-4">
-            <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter">THE GLOBAL <span className="text-primary italic">HIERARCHY</span></h2>
-            <p className="text-muted-foreground text-xl font-light">Compete against real managers in an 8-division decentralized pyramid.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {[
-               { title: "Transfer Market", desc: "Buy and sell player licenses with real managers worldwide.", icon: BarChart3, image: marketImg },
-               { title: "League Pyramid", desc: "Absolute promotion and relegation systems across 8 tiers.", icon: Trophy, image: leagueImg },
-               { title: "Multiplayer Glory", desc: "Key matchday fixtures are broadcast live to the ecosystem.", icon: Network, image: heroImg }
-             ].map((card, i) => (
-               <GlassCard key={i} className="p-0 border-white/5 bg-black/40 group overflow-hidden h-full flex flex-col" glowColor="blue">
-                  <div className="relative aspect-video">
-                     {card.image && (
-                       <Image src={card.image.imageUrl} alt={card.title} fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" />
-                     )}
-                     <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                     <div className="absolute bottom-6 left-8">
-                        <div className="h-12 w-12 rounded-xl flex items-center justify-center border border-primary/20 bg-primary/10 text-primary">
-                           <card.icon className="h-6 w-6" />
-                        </div>
-                     </div>
-                  </div>
-                  <div className="p-8 space-y-4 flex-1">
-                     <h3 className="text-2xl font-bold font-headline uppercase tracking-tight">{card.title}</h3>
-                     <p className="text-sm text-muted-foreground font-light leading-relaxed">{card.desc}</p>
-                  </div>
-               </GlassCard>
-             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. STRATEGY ARCHETYPES - DEFINE YOUR LEGACY */}
-      <section className="py-48 relative overflow-hidden bg-background">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <div className="text-center mb-32 space-y-8">
-              <Badge className="bg-accent/10 text-accent border-accent/20 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Management Identities</Badge>
-              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">DEFINE YOUR <br /><span className="text-accent italic">LEGACY</span></h2>
-           </div>
-
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { title: "The Mastermind", desc: "Superior tactics, smart lineups, and real-time match reads define your success.", icon: Zap, theme: "blue" },
-                { title: "The Academy Club", desc: "Develop future stars from youth ranks and build a sustainable empire.", icon: Microscope, theme: "gold" },
-                { title: "The Market Genius", desc: "Identify undervalued talent on the market and flip them for significant gains.", icon: BarChart3, theme: "blue" },
-                { title: "The Dynasty Builder", desc: "Utilize your $IFM treasury to build a title-winning squad in the transfer windows.", icon: Coins, theme: "gold" },
-              ].map((style, i) => (
-                <GlassCard 
-                  key={i} 
-                  className="p-12 border-white/5 hover:bg-primary/5 group h-full flex flex-col" 
-                  glowColor={style.theme === "blue" ? "blue" : "gold"}
-                >
-                  <div className={cn(
-                    "h-20 w-20 flex items-center justify-center rounded-3xl mb-10 transition-all group-hover:scale-110",
-                    style.theme === "blue" ? "bg-primary/10 text-primary border-primary/20" : "bg-accent/10 text-accent border-accent/20"
-                  )}>
-                    <style.icon className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-3xl font-bold font-headline mb-6 uppercase tracking-tighter leading-none">{style.title}</h3>
-                  <p className="text-base text-muted-foreground font-light leading-relaxed">{style.desc}</p>
-                </GlassCard>
-              ))}
-           </div>
         </div>
       </section>
 
