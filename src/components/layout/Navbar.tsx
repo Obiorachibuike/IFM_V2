@@ -1,10 +1,9 @@
-
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info } from "lucide-react"
+import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info, BookOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -15,6 +14,7 @@ const navItems = [
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
+  { name: "Insights", href: "/blog", icon: BookOpen },
   { name: "Roadmap", href: "/roadmap", icon: Map },
   { name: "Team", href: "/team", icon: Users },
 ]
@@ -29,7 +29,6 @@ export function Navbar() {
       setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener("scroll", handleScroll)
-    // Initial check
     handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -75,7 +74,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-full group",
+                  "relative flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-full group",
                   isActive ? "text-primary" : "text-white/70 hover:text-white"
                 )}
               >

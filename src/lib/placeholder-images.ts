@@ -97,15 +97,27 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     "imageHint": "esports leaderboard"
   },
   {
-    "id": "development-tree",
-    "description": "Complex player attribute growth tree with holographic nodes",
-    "imageUrl": "https://picsum.photos/seed/ifm-dev-1/800/600",
-    "imageHint": "skill tree dashboard"
+    "id": "blog-thumb-1",
+    "description": "Cinematic match highlight for blog post",
+    "imageUrl": "https://picsum.photos/seed/ifm-blog-1/800/600",
+    "imageHint": "football match highlight"
   },
   {
-    "id": "transfer-market-ui",
-    "description": "High-tech football transfer market with bidding wars",
-    "imageUrl": "https://picsum.photos/seed/ifm-market-1/800/600",
-    "imageHint": "trading dashboard"
+    "id": "blog-thumb-2",
+    "description": "Tactical dashboard UI for strategy guide",
+    "imageUrl": "https://picsum.photos/seed/ifm-blog-2/800/600",
+    "imageHint": "soccer strategy dashboard"
+  },
+  {
+    "id": "blog-thumb-3",
+    "description": "Ecosystem token reward flow visual",
+    "imageUrl": "https://picsum.photos/seed/ifm-blog-3/800/600",
+    "imageHint": "digital economy flow"
+  },
+  {
+    "id": "blog-thumb-4",
+    "description": "Developer console with match engine code",
+    "imageUrl": "https://picsum.photos/seed/ifm-blog-4/800/600",
+    "imageHint": "coding dashboard UI"
   }
 ];
