@@ -1,9 +1,10 @@
+
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { 
   Trophy, Shield, Target, Cpu, Users, Zap, Coins, 
   TrendingUp, BarChart3, Globe, Rocket, 
@@ -37,22 +38,17 @@ const staggerContainer = {
 }
 
 export default function AboutPage() {
-  const containerRef = React.useRef(null)
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] })
-
   // Assets mapping
   const heroImg = PlaceHolderImages.find(i => i.id === "about-hero")
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
   const academyImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
-  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
-  const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
-  const stadiumImg = PlaceHolderImages.find(i => i.id === "stadium-evolution")
+  const tokenImg = PlaceHolderImages.find(i => i.id === "token-visual")
 
   return (
-    <div ref={containerRef} className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
+    <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
       
       {/* 1. CINEMATIC HERO - THE VISION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -114,7 +110,7 @@ export default function AboutPage() {
                {[
                  { label: "Active Clubs", value: "85,420" },
                  { label: "Matches Played", value: "1.2M+" },
-                 { label: "Stadium Capacity", value: "4.5M" },
+                 { label: "Players Developed", value: "3.5M" },
                  { label: "Rewards Paid", value: "4.8M $IFM" }
                ].map((stat, i) => (
                  <div key={i} className="space-y-1">
@@ -275,7 +271,56 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. MANAGEMENT IDENTITIES - ARCHETYPES */}
+      {/* 4. THE REWARD PROTOCOL - TOKEN UTILITY */}
+      <section className="py-48 relative border-y border-white/5 bg-background">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
+              <div className="space-y-12">
+                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Utility Hub</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">THE REWARD <br /><span className="text-gradient-blue italic">ENGINE.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  The $IFM token is the lifeblood of the universe. It is a gameplay-first utility asset used to power your club's operations, progression, and sovereign upgrades.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { title: "Performance Yields", desc: "Winning matches and climbing divisions generates $IFM rewards from the global treasury.", icon: Zap },
+                    { title: "Infrastructure Fuel", desc: "Use $IFM to upgrade stadium capacity, training facilities, and academy bots.", icon: Rocket },
+                    { title: "Marketplace Power", desc: "Acquire elite player licenses and unique assets in the internal trade economy.", icon: Coins },
+                    { title: "Governance Staking", desc: "Managers with long-term conviction stake tokens to influence league rules and expansions.", icon: ShieldCheck }
+                  ].map((feat, i) => (
+                    <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default group">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <feat.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg uppercase tracking-tight">{feat.title}</div>
+                        <div className="text-sm text-muted-foreground font-light">{feat.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
+                  {tokenImg && (
+                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-60" data-ai-hint="digital crypto coin" />
+                  )}
+                  <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
+                     <div className="space-y-6">
+                        <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Verified Token v4.0</Badge>
+                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white">PLAY. PROGRESS. <br />OWN.</h3>
+                     </div>
+                  </div>
+               </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. MANAGEMENT IDENTITIES - ARCHETYPES */}
       <section className="py-48 relative bg-card/5 border-t border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
            <div className="text-center mb-32 space-y-8">
@@ -309,7 +354,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. MATCH ENGINE SHOWCASE - BROADCAST UI */}
+      {/* 6. MATCH ENGINE SHOWCASE - BROADCAST UI */}
       <section className="py-48 relative border-y border-white/5 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
