@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -11,14 +10,12 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { name: "Home", href: "/", icon: Rocket },
-  { name: "About", href: "/about", icon: Info },
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
   { name: "Insights", href: "/blog", icon: BookOpen },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
   { name: "Roadmap", href: "/roadmap", icon: Map },
-  { name: "Team", href: "/team", icon: Users },
+  { name: "FAQ", href: "/faq", icon: HelpCircle },
 ]
 
 export function Navbar() {
@@ -48,28 +45,24 @@ export function Navbar() {
         "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-6 py-2 transition-all duration-500",
         isScrolled 
           ? "bg-secondary/80 backdrop-blur-2xl border border-white/10 shadow-2xl" 
-          : "bg-transparent border-transparent backdrop-blur-none shadow-none"
+          : "bg-transparent border-transparent"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
           <div className={cn(
-            "relative h-10 w-10 flex items-center justify-center rounded-xl transition-all duration-500 group-hover:scale-110",
+            "relative h-10 w-10 flex items-center justify-center rounded-xl transition-all duration-500",
             isScrolled ? "bg-primary text-white glow-blue" : "bg-white/10 text-white"
           )}>
             <Trophy className="h-6 w-6" />
           </div>
           <div className="flex flex-col">
             <span className="font-headline text-2xl font-bold tracking-tighter text-white leading-none">IFM</span>
-            <span className={cn(
-              "text-[8px] font-bold tracking-[0.4em] uppercase transition-colors duration-500",
-              isScrolled ? "text-primary" : "text-white/60"
-            )}>Empire</span>
+            <span className="text-[8px] font-bold tracking-[0.4em] uppercase text-primary">Empire</span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-1">
           {navItems.map((item) => {
-            const Icon = item.icon
             const isActive = pathname === item.href
             return (
               <Link
@@ -80,9 +73,8 @@ export function Navbar() {
                   isActive ? "text-primary" : "text-white/70 hover:text-white"
                 )}
               >
-                <Icon className={cn("h-3.5 w-3.5 transition-colors", isActive ? "text-primary" : "group-hover:text-primary")} />
                 {item.name}
-                {isActive && isScrolled && (
+                {isActive && (
                   <motion.span 
                     layoutId="nav-active"
                     className="absolute inset-0 bg-white/10 rounded-full -z-10"
@@ -104,7 +96,7 @@ export function Navbar() {
             <Link href="/early-access">Early Access</Link>
           </Button>
 
-          <Button variant="ghost" size="icon" className="lg:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <Button variant="ghost" size="icon" className="xl:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>
@@ -130,7 +122,6 @@ export function Navbar() {
                     pathname === item.href ? "bg-primary/10 text-primary" : "text-white/70"
                   )}
                 >
-                  <item.icon className="h-5 w-5" />
                   <span className="font-headline text-xl font-bold uppercase tracking-tight">{item.name}</span>
                 </Link>
               ))}

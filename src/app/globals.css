@@ -32,62 +32,34 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
-    /* Cinematic Background System with Radial Depth */
+    @apply bg-[#05070D] text-white font-body antialiased;
     background: radial-gradient(circle at 50% -20%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 0% 50%, rgba(10, 15, 28, 0.5) 0%, transparent 40%),
                 #05070D;
     cursor: default;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tighter uppercase;
-  }
 }
 
 @layer utilities {
-  /* Linear Text Gradients */
   .text-gradient-blue {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-primary;
   }
   .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-accent to-accent;
   }
-  
-  /* Radial Atmosphere Glows */
   .radial-glow-blue {
     background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
   }
-  .radial-glow-gold {
-    background: radial-gradient(circle at center, rgba(245, 176, 65, 0.1), transparent 70%);
-  }
-
-  /* Premium UI Glows */
   .glow-blue {
     box-shadow: 0 0 60px -20px rgba(59, 130, 246, 0.4);
   }
   .glow-gold {
     box-shadow: 0 0 60px -20px rgba(245, 176, 65, 0.35);
   }
-
-  /* Linear Overlays */
-  .bg-glass-gradient {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+  .glass {
+    @apply bg-[#0A0F1C]/60 backdrop-blur-2xl border border-white/10;
   }
-}
-
-.glass {
-  background: rgba(10, 15, 28, 0.6);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 80px -15px rgba(0, 0, 0, 0.9);
-}
-
-.football-grid {
-  background-size: 80px 80px;
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
 }
 
 .stadium-light-sweep {
@@ -107,28 +79,9 @@
   100% { transform: translateX(250%) rotate(25deg); opacity: 0; }
 }
 
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.04;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-::selection {
-  @apply bg-primary text-primary-foreground;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+.football-grid {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
 }

@@ -4,335 +4,442 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Play, Rocket, Activity, Trophy, Shield, Cpu, Target, ArrowRight, Zap, Coins, TrendingUp, LayoutDashboard, ShieldCheck } from "lucide-react"
+import { 
+  Trophy, Rocket, Shield, Target, Cpu, Zap, 
+  Coins, TrendingUp, LayoutDashboard, Globe, 
+  Play, Search, ArrowRight, Activity, Users,
+  BarChart3, Microscope, History, ShieldCheck,
+  Star, Sparkles, ChevronRight
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { GlassCard } from "@/components/ui/glass-card"
-import { EarlyAccessForm } from "@/components/sections/EarlyAccessForm"
-import { FAQSection } from "@/components/sections/FAQSection"
-import { RoadmapSection } from "@/components/sections/RoadmapSection"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog"
-import Autoplay from "embla-carousel-autoplay"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { cn } from "@/lib/utils"
+
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+}
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { 
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true }
+}
 
 export default function HomePage() {
   const containerRef = React.useRef(null)
   
+  // Assets
   const genesisBanner = PlaceHolderImages.find(i => i.id === "ifm-genesis-banner")
-  const badgeImg = PlaceHolderImages.find(i => i.id === "nft-club-1")
-  const scoutImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
-  const stadiumImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
-  const playerImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
-  const missionImg = PlaceHolderImages.find(i => i.id === "about-hero")
-  const tournamentImg = PlaceHolderImages.find(i => i.id === "esports-tournament")
-
-  const nftGenesisAssets = [
-    {
-      id: 1,
-      name: "Alpha Club License",
-      description: "The foundational permit required to register and manage a professional club in the IFM ecosystem.",
-      importance: "Grants permanent entry into the competitive league system and unlocks eligibility for $IFM rewards.",
-      requirement: "Whitelisted Founding Manager status and successful Phase 1 enrollment.",
-      image: badgeImg,
-      tier: "Founder"
-    },
-    {
-      id: 2,
-      name: "Legendary Scout Bot",
-      description: "An advanced AI-driven scouting unit designed to identify high-potential youth talent across global networks.",
-      importance: "Drastically increases the efficiency of talent identification and reduces scouting overhead costs.",
-      requirement: "Active Tier 2 Management License or higher ecosystem standing.",
-      image: scoutImg,
-      tier: "Legendary"
-    },
-    {
-      id: 3,
-      name: "Neo London Stadium",
-      description: "A premium digital venue capable of hosting Tier 1 championship matches and community events.",
-      importance: "Unlock significant passive revenue streams from ticket sales and commercial matchday activities.",
-      requirement: "Ownership of at least 5 elite player contracts and stadium development tokens.",
-      image: stadiumImg,
-      tier: "Elite"
-    },
-    {
-      id: 4,
-      name: "Mythic Striker: 'Voltage'",
-      description: "A generation-zero player card featuring peak physical attributes and exclusive tactical traits.",
-      importance: "Provides a definitive competitive edge in high-stakes knockout tournaments and seasonal leagues.",
-      requirement: "Available exclusively through the limited Phase 2 Genesis Mint event.",
-      image: playerImg,
-      tier: "Mythic"
-    }
-  ]
-
-  const [selectedAsset, setSelectedAsset] = React.useState<typeof nftGenesisAssets[0] | null>(null)
-  
-  const autoplay = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  )
+  const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
+  const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
+  const academyImg = PlaceHolderImages.find(i => i.id === "academy-reveal")
+  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-mythic")
+  const stadiumImg = PlaceHolderImages.find(i => i.id === "stadium-evolution")
+  const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
+  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
+  const rewardsImg = PlaceHolderImages.find(i => i.id === "reward-flow-visual")
 
   return (
-    <div ref={containerRef} className="flex flex-col w-full relative bg-background">
+    <div ref={containerRef} className="flex flex-col w-full bg-background selection:bg-primary selection:text-white">
       
-      {/* 1. CINEMATIC HERO SECTION - IFM GENESIS CLEAN BANNER */}
-      <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden">
+      {/* 1. CINEMATIC HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0052FF]/20 via-background to-background" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
           {genesisBanner && (
             <Image
               src={genesisBanner.imageUrl}
               alt="IFM Genesis"
               fill
-              className="object-cover brightness-75"
+              className="object-cover brightness-[0.4]"
               priority
               data-ai-hint="IFM Genesis stadium"
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/80" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-10" />
         </div>
-      </section>
 
-      {/* 2. NFT GENESIS CAROUSEL */}
-      <section className="py-32 relative bg-background overflow-hidden border-y border-white/5">
-        <div className="absolute inset-0 radial-glow-gold opacity-10" />
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-            <div className="space-y-4">
-              <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1 uppercase tracking-widest text-[10px] font-bold">The Sovereignty Protocol</Badge>
-              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
-                GENESIS <span className="text-gradient-gold italic">ASSETS</span>
-              </h2>
-              <p className="text-xl text-muted-foreground font-light max-w-xl">
-                Immutable digital infrastructure. Rare assets that grant permanent utility and voting power within the IFM DAO.
-              </p>
-            </div>
-          </div>
-
-          <Carousel
-            plugins={[autoplay.current]}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            onMouseEnter={autoplay.current.stop}
-            onMouseLeave={autoplay.current.reset}
-            className="w-full"
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
+          <motion.div 
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+            className="flex flex-col items-center space-y-12"
           >
-            <CarouselContent className="-ml-4">
-              {nftGenesisAssets.map((asset) => (
-                <CarouselItem key={asset.id} className="pl-4 md:basis-1/2 lg:basis-1/2 xl:basis-1/3">
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    onClick={() => setSelectedAsset(asset)}
-                    className="cursor-pointer h-full"
-                  >
-                    <GlassCard 
-                      className="p-0 border-white/10 overflow-hidden group h-full flex flex-col" 
-                      glowColor={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'gold' : 'blue'}
-                    >
-                      <div className="relative aspect-[4/5] overflow-hidden">
-                        {asset.image && (
-                          <Image 
-                            src={asset.image.imageUrl} 
-                            alt={asset.name} 
-                            fill 
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                            data-ai-hint={asset.image.imageHint}
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                        <div className="absolute top-4 right-4">
-                          <Badge className={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'bg-accent text-background font-bold' : 'bg-primary text-white font-bold'}>
-                            {asset.tier}
-                          </Badge>
-                        </div>
-                      </div>
-                      <div className="p-8 flex flex-col justify-between bg-card/40 flex-1">
-                        <div className="space-y-6">
-                          <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{asset.name}</h3>
-                          <div className="space-y-4">
-                            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 font-light">{asset.description}</p>
-                            <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent transition-colors">View Detailed Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
-                          </div>
-                        </div>
-                      </div>
-                    </GlassCard>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center gap-4 mt-12">
-              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 text-white" />
-              <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-white/5 hover:bg-white/10 text-white" />
-            </div>
-          </Carousel>
+            <motion.div variants={fadeIn}>
+              <Badge className="bg-primary/10 text-primary border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl glow-blue">
+                PROTOCOL ALPHA v1.0
+              </Badge>
+            </motion.div>
+            
+            <motion.h1 
+              variants={fadeIn}
+              className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8] mb-4"
+            >
+              BUILD. OWN. <br />
+              <span className="text-gradient-blue italic">DOMINATE.</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={fadeIn}
+              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
+            >
+              The persistent football management universe where strategy, progression, and digital sovereignty shape your club’s future.
+            </motion.p>
+
+            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
+              <Button asChild size="lg" className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest">
+                <Link href="/early-access">JOIN EARLY ACCESS</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
+                <Link href="/gameplay">WATCH GAMEPLAY</Link>
+              </Button>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/5 w-full max-w-5xl">
+               {[
+                 { label: "Active Clubs", value: "85,420" },
+                 { label: "Matches Simulated", value: "1.2M+" },
+                 { label: "Rewards Paid", value: "4.8M $IFM" },
+                 { label: "Genesis Tier", value: "ALPHA" }
+               ].map((stat, i) => (
+                 <div key={i} className="space-y-1">
+                   <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{stat.label}</div>
+                   <div className="text-3xl font-bold font-headline text-white">{stat.value}</div>
+                 </div>
+               ))}
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 3. VISUAL MISSION SECTION */}
-      <section className="py-32 relative bg-card/10 border-t border-white/5 overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-12"
-            >
-              <Badge className="bg-primary/10 text-primary border-primary/20">The Ecosystem Vision</Badge>
-              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
-                REDEFINING <br /><span className="text-gradient-blue italic">MANAGEMENT</span>
-              </h2>
-              <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                IFM merges the tactical depth of a world-class simulation with the sovereignty of blockchain ownership. Every decision you make is etched into your club's history.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-8">
-                {[
-                  { icon: Target, title: "Tactical Depth", img: scoutImg },
-                  { icon: Shield, title: "Digital Assets", img: badgeImg },
-                ].map((item, i) => (
-                  <GlassCard key={i} className="p-0 border-white/10 overflow-hidden aspect-square relative group">
-                    {item.img && (
-                      <Image src={item.img.imageUrl} alt={item.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
-                    )}
-                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-background to-transparent">
-                      <h4 className="font-bold text-white uppercase tracking-widest text-sm">{item.title}</h4>
+      {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+      <section className="py-48 relative border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+              <div className="space-y-12">
+                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Core Mission</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">BEYOND THE <br /><span className="text-gradient-gold italic">SIMULATION.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  IFM is more than a manager game. It is a living football economy where every decision you make—from tactical shifts to stadium investments—creates permanent value on the blockchain.
+                </p>
+                <div className="grid grid-cols-2 gap-8">
+                  {[
+                    { label: "Strategic Depth", desc: "Manage squads across seasons." },
+                    { label: "Digital Sovereignty", desc: "Own your players and assets." }
+                  ].map((item, i) => (
+                    <div key={i} className="space-y-3">
+                      <div className="h-1 w-12 bg-accent" />
+                      <div className="font-bold text-lg uppercase tracking-tight">{item.label}</div>
+                      <div className="text-sm text-muted-foreground font-light">{item.desc}</div>
                     </div>
-                  </GlassCard>
-                ))}
+                  ))}
+                </div>
               </div>
             </motion.div>
             
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-10 bg-primary/20 blur-[100px] rounded-full" />
-              <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue relative aspect-[4/5]">
-                {missionImg && (
-                  <Image 
-                    src={missionImg.imageUrl} 
-                    alt="IFM Vision" 
-                    fill
-                    className="object-cover brightness-75"
-                    data-ai-hint="football match action"
-                  />
-                )}
-                <div className="absolute bottom-10 left-10 right-10">
-                  <GlassCard className="p-6 bg-black/60 backdrop-blur-xl border-white/10">
-                    <div className="flex items-center gap-4">
-                      <div className="h-1 w-12 bg-primary" />
-                      <span className="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Official Game Engine Render</span>
-                    </div>
-                  </GlassCard>
-                </div>
-              </GlassCard>
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
+                  {tacticsImg && (
+                    <Image src={tacticsImg.imageUrl} alt="Tactical Board" fill className="object-cover brightness-50" />
+                  )}
+                  <div className="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-background via-transparent to-transparent">
+                     <div className="space-y-6">
+                        <Badge className="bg-primary text-white font-bold px-4 py-1">TACTICAL HUB v2.4</Badge>
+                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight">THE ARCHITECT'S <br />COMMAND</h3>
+                     </div>
+                  </div>
+               </GlassCard>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 4. IMMERSIVE GALLERY */}
-      <section className="py-32 relative border-y border-white/5">
+      {/* 3. GAMEPLAY PILLARS GRID */}
+      <section className="py-48 bg-card/5">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-24 space-y-4">
-            <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">CINEMATIC <span className="text-primary italic">MOMENTS</span></h2>
-            <p className="text-muted-foreground text-xl font-light">The atmosphere of the IFM world, captured in 8K fidelity.</p>
+          <div className="text-center mb-32 space-y-8">
+            <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE FOUR <span className="text-primary italic">PILLARS</span></h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Master the systems of the living football universe.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[stadiumImg, tournamentImg, missionImg].map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <GlassCard className="p-0 border-white/10 overflow-hidden aspect-[16/10] group">
-                  {img && (
-                    <Image src={img.imageUrl} alt="Gallery" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Squad Building", desc: "Scout, trade, and build a world-class squad in the transfer market.", icon: Users, image: marketImg },
+              { title: "Competition", desc: "Compete in an 8-division decentralized pyramid for global glory.", icon: Trophy, image: leagueImg },
+              { title: "Development", desc: "Evolve academy prospects into legendary digital assets.", icon: Microscope, image: academyImg },
+              { title: "Ownership", desc: "True ownership of your club, stadium, and legacy assets.", icon: ShieldCheck, image: playerCardImg }
+            ].map((pillar, i) => (
+              <GlassCard key={i} className="p-0 group overflow-hidden border-white/5 flex flex-col" glowColor={i % 2 === 0 ? "blue" : "gold"}>
+                <div className="relative aspect-[4/5]">
+                  {pillar.image && (
+                    <Image src={pillar.image.imageUrl} alt={pillar.title} fill className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" />
                   )}
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </GlassCard>
-              </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent" />
+                  <div className="absolute bottom-6 left-8">
+                    <div className="h-12 w-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <pillar.icon className="h-6 w-6" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8 space-y-4">
+                  <h4 className="text-2xl font-bold font-headline uppercase">{pillar.title}</h4>
+                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{pillar.desc}</p>
+                </div>
+              </GlassCard>
             ))}
           </div>
         </div>
       </section>
 
-      {/* NFT DETAIL MODAL */}
-      <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
-        <DialogContent className="max-w-4xl bg-[#05070D]/95 border-white/10 backdrop-blur-[40px] rounded-[2.5rem] overflow-hidden p-0 gap-0">
-          {selectedAsset && (
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
-                {selectedAsset.image && (
-                  <Image 
-                    src={selectedAsset.image.imageUrl} 
-                    alt={selectedAsset.name} 
-                    fill 
-                    className="object-cover"
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent opacity-60" />
-                <div className="absolute bottom-8 left-8">
-                  <Badge className={selectedAsset.tier === 'Mythic' || selectedAsset.tier === 'Founder' ? 'bg-accent text-background font-bold text-lg px-6 py-2 shadow-2xl' : 'bg-primary text-white font-bold text-lg px-6 py-2 shadow-2xl'}>
-                    {selectedAsset.tier}
-                  </Badge>
-                </div>
-              </div>
-              <div className="p-12 space-y-8 flex flex-col justify-center relative bg-glass-gradient">
-                <div className="space-y-4">
-                  <h2 className="text-4xl md:text-5xl font-bold font-headline uppercase tracking-tighter leading-none">{selectedAsset.name}</h2>
-                  <div className="h-1 w-20 bg-gradient-to-r from-primary to-transparent" />
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-3">Asset Classification</h4>
-                    <p className="text-lg text-muted-foreground font-light leading-relaxed">{selectedAsset.description}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-3">Strategic Importance</h4>
-                    <p className="text-lg text-white font-medium italic leading-relaxed">"{selectedAsset.importance}"</p>
-                  </div>
-                </div>
-
-                <div className="pt-4 flex gap-4">
-                  <Button className="flex-1 h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue uppercase tracking-widest text-xs">
-                    Apply for Minting
-                  </Button>
-                  <Button variant="outline" onClick={() => setSelectedAsset(null)} className="flex-1 h-14 border-white/10 hover:bg-white/5 font-bold rounded-xl uppercase tracking-widest text-xs">
-                    Close Protocol
-                  </Button>
-                </div>
-              </div>
+      {/* 4. SEASONAL GAMEPLAY PREVIEW */}
+      <section className="py-48 relative overflow-hidden border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32">
+            <div className="space-y-6">
+              <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Temporal Loop</Badge>
+              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE SEASONAL <br /><span className="text-primary italic">CADENCE</span></h2>
             </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            <p className="text-muted-foreground text-xl font-light max-w-md lg:text-right">Every IFM season is a 4-week tactical marathon. Consistent management is rewarded with persistent club growth.</p>
+          </div>
 
-      <RoadmapSection />
-      <EarlyAccessForm />
-      <FAQSection />
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { step: "01", title: "Pre-Season", desc: "Tactical Setup", icon: Target },
+              { step: "02", title: "Market Open", desc: "Squad Building", icon: Zap },
+              { step: "03", title: "Academy Reveal", desc: "Talent Discovery", icon: Sparkles },
+              { step: "04", title: "Matchdays", desc: "Live Simulation", icon: Play },
+              { step: "05", title: "Training", desc: "Asset Growth", icon: History },
+              { step: "06", title: "The Payout", desc: "Reward Cycle", icon: Trophy }
+            ].map((phase, i) => (
+              <GlassCard key={i} className="p-8 border-white/5 hover:bg-primary/5 transition-all group" hoverable={true}>
+                <div className="text-4xl font-headline font-bold text-primary/10 italic mb-6">{phase.step}</div>
+                <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <phase.icon className="h-5 w-5" />
+                </div>
+                <h5 className="font-bold text-sm uppercase tracking-tight mb-2">{phase.title}</h5>
+                <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">{phase.desc}</p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. MATCH ENGINE SHOWCASE */}
+      <section className="py-48 relative bg-accent/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
+                <div className="space-y-12">
+                   <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Neural Core v2.4</Badge>
+                   <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">REACTIVE <br /><span className="text-gradient-blue italic">SIMULATION.</span></h2>
+                   <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                     Matches in IFM are not just static results. Our Neural Match Engine processes 15,000+ tactical variables per cycle, reacting to your real-time adjustments, substitutions, and momentum shifts.
+                   </p>
+                   <div className="space-y-6">
+                      {[
+                        { label: "Real-time Overrides", desc: "Change intensity and formation mid-match." },
+                        { label: "Psychological States", desc: "Players react to fatigue and match pressure." }
+                      ].map((item, i) => (
+                        <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5">
+                           <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center"><Activity className="h-5 w-5" /></div>
+                           <div>
+                              <div className="font-bold text-sm uppercase tracking-tight">{item.label}</div>
+                              <div className="text-xs text-muted-foreground">{item.desc}</div>
+                           </div>
+                        </div>
+                      ))}
+                   </div>
+                </div>
+             </motion.div>
+             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
+                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
+                  {matchImg && (
+                    <Image src={matchImg.imageUrl} alt="Match Engine" fill className="object-cover brightness-75" />
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-20 w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-xl animate-pulse cursor-pointer">
+                      <Play className="h-8 w-8 text-primary fill-current" />
+                    </div>
+                  </div>
+                </GlassCard>
+             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. SOVEREIGNTY & REWARDS */}
+      <section className="py-48 relative border-t border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <div className="text-center mb-32 space-y-8">
+              <Badge className="bg-accent/10 text-accent border-accent/20 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Ownership Protocol</Badge>
+              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE SOVEREIGNTY <br /><span className="text-accent italic">LAYER</span></h2>
+           </div>
+
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+              <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+                 <div className="space-y-12">
+                    <h3 className="text-4xl font-headline font-bold uppercase tracking-tight">FUNCTIONAL <br />FOOTBALL ASSETS</h3>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                      In IFM, NFTs are not collectibles. They are functional gameplay units that evolve over time. Own your squad, your stadium, and your identity.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                       {[
+                         { title: "Player Cards", desc: "Evolving stats and potential." },
+                         { title: "Club Licenses", desc: "Access to elite divisions." },
+                         { title: "Stadium Units", desc: "Revenue generating assets." },
+                         { title: "Academy Prospects", desc: "The future stars of your dynasty." }
+                       ].map((feat, k) => (
+                         <div key={k} className="space-y-2 border-l-2 border-accent/20 pl-6">
+                            <div className="font-bold text-sm uppercase tracking-tight">{feat.title}</div>
+                            <p className="text-xs text-muted-foreground font-light">{feat.desc}</p>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+              </motion.div>
+              <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+                 <div className="relative aspect-[3/4] max-w-sm mx-auto">
+                    <div className="absolute -inset-10 bg-accent/10 blur-[100px] rounded-full animate-pulse" />
+                    <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full relative" hoverable={false}>
+                       {playerCardImg && (
+                         <Image src={playerCardImg.imageUrl} alt="Mythic Player" fill className="object-cover" />
+                       )}
+                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                       <div className="absolute bottom-10 left-10 right-10">
+                          <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4">
+                             <div className="flex justify-between items-end">
+                                <div>
+                                   <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">On-Chain Asset</div>
+                                   <div className="text-3xl font-bold font-headline uppercase leading-none text-white">STORM v1.0</div>
+                                </div>
+                                <div className="text-right">
+                                   <div className="text-[10px] text-muted-foreground font-bold uppercase">Potential</div>
+                                   <div className="text-2xl font-bold text-accent">98</div>
+                                </div>
+                             </div>
+                             <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-full w-4/5 bg-accent" />
+                             </div>
+                          </div>
+                       </div>
+                    </GlassCard>
+                 </div>
+              </motion.div>
+           </div>
+        </div>
+      </section>
+
+      {/* 7. REWARD SYSTEM FLOW */}
+      <section className="py-48 bg-card/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+              <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+                 <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
+                    {rewardsImg && (
+                      <Image src={rewardsImg.imageUrl} alt="Reward Flow" fill className="object-cover opacity-60" />
+                    )}
+                    <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
+                       <div className="space-y-6">
+                          <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Verified Loop v1.0</Badge>
+                          <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white">THE REWARD <br />ENGINE</h3>
+                       </div>
+                    </div>
+                 </GlassCard>
+              </motion.div>
+              <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+                 <div className="space-y-12">
+                    <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">SKILL-BASED <br /><span className="text-gradient-blue italic">YIELD.</span></h2>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                      Rewards in IFM are tied directly to tactical mastery and long-term planning. There is no dependency on external speculation—the economy is driven by the game.
+                    </p>
+                    <div className="space-y-6">
+                       {[
+                         { title: "Match Performance", icon: Activity },
+                         { title: "League Promotions", icon: Trophy },
+                         { title: "Tournament Wins", icon: Star },
+                         { title: "Talent Development", icon: Microscope }
+                       ].map((item, i) => (
+                         <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5 group hover:border-primary/30 transition-all">
+                            <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors"><item.icon className="h-5 w-5" /></div>
+                            <div className="font-bold text-sm uppercase tracking-tight">{item.title}</div>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+              </motion.div>
+           </div>
+        </div>
+      </section>
+
+      {/* 8. MANAGER ARCHETYPES */}
+      <section className="py-48 relative border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <div className="text-center mb-32 space-y-8">
+              <Badge className="bg-accent/10 text-accent border-accent/20 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Archetype Protocol</Badge>
+              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">DEFINE YOUR <br /><span className="text-accent italic">LEGACY</span></h2>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {[
+                { title: "The Mastermind", theme: "blue", icon: Zap },
+                { title: "The Developer", theme: "gold", icon: Microscope },
+                { title: "The Strategist", theme: "blue", icon: BarChart3 },
+                { title: "The Builder", theme: "gold", icon: LayoutDashboard },
+                { title: "The Champion", theme: "blue", icon: Trophy },
+              ].map((style, i) => (
+                <GlassCard 
+                  key={i} 
+                  className="p-10 border-white/5 hover:bg-white/5 group h-full flex flex-col items-center text-center" 
+                  glowColor={style.theme === "blue" ? "blue" : "gold"}
+                >
+                  <div className={cn(
+                    "h-16 w-16 flex items-center justify-center rounded-2xl mb-8 transition-all group-hover:scale-110",
+                    style.theme === "blue" ? "bg-primary/10 text-primary border-primary/20" : "bg-accent/10 text-accent border-accent/20"
+                  )}>
+                    <style.icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-bold font-headline mb-4 uppercase tracking-tight leading-none">{style.title}</h3>
+                </GlassCard>
+              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* 9. FINAL CALL TO ACTION */}
+      <section className="py-64 relative text-center overflow-hidden">
+        <div className="absolute inset-0 radial-glow-blue opacity-20" />
+        <div className="container relative z-10 mx-auto px-6 max-w-5xl space-y-16">
+          <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+            <h2 className="text-7xl md:text-[12rem] font-bold font-headline tracking-tighter uppercase leading-[0.7] mb-12">
+              START YOUR <br />
+              <span className="text-gradient-blue italic">DYNASTY.</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row justify-center gap-8">
+              <Button asChild size="lg" className="h-24 px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-3xl glow-blue text-2xl uppercase tracking-[0.2em]">
+                <Link href="/early-access" className="flex items-center gap-6">
+                  CLAIM FOUNDING STATUS <Rocket className="h-8 w-8" />
+                </Link>
+              </Button>
+            </div>
+            <p className="text-muted-foreground uppercase tracking-[0.5em] text-[10px] mt-12 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   )
 }
