@@ -19,6 +19,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import Autoplay from "embla-carousel-autoplay"
 
 const comparisonData = [
   { feature: "Digital Ownership", trad: "None (License Only)", ifm: "Full (On-Chain Assets)" },
@@ -75,6 +82,12 @@ export default function HomePage() {
   const containerRef = React.useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] })
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+
+  const [selectedAsset, setSelectedAsset] = React.useState<typeof nftGenesisAssets[0] | null>(null)
+  
+  const autoplay = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  )
 
   return (
     <div ref={containerRef} className="flex flex-col w-full relative bg-background">
@@ -147,10 +160,13 @@ export default function HomePage() {
           </div>
 
           <Carousel
+            plugins={[autoplay.current]}
             opts={{
               align: "start",
               loop: true,
             }}
+            onMouseEnter={autoplay.current.stop}
+            onMouseLeave={autoplay.current.reset}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
@@ -159,6 +175,8 @@ export default function HomePage() {
                   <motion.div
                     whileHover={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    onClick={() => setSelectedAsset(asset)}
+                    className="cursor-pointer h-full"
                   >
                     <GlassCard 
                       className="p-0 border-white/10 overflow-hidden group h-full flex flex-col" 
@@ -186,15 +204,10 @@ export default function HomePage() {
                             <div className="space-y-4">
                               <div>
                                 <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">Description</div>
-                                <p className="text-xs text-muted-foreground leading-relaxed">{asset.description}</p>
+                                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">{asset.description}</p>
                               </div>
-                              <div>
-                                <div className="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Strategic Importance</div>
-                                <p className="text-xs text-white/80 leading-relaxed italic">{asset.importance}</p>
-                              </div>
-                              <div className="pt-4 border-t border-white/5">
-                                <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Requirement</div>
-                                <p className="text-[10px] font-bold text-white uppercase">{asset.requirement}</p>
+                              <div className="pt-2">
+                                <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent">View Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
                               </div>
                             </div>
                           </div>
@@ -212,6 +225,60 @@ export default function HomePage() {
           </Carousel>
         </div>
       </section>
+
+      {/* NFT DETAIL MODAL */}
+      <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
+        <DialogContent className="max-w-4xl bg-background/95 border-white/10 backdrop-blur-3xl rounded-[2.5rem] overflow-hidden p-0 gap-0">
+          {selectedAsset && (
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
+                <Image 
+                  src={selectedAsset.img} 
+                  alt={selectedAsset.name} 
+                  fill 
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-8 left-8">
+                  <Badge className={selectedAsset.tier === 'Mythic' || selectedAsset.tier === 'Founder' ? 'bg-accent text-background font-bold text-lg px-6 py-2' : 'bg-primary text-white font-bold text-lg px-6 py-2'}>
+                    {selectedAsset.tier}
+                  </Badge>
+                </div>
+              </div>
+              <div className="p-12 space-y-8 flex flex-col justify-center">
+                <DialogHeader className="space-y-4">
+                  <h2 className="text-4xl md:text-5xl font-bold font-headline uppercase tracking-tighter leading-none">{selectedAsset.name}</h2>
+                  <div className="h-1 w-20 bg-primary" />
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-3">Asset Classification</h4>
+                    <p className="text-lg text-muted-foreground font-light leading-relaxed">{selectedAsset.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-3">Strategic Importance</h4>
+                    <p className="text-lg text-white font-medium italic leading-relaxed">"{selectedAsset.importance}"</p>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em] mb-2">Manager Requirement</h4>
+                    <p className="text-sm font-bold text-white uppercase tracking-tight">{selectedAsset.requirement}</p>
+                  </div>
+                </div>
+
+                <div className="pt-4 flex gap-4">
+                  <Button className="flex-1 h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue uppercase tracking-widest text-xs">
+                    Apply for Minting
+                  </Button>
+                  <Button variant="outline" className="flex-1 h-14 border-white/10 hover:bg-white/5 font-bold rounded-xl uppercase tracking-widest text-xs">
+                    Close Protocol
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* 3. THE IFM MISSION */}
       <section className="py-32 relative bg-card/10">
