@@ -206,7 +206,76 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. SOVEREIGN ASSETS - NFT SYSTEM */}
+      {/* 3. THE REWARD PROTOCOL - MATCH PERFORMANCE REWARDS */}
+      <section className="py-48 relative border-y border-white/5 bg-background">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
+              <div className="space-y-12">
+                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Utility Hub</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">THE REWARD <br /><span className="text-gradient-blue italic">ENGINE.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  The $IFM token is the lifeblood of the universe. It is a gameplay-first utility asset rewarded for match performance. <strong>Yield quantities are dynamic and performance-dependent.</strong>
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { title: "Match Victory", desc: "Maximum $IFM yield for securing 3 points. Rewarded instantly upon match finalization.", icon: Zap, status: "MAX YIELD" },
+                    { title: "Tactical Draw", desc: "Standard $IFM yield for high-level tactical stalemates. Keeps your club operational.", icon: Activity, status: "STANDARD" },
+                    { title: "Competition Bonus", desc: "Higher rewards for cup matches and knockout tournaments compared to standard league play.", icon: Trophy, status: "MULTIPLIER" },
+                    { title: "Loss Consolation", desc: "Minimal 'Neural Data' yield rewarded for match participation and stadium attendance.", icon: History, status: "MINIMAL" }
+                  ].map((feat, i) => (
+                    <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default group">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <feat.icon className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center mb-1">
+                           <div className="font-bold text-lg uppercase tracking-tight">{feat.title}</div>
+                           <Badge variant="outline" className="text-[8px] border-primary/20 text-primary">{feat.status}</Badge>
+                        </div>
+                        <div className="text-sm text-muted-foreground font-light">{feat.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
+                  {tokenImg && (
+                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-60" data-ai-hint="digital crypto coin" />
+                  )}
+                  <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
+                     <div className="p-8 bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 space-y-6">
+                        <div className="flex justify-between items-center">
+                           <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Active Session Payout</Badge>
+                           <span className="text-[10px] font-bold text-primary animate-pulse">CALCULATING YIELD...</span>
+                        </div>
+                        <div className="space-y-4">
+                           <div className="flex justify-between items-end">
+                              <div>
+                                 <div className="text-[10px] text-muted-foreground uppercase mb-1">Last Match: Neo London (W)</div>
+                                 <div className="text-4xl font-bold font-headline text-white">4,250 $IFM</div>
+                              </div>
+                              <div className="text-right">
+                                 <div className="text-[10px] text-primary font-bold uppercase">Performance</div>
+                                 <div className="text-2xl font-bold text-white">S-TIER</div>
+                              </div>
+                           </div>
+                           <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                              <div className="h-full w-[85%] bg-primary glow-blue" />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SOVEREIGN ASSETS - NFT SYSTEM */}
       <section className="py-48 relative overflow-hidden bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -271,90 +340,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. THE REWARD PROTOCOL - TOKEN UTILITY */}
-      <section className="py-48 relative border-y border-white/5 bg-background">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
-              <div className="space-y-12">
-                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Utility Hub</Badge>
-                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">THE REWARD <br /><span className="text-gradient-blue italic">ENGINE.</span></h2>
-                <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  The $IFM token is the lifeblood of the universe. It is a gameplay-first utility asset used to power your club's operations, progression, and sovereign upgrades.
-                </p>
-                <div className="space-y-6">
-                  {[
-                    { title: "Performance Yields", desc: "Winning matches and climbing divisions generates $IFM rewards from the global treasury.", icon: Zap },
-                    { title: "Infrastructure Fuel", desc: "Use $IFM to upgrade stadium capacity, training facilities, and academy bots.", icon: Rocket },
-                    { title: "Marketplace Power", desc: "Acquire elite player licenses and unique assets in the internal trade economy.", icon: Coins },
-                    { title: "Governance Staking", desc: "Managers with long-term conviction stake tokens to influence league rules and expansions.", icon: ShieldCheck }
-                  ].map((feat, i) => (
-                    <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default group">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                        <feat.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-lg uppercase tracking-tight">{feat.title}</div>
-                        <div className="text-sm text-muted-foreground font-light">{feat.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
-                  {tokenImg && (
-                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-60" data-ai-hint="digital crypto coin" />
-                  )}
-                  <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
-                     <div className="space-y-6">
-                        <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Verified Token v4.0</Badge>
-                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white">PLAY. PROGRESS. <br />OWN.</h3>
-                     </div>
-                  </div>
-               </GlassCard>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. MANAGEMENT IDENTITIES - ARCHETYPES */}
-      <section className="py-48 relative bg-card/5 border-t border-white/5">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <div className="text-center mb-32 space-y-8">
-              <Badge className="bg-accent/10 text-accent border-accent/20 px-8 py-3 uppercase tracking-[0.5em] text-[10px] font-bold">Archetype Protocol</Badge>
-              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">DEFINE YOUR <br /><span className="text-accent italic">LEGACY</span></h2>
-           </div>
-
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { title: "The Mastermind", desc: "Superior tactics, smart lineups, and real-time match reads define your success.", icon: Zap, theme: "blue" },
-                { title: "The Academy Club", desc: "Develop future stars from youth ranks and build a sustainable empire.", icon: Microscope, theme: "gold" },
-                { title: "The Value Finder", desc: "Identify undervalued talent on the market and flip them for significant gains.", icon: BarChart3, theme: "blue" },
-                { title: "The Big Spender", desc: "Utilize your $IFM treasury to build a title-winning squad in the transfer windows.", icon: Coins, theme: "gold" },
-              ].map((style, i) => (
-                <GlassCard 
-                  key={i} 
-                  className="p-12 border-white/5 hover:bg-primary/5 group h-full flex flex-col" 
-                  glowColor={style.theme === "blue" ? "blue" : "gold"}
-                >
-                  <div className={cn(
-                    "h-20 w-20 flex items-center justify-center rounded-3xl mb-10 transition-all group-hover:scale-110",
-                    style.theme === "blue" ? "bg-primary/10 text-primary border-primary/20" : "bg-accent/10 text-accent border-accent/20"
-                  )}>
-                    <style.icon className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-3xl font-bold font-headline mb-6 uppercase tracking-tighter leading-none">{style.title}</h3>
-                  <p className="text-base text-muted-foreground font-light leading-relaxed">{style.desc}</p>
-                </GlassCard>
-              ))}
-           </div>
-        </div>
-      </section>
-
-      {/* 6. MATCH ENGINE SHOWCASE - BROADCAST UI */}
+      {/* 5. MATCH ENGINE SHOWCASE - BROADCAST UI */}
       <section className="py-48 relative border-y border-white/5 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -363,7 +349,7 @@ export default function AboutPage() {
                 <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Neural Engine v2.4</Badge>
                 <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">SIMULATION <br /><span className="text-gradient-blue italic">SUPREMACY.</span></h2>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  The IFM Match Engine processes 15,000+ tactical variables per cycle. Every momentum shift, fatigue trigger, and tactical override is calculated in real-time.
+                  The IFM Match Engine processes 15,000+ tactical variables per cycle. Every momentum shift, fatigue trigger, and tactical override is calculated in real-time to determine match outcomes and subsequent rewards.
                 </p>
                 <div className="space-y-6">
                   {[

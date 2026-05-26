@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 import { Trophy, Twitter, Send, MessageSquare, ShieldCheck, Youtube, Mail } from "lucide-react"
 import { Input } from "@/components/ui/input"
