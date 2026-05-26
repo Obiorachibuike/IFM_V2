@@ -90,7 +90,7 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col w-full relative bg-background">
       
-      {/* 1. HERO SECTION - STADIUM CINEMATIC */}
+      {/* 1. HERO SECTION - STADIUM CINEMATIC WITH RADIAL GLOW */}
       <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0 z-0">
           <Image
@@ -106,8 +106,8 @@ export default function HomePage() {
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-20" />
           
-          {/* Radial Glow Layer */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
+          {/* Custom Radial Glow Layer */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full radial-glow-blue opacity-50" />
         </motion.div>
 
         <div className="container relative z-10 px-6 max-w-7xl mx-auto text-center">
@@ -140,9 +140,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. NFT GENESIS CAROUSEL */}
+      {/* 2. NFT GENESIS CAROUSEL WITH GOLD RADIAL GLOW */}
       <section className="py-32 relative bg-background overflow-hidden border-y border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(245,176,65,0.03),transparent_50%)]" />
+        <div className="absolute inset-0 radial-glow-gold opacity-20" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
             <div className="space-y-4">
@@ -205,11 +205,11 @@ export default function HomePage() {
                             <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{asset.name}</h3>
                             <div className="space-y-4">
                               <div>
-                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">Description</div>
+                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">Strategic Description</div>
                                 <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 font-light">{asset.description}</p>
                               </div>
                               <div className="pt-2">
-                                <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent transition-colors">View Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
+                                <Button variant="link" className="p-0 h-auto text-[10px] text-primary font-bold uppercase tracking-widest hover:text-accent transition-colors">View Detailed Analysis <ArrowRight className="ml-1 h-3 w-3" /></Button>
                               </div>
                             </div>
                           </div>
@@ -228,7 +228,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NFT DETAIL MODAL */}
+      {/* NFT DETAIL MODAL WITH CINEMATIC GRADIENTS */}
       <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
         <DialogContent className="max-w-4xl bg-[#05070D]/95 border-white/10 backdrop-blur-[40px] rounded-[2.5rem] overflow-hidden p-0 gap-0">
           {selectedAsset && (
@@ -247,7 +247,7 @@ export default function HomePage() {
                   </Badge>
                 </div>
               </div>
-              <div className="p-12 space-y-8 flex flex-col justify-center relative">
+              <div className="p-12 space-y-8 flex flex-col justify-center relative bg-glass-gradient">
                 <div className="absolute top-0 right-0 p-8 opacity-5">
                    <Trophy className="h-32 w-32 text-white" />
                 </div>
@@ -265,7 +265,7 @@ export default function HomePage() {
                     <h4 className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-3">Strategic Importance</h4>
                     <p className="text-lg text-white font-medium italic leading-relaxed">"{selectedAsset.importance}"</p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 bg-glass-gradient">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
                     <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em] mb-2">Manager Requirement</h4>
                     <p className="text-sm font-bold text-white uppercase tracking-tight">{selectedAsset.requirement}</p>
                   </div>
@@ -285,9 +285,9 @@ export default function HomePage() {
         </DialogContent>
       </Dialog>
 
-      {/* 3. THE IFM MISSION */}
-      <section className="py-32 relative bg-card/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(59,130,246,0.05),transparent_50%)]" />
+      {/* 3. THE IFM MISSION WITH LINEAR DEPTH */}
+      <section className="py-32 relative bg-card/10 border-t border-white/5">
+        <div className="absolute inset-0 radial-glow-blue opacity-5" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
             <motion.div 
@@ -333,7 +333,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. COMPARISON SECTION */}
+      {/* 4. COMPARISON SECTION WITH GOLD ACCENTS */}
       <section className="py-32 relative bg-card/20 border-y border-white/5">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
