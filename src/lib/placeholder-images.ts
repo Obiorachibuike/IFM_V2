@@ -45,7 +45,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "stadium-evolution",
     description: "Cinematic evolution stages of a digital football stadium from amateur to elite",
-    imageUrl: "https://picsum.photos/seed/ifm-about/1920/1080",
+    imageUrl: "https://picsum.photos/seed/ifm-stadium-evolution/1920/1080",
     imageHint: "cinematic football tech"
   },
   {

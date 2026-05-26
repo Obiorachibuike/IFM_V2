@@ -9,7 +9,8 @@ import {
   TrendingUp, BarChart3, Globe, Rocket, 
   Play, Search, Microscope, Network,
   ChevronRight, ShieldCheck, Activity,
-  Sparkles, Layers, History, LayoutDashboard
+  Sparkles, Layers, History, LayoutDashboard,
+  Timer, ArrowRight, Gauge, Database
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -39,7 +40,7 @@ export default function AboutPage() {
   const containerRef = React.useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] })
 
-  // Assets
+  // Assets mapping
   const heroImg = PlaceHolderImages.find(i => i.id === "about-hero")
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
@@ -47,12 +48,13 @@ export default function AboutPage() {
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
   const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
-  const devImg = PlaceHolderImages.find(i => i.id === "development-tree")
+  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
+  const stadiumImg = PlaceHolderImages.find(i => i.id === "stadium-evolution")
 
   return (
-    <div ref={containerRef} className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body">
+    <div ref={containerRef} className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
       
-      {/* 1. CINEMATIC HERO - STORY START */}
+      {/* 1. CINEMATIC HERO - THE VISION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
@@ -61,7 +63,7 @@ export default function AboutPage() {
               src={heroImg.imageUrl} 
               alt="IFM Vision" 
               fill 
-              className="object-cover opacity-30 grayscale-[0.2] brightness-[0.4]"
+              className="object-cover opacity-40 grayscale-[0.2] brightness-[0.4]"
               priority
             />
           )}
@@ -85,7 +87,7 @@ export default function AboutPage() {
             
             <motion.h1 
               variants={fadeIn}
-              className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
+              className="text-6xl md:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
             >
               BUILD. OWN. <br />
               <span className="text-gradient-blue italic">DOMINATE.</span>
@@ -95,16 +97,30 @@ export default function AboutPage() {
               variants={fadeIn}
               className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
             >
-              IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty. Lead your club, develop your assets, and own your legacy.
+              IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty. Lead your club, develop your assets, and own your legacy across seasons.
             </motion.p>
 
             <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
               <Button asChild size="lg" className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest">
-                <Link href="/#early-access">START YOUR CLUB</Link>
+                <Link href="/early-access">START YOUR CLUB</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
                 <Link href="/gameplay">WATCH GAMEPLAY</Link>
               </Button>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/5 w-full max-w-5xl">
+               {[
+                 { label: "Active Clubs", value: "85,420" },
+                 { label: "Matches Played", value: "1.2M+" },
+                 { label: "Stadium Capacity", value: "4.5M" },
+                 { label: "Rewards Paid", value: "4.8M $IFM" }
+               ].map((stat, i) => (
+                 <div key={i} className="space-y-1">
+                   <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{stat.label}</div>
+                   <div className="text-3xl font-bold font-headline text-white">{stat.value}</div>
+                 </div>
+               ))}
             </motion.div>
           </motion.div>
         </div>
@@ -124,7 +140,7 @@ export default function AboutPage() {
               <h2 className="text-5xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE SEASONAL <br /><span className="text-primary italic">CADENCE</span></h2>
             </div>
             <p className="text-muted-foreground text-xl font-light max-w-md lg:text-right">
-              Every IFM season is a 4-week tactical marathon. Consistent management is rewarded with persistent club growth.
+              Every IFM season is a 4-week tactical marathon. Consistent management is rewarded with persistent club growth and asset appreciation.
             </p>
           </motion.div>
 
@@ -132,28 +148,28 @@ export default function AboutPage() {
             {[
               { 
                 title: "Pre-Season Ops", 
-                desc: "Strengthen squads, finalize tactics, and define the seasonal objective during the 48-hour window.", 
+                desc: "Strengthen squads, finalize tactics, and define the seasonal objective during the 48-hour window. Infrastructure upgrades are prioritized here.", 
                 icon: Target, 
                 day: "Day 1-2",
                 image: tacticsImg
               },
               { 
                 title: "Academy Reveal", 
-                desc: "Every club generates unique youth prospects. Analyze their potential and secure them to your academy.", 
+                desc: "Every club generates unique youth prospects as NFTs. Analyze their genetic potential and secure them to your academy registry.", 
                 icon: Microscope, 
                 day: "Day 3",
                 image: academyImg
               },
               { 
                 title: "Daily Matches", 
-                desc: "22 days of competitive league fixtures against real managers. Live tactical adjustments are critical.", 
+                desc: "22 days of competitive league fixtures against real managers worldwide. Live tactical adjustments and Neural Fatigue management are critical.", 
                 icon: Play, 
                 day: "Days 4-25",
                 image: matchImg
               },
               { 
                 title: "The Payout", 
-                desc: "Final standings determine promotion, relegation, and reward distributions from the global treasury.", 
+                desc: "Final standings determine promotion, relegation, and reward distributions from the global treasury. Your on-chain history is permanently recorded.", 
                 icon: Trophy, 
                 day: "Days 26-28",
                 image: rewardsImg
@@ -193,31 +209,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. LEAGUE PYRAMID - BROADCAST UI */}
+      {/* 3. SOVEREIGN ASSETS - NFT SYSTEM */}
       <section className="py-48 relative overflow-hidden bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
               <div className="space-y-12">
-                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Global Pyramid</Badge>
-                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">8 DIVISIONS. <br /><span className="text-gradient-gold italic">ONE ELITE.</span></h2>
+                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Functional Ownership</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">ASSETS WITH <br /><span className="text-gradient-gold italic">PURPOSE.</span></h2>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  The IFM Football League is a massive decentralized pyramid. Promotion and relegation are absolute, creating high-stakes rivalry in every division.
+                  NFTs in IFM are not collectibles. They are functional gameplay units. You own your squad, your stadium, and your identity—verified on-chain and evolving with every match.
                 </p>
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {[
-                    { title: "Promotion Race", desc: "Top 2 teams in every league move up to higher yield divisions." },
-                    { title: "Relegation Battle", desc: "Bottom 4 teams fall into the lower tiers of the pyramid." },
-                    { title: "Global Ranking", desc: "Track your progress against 85,000+ managers worldwide." }
+                    { title: "Player Cards", desc: "Identity, stats, and progression history encoded as on-chain logic.", icon: Users },
+                    { title: "Stadium Units", desc: "Customizable, revenue-generating assets that evolve visually.", icon: LayoutDashboard },
+                    { title: "Club Licenses", desc: "Your keys to the competitive pyramid and global reward pool.", icon: ShieldCheck },
+                    { title: "Academy Prospects", desc: "Genetic youth assets generated uniquely by your club's scouting bot.", icon: Microscope }
                   ].map((item, k) => (
-                    <div key={k} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 group hover:border-accent/30 transition-all">
-                      <div className="h-10 w-10 shrink-0 rounded-lg bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-background transition-colors">
-                        <Trophy className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-sm uppercase tracking-tight">{item.title}</div>
-                        <div className="text-xs text-muted-foreground">{item.desc}</div>
-                      </div>
+                    <div key={k} className="space-y-3">
+                       <div className="flex items-center gap-3">
+                          <item.icon className="h-5 w-5 text-accent" />
+                          <span className="font-bold uppercase tracking-tight text-sm">{item.title}</span>
+                       </div>
+                       <p className="text-xs text-muted-foreground font-light">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -225,36 +240,41 @@ export default function AboutPage() {
             </motion.div>
             
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-               <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-[4/5]" hoverable={false}>
-                  {leagueImg && (
-                    <Image src={leagueImg.imageUrl} alt="League Table" fill className="object-cover brightness-50" />
-                  )}
-                  <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-background via-transparent to-transparent">
-                     <div className="space-y-6">
-                        <Badge className="bg-accent text-background font-bold px-6 py-2">DIVISION 2 • LEAGUE B</Badge>
-                        <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10">
-                           <div className="text-[10px] font-bold text-accent uppercase tracking-[0.4em] mb-4">Live Standings</div>
-                           <div className="space-y-3">
-                              {[1, 2, 3].map(r => (
-                                <div key={r} className="flex justify-between items-center text-sm font-bold font-headline text-white">
-                                   <div className="flex gap-4 items-center">
-                                      <span className="text-accent">#{r}</span>
-                                      <span>NEO LONDON</span>
-                                   </div>
-                                   <span>{52 - r * 4} PTS</span>
-                                </div>
-                              ))}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </GlassCard>
+               <div className="relative aspect-[3/4] max-w-md mx-auto">
+                  <div className="absolute -inset-10 bg-accent/10 blur-[100px] rounded-full animate-pulse" />
+                  <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full relative group" hoverable={false}>
+                    {playerCardImg && (
+                      <Image src={playerCardImg.imageUrl} alt="NFT Card" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                    <div className="absolute top-8 right-8">
+                       <Badge className="bg-accent text-background font-bold px-6 py-2 uppercase tracking-[0.2em] shadow-2xl">LEGENDARY</Badge>
+                    </div>
+                    <div className="absolute bottom-10 left-10 right-10">
+                       <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4">
+                          <div className="flex justify-between items-end">
+                             <div>
+                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">On-Chain Asset</div>
+                                <div className="text-3xl font-bold font-headline uppercase leading-none">STORM v1.0</div>
+                             </div>
+                             <div className="text-right">
+                                <div className="text-[10px] text-muted-foreground font-bold uppercase">Potential</div>
+                                <div className="text-2xl font-bold text-accent">98</div>
+                             </div>
+                          </div>
+                          <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                             <div className="h-full w-4/5 bg-accent" />
+                          </div>
+                       </div>
+                    </div>
+                  </GlassCard>
+               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 4. MANAGEMENT IDENTITIES - VISUAL CARDS */}
+      {/* 4. MANAGEMENT IDENTITIES - ARCHETYPES */}
       <section className="py-48 relative bg-card/5 border-t border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
            <div className="text-center mb-32 space-y-8">
@@ -288,6 +308,53 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 5. MATCH ENGINE SHOWCASE - BROADCAST UI */}
+      <section className="py-48 relative border-y border-white/5 bg-background overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
+              <div className="space-y-12">
+                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Neural Engine v2.4</Badge>
+                <h2 className="text-6xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">SIMULATION <br /><span className="text-gradient-blue italic">SUPREMACY.</span></h2>
+                <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                  The IFM Match Engine processes 15,000+ tactical variables per cycle. Every momentum shift, fatigue trigger, and tactical override is calculated in real-time.
+                </p>
+                <div className="space-y-6">
+                  {[
+                    { label: "Reactive AI", desc: "Players adjust behavior based on match pressure and chemistry.", icon: Cpu },
+                    { label: "Real-time Overrides", desc: "Managers can change intensity and shape mid-match.", icon: Gauge },
+                    { label: "Physics Integrated", desc: "Ball physics and player collisions are 60Hz deterministic.", icon: Database }
+                  ].map((step, i) => (
+                    <div key={i} className="flex gap-6 items-center p-6 rounded-2xl bg-white/5 border border-white/5">
+                      <div className="h-12 w-12 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                        <step.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg uppercase tracking-tight">{step.label}</div>
+                        <div className="text-sm text-muted-foreground font-light">{step.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
+                  {matchImg && (
+                    <Image src={matchImg.imageUrl} alt="Match Broadcast" fill className="object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
+                  <div className="absolute bottom-6 left-8 flex items-center gap-4">
+                     <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" />
+                     <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Live Session: Simulated Alpha</span>
+                  </div>
+               </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="py-64 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20" />
@@ -298,12 +365,13 @@ export default function AboutPage() {
               <span className="text-gradient-blue italic">DYNASTY</span>
             </h2>
             <div className="flex flex-col sm:flex-row justify-center gap-8">
-              <Button asChild size="lg" className="h-24 px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-3xl glow-blue text-2xl uppercase tracking-[0.2em]">
-                <Link href="/#early-access" className="flex items-center gap-6">
-                  JOIN EARLY ACCESS <Rocket className="h-8 w-8" />
+              <Button asChild size="lg" className="h-24 px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-3xl glow-blue text-2xl uppercase tracking-widest">
+                <Link href="/early-access" className="flex items-center gap-6">
+                  CLAIM YOUR LICENSE <Rocket className="h-8 w-8" />
                 </Link>
               </Button>
             </div>
+            <p className="text-muted-foreground uppercase tracking-[0.5em] text-[10px] mt-12 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
         </div>
       </section>
