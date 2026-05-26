@@ -16,6 +16,7 @@ export default function EcosystemPage() {
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const nftImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
   const aboutHero = PlaceHolderImages.find(i => i.id === "about-hero")
+  const mintImg = PlaceHolderImages.find(i => i.id === "mint-preview")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-background">
@@ -30,6 +31,7 @@ export default function EcosystemPage() {
             fill
             className="object-cover opacity-20 grayscale brightness-50"
             priority
+            data-ai-hint="football stadium atmosphere"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-blue opacity-30" />
@@ -61,20 +63,19 @@ export default function EcosystemPage() {
                <p className="text-xl text-muted-foreground font-light leading-relaxed">
                  In traditional games, your time is a cost. In IFM, your time is an investment. Every club license and player contract you hold is a verified digital asset with persistent value.
                </p>
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+               <div className="grid grid-cols-2 gap-4">
                   {[
-                    { icon: Lock, title: "Immutable Assets", desc: "Your NFTs cannot be deleted, revoked, or frozen." },
-                    { icon: Globe, title: "Global Marketplace", desc: "Trade your verified assets on any open exchange." },
-                    { icon: Coins, title: "Yield Potential", desc: "Top-tier club licenses grant ecosystem reward bonuses." },
-                    { icon: Zap, title: "Active Governance", desc: "Token holders vote on league expansions and rules." },
+                    { title: "Club Licenses", img: PlaceHolderImages.find(i => i.id === "nft-club-1") },
+                    { title: "Elite Players", img: PlaceHolderImages.find(i => i.id === "player-card-gold") },
                   ].map((p, i) => (
-                    <div key={i} className="space-y-3">
-                      <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
-                        <p.icon className="h-5 w-5" />
-                      </div>
-                      <h4 className="font-bold uppercase tracking-widest text-white text-sm">{p.title}</h4>
-                      <p className="text-xs text-muted-foreground">{p.desc}</p>
-                    </div>
+                    <GlassCard key={i} className="p-0 border-white/10 overflow-hidden aspect-[3/4] group">
+                       {p.img && (
+                         <Image src={p.img.imageUrl} alt={p.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
+                       )}
+                       <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-background to-transparent">
+                          <h4 className="font-bold text-white uppercase tracking-widest text-xs">{p.title}</h4>
+                       </div>
+                    </GlassCard>
                   ))}
                </div>
             </div>
@@ -88,12 +89,12 @@ export default function EcosystemPage() {
               <div className="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full animate-pulse" />
               <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue" hoverable={false}>
                  <Image 
-                    src={nftImg?.imageUrl || ""} 
+                    src={mintImg?.imageUrl || ""} 
                     alt="NFT Card" 
                     width={800} 
                     height={1000} 
                     className="w-full h-auto brightness-75" 
-                    data-ai-hint={nftImg?.imageHint}
+                    data-ai-hint="holographic football card"
                  />
                  <div className="absolute top-6 left-6 right-6">
                     <GlassCard className="p-4 bg-black/80 backdrop-blur-lg border-white/20">
@@ -120,26 +121,30 @@ export default function EcosystemPage() {
               viewport={{ once: true }}
              >
                 <GlassCard className="p-0 border-white/10 overflow-hidden shadow-2xl" glowColor="blue">
-                    <Image src={tokenImg?.imageUrl || ""} alt="Token Visual" width={800} height={800} className="w-full h-auto opacity-80" data-ai-hint={tokenImg?.imageHint} />
+                    <Image src={tokenImg?.imageUrl || ""} alt="Token Visual" width={800} height={800} className="w-full h-auto opacity-80" data-ai-hint="digital coin rendering" />
                 </GlassCard>
              </motion.div>
              <div className="space-y-12">
                 <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">$IFM <br /><span className="text-primary italic">UTILITY HUB</span></h2>
-                <div className="space-y-8">
+                <div className="grid grid-cols-1 gap-6">
                     {[
-                        { title: "Marketplace Liquidity", desc: "The primary currency for transfers, license acquisitions, and trade.", icon: BarChart3 },
-                        { title: "Performance Yield", desc: "Win trophies, hit targets, and earn directly from the treasury.", icon: TrendingUp },
-                        { icon: Shield, title: "Governance Rights", desc: "Stake your tokens to propose and vote on ecosystem expansions." }
+                        { title: "Marketplace Liquidity", desc: "The primary currency for transfers.", icon: BarChart3, img: aboutHero },
+                        { title: "Performance Yield", desc: "Earn directly from the treasury.", icon: TrendingUp, img: rewardsImg },
                     ].map((item, i) => (
-                        <div key={i} className="flex gap-6 group">
-                            <div className="h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                                <item.icon className="h-6 w-6" />
+                        <GlassCard key={i} className="p-0 border-white/5 bg-white/5 flex h-32 overflow-hidden group">
+                            <div className="relative w-48 h-full">
+                               {item.img && (
+                                 <Image src={item.img.imageUrl} alt={item.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
+                               )}
+                               <div className="absolute inset-0 flex items-center justify-center text-primary">
+                                  <item.icon className="h-8 w-8" />
+                               </div>
                             </div>
-                            <div>
+                            <div className="p-6 flex flex-col justify-center">
                                 <h4 className="text-lg font-bold uppercase mb-1 tracking-tight">{item.title}</h4>
                                 <p className="text-sm text-muted-foreground font-light">{item.desc}</p>
                             </div>
-                        </div>
+                        </GlassCard>
                     ))}
                 </div>
              </div>
@@ -147,7 +152,7 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 4. REWARDS ENGINE */}
+      {/* 4. REWARDS ENGINE - MASSIVE VISUALS */}
       <section className="py-32 relative bg-card/10">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-24 space-y-4">
@@ -157,22 +162,29 @@ export default function EcosystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             {[
-              { title: "Operational Fuel", desc: "Pay player wages, staff contracts, and stadium upgrades exclusively in $IFM.", icon: Cpu },
-              { title: "Governance Power", desc: "Stake $IFM to vote on major ecosystem proposals and treasury allocations.", icon: Shield },
-              { title: "Prize Distributions", desc: "League winners receive $IFM payouts directly to their manager vault.", icon: Trophy },
+              { title: "Operational Fuel", desc: "Pay player wages and upgrades.", icon: Cpu, img: aboutHero },
+              { title: "Governance Power", desc: "Stake $IFM to vote on proposals.", icon: Shield, img: mintImg },
+              { title: "Prize Distributions", desc: "Direct payouts to your vault.", icon: Trophy, img: rewardsImg },
             ].map((pillar, i) => (
-              <GlassCard key={i} className="p-12 border-white/5 hover:bg-primary/5 group">
-                <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
-                  <pillar.icon className="h-8 w-8" />
+              <GlassCard key={i} className="p-0 border-white/5 hover:bg-primary/5 group overflow-hidden aspect-[3/4]">
+                <div className="relative h-2/3">
+                  {pillar.img && (
+                    <Image src={pillar.img.imageUrl} alt={pillar.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center text-primary">
+                    <pillar.icon className="h-12 w-12" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold font-headline uppercase mb-6">{pillar.title}</h3>
-                <p className="text-muted-foreground font-light leading-relaxed">{pillar.desc}</p>
+                <div className="p-8 h-1/3 flex flex-col justify-center">
+                  <h3 className="text-xl font-bold font-headline uppercase mb-2">{pillar.title}</h3>
+                  <p className="text-muted-foreground font-light text-xs">{pillar.desc}</p>
+                </div>
               </GlassCard>
             ))}
           </div>
 
           <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden h-[400px]" hoverable={false}>
-             <Image src={rewardsImg?.imageUrl || ""} alt="Rewards" fill className="object-cover opacity-40" data-ai-hint={rewardsImg?.imageHint} />
+             <Image src={rewardsImg?.imageUrl || ""} alt="Rewards" fill className="object-cover opacity-40" data-ai-hint="golden treasure" />
              <div className="absolute inset-0 flex items-center justify-center text-center p-12">
                 <div className="space-y-6 max-w-2xl">
                     <h3 className="text-4xl md:text-5xl font-bold font-headline uppercase tracking-tight">TRANSPARENT <span className="text-primary italic">REWARDS</span></h3>

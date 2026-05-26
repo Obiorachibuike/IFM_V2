@@ -46,6 +46,7 @@ export default function HomePage() {
   const stadiumImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
   const playerImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
   const missionImg = PlaceHolderImages.find(i => i.id === "mission-gameplay")
+  const tournamentImg = PlaceHolderImages.find(i => i.id === "esports-tournament")
 
   const nftGenesisAssets = [
     {
@@ -97,7 +98,6 @@ export default function HomePage() {
       
       {/* 1. CINEMATIC HERO SECTION */}
       <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden">
-        {/* Background Visual System */}
         <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#0052FF]/20 via-background to-background" />
           {heroImg && (
@@ -110,7 +110,6 @@ export default function HomePage() {
               data-ai-hint="futuristic stadium"
             />
           )}
-          {/* Volumetric Atmosphere */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/80" />
           <div className="stadium-light-sweep" />
@@ -118,10 +117,8 @@ export default function HomePage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full radial-glow-blue opacity-40 blur-[120px]" />
         </motion.div>
 
-        {/* Floating Holographic UI Panels (Layered Depth) */}
         <div className="absolute inset-0 pointer-events-none z-10 hidden lg:block">
           <div className="container mx-auto h-full relative max-w-7xl">
-            {/* Market Values Panel */}
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -145,7 +142,6 @@ export default function HomePage() {
               </GlassCard>
             </motion.div>
 
-            {/* Tactical Formation Panel */}
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -168,7 +164,6 @@ export default function HomePage() {
               </GlassCard>
             </motion.div>
 
-            {/* Token Analytics */}
             <motion.div
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
@@ -188,7 +183,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Hero Content */}
         <div className="container relative z-20 px-6 max-w-7xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -227,18 +221,6 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-
-            {/* Trust Indicators */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              transition={{ delay: 1.5 }}
-              className="flex justify-center items-center gap-12 pt-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
-            >
-               <div className="flex items-center gap-3"><ShieldCheck className="h-5 w-5" /><span className="text-[10px] font-bold uppercase tracking-widest">Verified Assets</span></div>
-               <div className="flex items-center gap-3"><LayoutDashboard className="h-5 w-5" /><span className="text-[10px] font-bold uppercase tracking-widest">Neural Simulation</span></div>
-               <div className="flex items-center gap-3"><Trophy className="h-5 w-5" /><span className="text-[10px] font-bold uppercase tracking-widest">Pro Leagues</span></div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -328,6 +310,101 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 3. VISUAL MISSION SECTION - MORE IMAGERY */}
+      <section className="py-32 relative bg-card/10 border-t border-white/5 overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+              <Badge className="bg-primary/10 text-primary border-primary/20">The Ecosystem Vision</Badge>
+              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
+                REDEFINING <br /><span className="text-gradient-blue italic">MANAGEMENT</span>
+              </h2>
+              <p className="text-xl text-muted-foreground font-light leading-relaxed">
+                IFM merges the tactical depth of a world-class simulation with the sovereignty of blockchain ownership. Every decision you make is etched into your club's history.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8">
+                {[
+                  { icon: Target, title: "Tactical Depth", img: scoutImg },
+                  { icon: Shield, title: "Digital Assets", img: badgeImg },
+                ].map((item, i) => (
+                  <GlassCard key={i} className="p-0 border-white/10 overflow-hidden aspect-square relative group">
+                    {item.img && (
+                      <Image src={item.img.imageUrl} alt={item.title} fill className="object-cover brightness-50 group-hover:scale-110 transition-transform duration-700" />
+                    )}
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-background to-transparent">
+                      <h4 className="font-bold text-white uppercase tracking-widest text-sm">{item.title}</h4>
+                    </div>
+                  </GlassCard>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-10 bg-primary/20 blur-[100px] rounded-full" />
+              <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue relative aspect-[4/5]">
+                {missionImg && (
+                  <Image 
+                    src={missionImg.imageUrl} 
+                    alt={missionImg.description} 
+                    fill
+                    className="object-cover brightness-75"
+                    data-ai-hint={missionImg.imageHint}
+                  />
+                )}
+                <div className="absolute bottom-10 left-10 right-10">
+                  <GlassCard className="p-6 bg-black/60 backdrop-blur-xl border-white/10">
+                    <div className="flex items-center gap-4">
+                      <div className="h-1 w-12 bg-primary" />
+                      <span className="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Official Game Engine Render</span>
+                    </div>
+                  </GlassCard>
+                </div>
+              </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. IMMERSIVE GALLERY - ALL IMAGES */}
+      <section className="py-32 relative border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-24 space-y-4">
+            <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">CINEMATIC <span className="text-primary italic">MOMENTS</span></h2>
+            <p className="text-muted-foreground text-xl font-light">The atmosphere of the IFM world, captured in 8K fidelity.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[stadiumImg, tournamentImg, missionImg].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <GlassCard className="p-0 border-white/10 overflow-hidden aspect-[16/10] group">
+                  {img && (
+                    <Image src={img.imageUrl} alt="Gallery" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  )}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* NFT DETAIL MODAL */}
       <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
         <DialogContent className="max-w-4xl bg-[#05070D]/95 border-white/10 backdrop-blur-[40px] rounded-[2.5rem] overflow-hidden p-0 gap-0">
@@ -386,97 +463,6 @@ export default function HomePage() {
           )}
         </DialogContent>
       </Dialog>
-
-      {/* 3. THE IFM MISSION */}
-      <section className="py-32 relative bg-card/10 border-t border-white/5">
-        <div className="absolute inset-0 radial-glow-blue opacity-5" />
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <Badge className="bg-primary/10 text-primary border-primary/20">The Ecosystem Vision</Badge>
-              <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase leading-none tracking-tighter">
-                REDEFINING <br /><span className="text-gradient-blue italic">MANAGEMENT</span>
-              </h2>
-              <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                IFM merges the tactical depth of a world-class simulation with the sovereignty of blockchain ownership. Every decision you make is etched into your club's history.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  { icon: Target, title: "Tactical Depth", desc: "Engineered for pure strategic mastery." },
-                  { icon: Shield, title: "Digital Assets", desc: "True ownership of players and clubs." },
-                  { icon: Coins, title: "Earn Rewards", desc: "Convert performance into $IFM tokens." },
-                  { icon: Activity, title: "Live Economy", desc: "A thriving marketplace for elite assets." },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-center group">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                      <item.icon className="h-5 w-5" />
-                    </div>
-                    <span className="font-bold text-sm text-white uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">{item.title}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue">
-                {missionImg && (
-                  <Image 
-                    src={missionImg.imageUrl} 
-                    alt={missionImg.description} 
-                    width={1200} 
-                    height={800} 
-                    className="w-full h-auto brightness-75"
-                    data-ai-hint={missionImg.imageHint}
-                  />
-                )}
-              </GlassCard>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. COMPARISON SECTION */}
-      <section className="py-32 relative bg-card/20 border-y border-white/5">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-        <div className="container mx-auto px-6 max-w-5xl relative z-10">
-          <div className="text-center mb-20 space-y-4">
-            <h2 className="text-5xl font-headline font-bold uppercase tracking-tighter">THE <span className="text-gradient-blue italic">SOVEREIGNTY</span> GAP</h2>
-            <p className="text-muted-foreground text-lg font-light">Why traditional managers fail in the digital ownership era.</p>
-          </div>
-          
-          <GlassCard className="overflow-hidden border-white/10 bg-black/40" hoverable={false}>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
-                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground text-xs">Feature</th>
-                    <th className="p-8 font-headline uppercase tracking-widest text-muted-foreground text-xs">Traditional Sims</th>
-                    <th className="p-8 font-headline uppercase tracking-widest text-primary italic text-xs">IFM Protocol</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonData.map((row, i) => (
-                    <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                      <td className="p-8 font-bold text-white uppercase tracking-tighter text-sm">{row.feature}</td>
-                      <td className="p-8 text-muted-foreground text-sm font-light">{row.trad}</td>
-                      <td className="p-8 text-primary font-bold text-sm">{row.ifm}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </GlassCard>
-        </div>
-      </section>
 
       <RoadmapSection />
       <EarlyAccessForm />
