@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info, BookOpen } from "lucide-react"
+import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info, BookOpen, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -15,6 +15,7 @@ const navItems = [
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
   { name: "Insights", href: "/blog", icon: BookOpen },
+  { name: "FAQ", href: "/faq", icon: HelpCircle },
   { name: "Roadmap", href: "/roadmap", icon: Map },
   { name: "Team", href: "/team", icon: Users },
 ]
