@@ -9,7 +9,7 @@ import {
   Shield, Target, Activity, Cpu, Trophy, Zap, 
   Play, LayoutDashboard, Microscope, Network,
   ArrowRight, Users, Sparkles, ChevronRight,
-  History, BarChart3, Coins, Rocket
+  History, BarChart3, Coins, Rocket, Gauge, Database
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -102,6 +102,11 @@ export default function GameplayPage() {
             </motion.div>
           </motion.div>
         </div>
+        
+        {/* Banner Overlay */}
+        <div className="absolute top-24 left-12 hidden md:block">
+           <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.5em]">Command Center Protocol: Operational</span>
+        </div>
       </section>
 
       {/* 2. CORE GAME LOOP - THE PROGRESSION CYCLE */}
@@ -156,6 +161,9 @@ export default function GameplayPage() {
                         </div>
                      </div>
                   </div>
+                  <div className="absolute top-12 right-12">
+                     <h4 className="text-xl font-bold text-white uppercase tracking-[0.4em] italic bg-accent text-background px-4 py-1">SYSTEM CYCLE: ACTIVE</h4>
+                  </div>
                </GlassCard>
             </motion.div>
           </div>
@@ -197,6 +205,10 @@ export default function GameplayPage() {
                   {tacticsImg && (
                     <Image src={tacticsImg.imageUrl} alt="Tactical Board" fill className="object-cover" />
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                  <div className="absolute bottom-6 left-8">
+                     <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em] bg-primary px-4 py-1">TACTICAL INTERFACE: HUD_SQUAD_V2</span>
+                  </div>
                </GlassCard>
             </motion.div>
           </div>

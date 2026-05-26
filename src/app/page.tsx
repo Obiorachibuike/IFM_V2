@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -50,7 +51,7 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col w-full bg-background selection:bg-primary selection:text-white">
       
-      {/* 1. CINEMATIC BANNER - CLEAN BACKGROUND */}
+      {/* 1. CINEMATIC BANNER - TEXT OVERLAY */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
@@ -68,10 +69,29 @@ export default function HomePage() {
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-10" />
         </div>
+
+        <div className="container relative z-10 mx-auto px-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="space-y-6"
+          >
+             <div className="inline-flex items-center gap-4 px-6 py-2 bg-primary/10 backdrop-blur-xl border border-primary/30 rounded-full mb-8">
+               <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+               <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">Genesis Protocol Active</span>
+             </div>
+             <h1 className="text-5xl md:text-9xl font-bold font-headline tracking-tighter uppercase leading-none">
+               THE DAWN OF <br />
+               <span className="text-gradient-blue italic">SOVEREIGNTY.</span>
+             </h1>
+             <p className="text-muted-foreground uppercase tracking-[0.6em] text-xs font-bold opacity-60">Phase 1: Establishing the Empire</p>
+          </motion.div>
+        </div>
       </section>
 
       {/* 2. CORE INTRO - THE MISSION */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden -mt-20">
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
           <motion.div 
             initial="initial"
@@ -85,13 +105,13 @@ export default function HomePage() {
               </Badge>
             </motion.div>
             
-            <motion.h1 
+            <motion.h2 
               variants={fadeIn}
               className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8] mb-4"
             >
               BUILD. OWN. <br />
               <span className="text-gradient-blue italic">DOMINATE.</span>
-            </motion.h1>
+            </motion.h2>
             
             <motion.p 
               variants={fadeIn}
@@ -107,20 +127,6 @@ export default function HomePage() {
               <Button asChild variant="outline" size="lg" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
                 <Link href="/gameplay">WATCH GAMEPLAY</Link>
               </Button>
-            </motion.div>
-
-            <motion.div variants={fadeIn} className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/5 w-full max-w-5xl">
-               {[
-                 { label: "Active Clubs", value: "85,420" },
-                 { label: "Matches Simulated", value: "1.2M+" },
-                 { label: "Rewards Paid", value: "4.8M $IFM" },
-                 { label: "Genesis Tier", value: "ALPHA" }
-               ].map((stat, i) => (
-                 <div key={i} className="space-y-1">
-                   <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{stat.label}</div>
-                   <div className="text-3xl font-bold font-headline text-white">{stat.value}</div>
-                 </div>
-               ))}
             </motion.div>
           </motion.div>
         </div>
@@ -159,9 +165,13 @@ export default function HomePage() {
                   )}
                   <div className="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-background via-transparent to-transparent">
                      <div className="space-y-6">
-                        <Badge className="bg-primary text-white font-bold px-4 py-1">TACTICAL HUB v2.4</Badge>
-                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight">THE ARCHITECT'S <br />COMMAND</h3>
+                        <Badge className="bg-primary text-white font-bold px-4 py-1 uppercase tracking-widest text-[10px]">Command Overlay Active</Badge>
+                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight">THE ARCHITECT'S <br />HUB</h3>
+                        <p className="text-muted-foreground text-sm font-light uppercase tracking-widest">Processing Tactical Data: 12.8M Iterations/sec</p>
                      </div>
+                  </div>
+                  <div className="absolute top-8 right-8">
+                    <span className="text-[8px] font-mono text-primary/40 rotate-90 origin-right whitespace-nowrap">INTERFACE: SQUAD_MGMT_v2.4</span>
                   </div>
                </GlassCard>
             </motion.div>
@@ -179,10 +189,10 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Squad Building", desc: "Scout, trade, and build a world-class squad in the transfer market.", icon: Users, image: marketImg },
-              { title: "Competition", desc: "Compete in an 8-division decentralized pyramid for global glory.", icon: Trophy, image: leagueImg },
-              { title: "Development", desc: "Evolve academy prospects into legendary digital assets.", icon: Microscope, image: academyImg },
-              { title: "Ownership", desc: "True ownership of your club, stadium, and legacy assets.", icon: ShieldCheck, image: playerCardImg }
+              { title: "Squad Building", desc: "Scout, trade, and build a world-class squad in the transfer market.", icon: Users, image: marketImg, label: "Market Intel" },
+              { title: "Competition", desc: "Compete in an 8-division decentralized pyramid for global glory.", icon: Trophy, image: leagueImg, label: "Pyramid Data" },
+              { title: "Development", desc: "Evolve academy prospects into legendary digital assets.", icon: Microscope, image: academyImg, label: "Academy Scan" },
+              { title: "Ownership", desc: "True ownership of your club, stadium, and legacy assets.", icon: ShieldCheck, image: playerCardImg, label: "Asset Verify" }
             ].map((pillar, i) => (
               <GlassCard key={i} className="p-0 group overflow-hidden border-white/5 flex flex-col" glowColor={i % 2 === 0 ? "blue" : "gold"}>
                 <div className="relative aspect-[4/5]">
@@ -190,6 +200,9 @@ export default function HomePage() {
                     <Image src={pillar.image.imageUrl} alt={pillar.title} fill className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent" />
+                  <div className="absolute top-4 left-4">
+                     <Badge className="bg-black/60 backdrop-blur-md text-[8px] uppercase tracking-widest border-white/10">{pillar.label}</Badge>
+                  </div>
                   <div className="absolute bottom-6 left-8">
                     <div className="h-12 w-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                       <pillar.icon className="h-6 w-6" />
@@ -206,40 +219,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. SEASONAL GAMEPLAY PREVIEW */}
-      <section className="py-48 relative overflow-hidden border-y border-white/5">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32">
-            <div className="space-y-6">
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Temporal Loop</Badge>
-              <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE SEASONAL <br /><span className="text-primary italic">CADENCE</span></h2>
-            </div>
-            <p className="text-muted-foreground text-xl font-light max-w-md lg:text-right">Every IFM season is a 4-week tactical marathon. Consistent management is rewarded with persistent club growth.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { step: "01", title: "Pre-Season", desc: "Tactical Setup", icon: Target },
-              { step: "02", title: "Market Open", desc: "Squad Building", icon: Zap },
-              { step: "03", title: "Academy Reveal", desc: "Talent Discovery", icon: Sparkles },
-              { step: "04", title: "Matchdays", desc: "Live Simulation", icon: Play },
-              { step: "05", title: "Training", desc: "Asset Growth", icon: History },
-              { step: "06", title: "The Payout", desc: "Reward Cycle", icon: Trophy }
-            ].map((phase, i) => (
-              <GlassCard key={i} className="p-8 border-white/5 hover:bg-primary/5 transition-all group" hoverable={true}>
-                <div className="text-4xl font-headline font-bold text-primary/10 italic mb-6">{phase.step}</div>
-                <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <phase.icon className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm uppercase tracking-tight mb-2">{phase.title}</h5>
-                <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">{phase.desc}</p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. MATCH ENGINE SHOWCASE */}
+      {/* 5. MATCH ENGINE SHOWCASE */}
       <section className="py-48 relative bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -271,10 +251,14 @@ export default function HomePage() {
                   {matchImg && (
                     <Image src={matchImg.imageUrl} alt="Match Engine" fill className="object-cover brightness-75" />
                   )}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
                     <div className="h-20 w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-xl animate-pulse cursor-pointer">
                       <Play className="h-8 w-8 text-primary fill-current" />
                     </div>
+                    <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em] bg-black/40 px-4 py-2 rounded-full backdrop-blur-md">Live Stream: Cycle 8.42</span>
+                  </div>
+                  <div className="absolute bottom-6 right-8">
+                     <Badge variant="outline" className="border-primary/40 text-primary uppercase text-[8px] tracking-widest">Broadcast Feed: High Fidelity</Badge>
                   </div>
                 </GlassCard>
              </motion.div>

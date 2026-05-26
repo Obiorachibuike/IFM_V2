@@ -121,6 +121,11 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
         </div>
+        
+        {/* Banner callout */}
+        <div className="absolute bottom-12 left-12 hidden md:block">
+           <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">System Node: Central Architecture / 001</span>
+        </div>
       </section>
 
       {/* 2. THE SEASONAL CADENCE - VISUAL TIMELINE */}
@@ -148,32 +153,36 @@ export default function AboutPage() {
                 desc: "Strengthen squads, finalize tactics, and define the seasonal objective during the 48-hour window. Infrastructure upgrades are prioritized here.", 
                 icon: Target, 
                 day: "Day 1-2",
-                image: tacticsImg
+                image: tacticsImg,
+                overlay: "Tactical Configuration"
               },
               { 
                 title: "Academy Reveal", 
                 desc: "Every club generates unique youth prospects as NFTs. Analyze their genetic potential and secure them to your academy registry.", 
                 icon: Microscope, 
                 day: "Day 3",
-                image: academyImg
+                image: academyImg,
+                overlay: "Prospect Discovery"
               },
               { 
                 title: "Daily Matches", 
                 desc: "22 days of competitive league fixtures against real managers worldwide. Live tactical adjustments and Neural Fatigue management are critical.", 
                 icon: Play, 
                 day: "Days 4-25",
-                image: matchImg
+                image: matchImg,
+                overlay: "Live Competition"
               },
               { 
                 title: "The Payout", 
                 desc: "Final standings determine promotion, relegation, and reward distributions from the global treasury. Your on-chain history is permanently recorded.", 
                 icon: Trophy, 
                 day: "Days 26-28",
-                image: rewardsImg
+                image: rewardsImg,
+                overlay: "Yield Calculation"
               },
             ].map((step, i) => (
               <motion.div 
-                key={i}
+                key={i} 
                 variants={fadeIn}
                 initial="initial"
                 whileInView="whileInView"
@@ -198,6 +207,14 @@ export default function AboutPage() {
                         <Image src={step.image.imageUrl} alt={step.title} fill className="object-cover brightness-75 hover:scale-105 transition-transform duration-1000" data-ai-hint={step.image.imageHint} />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                         <span className="text-[10px] font-bold text-white uppercase tracking-[0.8em] bg-black/40 px-6 py-2 rounded-full backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                           {step.overlay}
+                         </span>
+                      </div>
+                      <div className="absolute bottom-4 left-6">
+                        <span className="text-[8px] font-bold text-primary uppercase tracking-[0.4em]">{step.day} Phase active</span>
+                      </div>
                    </GlassCard>
                 </div>
               </motion.div>
@@ -269,6 +286,9 @@ export default function AboutPage() {
                         </div>
                      </div>
                   </div>
+                  <div className="absolute top-12 left-12">
+                     <h4 className="text-xl font-bold text-white uppercase tracking-[0.3em]">IFM PROTOCOL: TREASURY_V4</h4>
+                  </div>
                </GlassCard>
             </motion.div>
           </div>
@@ -316,11 +336,14 @@ export default function AboutPage() {
                     <div className="absolute top-8 right-8">
                        <Badge className="bg-accent text-background font-bold px-6 py-2 uppercase tracking-[0.2em] shadow-2xl">LEGENDARY</Badge>
                     </div>
+                    <div className="absolute top-8 left-8">
+                       <span className="text-[10px] font-bold text-accent uppercase tracking-widest">Digital Asset: PLR_942</span>
+                    </div>
                     <div className="absolute bottom-10 left-10 right-10">
                        <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4">
                           <div className="flex justify-between items-end">
                              <div>
-                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">On-Chain Asset</div>
+                                <div className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">On-Chain Identity</div>
                                 <div className="text-3xl font-bold font-headline uppercase leading-none">STORM v1.0</div>
                              </div>
                              <div className="text-right">
@@ -380,6 +403,9 @@ export default function AboutPage() {
                   <div className="absolute bottom-6 left-8 flex items-center gap-4">
                      <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" />
                      <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Live Session: Simulated Alpha</span>
+                  </div>
+                  <div className="absolute top-6 left-8">
+                     <h4 className="text-xl font-bold text-white uppercase tracking-widest italic bg-primary px-4 py-1">NEURAL BROADCAST</h4>
                   </div>
                </GlassCard>
             </motion.div>
