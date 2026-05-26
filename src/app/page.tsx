@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -24,6 +25,7 @@ import {
   DialogHeader,
 } from "@/components/ui/dialog"
 import Autoplay from "embla-carousel-autoplay"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 const comparisonData = [
   { feature: "Digital Ownership", trad: "None (License Only)", ifm: "Full (On-Chain Assets)" },
@@ -80,6 +82,7 @@ export default function HomePage() {
   const containerRef = React.useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] })
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
 
   const [selectedAsset, setSelectedAsset] = React.useState<typeof nftGenesisAssets[0] | null>(null)
   
@@ -93,8 +96,10 @@ export default function HomePage() {
       {/* 1. HERO SECTION - STADIUM CINEMATIC WITH RADIAL GLOW */}
       <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0 z-0">
+          {/* Failsafe Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
           <Image
-            src="https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"
+            src={heroImg?.imageUrl || "https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"}
             alt="Cinematic Stadium"
             fill
             className="object-cover brightness-[0.4] grayscale-[0.2]"
@@ -105,8 +110,6 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-20" />
-          
-          {/* Custom Radial Glow Layer */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full radial-glow-blue opacity-50" />
         </motion.div>
 

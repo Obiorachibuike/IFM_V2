@@ -2,12 +2,14 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
 import { Coins, Lock, Zap, TrendingUp, ShieldCheck, Rocket, ArrowRight, Target } from "lucide-react"
 import { motion } from "framer-motion"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 const allocationData = [
   { name: 'Ecosystem Rewards', value: 40, color: '#F5B041' },
@@ -19,12 +21,24 @@ const allocationData = [
 ]
 
 export default function TokenomicsPage() {
+  const heroImg = PlaceHolderImages.find(i => i.id === "token-visual")
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D]">
       
       {/* 1. TOKEN HERO - THE ENGINE */}
-      <section className="relative pt-48 pb-32 overflow-hidden">
+      <section className="relative pt-48 pb-32 overflow-hidden min-h-[70vh] flex items-center">
+        {/* Background System */}
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-background" />
+          <Image 
+            src={heroImg?.imageUrl || ""}
+            alt="Tokenomics Hero"
+            fill
+            className="object-cover opacity-10 grayscale brightness-50"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-accent/5 blur-[150px] rounded-full" />
           <div className="absolute inset-0 football-grid opacity-10" />
         </div>

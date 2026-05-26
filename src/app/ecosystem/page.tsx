@@ -15,18 +15,20 @@ export default function EcosystemPage() {
   const tokenImg = PlaceHolderImages.find(i => i.id === "token-visual")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const nftImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
+  const aboutHero = PlaceHolderImages.find(i => i.id === "about-hero")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-background">
       
       {/* 1. ECOSYSTEM HERO */}
-      <section className="relative pt-48 pb-32 overflow-hidden">
+      <section className="relative pt-48 pb-32 overflow-hidden min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-background" />
           <Image 
-            src="https://picsum.photos/seed/ifm-eco-hero/1920/1080"
+            src={aboutHero?.imageUrl || ""}
             alt="Ecosystem Hero"
             fill
-            className="object-cover opacity-10 grayscale"
+            className="object-cover opacity-20 grayscale brightness-50"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />

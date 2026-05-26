@@ -19,17 +19,33 @@ const marketItems = [
 ]
 
 export default function MarketplacePage() {
+  const heroImg = PlaceHolderImages.find(i => i.id === "mint-preview")
+
   return (
     <div className="flex flex-col w-full min-h-screen">
-      <section className="relative pt-40 pb-20 overflow-hidden">
+      <section className="relative pt-48 pb-20 overflow-hidden min-h-[50vh] flex items-center">
+        {/* Background System */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+          <Image 
+            src={heroImg?.imageUrl || ""}
+            alt="Marketplace Hero"
+            fill
+            className="object-cover opacity-20 grayscale brightness-50"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          <div className="absolute inset-0 radial-glow-blue opacity-20" />
+        </div>
+
         <div className="container relative z-10 mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
             <div className="max-w-3xl space-y-6">
-              <Badge className="bg-primary/10 text-primary border-primary/30">TRANSFER MARKET</Badge>
+              <Badge className="bg-primary/10 text-primary border-primary/30 px-4 py-1">TRANSFER MARKET</Badge>
               <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase leading-none">
                 THE GLOBAL <span className="text-accent italic">EXCHANGE</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl font-light">
                 Trade club licenses, elite player cards, and stadium assets in the most advanced digital football economy.
               </p>
             </div>
@@ -47,7 +63,7 @@ export default function MarketplacePage() {
               <Button variant="outline" className="h-14 px-6 border-white/10 gap-2 hover:bg-white/5">
                 <SlidersHorizontal className="h-4 w-4" /> Filters
               </Button>
-              <Button className="h-14 px-8 bg-accent hover:bg-accent/90 glow-gold text-background gap-2">
+              <Button className="h-14 px-8 bg-accent hover:bg-accent/90 glow-gold text-background gap-2 font-bold rounded-xl">
                 <ShoppingCart className="h-4 w-4" /> My Inventory
               </Button>
             </div>
@@ -93,7 +109,7 @@ export default function MarketplacePage() {
                         <div className="text-[10px] text-muted-foreground uppercase">Price</div>
                         <div className="text-lg font-bold text-white">{item.price}</div>
                       </div>
-                      <Button size="sm" className="bg-white/10 hover:bg-accent group-hover:bg-accent transition-all hover:text-background">
+                      <Button size="sm" className="bg-white/10 hover:bg-accent group-hover:bg-accent transition-all hover:text-background font-bold rounded-lg">
                         Buy Now
                       </Button>
                     </div>

@@ -15,23 +15,26 @@ export default function GameplayPage() {
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
   const trainingImg = PlaceHolderImages.find(i => i.id === "training-facility")
   const scoutingImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
+  const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
 
   return (
     <div className="flex flex-col w-full bg-background">
       
       {/* 1. GAMEPLAY HERO - BROADCAST STYLE */}
       <section className="relative pt-48 pb-32 overflow-hidden min-h-[70vh] flex items-center">
+        {/* Background System */}
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
           <Image 
-            src="https://picsum.photos/seed/ifm-gameplay-hero/1920/1080"
+            src={heroImg?.imageUrl || ""}
             alt="Gameplay Hero"
             fill
-            className="object-cover opacity-20 grayscale"
+            className="object-cover opacity-30 grayscale brightness-50"
             priority
             data-ai-hint="football manager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-          <div className="absolute inset-0 radial-glow-blue opacity-20" />
+          <div className="absolute inset-0 radial-glow-blue opacity-30" />
         </div>
 
         <div className="container relative z-10 px-6 max-w-7xl mx-auto">
