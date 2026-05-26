@@ -103,21 +103,27 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     "imageHint": "football match highlight"
   },
   {
-    "id": "blog-thumb-2",
-    "description": "Tactical dashboard UI for strategy guide",
-    "imageUrl": "https://picsum.photos/seed/ifm-blog-2/800/600",
-    "imageHint": "soccer strategy dashboard"
+    "id": "studio-hq",
+    "description": "Futuristic game development studio interior, high-tech monitors, football visuals",
+    "imageUrl": "https://picsum.photos/seed/ifm-hq/1200/800",
+    "imageHint": "modern tech studio"
   },
   {
-    "id": "blog-thumb-3",
-    "description": "Ecosystem token reward flow visual",
-    "imageUrl": "https://picsum.photos/seed/ifm-blog-3/800/600",
-    "imageHint": "digital economy flow"
+    "id": "tech-pillar",
+    "description": "Complex neural network diagram mixed with football pitch geometry",
+    "imageUrl": "https://picsum.photos/seed/ifm-tech/800/600",
+    "imageHint": "neural network architecture"
   },
   {
-    "id": "blog-thumb-4",
-    "description": "Developer console with match engine code",
-    "imageUrl": "https://picsum.photos/seed/ifm-blog-4/800/600",
-    "imageHint": "coding dashboard UI"
+    "id": "design-pillar",
+    "description": "Sleek football UI design systems on a digital whiteboard",
+    "imageUrl": "https://picsum.photos/seed/ifm-design/800/600",
+    "imageHint": "UI design board"
+  },
+  {
+    "id": "economy-pillar",
+    "description": "Abstract 3D visualization of a global football economy flow",
+    "imageUrl": "https://picsum.photos/seed/ifm-economy/800/600",
+    "imageHint": "digital economy visualization"
   }
 ];
