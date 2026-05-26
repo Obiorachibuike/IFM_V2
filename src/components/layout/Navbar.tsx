@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { name: "Home", href: "/", icon: Rocket },
+  { name: "About", href: "/about", icon: Info },
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },

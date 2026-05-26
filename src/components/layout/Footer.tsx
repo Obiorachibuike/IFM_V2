@@ -41,6 +41,7 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg font-bold mb-8 text-white uppercase tracking-widest text-sm">Universe</h4>
             <ul className="space-y-4 text-sm font-medium">
+              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">The Vision</Link></li>
               <li><Link href="/gameplay" className="text-muted-foreground hover:text-primary transition-colors">Gameplay Protocol</Link></li>
               <li><Link href="/ecosystem" className="text-muted-foreground hover:text-primary transition-colors">Digital Sovereignty</Link></li>
               <li><Link href="/roadmap" className="text-muted-foreground hover:text-primary transition-colors">Expansion Map</Link></li>
@@ -53,8 +54,8 @@ export function Footer() {
             <ul className="space-y-4 text-sm font-medium">
               <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Insights & Meta</Link></li>
               <li><Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">Clarity Base</Link></li>
+              <li><Link href="/team" className="text-muted-foreground hover:text-primary transition-colors">Elite Personnel</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper v4.0</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Brand Assets</Link></li>
             </ul>
           </div>
 
