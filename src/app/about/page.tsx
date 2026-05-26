@@ -65,6 +65,7 @@ export default function AboutPage() {
               fill 
               className="object-cover opacity-40 grayscale-[0.2] brightness-[0.4]"
               priority
+              data-ai-hint="cinematic football tech"
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent" />
@@ -198,7 +199,7 @@ export default function AboutPage() {
                 <div className={cn(i % 2 === 1 ? "lg:order-1" : "lg:order-2")}>
                    <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden aspect-video relative" hoverable={false}>
                       {step.image && (
-                        <Image src={step.image.imageUrl} alt={step.title} fill className="object-cover brightness-75 hover:scale-105 transition-transform duration-1000" />
+                        <Image src={step.image.imageUrl} alt={step.title} fill className="object-cover brightness-75 hover:scale-105 transition-transform duration-1000" data-ai-hint={step.image.imageHint} />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                    </GlassCard>
@@ -244,7 +245,7 @@ export default function AboutPage() {
                   <div className="absolute -inset-10 bg-accent/10 blur-[100px] rounded-full animate-pulse" />
                   <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full relative group" hoverable={false}>
                     {playerCardImg && (
-                      <Image src={playerCardImg.imageUrl} alt="NFT Card" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                      <Image src={playerCardImg.imageUrl} alt="NFT Card" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" data-ai-hint="holographic soccer card" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
                     <div className="absolute top-8 right-8">
@@ -342,7 +343,7 @@ export default function AboutPage() {
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
                   {matchImg && (
-                    <Image src={matchImg.imageUrl} alt="Match Broadcast" fill className="object-cover" />
+                    <Image src={matchImg.imageUrl} alt="Match Broadcast" fill className="object-cover" data-ai-hint="football broadcast simulation" />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
                   <div className="absolute bottom-6 left-8 flex items-center gap-4">
@@ -360,7 +361,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 radial-glow-blue opacity-20" />
         <div className="container relative z-10 mx-auto px-6 max-w-5xl space-y-16">
           <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-            <h2 className="text-7xl md:text-[12rem] font-bold font-headline tracking-tighter uppercase leading-[0.7] mb-12">
+            <h2 className="text-7xl md:text-[12rem] font-bold font-headline tracking-tighter uppercase leading-[0.8] mb-12">
               START YOUR <br />
               <span className="text-gradient-blue italic">DYNASTY</span>
             </h2>

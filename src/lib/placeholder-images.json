@@ -89,24 +89,6 @@
       "description": "Global talent identification interface with holographic map",
       "imageUrl": "https://picsum.photos/seed/ifm-scout-1/800/600",
       "imageHint": "holographic world map"
-    },
-    {
-      "id": "league-table-ui",
-      "description": "Esports broadcast style league table with rankings",
-      "imageUrl": "https://picsum.photos/seed/ifm-league-1/800/1000",
-      "imageHint": "esports leaderboard"
-    },
-    {
-      "id": "development-tree",
-      "description": "Complex player attribute growth tree with holographic nodes",
-      "imageUrl": "https://picsum.photos/seed/ifm-dev-1/800/600",
-      "imageHint": "skill tree dashboard"
-    },
-    {
-      "id": "transfer-market-ui",
-      "description": "High-tech football transfer market with bidding wars",
-      "imageUrl": "https://picsum.photos/seed/ifm-market-1/800/600",
-      "imageHint": "trading dashboard"
     }
   ]
 }
