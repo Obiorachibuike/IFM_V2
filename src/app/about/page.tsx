@@ -10,7 +10,7 @@ import {
   TrendingUp, BarChart3, Clock, Globe, Rocket, 
   Play, Search, LayoutDashboard, Microscope, Network,
   ChevronRight, ArrowRight, ShieldCheck, Activity,
-  Dna, Boxes, HeartPulse, BrainCircuit
+  Dna, Boxes, HeartPulse, BrainCircuit, Sparkles
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -39,7 +39,7 @@ export default function AboutPage() {
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const trainingImg = PlaceHolderImages.find(i => i.id === "training-facility")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
-  const managerImg = PlaceHolderImages.find(i => i.id === "manager-silhouette")
+  const nftImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden">
@@ -160,53 +160,56 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. CORE SYSTEMS - ALTERNATING NARRATIVE */}
-      
-      {/* Academy Section */}
-      <section className="py-48 relative overflow-hidden">
+      {/* 3. NFT OWNERSHIP & ASSETS - THE PROGRESSION LAYER */}
+      <section className="py-48 relative overflow-hidden bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="space-y-12">
-                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Talent Engine</Badge>
-                <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">DEVELOP TALENT. <br /><span className="text-gradient-gold italic">BUILD VALUE.</span></h2>
+                <Badge className="bg-accent/10 text-accent border-accent/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Sovereignty Layer</Badge>
+                <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">ASSETS THAT <br /><span className="text-gradient-gold italic">EVOLVE.</span></h2>
                 <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  Every IFM Club features a bespoke Youth Academy powered by localized neural networks. Every season, fresh prospects are revealed. Analyze their potential, sign the best, and train them into global superstars.
+                  In IFM, your club identity and squad are more than just database entries. They are fully functional NFT assets representing the core layer of your empire's progression.
                 </p>
-                <div className="space-y-6">
+                
+                <div className="space-y-8">
                   {[
-                    "Analyze fresh batches of seasonal prospects",
-                    "Sign high-potential talent to your pro squad",
-                    "Train them to increase specific positional ratings",
-                    "Own your players as verified on-chain assets"
-                  ].map((item, j) => (
-                    <div key={j} className="flex items-center gap-4 text-sm font-medium text-white/80">
-                      <div className="h-2 w-2 rounded-full bg-accent" /> {item}
+                    { title: "NFT Player Cards", desc: "Every player is a unique on-chain asset with a persistent history of performance and growth.", icon: Users },
+                    { title: "Evolving Stadiums", desc: "Your home ground is an NFT that evolves visually as you upgrade capacity and facilities.", icon: Shield },
+                    { title: "Academy Prospects", desc: "Discover and mint seasonal prospects unique to your club's neural geography.", icon: Microscope }
+                  ].map((asset, k) => (
+                    <div key={k} className="flex gap-6 group">
+                      <div className="h-14 w-14 shrink-0 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-all duration-500">
+                        <asset.icon className="h-6 w-6" />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xl font-bold uppercase tracking-tight">{asset.title}</h4>
+                        <p className="text-sm text-muted-foreground font-light">{asset.desc}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
+            
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-              <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden" hoverable={false}>
-                {academyImg && (
-                  <Image src={academyImg.imageUrl} alt="Academy UI" width={800} height={1000} className="w-full h-auto brightness-75" />
+              <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-[4/5]" hoverable={false}>
+                {nftImg && (
+                  <Image src={nftImg.imageUrl} alt="NFT Asset" fill className="object-cover brightness-75 group-hover:scale-105 transition-transform duration-1000" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                   <GlassCard className="p-6 bg-black/60 backdrop-blur-2xl border border-white/10">
-                      <div className="flex justify-between items-center mb-4">
-                        <div className="text-[10px] font-bold text-accent uppercase tracking-widest">Academy Reveal Live</div>
-                        <Badge variant="outline" className="text-[8px] border-accent text-accent">SEASON 4</Badge>
-                      </div>
-                      <div className="flex gap-4">
-                         {[1, 1, 1, 1].map((_, k) => (
-                           <div key={k} className="h-14 flex-1 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                              <Dna className="h-5 w-5 text-accent/40" />
-                           </div>
-                         ))}
-                      </div>
-                   </GlassCard>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-8 left-8 right-8 space-y-4">
+                  <Badge className="bg-accent text-background font-bold px-6 py-2 uppercase tracking-widest">LEGENDARY TIER</Badge>
+                  <div className="p-6 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl">
+                    <div className="flex justify-between items-center mb-4">
+                      <div className="text-[10px] font-bold text-accent uppercase tracking-widest">Digital Ownership Verified</div>
+                      <Sparkles className="h-4 w-4 text-accent animate-pulse" />
+                    </div>
+                    <div className="flex justify-between text-white font-headline text-lg font-bold">
+                      <span>ASSET ID</span>
+                      <span>#IFM-4402</span>
+                    </div>
+                  </div>
                 </div>
               </GlassCard>
             </motion.div>
@@ -214,109 +217,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Match Engine Section */}
-      <section className="py-48 relative bg-card/10 border-y border-white/5 overflow-hidden">
-        <div className="absolute inset-0 radial-glow-blue opacity-10" />
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:order-2">
-              <div className="space-y-12">
-                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Neural Match Engine</Badge>
-                <h2 className="text-6xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-[0.9]">LIVE SIMULATION. <br /><span className="text-gradient-blue italic">TACTICAL MASTERY.</span></h2>
-                <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                  Our bespoke match engine processes 15,000+ tactical variables per cycle. Set your formation pre-match, then react in real-time with tactical overrides and substitutions as the drama unfolds.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <GlassCard className="p-8 border-white/5 bg-white/5 flex flex-col gap-4" hoverable={false}>
-                      <Zap className="h-8 w-8 text-primary" />
-                      <h4 className="text-sm font-bold uppercase tracking-widest">Live Overrides</h4>
-                      <p className="text-xs text-muted-foreground font-light">Adjust formation, intensity, and depth mid-match based on live data.</p>
-                   </GlassCard>
-                   <GlassCard className="p-8 border-white/5 bg-white/5 flex flex-col gap-4" hoverable={false}>
-                      <BrainCircuit className="h-8 w-8 text-primary" />
-                      <h4 className="text-sm font-bold uppercase tracking-widest">Neural Psychology</h4>
-                      <p className="text-xs text-muted-foreground font-light">Monitor player psychological states and fatigue levels in real-time.</p>
-                   </GlassCard>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:order-1">
-              <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden shadow-2xl" hoverable={false}>
-                {matchImg && (
-                  <Image src={matchImg.imageUrl} alt="Match Engine" width={800} height={1000} className="w-full h-auto brightness-75" />
-                )}
-                <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="h-24 w-24 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center animate-pulse backdrop-blur-xl">
-                      <Play className="h-10 w-10 text-primary ml-1" />
-                   </div>
-                </div>
-                <div className="absolute top-8 left-8">
-                   <Badge className="bg-black/60 backdrop-blur-xl border-primary/40 text-primary px-4 py-1.5 flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping" /> LIVE ANALYTICS
-                   </Badge>
-                </div>
-              </GlassCard>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE PYRAMID - DIVISION SYSTEM */}
-      <section className="py-48 relative bg-background">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-32 max-w-4xl mx-auto space-y-8">
-             <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">The Football Pyramid</Badge>
-             <h2 className="text-6xl md:text-9xl font-headline font-bold uppercase tracking-tighter leading-none">THE HIERARCHY OF <br /><span className="text-primary italic">PRECISION</span></h2>
-             <p className="text-muted-foreground text-xl font-light leading-relaxed">
-               IFM utilizes a tiered division structure mirroring the intensity of elite real-world leagues. Fight for promotion or survive relegation in a hyper-competitive global ecosystem.
-             </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-             <div className="space-y-6">
-                {[
-                  { title: "8 Divisions", desc: "A massive competitive pyramid where the number of leagues doubles each tier down.", icon: Network },
-                  { title: "Promotion & Relegation", desc: "Four relegated and two promoted from every league every single season.", icon: TrendingUp },
-                  { title: "Real-Time Rivalries", desc: "Every opponent is a real-world manager building their own digital dynasty.", icon: Users },
-                  { title: "Division Yield", desc: "Higher tiers command significant treasury reward multipliers.", icon: Coins }
-                ].map((feature, i) => (
-                  <GlassCard key={i} className="p-8 border-white/5 bg-white/5 flex gap-8 items-center" hoverable={true}>
-                    <div className="h-16 w-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 transition-all group-hover:bg-primary group-hover:text-white">
-                       <feature.icon className="h-8 w-8" />
-                    </div>
-                    <div>
-                       <h4 className="text-2xl font-bold uppercase tracking-tighter mb-1">{feature.title}</h4>
-                       <p className="text-sm text-muted-foreground font-light">{feature.desc}</p>
-                    </div>
-                  </GlassCard>
-                ))}
-             </div>
-             <div className="relative aspect-square">
-                <div className="absolute inset-0 bg-primary/10 blur-[150px] rounded-full animate-pulse" />
-                <GlassCard className="p-12 border-white/10 bg-black/40 h-full flex flex-col justify-center space-y-4" hoverable={false}>
-                   {[
-                     { div: "Premier Division", clubs: "12 clubs", color: "bg-accent", opacity: 1 },
-                     { div: "Championship", clubs: "24 clubs", color: "bg-primary", opacity: 0.8 },
-                     { div: "League One", clubs: "48 clubs", color: "bg-primary/80", opacity: 0.6 },
-                     { div: "League Two", clubs: "96 clubs", color: "bg-primary/60", opacity: 0.4 },
-                     { div: "Regional Leagues", clubs: "1000+ clubs", color: "bg-primary/40", opacity: 0.2 },
-                   ].map((tier, i) => (
-                     <div 
-                       key={i} 
-                       className={cn("h-20 rounded-2xl border border-white/5 flex items-center justify-between px-10 transition-all hover:scale-[1.02] cursor-default", tier.color)}
-                       style={{ opacity: tier.opacity }}
-                     >
-                        <span className="font-headline text-2xl font-bold uppercase tracking-tight text-white">{tier.div}</span>
-                        <span className="text-xs font-bold uppercase tracking-widest text-white/60">{tier.clubs}</span>
-                     </div>
-                   ))}
-                </GlassCard>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. MANAGEMENT IDENTITIES - CHOOSE YOUR LEGACY */}
+      {/* 4. MANAGEMENT IDENTITIES - CHOOSE YOUR LEGACY */}
       <section className="py-48 relative bg-card/5 border-t border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-32 space-y-8">
@@ -351,7 +252,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. TOKEN & ECOSYSTEM - THE SOVEREIGNTY PROTOCOL */}
+      {/* 5. TOKEN & ECOSYSTEM - THE SOVEREIGNTY PROTOCOL */}
       <section className="py-48 relative overflow-hidden bg-accent/5">
         <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-accent/10 blur-[200px] rounded-full" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -400,7 +301,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. FINAL CTA - THE LEGACY CALL */}
+      {/* 6. FINAL CTA - THE LEGACY CALL */}
       <section className="py-64 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20" />
         <div className="container relative z-10 mx-auto px-6 max-w-5xl space-y-16">

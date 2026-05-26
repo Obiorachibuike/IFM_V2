@@ -7,7 +7,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { Search, SlidersHorizontal, ShoppingCart } from "lucide-react"
+import { Search, SlidersHorizontal, ShoppingCart, Sparkles, Filter } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -18,37 +18,45 @@ export default function MarketplacePage() {
   const club1 = PlaceHolderImages.find(i => i.id === "nft-club-1")
   const club2 = PlaceHolderImages.find(i => i.id === "nft-club-2")
 
+  const rarityTiers = {
+    "Common": "bg-muted text-muted-foreground",
+    "Rare": "bg-blue-600 text-white",
+    "Elite": "bg-primary text-white",
+    "Legendary": "bg-accent text-background",
+    "Iconic": "bg-purple-600 text-white"
+  }
+
   const marketItems = [
     { 
       id: 1, 
       name: "Marcus 'Voltage' Storm", 
-      type: "Player Card", 
+      type: "Player NFT", 
       tier: "Legendary", 
-      price: "4.2 ETH", 
+      price: "12,400 $IFM", 
       image: player1 
     },
     { 
       id: 2, 
       name: "Neo London Stadium", 
-      type: "Stadium Asset", 
+      type: "Infrastructure NFT", 
       tier: "Elite", 
-      price: "12.5 ETH", 
+      price: "45,000 $IFM", 
       image: stadium1 
     },
     { 
       id: 3, 
       name: "Berlin Digital FC", 
-      type: "Club License", 
+      type: "Club License NFT", 
       tier: "Rare", 
-      price: "0.8 ETH", 
+      price: "8,500 $IFM", 
       image: club1 
     },
     { 
       id: 4, 
       name: "Tokyo Cyber Strikers", 
-      type: "Club License", 
-      tier: "Mythic", 
-      price: "18.0 ETH", 
+      type: "Club License NFT", 
+      tier: "Iconic", 
+      price: "150,000 $IFM", 
       image: club2 
     },
   ]
@@ -66,7 +74,6 @@ export default function MarketplacePage() {
               fill
               className="object-cover opacity-20 grayscale brightness-50"
               priority
-              data-ai-hint={heroImg.imageHint}
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
@@ -76,12 +83,12 @@ export default function MarketplacePage() {
         <div className="container relative z-10 mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
             <div className="max-w-3xl space-y-6">
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-4 py-1">TRANSFER MARKET</Badge>
+              <Badge className="bg-primary/10 text-primary border-primary/30 px-4 py-1 uppercase tracking-widest text-[10px] font-bold">The Global Exchange</Badge>
               <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter uppercase leading-none">
-                THE GLOBAL <span className="text-accent italic">EXCHANGE</span>
+                ASSET <span className="text-accent italic">LIQUIDITY</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl font-light">
-                Trade club licenses, elite player cards, and stadium assets in the most advanced digital football economy.
+                Trade verified club licenses, elite player cards, and stadium infrastructure in the ecosystem's native football economy.
               </p>
             </div>
           </div>
@@ -95,11 +102,11 @@ export default function MarketplacePage() {
               />
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="outline" className="h-14 px-6 border-white/10 gap-2 hover:bg-white/5">
-                <SlidersHorizontal className="h-4 w-4" /> Filters
+              <Button variant="outline" className="h-14 px-6 border-white/10 gap-2 hover:bg-white/5 uppercase tracking-widest text-[10px] font-bold">
+                <Filter className="h-4 w-4" /> Filters
               </Button>
-              <Button className="h-14 px-8 bg-accent hover:bg-accent/90 glow-gold text-background gap-2 font-bold rounded-xl">
-                <ShoppingCart className="h-4 w-4" /> My Inventory
+              <Button className="h-14 px-8 bg-accent hover:bg-accent/90 glow-gold text-background gap-2 font-bold rounded-xl uppercase tracking-widest text-[10px]">
+                <ShoppingCart className="h-4 w-4" /> My Vault
               </Button>
             </div>
           </GlassCard>
@@ -113,7 +120,7 @@ export default function MarketplacePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <GlassCard className="group p-0" glowColor={item.tier === 'Mythic' || item.tier === 'Legendary' ? 'gold' : 'none'}>
+                <GlassCard className="group p-0" glowColor={item.tier === 'Iconic' || item.tier === 'Legendary' ? 'gold' : 'blue'}>
                   <div className="relative aspect-[4/5] overflow-hidden">
                     {item.image && (
                       <Image 
@@ -121,33 +128,35 @@ export default function MarketplacePage() {
                         alt={item.name} 
                         fill 
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        data-ai-hint={item.image.imageHint}
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
                     <div className="absolute top-4 right-4">
                       <Badge className={cn(
-                        "font-bold",
-                        item.tier === 'Mythic' ? "bg-purple-600 text-white" :
-                        item.tier === 'Legendary' ? "bg-accent text-background" :
-                        "bg-primary text-white"
+                        "font-bold uppercase tracking-widest px-3 py-1 text-[10px]",
+                        rarityTiers[item.tier as keyof typeof rarityTiers]
                       )}>
                         {item.tier}
                       </Badge>
                     </div>
+                    {item.tier === 'Iconic' && (
+                      <div className="absolute inset-0 border-2 border-purple-500/30 animate-pulse pointer-events-none" />
+                    )}
                   </div>
                   <div className="p-6 space-y-4">
                     <div className="space-y-1">
-                      <div className="text-[10px] text-muted-foreground uppercase tracking-widest">{item.type}</div>
+                      <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold flex items-center gap-2">
+                        {item.type} <Sparkles className="h-3 w-3 text-accent" />
+                      </div>
                       <h3 className="text-xl font-bold font-headline leading-tight">{item.name}</h3>
                     </div>
                     
                     <div className="flex items-center justify-between pt-4 border-t border-white/5">
                       <div className="space-y-1">
-                        <div className="text-[10px] text-muted-foreground uppercase">Price</div>
-                        <div className="text-lg font-bold text-white">{item.price}</div>
+                        <div className="text-[10px] text-muted-foreground uppercase font-bold">Current Bid</div>
+                        <div className="text-lg font-bold text-white tracking-tight">{item.price}</div>
                       </div>
-                      <Button size="sm" className="bg-white/10 hover:bg-accent group-hover:bg-accent transition-all hover:text-background font-bold rounded-lg">
+                      <Button size="sm" className="bg-white/10 hover:bg-accent group-hover:bg-accent transition-all hover:text-background font-bold rounded-lg uppercase text-[10px] tracking-widest px-4">
                         Buy Now
                       </Button>
                     </div>
