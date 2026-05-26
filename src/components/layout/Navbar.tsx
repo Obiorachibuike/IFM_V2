@@ -4,13 +4,14 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket } from "lucide-react"
+import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { name: "Home", href: "/", icon: Rocket },
+  { name: "About", href: "/about", icon: Info },
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
