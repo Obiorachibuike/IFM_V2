@@ -22,7 +22,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
 } from "@/components/ui/dialog"
 import Autoplay from "embla-carousel-autoplay"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -35,54 +34,56 @@ const comparisonData = [
   { feature: "Match Engine", trad: "Standard Simulation", ifm: "Neural AI Processing" },
 ]
 
-const nftGenesisAssets = [
-  {
-    id: 1,
-    name: "Alpha Club License",
-    description: "The foundational permit required to register and manage a professional club in the IFM ecosystem.",
-    importance: "Grants permanent entry into the competitive league system and unlocks eligibility for $IFM rewards.",
-    requirement: "Whitelisted Founding Manager status and successful Phase 1 enrollment.",
-    img: "https://picsum.photos/seed/ifm-badge1/600/800",
-    hint: "gold badge",
-    tier: "Founder"
-  },
-  {
-    id: 2,
-    name: "Legendary Scout Bot",
-    description: "An advanced AI-driven scouting unit designed to identify high-potential youth talent across global networks.",
-    importance: "Drastically increases the efficiency of talent identification and reduces scouting overhead costs.",
-    requirement: "Active Tier 2 Management License or higher ecosystem standing.",
-    img: "https://picsum.photos/seed/ifm-tech1/600/800",
-    hint: "hologram brain",
-    tier: "Legendary"
-  },
-  {
-    id: 3,
-    name: "Neo London Stadium",
-    description: "A premium digital venue capable of hosting Tier 1 championship matches and community events.",
-    importance: "Unlock significant passive revenue streams from ticket sales and commercial matchday activities.",
-    requirement: "Ownership of at least 5 elite player contracts and stadium development tokens.",
-    img: "https://picsum.photos/seed/ifm-stadium1/600/800",
-    hint: "futuristic stadium",
-    tier: "Elite"
-  },
-  {
-    id: 4,
-    name: "Mythic Striker: 'Voltage'",
-    description: "A generation-zero player card featuring peak physical attributes and exclusive tactical traits.",
-    importance: "Provides a definitive competitive edge in high-stakes knockout tournaments and seasonal leagues.",
-    requirement: "Available exclusively through the limited Phase 2 Genesis Mint event.",
-    img: "https://picsum.photos/seed/ifm-player1/600/800",
-    hint: "football player",
-    tier: "Mythic"
-  }
-]
-
 export default function HomePage() {
   const containerRef = React.useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] })
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  
   const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const badgeImg = PlaceHolderImages.find(i => i.id === "nft-club-1")
+  const scoutImg = PlaceHolderImages.find(i => i.id === "scouting-ui")
+  const stadiumImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const playerImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
+  const missionImg = PlaceHolderImages.find(i => i.id === "mission-gameplay")
+
+  const nftGenesisAssets = [
+    {
+      id: 1,
+      name: "Alpha Club License",
+      description: "The foundational permit required to register and manage a professional club in the IFM ecosystem.",
+      importance: "Grants permanent entry into the competitive league system and unlocks eligibility for $IFM rewards.",
+      requirement: "Whitelisted Founding Manager status and successful Phase 1 enrollment.",
+      image: badgeImg,
+      tier: "Founder"
+    },
+    {
+      id: 2,
+      name: "Legendary Scout Bot",
+      description: "An advanced AI-driven scouting unit designed to identify high-potential youth talent across global networks.",
+      importance: "Drastically increases the efficiency of talent identification and reduces scouting overhead costs.",
+      requirement: "Active Tier 2 Management License or higher ecosystem standing.",
+      image: scoutImg,
+      tier: "Legendary"
+    },
+    {
+      id: 3,
+      name: "Neo London Stadium",
+      description: "A premium digital venue capable of hosting Tier 1 championship matches and community events.",
+      importance: "Unlock significant passive revenue streams from ticket sales and commercial matchday activities.",
+      requirement: "Ownership of at least 5 elite player contracts and stadium development tokens.",
+      image: stadiumImg,
+      tier: "Elite"
+    },
+    {
+      id: 4,
+      name: "Mythic Striker: 'Voltage'",
+      description: "A generation-zero player card featuring peak physical attributes and exclusive tactical traits.",
+      importance: "Provides a definitive competitive edge in high-stakes knockout tournaments and seasonal leagues.",
+      requirement: "Available exclusively through the limited Phase 2 Genesis Mint event.",
+      image: playerImg,
+      tier: "Mythic"
+    }
+  ]
 
   const [selectedAsset, setSelectedAsset] = React.useState<typeof nftGenesisAssets[0] | null>(null)
   
@@ -93,19 +94,20 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col w-full relative bg-background">
       
-      {/* 1. HERO SECTION - STADIUM CINEMATIC WITH RADIAL GLOW */}
+      {/* 1. HERO SECTION */}
       <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0 z-0">
-          {/* Failsafe Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
-          <Image
-            src={heroImg?.imageUrl || "https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf"}
-            alt="Cinematic Stadium"
-            fill
-            className="object-cover brightness-[0.4] grayscale-[0.2]"
-            priority
-            data-ai-hint="futuristic stadium"
-          />
+          {heroImg && (
+            <Image
+              src={heroImg.imageUrl}
+              alt={heroImg.description}
+              fill
+              className="object-cover brightness-[0.4] grayscale-[0.2]"
+              priority
+              data-ai-hint={heroImg.imageHint}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
           <div className="stadium-light-sweep" />
@@ -143,7 +145,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. NFT GENESIS CAROUSEL WITH GOLD RADIAL GLOW */}
+      {/* 2. NFT GENESIS CAROUSEL */}
       <section className="py-32 relative bg-background overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 radial-glow-gold opacity-20" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -156,11 +158,6 @@ export default function HomePage() {
               <p className="text-xl text-muted-foreground font-light max-w-xl">
                 Verified digital infrastructure. Rare assets that grant permanent utility and voting power within the IFM DAO.
               </p>
-            </div>
-            <div className="flex gap-4">
-              <Button asChild variant="outline" className="border-white/10 hover:bg-white/5 rounded-xl">
-                <Link href="/marketplace">VIEW MARKETPLACE</Link>
-              </Button>
             </div>
           </div>
 
@@ -189,13 +186,15 @@ export default function HomePage() {
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                         <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
-                          <Image 
-                            src={asset.img} 
-                            alt={asset.name} 
-                            fill 
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                            data-ai-hint={asset.hint}
-                          />
+                          {asset.image && (
+                            <Image 
+                              src={asset.image.imageUrl} 
+                              alt={asset.name} 
+                              fill 
+                              className="object-cover transition-transform duration-700 group-hover:scale-110"
+                              data-ai-hint={asset.image.imageHint}
+                            />
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
                           <div className="absolute top-4 right-4">
                             <Badge className={asset.tier === 'Mythic' || asset.tier === 'Founder' ? 'bg-accent text-background font-bold' : 'bg-primary text-white font-bold'}>
@@ -231,18 +230,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NFT DETAIL MODAL WITH CINEMATIC GRADIENTS */}
+      {/* NFT DETAIL MODAL */}
       <Dialog open={!!selectedAsset} onOpenChange={(open) => !open && setSelectedAsset(null)}>
         <DialogContent className="max-w-4xl bg-[#05070D]/95 border-white/10 backdrop-blur-[40px] rounded-[2.5rem] overflow-hidden p-0 gap-0">
           {selectedAsset && (
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
-                <Image 
-                  src={selectedAsset.img} 
-                  alt={selectedAsset.name} 
-                  fill 
-                  className="object-cover"
-                />
+                {selectedAsset.image && (
+                  <Image 
+                    src={selectedAsset.image.imageUrl} 
+                    alt={selectedAsset.name} 
+                    fill 
+                    className="object-cover"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-8 left-8">
                   <Badge className={selectedAsset.tier === 'Mythic' || selectedAsset.tier === 'Founder' ? 'bg-accent text-background font-bold text-lg px-6 py-2 shadow-2xl' : 'bg-primary text-white font-bold text-lg px-6 py-2 shadow-2xl'}>
@@ -288,7 +289,7 @@ export default function HomePage() {
         </DialogContent>
       </Dialog>
 
-      {/* 3. THE IFM MISSION WITH LINEAR DEPTH */}
+      {/* 3. THE IFM MISSION */}
       <section className="py-32 relative bg-card/10 border-t border-white/5">
         <div className="absolute inset-0 radial-glow-blue opacity-5" />
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -329,14 +330,23 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <GlassCard className="p-0 border-white/10 overflow-hidden glow-blue">
-                <Image src="https://picsum.photos/seed/ifm-game/1200/800" alt="Gameplay" width={1200} height={800} className="w-full h-auto brightness-75" />
+                {missionImg && (
+                  <Image 
+                    src={missionImg.imageUrl} 
+                    alt={missionImg.description} 
+                    width={1200} 
+                    height={800} 
+                    className="w-full h-auto brightness-75"
+                    data-ai-hint={missionImg.imageHint}
+                  />
+                )}
               </GlassCard>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 4. COMPARISON SECTION WITH GOLD ACCENTS */}
+      {/* 4. COMPARISON SECTION */}
       <section className="py-32 relative bg-card/20 border-y border-white/5">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="container mx-auto px-6 max-w-5xl relative z-10">

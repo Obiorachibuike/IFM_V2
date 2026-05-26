@@ -11,15 +11,47 @@ import { Search, SlidersHorizontal, ShoppingCart } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-const marketItems = [
-  { id: 1, name: "Marcus 'Voltage' Storm", type: "Player Card", tier: "Legendary", price: "4.2 ETH", img: "https://picsum.photos/seed/ifm-player/400/600" },
-  { id: 2, name: "Neo London Stadium", type: "Stadium Asset", tier: "Elite", price: "12.5 ETH", img: "https://picsum.photos/seed/ifm-stadium/800/600" },
-  { id: 3, name: "Berlin Digital FC", type: "Club License", tier: "Rare", price: "0.8 ETH", img: "https://picsum.photos/seed/ifm-club1/400/400" },
-  { id: 4, name: "Tokyo Cyber Strikers", type: "Club License", tier: "Mythic", price: "18.0 ETH", img: "https://picsum.photos/seed/ifm-club2/400/400" },
-]
-
 export default function MarketplacePage() {
   const heroImg = PlaceHolderImages.find(i => i.id === "mint-preview")
+  const player1 = PlaceHolderImages.find(i => i.id === "player-card-gold")
+  const stadium1 = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const club1 = PlaceHolderImages.find(i => i.id === "nft-club-1")
+  const club2 = PlaceHolderImages.find(i => i.id === "nft-club-2")
+
+  const marketItems = [
+    { 
+      id: 1, 
+      name: "Marcus 'Voltage' Storm", 
+      type: "Player Card", 
+      tier: "Legendary", 
+      price: "4.2 ETH", 
+      image: player1 
+    },
+    { 
+      id: 2, 
+      name: "Neo London Stadium", 
+      type: "Stadium Asset", 
+      tier: "Elite", 
+      price: "12.5 ETH", 
+      image: stadium1 
+    },
+    { 
+      id: 3, 
+      name: "Berlin Digital FC", 
+      type: "Club License", 
+      tier: "Rare", 
+      price: "0.8 ETH", 
+      image: club1 
+    },
+    { 
+      id: 4, 
+      name: "Tokyo Cyber Strikers", 
+      type: "Club License", 
+      tier: "Mythic", 
+      price: "18.0 ETH", 
+      image: club2 
+    },
+  ]
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -27,13 +59,16 @@ export default function MarketplacePage() {
         {/* Background System */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-          <Image 
-            src={heroImg?.imageUrl || ""}
-            alt="Marketplace Hero"
-            fill
-            className="object-cover opacity-20 grayscale brightness-50"
-            priority
-          />
+          {heroImg && (
+            <Image 
+              src={heroImg.imageUrl}
+              alt={heroImg.description}
+              fill
+              className="object-cover opacity-20 grayscale brightness-50"
+              priority
+              data-ai-hint={heroImg.imageHint}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-blue opacity-20" />
         </div>
@@ -80,12 +115,15 @@ export default function MarketplacePage() {
               >
                 <GlassCard className="group p-0" glowColor={item.tier === 'Mythic' || item.tier === 'Legendary' ? 'gold' : 'none'}>
                   <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image 
-                      src={item.img} 
-                      alt={item.name} 
-                      fill 
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
+                    {item.image && (
+                      <Image 
+                        src={item.image.imageUrl} 
+                        alt={item.name} 
+                        fill 
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        data-ai-hint={item.image.imageHint}
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
                     <div className="absolute top-4 right-4">
                       <Badge className={cn(

@@ -4,86 +4,92 @@
     {
       "id": "hero-stadium",
       "description": "Futuristic high-tech football stadium at night",
-      "imageUrl": "https://kommodo.ai/i/HKs6FkZPntMZVPJB9JWf",
-      "imageHint": "futuristic stadium"
+      "imageUrl": "https://picsum.photos/seed/ifm-stadium-1/1920/1080",
+      "imageHint": "football stadium"
     },
     {
       "id": "manager-silhouette",
       "description": "Professional football manager silhouette looking at data holograms",
-      "imageUrl": "https://picsum.photos/seed/ifm-manager/800/600",
+      "imageUrl": "https://picsum.photos/seed/ifm-manager-1/800/600",
       "imageHint": "football manager"
     },
     {
       "id": "nft-club-1",
       "description": "Elite NFT Football Club Badge",
-      "imageUrl": "https://picsum.photos/seed/ifm-club1/400/400",
+      "imageUrl": "https://picsum.photos/seed/ifm-badge-1/400/400",
       "imageHint": "football badge"
     },
     {
       "id": "nft-club-2",
       "description": "Legendary NFT Football Club Badge",
-      "imageUrl": "https://picsum.photos/seed/ifm-club2/400/400",
-      "imageHint": "luxury badge"
+      "imageUrl": "https://picsum.photos/seed/ifm-badge-2/400/400",
+      "imageHint": "championship badge"
     },
     {
       "id": "player-card-gold",
       "description": "Futuristic gold football player card",
-      "imageUrl": "https://picsum.photos/seed/ifm-player/400/600",
-      "imageHint": "football player"
+      "imageUrl": "https://picsum.photos/seed/ifm-player-1/400/600",
+      "imageHint": "soccer player"
     },
     {
       "id": "token-visual",
       "description": "IFM Governance Token floating in digital space",
-      "imageUrl": "https://picsum.photos/seed/ifm-token/600/600",
-      "imageHint": "crypto token"
+      "imageUrl": "https://picsum.photos/seed/ifm-token-1/600/600",
+      "imageHint": "golden trophy"
     },
     {
       "id": "esports-tournament",
       "description": "Crowded esports arena during a football championship",
-      "imageUrl": "https://picsum.photos/seed/ifm-esports/1200/800",
-      "imageHint": "esports arena"
+      "imageUrl": "https://picsum.photos/seed/ifm-esports-1/1200/800",
+      "imageHint": "stadium crowd"
     },
     {
       "id": "tactical-board",
       "description": "High-tech tactical formation board with player heatmaps",
-      "imageUrl": "https://picsum.photos/seed/ifm-tactics/1200/800",
-      "imageHint": "tactical dashboard"
+      "imageUrl": "https://picsum.photos/seed/ifm-tactics-1/1200/800",
+      "imageHint": "soccer tactical"
     },
     {
       "id": "training-facility",
       "description": "Futuristic training center with player performance metrics",
-      "imageUrl": "https://picsum.photos/seed/ifm-training/800/600",
-      "imageHint": "scifi gym"
+      "imageUrl": "https://picsum.photos/seed/ifm-training-1/800/600",
+      "imageHint": "training ground"
     },
     {
       "id": "scouting-ui",
       "description": "Global talent identification interface with holographic map",
-      "imageUrl": "https://picsum.photos/seed/ifm-scout/800/600",
+      "imageUrl": "https://picsum.photos/seed/ifm-scout-1/800/600",
       "imageHint": "hologram map"
     },
     {
       "id": "match-engine-live",
       "description": "Live match simulation with broadcast graphics",
-      "imageUrl": "https://picsum.photos/seed/ifm-live/1200/800",
+      "imageUrl": "https://picsum.photos/seed/ifm-live-1/1200/800",
       "imageHint": "football broadcast"
     },
     {
       "id": "mint-preview",
       "description": "Close up of a holographic football manager license minting",
-      "imageUrl": "https://picsum.photos/seed/ifm-mint/1200/800",
+      "imageUrl": "https://picsum.photos/seed/ifm-mint-1/1200/800",
       "imageHint": "holographic badge"
     },
     {
       "id": "rewards-visual",
       "description": "Golden IFM coins flowing into a digital vault",
-      "imageUrl": "https://picsum.photos/seed/ifm-rewards/1200/800",
-      "imageHint": "golden coins"
+      "imageUrl": "https://picsum.photos/seed/ifm-rewards-1/1200/800",
+      "imageHint": "soccer trophy"
     },
     {
       "id": "about-hero",
       "description": "Cinematic shot of a football being scanned by lasers",
-      "imageUrl": "https://picsum.photos/seed/ifm-about/1920/1080",
+      "imageUrl": "https://picsum.photos/seed/ifm-about-1/1920/1080",
       "imageHint": "cinematic football"
+    },
+    {
+      "id": "mission-gameplay",
+      "description": "Cinematic match moment showing tactical intensity",
+      "imageUrl": "https://picsum.photos/seed/ifm-mission-1/1200/800",
+      "imageHint": "soccer goal"
     }
   ]
 }
