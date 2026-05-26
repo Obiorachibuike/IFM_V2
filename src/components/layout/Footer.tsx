@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import { Trophy, Twitter, Send, MessageSquare, ShieldCheck, Youtube, Mail } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -54,7 +53,6 @@ export function Footer() {
             <h4 className="font-headline text-lg font-bold mb-8 text-white uppercase tracking-widest text-sm">Intelligence</h4>
             <ul className="space-y-4 text-sm font-medium">
               <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Insights & Meta</Link></li>
-              <li><Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">Clarity Base</Link></li>
               <li><Link href="/team" className="text-muted-foreground hover:text-primary transition-colors">Elite Personnel</Link></li>
               <li><Link href="#" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper v4.0</Link></li>
             </ul>

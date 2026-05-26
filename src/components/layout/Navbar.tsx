@@ -1,10 +1,9 @@
-
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, Users, LayoutDashboard, Menu, X, Rocket, Info, BookOpen, HelpCircle } from "lucide-react"
+import { Trophy, Shield, Coins, Map, LayoutDashboard, Menu, X, Rocket, Info, BookOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -17,7 +16,6 @@ const navItems = [
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
   { name: "Insights", href: "/blog", icon: BookOpen },
   { name: "Roadmap", href: "/roadmap", icon: Map },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
 ]
 
 export function Navbar() {

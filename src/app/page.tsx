@@ -1,15 +1,14 @@
-
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { 
   Trophy, Rocket, Shield, Target, Cpu, Zap, 
   Coins, Play, Users, BarChart3, Microscope, 
   ShieldCheck, Sparkles, ChevronRight, Activity,
-  History, Star
+  History, Star, HelpCircle, ChevronDown
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -35,23 +34,45 @@ const staggerContainer = {
   viewport: { once: true }
 }
 
+const faqData = [
+  {
+    q: "What is Invincible Football Manager (IFM)?",
+    a: "IFM is a next-generation football management ecosystem built on blockchain technology. It combines deep tactical simulation with true digital ownership of clubs, players, and assets. Unlike traditional games, every decision you make contributes to a persistent on-chain legacy."
+  },
+  {
+    q: "How do matches work?",
+    a: "Matches are simulated using our proprietary Neural Match Engine. It processes 15,000+ tactical variables per second, including player fatigue, psychological states, and tactical overrides. You don't just watch; you manage the flow of the game."
+  },
+  {
+    q: "What are NFTs in IFM?",
+    a: "NFTs in IFM are functional gameplay assets. This includes your Club License, Player Cards, and Stadium Infrastructure. They grant you true ownership, meaning your progress is immutable, verifiable, and tradable."
+  },
+  {
+    q: "How do I earn $IFM rewards?",
+    a: "Managers earn $IFM based on match performance (wins yield the most), league standings, tournament success, and academy player development. These rewards are distributed from the global ecosystem treasury."
+  },
+  {
+    q: "Is IFM free to play?",
+    a: "Yes, IFM offers a free-to-play entry tier. To compete in the professional league pyramid and earn seasonal $IFM rewards, managers typically require a Club License which validates their status in the ecosystem."
+  }
+]
+
 export default function HomePage() {
-  const containerRef = React.useRef(null)
+  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null)
   
   // Assets
-  const genesisBanner = PlaceHolderImages.find(i => i.id === "ifm-genesis-banner")
+  const genesisBanner = PlaceHolderImages.find(i => i.id === "hero-stadium")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
-  const rewardsImg = PlaceHolderImages.find(i => i.id === "reward-flow-visual")
   const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
   const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
   const academyImg = PlaceHolderImages.find(i => i.id === "academy-reveal")
-  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-mythic")
+  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
 
   return (
-    <div ref={containerRef} className="flex flex-col w-full bg-background selection:bg-primary selection:text-white">
+    <div className="flex flex-col w-full bg-background selection:bg-primary selection:text-white">
       
-      {/* 1. CINEMATIC BANNER - TEXT OVERLAY */}
+      {/* 1. CINEMATIC BANNER */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
@@ -68,6 +89,11 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-10" />
+          
+          <div className="absolute bottom-20 left-12 hidden md:block">
+            <h4 className="text-4xl font-bold text-white uppercase tracking-[0.4em] italic opacity-80">DAWN OF SOVEREIGNTY</h4>
+            <p className="text-[10px] text-primary font-bold uppercase tracking-[0.5em] mt-2">Protocol: Genesis_Initial_Active</p>
+          </div>
         </div>
 
         <div className="container relative z-10 mx-auto px-6 text-center">
@@ -82,57 +108,24 @@ export default function HomePage() {
                <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">Genesis Protocol Active</span>
              </div>
              <h1 className="text-5xl md:text-9xl font-bold font-headline tracking-tighter uppercase leading-none">
-               THE DAWN OF <br />
-               <span className="text-gradient-blue italic">SOVEREIGNTY.</span>
+               BUILD. OWN. <br />
+               <span className="text-gradient-blue italic">DOMINATE.</span>
              </h1>
              <p className="text-muted-foreground uppercase tracking-[0.6em] text-xs font-bold opacity-60">Phase 1: Establishing the Empire</p>
+             
+             <div className="flex flex-wrap justify-center gap-6 pt-10">
+                <Button asChild size="lg" className="h-16 px-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-lg uppercase tracking-widest">
+                  <Link href="/early-access">JOIN EARLY ACCESS</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="h-16 px-12 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-lg uppercase tracking-widest backdrop-blur-xl">
+                  <Link href="/gameplay">WATCH GAMEPLAY</Link>
+                </Button>
+             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. CORE INTRO - THE MISSION */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="flex flex-col items-center space-y-12"
-          >
-            <motion.div variants={fadeIn}>
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl glow-blue">
-                PROTOCOL ALPHA v1.0
-              </Badge>
-            </motion.div>
-            
-            <motion.h2 
-              variants={fadeIn}
-              className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8] mb-4"
-            >
-              BUILD. OWN. <br />
-              <span className="text-gradient-blue italic">DOMINATE.</span>
-            </motion.h2>
-            
-            <motion.p 
-              variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
-            >
-              The persistent football management universe where strategy, progression, and digital sovereignty shape your club’s future.
-            </motion.p>
-
-            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
-              <Button asChild size="lg" className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest">
-                <Link href="/early-access">JOIN EARLY ACCESS</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
-                <Link href="/gameplay">WATCH GAMEPLAY</Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. "WHAT IS IFM?" - THE FANTASY */}
+      {/* 2. "WHAT IS IFM?" - THE FANTASY */}
       <section className="py-48 relative border-y border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -171,7 +164,7 @@ export default function HomePage() {
                      </div>
                   </div>
                   <div className="absolute top-8 right-8">
-                    <span className="text-[8px] font-mono text-primary/40 rotate-90 origin-right whitespace-nowrap">INTERFACE: SQUAD_MGMT_v2.4</span>
+                    <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em] bg-primary px-4 py-1">TACTICAL INTERFACE: HUD_SQUAD_V2</span>
                   </div>
                </GlassCard>
             </motion.div>
@@ -179,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. GAMEPLAY PILLARS GRID */}
+      {/* 3. GAMEPLAY PILLARS GRID */}
       <section className="py-48 bg-card/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-32 space-y-8">
@@ -208,6 +201,9 @@ export default function HomePage() {
                       <pillar.icon className="h-6 w-6" />
                     </div>
                   </div>
+                  <div className="absolute top-4 right-4">
+                     <span className="text-[8px] font-bold text-white uppercase tracking-widest bg-primary/40 px-2 py-1">MODULE_TYPE: {pillar.label}</span>
+                  </div>
                 </div>
                 <div className="p-8 space-y-4">
                   <h4 className="text-2xl font-bold font-headline uppercase">{pillar.title}</h4>
@@ -219,7 +215,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. MATCH ENGINE SHOWCASE */}
+      {/* 4. MATCH ENGINE SHOWCASE */}
       <section className="py-48 relative bg-accent/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
@@ -260,8 +256,77 @@ export default function HomePage() {
                   <div className="absolute bottom-6 right-8">
                      <Badge variant="outline" className="border-primary/40 text-primary uppercase text-[8px] tracking-widest">Broadcast Feed: High Fidelity</Badge>
                   </div>
+                  <div className="absolute top-6 left-8">
+                    <span className="text-[10px] font-bold text-white uppercase tracking-[0.3em] bg-primary px-4 py-1">NEURAL ENGINE SIMULATION v2.4</span>
+                  </div>
                 </GlassCard>
              </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FAQ SECTION - INTELLIGENCE BASE */}
+      <section className="py-48 relative border-t border-white/5 bg-background overflow-hidden">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-24 space-y-6">
+            <Badge variant="outline" className="border-primary/30 text-primary uppercase tracking-[0.5em] px-8 py-2">
+              Clarity Protocol
+            </Badge>
+            <h2 className="text-5xl md:text-8xl font-bold font-headline uppercase tracking-tighter">
+              INTELLIGENCE <br /><span className="text-gradient-blue italic">BASE</span>
+            </h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Everything you need to know about established the IFM Empire.</p>
+          </div>
+
+          <div className="space-y-6">
+            {faqData.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <GlassCard 
+                  className={cn(
+                    "border-white/5 transition-all duration-500",
+                    openFaqIndex === i ? "border-primary/50 bg-primary/5" : "hover:border-white/20"
+                  )}
+                  hoverable={false}
+                >
+                  <button 
+                    onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                    className="w-full p-8 flex items-center justify-between text-left group"
+                  >
+                    <div className="flex items-center gap-6">
+                      <div className={cn(
+                        "h-12 w-12 rounded-xl flex items-center justify-center transition-all duration-500",
+                        openFaqIndex === i ? "bg-primary text-white glow-blue" : "bg-white/5 text-primary"
+                      )}>
+                        <HelpCircle className="h-6 w-6" />
+                      </div>
+                      <h4 className="text-xl font-bold uppercase tracking-tight">{faq.q}</h4>
+                    </div>
+                    <ChevronDown className={cn("h-6 w-6 text-muted-foreground transition-transform duration-500", openFaqIndex === i && "rotate-180 text-primary")} />
+                  </button>
+                  
+                  <AnimatePresence>
+                    {openFaqIndex === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-24 pb-10 text-muted-foreground leading-relaxed text-lg font-light border-t border-white/5 pt-8">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </GlassCard>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -284,6 +349,11 @@ export default function HomePage() {
             </div>
             <p className="text-muted-foreground uppercase tracking-[0.5em] text-[10px] mt-12 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
+        </div>
+        
+        {/* Banner Overlay */}
+        <div className="absolute top-1/2 left-0 w-full text-center pointer-events-none opacity-5">
+           <h4 className="text-[20vw] font-bold text-white uppercase tracking-tighter italic">SOVEREIGNTY</h4>
         </div>
       </section>
 
