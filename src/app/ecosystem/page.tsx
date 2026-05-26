@@ -9,7 +9,8 @@ import {
   Trophy, Users, Target, Activity, 
   Search, Microscope, Network, BarChart3,
   ChevronRight, ArrowRight, LayoutDashboard,
-  ShieldCheck, History, Sparkles, Star
+  ShieldCheck, History, Sparkles, Star,
+  TrendingUp
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
