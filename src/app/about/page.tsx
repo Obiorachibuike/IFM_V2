@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from "next/image"
@@ -21,13 +22,15 @@ export default function AboutPage() {
       <section className="relative pt-48 pb-32 overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-          <Image 
-            src={aboutHero?.imageUrl || ""} 
-            alt="About IFM" 
-            fill 
-            className="object-cover opacity-30 grayscale"
-            priority
-          />
+          {aboutHero?.imageUrl && (
+            <Image 
+              src={aboutHero.imageUrl} 
+              alt="About IFM" 
+              fill 
+              className="object-cover opacity-30 grayscale"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-blue opacity-30" />
         </div>
@@ -90,13 +93,15 @@ export default function AboutPage() {
             >
               <div className="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full animate-pulse" />
               <GlassCard className="p-4 border-white/10 glow-blue rotate-2">
-                <Image 
-                  src={managerImage?.imageUrl || ""} 
-                  alt="Manager Silhouette" 
-                  width={800} 
-                  height={600} 
-                  className="rounded-2xl brightness-75 grayscale hover:grayscale-0 transition-all duration-1000"
-                />
+                {managerImage?.imageUrl && (
+                  <Image 
+                    src={managerImage.imageUrl} 
+                    alt="Manager Silhouette" 
+                    width={800} 
+                    height={600} 
+                    className="rounded-2xl brightness-75 grayscale hover:grayscale-0 transition-all duration-1000"
+                  />
+                )}
               </GlassCard>
               <div className="absolute -bottom-8 -left-8">
                 <GlassCard className="p-6 border-primary/20 bg-primary/10 glow-blue backdrop-blur-xl">
@@ -154,7 +159,9 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden shadow-2xl">
-                <Image src={tacticsImage?.imageUrl || ""} alt="Tactics" width={1200} height={800} className="w-full h-auto brightness-75" />
+                {tacticsImage?.imageUrl && (
+                  <Image src={tacticsImage.imageUrl} alt="Tactics" width={1200} height={800} className="w-full h-auto brightness-75" />
+                )}
               </GlassCard>
             </motion.div>
             <div className="space-y-12">

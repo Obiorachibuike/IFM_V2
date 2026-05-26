@@ -25,14 +25,16 @@ export default function GameplayPage() {
         {/* Background System */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-          <Image 
-            src={heroImg?.imageUrl || ""}
-            alt="Gameplay Hero"
-            fill
-            className="object-cover opacity-30 grayscale brightness-50"
-            priority
-            data-ai-hint="football manager"
-          />
+          {heroImg?.imageUrl && (
+            <Image 
+              src={heroImg.imageUrl}
+              alt="Gameplay Hero"
+              fill
+              className="object-cover opacity-30 grayscale brightness-50"
+              priority
+              data-ai-hint="football manager"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           <div className="absolute inset-0 radial-glow-blue opacity-30" />
         </div>
@@ -60,13 +62,15 @@ export default function GameplayPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden" hoverable={false}>
                <div className="relative aspect-video">
-                 <Image 
-                    src={matchEngineImg?.imageUrl || ""} 
-                    alt="Match Engine Live" 
-                    fill 
-                    className="object-cover brightness-75" 
-                    data-ai-hint={matchEngineImg?.imageHint}
-                 />
+                 {matchEngineImg?.imageUrl && (
+                    <Image 
+                      src={matchEngineImg.imageUrl} 
+                      alt="Match Engine Live" 
+                      fill 
+                      className="object-cover brightness-75" 
+                      data-ai-hint={matchEngineImg?.imageHint}
+                    />
+                 )}
                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="h-20 w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center animate-pulse">
                       <Play className="h-8 w-8 text-primary ml-1" />
@@ -138,14 +142,16 @@ export default function GameplayPage() {
               className="order-1 lg:order-2"
             >
               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden shadow-2xl" hoverable={false}>
-                <Image 
-                  src={tacticsImg?.imageUrl || ""} 
-                  alt="Tactical UI" 
-                  width={1200} 
-                  height={800} 
-                  className="w-full h-auto brightness-90"
-                  data-ai-hint={tacticsImg?.imageHint}
-                />
+                {tacticsImg?.imageUrl && (
+                  <Image 
+                    src={tacticsImg.imageUrl} 
+                    alt="Tactical UI" 
+                    width={1200} 
+                    height={800} 
+                    className="w-full h-auto brightness-90"
+                    data-ai-hint={tacticsImg?.imageHint}
+                  />
+                )}
               </GlassCard>
             </motion.div>
           </div>
@@ -163,7 +169,9 @@ export default function GameplayPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <GlassCard className="p-0 border-white/10 bg-black/40 group overflow-hidden" glowColor="blue">
                <div className="relative aspect-[16/10]">
-                  <Image src={trainingImg?.imageUrl || ""} alt="Training" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={trainingImg?.imageHint} />
+                  {trainingImg?.imageUrl && (
+                    <Image src={trainingImg.imageUrl} alt="Training" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={trainingImg?.imageHint} />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
                     <h3 className="text-2xl font-bold font-headline uppercase mb-2">Performance Labs</h3>
@@ -173,7 +181,9 @@ export default function GameplayPage() {
             </GlassCard>
             <GlassCard className="p-0 border-white/10 bg-black/40 group overflow-hidden" glowColor="blue">
                <div className="relative aspect-[16/10]">
-                  <Image src={scoutingImg?.imageUrl || ""} alt="Scouting" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={scoutingImg?.imageHint} />
+                  {scoutingImg?.imageUrl && (
+                    <Image src={scoutingImg.imageUrl} alt="Scouting" fill className="object-cover opacity-60 group-hover:scale-105 transition-all duration-1000" data-ai-hint={scoutingImg?.imageHint} />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
                     <h3 className="text-2xl font-bold font-headline uppercase mb-2">Neural Scout Network</h3>
