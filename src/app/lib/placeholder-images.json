@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -10,43 +9,43 @@
     {
       "id": "match-engine-live",
       "description": "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
-      "imageUrl": "https://picsum.photos/seed/ifm-live-1/1200/800",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "football broadcast simulation"
     },
     {
       "id": "tactical-board",
       "description": "High-tech tactical formation board with player heatmaps and squad connectivity",
-      "imageUrl": "https://picsum.photos/seed/ifm-tactics-1/1200/800",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "soccer tactics board"
     },
     {
       "id": "scouting-ui",
       "description": "Global talent identification interface with holographic map",
-      "imageUrl": "https://picsum.photos/seed/ifm-scout-1/800/600",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "holographic world map"
     },
     {
       "id": "rewards-visual",
       "description": "Golden IFM coins flowing into a digital vault, premium trophy room atmosphere",
-      "imageUrl": "https://picsum.photos/seed/ifm-rewards/1200/800",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "golden trophy coins"
     },
     {
       "id": "player-card-gold",
       "description": "Futuristic gold football player card with holographic rarity effects",
-      "imageUrl": "https://picsum.photos/seed/ifm-player-gold/400/600",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "holographic soccer card"
     },
     {
       "id": "about-hero",
       "description": "Cinematic shot of a football being scanned by lasers with high-tech dashboard",
-      "imageUrl": "https://picsum.photos/seed/ifm-about/1920/1080",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "cinematic football tech"
     },
     {
       "id": "token-visual",
       "description": "The $IFM token floating in a digital sports-tech environment",
-      "imageUrl": "https://picsum.photos/seed/ifm-token/800/800",
+      "imageUrl": "https://postimg.cc/crQtRFTz/dd469a18",
       "imageHint": "digital crypto coin"
     }
   ]
