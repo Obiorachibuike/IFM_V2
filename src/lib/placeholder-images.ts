@@ -10,7 +10,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     id: "hero-stadium",
     description:
       "Ultra-premium cinematic hero shot of a futuristic football stadium at night, manager silhouette, electric blue lighting, holographic dashboards",
-    imageUrl: "https://kommodo.ai/i/ocH3tAJRZpakT0NP3NLW",
+    imageUrl: "https://jumpshare.com/share/ajnqKYfZsH9eP4DVZ63c",
     imageHint: "futuristic stadium manager"
   },
   {
