@@ -76,7 +76,7 @@ export default function HomePage() {
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-        //  {genesisBanner && (
+         {genesisBanner && (
             <Image
               src={genesisBanner.imageUrl}
               alt="IFM Genesis"
@@ -85,7 +85,7 @@ export default function HomePage() {
               priority
               data-ai-hint="IFM Genesis stadium"
             />
-          )}//
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
           <div className="stadium-light-sweep" />
           <div className="absolute inset-0 football-grid opacity-10" />
