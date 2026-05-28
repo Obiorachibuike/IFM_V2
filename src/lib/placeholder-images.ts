@@ -9,7 +9,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "hero-stadium",
     description: "Ultra-premium cinematic hero shot of a futuristic football stadium at night, manager silhouette, electric blue lighting, holographic dashboards",
-    imageUrl: "https://im.ge/i/QMU3ifJ",
+    imageUrl: "https://img.ge/i/TTjT648.png",
     imageHint: "futuristic stadium manager"
   },
   {
