@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -6,18 +5,21 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Shield, Target, Cpu, Users, Zap, Coins, 
-  TrendingUp, BarChart3, Globe, Rocket, 
-  Play, Search, Microscope, Network,
-  ChevronRight, ShieldCheck, Activity,
-  Sparkles, Layers, History, LayoutDashboard,
-  Timer, ArrowRight, Gauge, Database
+  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { cn } from "@/lib/utils"
+
+// 1. Fixed: Added the missing fadeInUp configuration
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+}
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -51,7 +53,6 @@ export default function AboutPage() {
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
       {/* 1. CINEMATIC HERO - THE VISION */}
-  {/* HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
         {/* BACKGROUND IMAGE (FULL BLEED, NO OVERLAY) */}
@@ -153,10 +154,6 @@ export default function AboutPage() {
 
           </motion.div>
         </div>
-
-      
-
-
 
         {/* Banner callout */}
         <div className="absolute bottom-12 left-12 hidden md:block">
@@ -344,7 +341,7 @@ export default function AboutPage() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {[
-                    { title: "Player Cards", desc: "Identity, stats, and progression history encoded as on-chain logic.", icon: Users },
+                    { title: "Player Cards", desc: "Identity, stats, and progression history encoded as on-chain logic.", icon: Cpu },
                     { title: "Stadium Units", desc: "Customizable, revenue-generating assets that evolve visually.", icon: LayoutDashboard },
                     { title: "Club Licenses", desc: "Your keys to the competitive pyramid and global reward pool.", icon: ShieldCheck },
                     { title: "Academy Prospects", desc: "Genetic youth assets generated uniquely by your club's scouting bot.", icon: Microscope }
