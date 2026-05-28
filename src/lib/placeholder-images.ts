@@ -9,7 +9,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "hero-stadium",
     description: "Ultra-premium cinematic hero shot of a futuristic football stadium at night, manager silhouette, electric blue lighting, holographic dashboards",
-    imageUrl: "https://www.google.com/search?vsrid=CNyV9ezXzduoehACGAEiJDM2ZDg2MzAwLTNlNDQtNDQ3NS1hOWE2LWYzODhhY2Y3MmNjZTJ8IgJnaCgWQnQKLmxmZS1kdW1teTpkODFlNjZhZC0zZWRhLTRkZDItOWFiZS1jMDZhNzZmMGM4ZGESQgpAL2Jucy9naC9ib3JnL2doL2Jucy9sZW5zLWZyb250ZW5kLWFwaS9wcm9kLmxlbnMtZnJvbnRlbmQtYXBpLzExMzit48bJqNqUAw&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABENgEGJADJQAAgD8&udm=26&lns_mode=un&source=lns.web.quimby&vsdim=600,400&gsessionid=lNzSDoQhxMHOp2kNCENYNIFXrME0KU4pgcjnScp3a6Bw_42BLqSN-A&lsessionid=XdrwtaUbNAwBb7NFGuKriSxoDoW5bCnGdjVswT094U0nBYq9MbCVRw&lns_surface=26&lns_vfs=e",
+    imageUrl: "https://picsum.photos/seed/ifm-hero-ultimate/1920/1080",
     imageHint: "futuristic stadium manager"
   },
   {
