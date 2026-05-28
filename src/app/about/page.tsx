@@ -14,7 +14,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { cn } from "@/lib/utils"
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
@@ -52,35 +52,35 @@ export default function AboutPage() {
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
       {/* 1. CINEMATIC HERO - THE VISION */}
-      {/* HERO WITH RESPONSIVE AIRTIME AND CORRECTED CONTAINMENT FOR MOBILE BACKGROUND */}
-      <section className="relative min-h-screen lg:h-screen flex items-center justify-center overflow-hidden py-24 lg:py-0">
+      {/* LOCKED HEIGHT AT 100% VIEWPORT */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-        {/* BACKGROUND IMAGE - Dynamic cover-to-contain scaling for asset protection */}
-        <div className="absolute inset-0 z-0 w-full h-full flex items-center justify-center">
+        {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+        <div className="absolute inset-0 z-0 w-full h-full">
           {heroImg?.imageUrl && (
             <Image
               src={heroImg.imageUrl}
               alt="IFM Vision"
               fill
               priority
-              className="object-contain md:object-cover w-full h-full"
+              className="object-fill md:object-cover w-full h-full"
             />
           )}
         </div>
 
-        {/* CONTENT */}
+        {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
         <div className="container relative z-10 mx-auto px-6 max-w-7xl">
 
           <motion.div
             initial="initial"
             whileInView="whileInView"
             variants={staggerContainer}
-            className="flex flex-col items-center text-center space-y-12"
+            className="flex flex-col items-center text-center space-y-6 md:space-y-12"
           >
 
             {/* BADGE */}
             <motion.div variants={fadeInUp}>
-              <Badge className="bg-white/5 text-white border-white/10 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-xl">
+              <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
                 The Architect Protocol
               </Badge>
             </motion.div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
             {/* TITLE */}
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white"
+              className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
             >
               BUILD. OWN. <br />
               <span className="text-gradient-blue italic">
@@ -99,18 +99,18 @@ export default function AboutPage() {
             {/* DESCRIPTION */}
             <motion.p
               variants={fadeInUp}
-              className="text-lg md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed"
+              className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
             >
               IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty.
             </motion.p>
 
             {/* CTA */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-6 pt-10">
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
 
               <Button
                 asChild
                 size="lg"
-                className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest"
+                className="h-14 sm:h-20 px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl glow-blue text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto"
               >
                 <Link href="/early-access">
                   START YOUR CLUB
@@ -121,7 +121,7 @@ export default function AboutPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-20 px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl"
+                className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
               >
                 <Link href="/gameplay">
                   WATCH GAMEPLAY
@@ -133,7 +133,7 @@ export default function AboutPage() {
             {/* STATS */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/10 w-full max-w-5xl"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
             >
               {[
                 { label: "Active Clubs", value: "85,420" },
@@ -142,10 +142,10 @@ export default function AboutPage() {
                 { label: "Rewards Paid", value: "4.8M $IFM" }
               ].map((stat, i) => (
                 <div key={i}>
-                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold">
+                  <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
                     {stat.label}
                   </div>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-xl md:text-3xl font-bold text-white">
                     {stat.value}
                   </div>
                 </div>
