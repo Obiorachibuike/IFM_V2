@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { cn } from "@/lib/utils"
 
-// 1. Fixed: Added the missing fadeInUp configuration
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -53,17 +52,18 @@ export default function AboutPage() {
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
       {/* 1. CINEMATIC HERO - THE VISION */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* HERO WITH RESPONSIVE AIRTIME AND CORRECTED CONTAINMENT FOR MOBILE BACKGROUND */}
+      <section className="relative min-h-screen lg:h-screen flex items-center justify-center overflow-hidden py-24 lg:py-0">
 
-        {/* BACKGROUND IMAGE (FULL BLEED, NO OVERLAY) */}
-        <div className="absolute inset-0 z-0 w-full h-full">
+        {/* BACKGROUND IMAGE - Dynamic cover-to-contain scaling for asset protection */}
+        <div className="absolute inset-0 z-0 w-full h-full flex items-center justify-center">
           {heroImg?.imageUrl && (
             <Image
               src={heroImg.imageUrl}
               alt="IFM Vision"
               fill
               priority
-              className="object-cover w-full h-full scale-105"
+              className="object-contain md:object-cover w-full h-full"
             />
           )}
         </div>
