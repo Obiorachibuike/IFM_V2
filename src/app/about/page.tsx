@@ -154,7 +154,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-      </section>
+      
 
 
 
