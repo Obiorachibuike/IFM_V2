@@ -51,117 +51,112 @@ export default function AboutPage() {
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
       {/* 1. CINEMATIC HERO - THE VISION */}
-<section className="relative h-screen flex items-center justify-center overflow-hidden">
+  {/* HERO */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
-  <div className="absolute inset-0 z-0">
+        {/* BACKGROUND IMAGE (FULL BLEED, NO OVERLAY) */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          {heroImg?.imageUrl && (
+            <Image
+              src={heroImg.imageUrl}
+              alt="IFM Vision"
+              fill
+              priority
+              className="object-cover w-full h-full scale-105"
+            />
+          )}
+        </div>
 
-    {/* Softer base gradient */}
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-background/60 to-background/90" />
+        {/* CONTENT */}
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
 
-    {/* Background image (BRIGHTER) */}
-    {heroImg && (
-      <Image
-        src={heroImg.imageUrl}
-        alt="IFM Vision"
-        fill
-        priority
-        className="object-cover opacity-60 grayscale-[0.1] brightness-[0.75] contrast-110"
-        data-ai-hint="cinematic football tech"
-      />
-    )}
+          <motion.div
+            initial="initial"
+            whileInView="whileInView"
+            variants={staggerContainer}
+            className="flex flex-col items-center text-center space-y-12"
+          >
 
-    {/* Lighter bottom fade (FIXED OVERFLOW DARKNESS) */}
-    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            {/* BADGE */}
+            <motion.div variants={fadeInUp}>
+              <Badge className="bg-white/5 text-white border-white/10 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-xl">
+                The Architect Protocol
+              </Badge>
+            </motion.div>
 
-    {/* Reduced glow (less overpowering) */}
-    <div className="absolute inset-0 radial-glow-blue opacity-20" />
+            {/* TITLE */}
+            <motion.h1
+              variants={fadeInUp}
+              className="text-5xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white"
+            >
+              BUILD. OWN. <br />
+              <span className="text-gradient-blue italic">
+                DOMINATE.
+              </span>
+            </motion.h1>
 
-    {/* Light sweep kept subtle */}
-    <div className="stadium-light-sweep opacity-40" />
+            {/* DESCRIPTION */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed"
+            >
+              IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty.
+            </motion.p>
 
-  </div>
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-6 pt-10">
 
-  {/* CONTENT */}
-  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+              <Button
+                asChild
+                size="lg"
+                className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest"
+              >
+                <Link href="/early-access">
+                  START YOUR CLUB
+                </Link>
+              </Button>
 
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={staggerContainer}
-      className="flex flex-col items-center text-center space-y-12"
-    >
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-20 px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl"
+              >
+                <Link href="/gameplay">
+                  WATCH GAMEPLAY
+                </Link>
+              </Button>
 
-      <motion.div variants={fadeIn}>
-        <Badge className="bg-primary/10 text-primary border-primary/20 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-2xl">
-          The Architect Protocol
-        </Badge>
-      </motion.div>
+            </motion.div>
 
-      <motion.h1
-        variants={fadeIn}
-        className="text-6xl md:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
-      >
-        BUILD. OWN. <br />
-        <span className="text-gradient-blue italic">DOMINATE.</span>
-      </motion.h1>
+            {/* STATS */}
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/10 w-full max-w-5xl"
+            >
+              {[
+                { label: "Active Clubs", value: "85,420" },
+                { label: "Matches Played", value: "1.2M+" },
+                { label: "Players Developed", value: "3.5M" },
+                { label: "Rewards Paid", value: "4.8M $IFM" }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold">
+                    {stat.label}
+                  </div>
+                  <div className="text-3xl font-bold text-white">
+                    {stat.value}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
 
-      <motion.p
-        variants={fadeIn}
-        className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed"
-      >
-        IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty. Lead your club, develop your assets, and own your legacy across seasons.
-      </motion.p>
+          </motion.div>
+        </div>
 
-      <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
+      </section>
 
-        <Button
-          asChild
-          size="lg"
-          className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest"
-        >
-          <Link href="/early-access">
-            START YOUR CLUB
-          </Link>
-        </Button>
 
-        <Button
-          asChild
-          size="lg"
-          variant="outline"
-          className="h-20 px-16 border-white/15 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl"
-        >
-          <Link href="/gameplay">
-            WATCH GAMEPLAY
-          </Link>
-        </Button>
-
-      </motion.div>
-
-      <motion.div
-        variants={fadeIn}
-        className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-20 border-t border-white/10 w-full max-w-5xl"
-      >
-        {[
-          { label: "Active Clubs", value: "85,420" },
-          { label: "Matches Played", value: "1.2M+" },
-          { label: "Players Developed", value: "3.5M" },
-          { label: "Rewards Paid", value: "4.8M $IFM" }
-        ].map((stat, i) => (
-          <div key={i} className="space-y-1">
-            <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold">
-              {stat.label}
-            </div>
-            <div className="text-3xl font-bold font-headline text-white">
-              {stat.value}
-            </div>
-          </div>
-        ))}
-      </motion.div>
-
-    </motion.div>
-
-  </div>
-</section>
 
         {/* Banner callout */}
         <div className="absolute bottom-12 left-12 hidden md:block">
