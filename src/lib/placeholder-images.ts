@@ -45,7 +45,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "about-hero",
     description: "Cinematic shot of a football being scanned by lasers",
-    imageUrl: "https://picsum.photos/seed/ifm-about/1920/1080",
+    imageUrl: "https://img.ge/i/TTjT648.png",
     imageHint: "cinematic football tech"
   },
   {
