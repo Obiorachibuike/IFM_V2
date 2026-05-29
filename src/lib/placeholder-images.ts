@@ -47,6 +47,11 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     description: "Cinematic shot of a football being scanned by lasers",
     imageUrl: "https://img.ge/i/uZG1q95.png",
     imageHint: "cinematic football tech"
+  },  {
+    id: "gameplay-hero",
+    description: "Cinematic shot of a football being scanned by lasers",
+    imageUrl: "https://img.ge/i/FEvx39.png",
+    imageHint: "cinematic football tech"
   },
   {
     id: "player-card-gold",
