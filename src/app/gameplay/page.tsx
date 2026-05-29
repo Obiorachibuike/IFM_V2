@@ -46,42 +46,43 @@ export default function GameplayPage() {
     <div className="flex flex-col w-full bg-background font-body selection:bg-primary selection:text-white">
 
      {/* 1. HERO - THE COMMAND CENTER */}
-<section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
+{/* LOCKED HEIGHT AT 100% VIEWPORT */}
+<section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-  {/* Background Image */}
-  <div className="absolute inset-0 z-0">
+  {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+  <div className="absolute inset-0 z-0 w-full h-full">
     {heroImg && (
       <Image
         src={heroImg.imageUrl}
         alt="IFM Universe"
         fill
         priority
-        className="object-cover object-center"
+        className="object-fill md:object-cover w-full h-full"
       />
     )}
   </div>
 
-  {/* Optional subtle gradient for readability */}
-  <div className="absolute inset-0 bg-black/30 z-[1]" />
+  {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
+  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
 
-  {/* Content */}
-  <div className="relative z-10 w-full flex items-center justify-center px-6">
     <motion.div
       initial="initial"
-      animate="animate"
+      whileInView="whileInView"
       variants={staggerContainer}
-      className="w-full max-w-5xl text-center space-y-8 bg-black/60 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] border border-white/10 shadow-2xl"
+      className="flex flex-col items-center text-center space-y-6 md:space-y-12"
     >
 
+      {/* BADGE */}
       <motion.div variants={fadeIn}>
-        <Badge className="bg-primary/20 text-white border-primary/40 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full">
+        <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
           Tactical Intelligence v2.4
         </Badge>
       </motion.div>
 
+      {/* TITLE */}
       <motion.h1
         variants={fadeIn}
-        className="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white"
+        className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
       >
         LEARN TO <br />
         <span className="text-gradient-blue italic">
@@ -89,22 +90,21 @@ export default function GameplayPage() {
         </span>
       </motion.h1>
 
+      {/* DESCRIPTION */}
       <motion.p
         variants={fadeIn}
-        className="max-w-3xl mx-auto text-base md:text-xl text-white/90 leading-relaxed"
+        className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
       >
-        Build squads, set tactics, develop players, compete in leagues,
-        and earn rewards—all in a living football universe.
+        Build squads, set tactics, develop players, compete in leagues, and earn rewards—all in a living football universe.
       </motion.p>
 
-      <motion.div
-        variants={fadeIn}
-        className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6"
-      >
+      {/* CTA */}
+      <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
+
         <Button
           asChild
           size="lg"
-          className="h-16 px-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl text-lg uppercase tracking-widest"
+          className="h-14 sm:h-20 px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl glow-blue text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto"
         >
           <Link href="/early-access">
             START YOUR CLUB
@@ -112,28 +112,50 @@ export default function GameplayPage() {
         </Button>
 
         <Button
-          variant="outline"
+          asChild
           size="lg"
-          className="h-16 px-12 border-white/20 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-lg uppercase tracking-widest backdrop-blur-sm"
+          variant="outline"
+          className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
         >
           <Link href="#loop">
             VIEW PROTOCOLS
           </Link>
         </Button>
+
       </motion.div>
 
+      {/* STATS */}
       <motion.div
         variants={fadeIn}
-        className="pt-4 border-t border-white/10"
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
       >
-        <span className="text-[11px] font-bold text-primary uppercase tracking-[0.4em]">
-          Command Center Protocol: Operational
-        </span>
+        {[
+          { label: "Active Clubs", value: "85,420" },
+          { label: "Matches Played", value: "1.2M+" },
+          { label: "Players Developed", value: "3.5M" },
+          { label: "Rewards Paid", value: "4.8M $IFM" }
+        ].map((stat, i) => (
+          <div key={i}>
+            <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
+              {stat.label}
+            </div>
+            <div className="text-xl md:text-3xl font-bold text-white mt-1">
+              {stat.value}
+            </div>
+          </div>
+        ))}
       </motion.div>
 
     </motion.div>
   </div>
+
+  {/* Banner callout */}
+  <div className="absolute bottom-12 left-12 hidden md:block">
+     <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">Command Center Protocol: Operational</span>
+  </div>
 </section>
+
+
 
 
 
