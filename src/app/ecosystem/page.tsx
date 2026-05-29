@@ -49,65 +49,66 @@ export default function EcosystemPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-primary selection:text-white overflow-x-hidden">
 
-      {/* 1. CINEMATIC ECOSYSTEM HERO */}
-<section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/5 py-20 lg:py-0 z-0">
+      1{/* 1. CINEMATIC ECOSYSTEM HERO */}
+{/* LOCKED HEIGHT AT 100% VIEWPORT */}
+<section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-  {/* Background Image Wrapper with relative stacking and contrast overlay */}
-  <div className="absolute inset-0 z-[-1]">
-    {universeImg && (
+  {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+  <div className="absolute inset-0 z-0 w-full h-full">
+    {universeImg?.imageUrl && (
       <Image
         src={universeImg.imageUrl}
         alt="IFM Universe"
         fill
         priority
-        className="object-cover object-center select-none pointer-events-none"
+        className="object-fill md:object-cover w-full h-full"
       />
     )}
-    {/* Radial/Linear overlay to force contrast and guarantee text readability */}
-    <div className="absolute inset-0 bg-gradient-to-b from-[#05070D]/40 via-[#05070D]/70 to-[#05070D]" />
   </div>
 
-  {/* Hero Content */}
-  <div className="relative z-10 w-full flex items-center justify-center px-4 sm:px-6 md:px-8">
+  {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
+  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+
     <motion.div
       initial="initial"
-      animate="animate"
+      whileInView="whileInView"
       variants={staggerContainer}
-      className="flex flex-col items-center justify-center text-center space-y-6 sm:space-y-8 md:space-y-12 max-w-7xl"
+      className="flex flex-col items-center text-center space-y-6 md:space-y-12"
     >
 
+      {/* BADGE */}
       <motion.div variants={fadeIn}>
-        <Badge className="bg-primary/20 text-white border-primary/30 px-4 sm:px-10 py-2 sm:py-3 uppercase tracking-[0.4em] sm:tracking-[0.8em] text-[9px] sm:text-[10px] font-bold rounded-full backdrop-blur-md whitespace-nowrap">
+        <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
           The Living Universe
         </Badge>
       </motion.div>
 
+      {/* TITLE */}
       <motion.h1
         variants={fadeIn}
-        className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] xl:text-[12rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] sm:leading-[0.82] text-white"
+        className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
       >
-        A WORLD OF <br className="hidden sm:inline" />
+        A WORLD OF <br />
         <span className="text-gradient-blue italic">
           SOVEREIGNTY.
         </span>
       </motion.h1>
 
+      {/* DESCRIPTION */}
       <motion.p
         variants={fadeIn}
-        className="text-base sm:text-lg md:text-2xl text-white/90 max-w-4xl mx-auto font-light leading-relaxed px-2"
+        className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
       >
-        Every decision, every match, and every player development
-        shapes your club’s long-term legacy in a persistent football economy.
+        Every decision, every match, and every player development shapes your club’s long-term legacy in a persistent football economy.
       </motion.p>
 
-      <motion.div
-        variants={fadeIn}
-        className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 pt-4 w-full sm:w-auto px-4 sm:px-0"
-      >
+      {/* CTA */}
+      <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
+
         <Button
           asChild
           size="lg"
-          className="w-full sm:w-auto min-h-[4.5rem] px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl text-base sm:text-xl uppercase tracking-widest py-4"
+          className="h-14 sm:h-20 px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl glow-blue text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto"
         >
           <Link href="/early-access">
             START YOUR CLUB
@@ -118,24 +119,44 @@ export default function EcosystemPage() {
           asChild
           size="lg"
           variant="outline"
-          className="w-full sm:w-auto min-h-[4.5rem] px-8 sm:px-16 border-white/20 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl text-base sm:text-xl uppercase tracking-widest backdrop-blur-md py-4"
+          className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
         >
           <Link href="#loop">
             VIEW PROTOCOL
           </Link>
         </Button>
+
+      </motion.div>
+
+      {/* STATS */}
+      <motion.div
+        variants={fadeIn}
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
+      >
+        {[
+          { label: "Active Clubs", value: "85,420" },
+          { label: "Matches Played", value: "1.2M+" },
+          { label: "Players Developed", value: "3.5M" },
+          { label: "Rewards Paid", value: "4.8M $IFM" }
+        ].map((stat, i) => (
+          <div key={i}>
+            <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
+              {stat.label}
+            </div>
+            <div className="text-xl md:text-3xl font-bold text-white">
+              {stat.value}
+            </div>
+          </div>
+        ))}
       </motion.div>
 
     </motion.div>
   </div>
 
-  {/* Floating Banner */}
-  <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 hidden md:block z-10">
-    <h4 className="text-sm sm:text-xl font-bold text-white uppercase tracking-[0.4em] italic">
-      GLOBAL FOOTBALL NETWORK
-    </h4>
+  {/* Banner callout */}
+  <div className="absolute bottom-12 left-12 hidden md:block">
+     <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">GLOBAL FOOTBALL NETWORK</span>
   </div>
-
 </section>
 
 
