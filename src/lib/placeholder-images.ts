@@ -19,6 +19,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "football broadcast simulation"
   },
   {
+    id: "ecosystem-network",
+    description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
+    imageUrl: "https://img.ge/i/IrJ6C27.png",
+    imageHint: "football broadcast simulation"
+  },
+  {
     id: "tactical-board",
     description: "High-tech tactical formation board with player heatmaps and squad connectivity",
     imageUrl: "https://picsum.photos/seed/ifm-tactics-1/1200/800",
