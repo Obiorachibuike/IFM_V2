@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -45,23 +44,19 @@ export default function GameplayPage() {
 
   return (
     <div className="flex flex-col w-full bg-background font-body selection:bg-primary selection:text-white">
-      
+
       {/* 1. HERO - THE COMMAND CENTER */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0 w-full h-full">
           {heroImg && (
             <Image 
               src={heroImg.imageUrl} 
               alt="IFM Universe" 
               fill 
-              className="object-cover opacity-30 grayscale-[0.2] brightness-[0.4]"
+              className="absolute top-0 left-0 w-full h-full object-cover"
               priority
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          <div className="stadium-light-sweep" />
-          <div className="absolute inset-0 radial-glow-blue opacity-40" />
         </div>
 
         <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
@@ -76,7 +71,7 @@ export default function GameplayPage() {
                 Tactical Intelligence v2.4
               </Badge>
             </motion.div>
-            
+
             <motion.h1 
               variants={fadeIn}
               className="text-6xl md:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
@@ -84,7 +79,7 @@ export default function GameplayPage() {
               LEARN TO <br />
               <span className="text-gradient-blue italic">COMMAND.</span>
             </motion.h1>
-            
+
             <motion.p 
               variants={fadeIn}
               className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
@@ -102,9 +97,9 @@ export default function GameplayPage() {
             </motion.div>
           </motion.div>
         </div>
-        
-        {/* Banner Overlay */}
-        <div className="absolute top-24 left-12 hidden md:block">
+
+        {/* Banner Text overlay remains visible */}
+        <div className="absolute top-24 left-12 hidden md:block z-10">
            <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.5em]">Command Center Protocol: Operational</span>
         </div>
       </section>
@@ -140,7 +135,7 @@ export default function GameplayPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
                <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square" hoverable={false}>
                   {rewardsImg && (
@@ -199,7 +194,7 @@ export default function GameplayPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[16/10]" hoverable={false}>
                   {tacticsImg && (
