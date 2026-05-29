@@ -62,11 +62,11 @@ export default function TokenomicsPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-accent selection:text-background">
       
-      {/* 1. PROTOCOL HERO - THE ECONOMIC ENGINE */}
+     {/* 1. PROTOCOL HERO - THE ECONOMIC ENGINE */}
 {/* LOCKED HEIGHT AT 100% VIEWPORT */}
 <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-  {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+  {/* BACKGROUND IMAGE - CLEAN & FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
   <div className="absolute inset-0 z-0 w-full h-full">
     {tokenVisual?.imageUrl && (
       <Image
@@ -74,13 +74,9 @@ export default function TokenomicsPage() {
         alt="IFM Token"
         fill
         priority
-        className="object-fill md:object-cover w-full h-full opacity-20 grayscale brightness-50"
+        className="object-fill md:object-cover w-full h-full"
       />
     )}
-    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-background pointer-events-none mix-blend-multiply" />
-    <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent pointer-events-none" />
-    <div className="stadium-light-sweep" />
-    <div className="absolute inset-0 football-grid opacity-10" />
   </div>
 
   {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
@@ -94,7 +90,7 @@ export default function TokenomicsPage() {
     >
 
       {/* BADGE */}
-      <motion.div variants={fadeIn}>
+      <motion.div variants={fadeInUp}>
         <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
           Protocol Architecture v4.0
         </Badge>
@@ -102,7 +98,7 @@ export default function TokenomicsPage() {
 
       {/* TITLE */}
       <motion.h1
-        variants={fadeIn}
+        variants={fadeInUp}
         className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
       >
         OWN THE <br />
@@ -113,14 +109,14 @@ export default function TokenomicsPage() {
 
       {/* DESCRIPTION */}
       <motion.p
-        variants={fadeIn}
+        variants={fadeInUp}
         className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
       >
         The $IFM token is a gameplay-driven utility layer designed to power progression, ownership, and rewards within a persistent football universe.
       </motion.p>
 
       {/* CTA */}
-      <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
+      <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
 
         <Button
           asChild
@@ -147,7 +143,7 @@ export default function TokenomicsPage() {
 
       {/* STATS */}
       <motion.div
-        variants={fadeIn}
+        variants={fadeInUp}
         className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
       >
         {[
@@ -172,9 +168,11 @@ export default function TokenomicsPage() {
 
   {/* Banner callout */}
   <div className="absolute bottom-12 left-12 hidden md:block">
-     <span className="text-[10px] font-bold text-accent uppercase tracking-[0.5em] opacity-40">Economic Protocol // Node: Treasury_Alpha_Active</span>
+     <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">Economic Protocol // Node: Treasury_Alpha_Active</span>
   </div>
 </section>
+
+
 
 
 
