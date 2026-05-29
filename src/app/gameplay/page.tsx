@@ -38,7 +38,7 @@ const staggerContainer = {
 export default function GameplayPage() {
   const matchEngineImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
-  const heroImg = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const heroImg = PlaceHolderImages.find(i => i.id === "gameplay-hero")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "reward-flow-visual")
   const academyImg = PlaceHolderImages.find(i => i.id === "academy-reveal")
   const devTreeImg = PlaceHolderImages.find(i => i.id === "development-tree")
