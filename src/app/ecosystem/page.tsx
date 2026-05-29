@@ -51,68 +51,91 @@ export default function EcosystemPage() {
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-primary selection:text-white overflow-x-hidden">
       
       {/* 1. CINEMATIC ECOSYSTEM HERO */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
-          {universeImg && (
-            <Image 
-              src={universeImg.imageUrl} 
-              alt="IFM Universe" 
-              fill 
-              className="object-cover opacity-20 grayscale brightness-50"
-              priority
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent" />
-          <div className="stadium-light-sweep" />
-          <div className="absolute inset-0 radial-glow-blue opacity-40" />
-        </div>
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
 
-        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="flex flex-col items-center text-center space-y-12"
-          >
-            <motion.div variants={fadeIn}>
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl">
-                The Living Universe
-              </Badge>
-            </motion.div>
-            
-            <motion.h1 
-              variants={fadeIn}
-              className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
-            >
-              A WORLD OF <br />
-              <span className="text-gradient-blue italic">SOVEREIGNTY.</span>
-            </motion.h1>
-            
-            <motion.p 
-              variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80"
-            >
-              Every decision, every match, and every player development shapes your club’s long-term legacy in a persistent football economy.
-            </motion.p>
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
+    {universeImg && (
+      <Image
+        src={universeImg.imageUrl}
+        alt="IFM Universe"
+        fill
+        priority
+        className="object-cover object-center"
+      />
+    )}
+  </div>
 
-            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
-              <Button asChild size="lg" className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl glow-blue text-xl uppercase tracking-widest">
-                <Link href="/early-access">START YOUR CLUB</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
-                <Link href="#loop">VIEW PROTOCOL</Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-        
-        {/* Banner Overlay */}
-        <div className="absolute bottom-16 right-16 hidden md:block">
-           <h4 className="text-2xl font-bold text-white uppercase tracking-[0.4em] italic">GLOBAL FOOTBALL NETWORK</h4>
-        </div>
-      </section>
+  {/* Hero Content */}
+  <div className="relative z-10 w-full flex items-center justify-center px-6">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={staggerContainer}
+      className="flex flex-col items-center justify-center text-center space-y-12 max-w-7xl"
+    >
 
+      <motion.div variants={fadeIn}>
+        <Badge className="bg-primary/20 text-white border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-md">
+          The Living Universe
+        </Badge>
+      </motion.div>
+
+      <motion.h1
+        variants={fadeIn}
+        className="text-5xl sm:text-6xl md:text-[9rem] lg:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.82] text-white"
+      >
+        A WORLD OF <br />
+        <span className="text-gradient-blue italic">
+          SOVEREIGNTY.
+        </span>
+      </motion.h1>
+
+      <motion.p
+        variants={fadeIn}
+        className="text-lg md:text-2xl text-white/90 max-w-4xl mx-auto font-light leading-relaxed"
+      >
+        Every decision, every match, and every player development
+        shapes your club’s long-term legacy in a persistent football economy.
+      </motion.p>
+
+      <motion.div
+        variants={fadeIn}
+        className="flex flex-col sm:flex-row justify-center gap-6 pt-6"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="h-20 px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl text-xl uppercase tracking-widest"
+        >
+          <Link href="/early-access">
+            START YOUR CLUB
+          </Link>
+        </Button>
+
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="h-20 px-16 border-white/20 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-md"
+        >
+          <Link href="#loop">
+            VIEW PROTOCOL
+          </Link>
+        </Button>
+      </motion.div>
+
+    </motion.div>
+  </div>
+
+  {/* Floating Banner */}
+  <div className="absolute bottom-10 right-10 hidden lg:block z-10">
+    <h4 className="text-xl font-bold text-white uppercase tracking-[0.4em] italic">
+      GLOBAL FOOTBALL NETWORK
+    </h4>
+  </div>
+
+</section>
       {/* 2. CORE ECOSYSTEM LOOP - VISUAL FLOW */}
       <section id="loop" className="py-48 relative overflow-hidden bg-background">
         <div className="container mx-auto px-6 max-w-7xl">
