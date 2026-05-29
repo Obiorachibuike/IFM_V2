@@ -51,115 +51,118 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
-      {/* 1. CINEMATIC HERO - THE VISION */}
-      {/* LOCKED HEIGHT AT 100% VIEWPORT */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* 1. CINEMATIC ECOSYSTEM HERO */}
+{/* LOCKED HEIGHT AT 100% VIEWPORT */}
+<section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-        {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
-        <div className="absolute inset-0 z-0 w-full h-full">
-          {heroImg?.imageUrl && (
-            <Image
-              src={heroImg.imageUrl}
-              alt="IFM Vision"
-              fill
-              priority
-              className="object-fill md:object-cover w-full h-full"
-            />
-          )}
-        </div>
+  {/* BACKGROUND IMAGE - FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+  <div className="absolute inset-0 z-0 w-full h-full">
+    {universeImg?.imageUrl && (
+      <Image
+        src={universeImg.imageUrl}
+        alt="IFM Universe"
+        fill
+        priority
+        className="object-fill md:object-cover w-full h-full"
+      />
+    )}
+  </div>
 
-        {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
-        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+  {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
+  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
 
-          <motion.div
-            initial="initial"
-            whileInView="whileInView"
-            variants={staggerContainer}
-            className="flex flex-col items-center text-center space-y-6 md:space-y-12"
-          >
+    <motion.div
+      initial="initial"
+      whileInView="whileInView"
+      variants={staggerContainer}
+      className="flex flex-col items-center text-center space-y-6 md:space-y-12"
+    >
 
-            {/* BADGE */}
-            <motion.div variants={fadeInUp}>
-              <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
-                The Architect Protocol
-              </Badge>
-            </motion.div>
+      {/* BADGE */}
+      <motion.div variants={fadeIn}>
+        <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
+          The Living Universe
+        </Badge>
+      </motion.div>
 
-            {/* TITLE */}
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
-            >
-              BUILD. OWN. <br />
-              <span className="text-gradient-blue italic">
-                DOMINATE.
-              </span>
-            </motion.h1>
+      {/* TITLE */}
+      <motion.h1
+        variants={fadeIn}
+        className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
+      >
+        A WORLD OF <br />
+        <span className="text-gradient-blue italic">
+          SOVEREIGNTY.
+        </span>
+      </motion.h1>
 
-            {/* DESCRIPTION */}
-            <motion.p
-              variants={fadeInUp}
-              className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
-            >
-              IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty.
-            </motion.p>
+      {/* DESCRIPTION */}
+      <motion.p
+        variants={fadeIn}
+        className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
+      >
+        Every decision, every match, and every player development shapes your club’s long-term legacy in a persistent football economy.
+      </motion.p>
 
-            {/* CTA */}
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
+      {/* CTA */}
+      <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
 
-              <Button
-                asChild
-                size="lg"
-                className="h-14 sm:h-20 px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl glow-blue text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto"
-              >
-                <Link href="/early-access">
-                  START YOUR CLUB
-                </Link>
-              </Button>
+        <Button
+          asChild
+          size="lg"
+          className="h-14 sm:h-20 px-8 sm:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl glow-blue text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto"
+        >
+          <Link href="/early-access">
+            START YOUR CLUB
+          </Link>
+        </Button>
 
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
-              >
-                <Link href="/gameplay">
-                  WATCH GAMEPLAY
-                </Link>
-              </Button>
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
+        >
+          <Link href="#loop">
+            VIEW PROTOCOL
+          </Link>
+        </Button>
 
-            </motion.div>
+      </motion.div>
 
-            {/* STATS */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
-            >
-              {[
-                { label: "Active Clubs", value: "85,420" },
-                { label: "Matches Played", value: "1.2M+" },
-                { label: "Players Developed", value: "3.5M" },
-                { label: "Rewards Paid", value: "4.8M $IFM" }
-              ].map((stat, i) => (
-                <div key={i}>
-                  <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
-                    {stat.label}
-                  </div>
-                  <div className="text-xl md:text-3xl font-bold text-white">
-                    {stat.value}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+      {/* STATS */}
+      <motion.div
+        variants={fadeIn}
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
+      >
+        {[
+          { label: "Active Clubs", value: "85,420" },
+          { label: "Matches Played", value: "1.2M+" },
+          { label: "Players Developed", value: "3.5M" },
+          { label: "Rewards Paid", value: "4.8M $IFM" }
+        ].map((stat, i) => (
+          <div key={i}>
+            <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
+              {stat.label}
+            </div>
+            <div className="text-xl md:text-3xl font-bold text-white">
+              {stat.value}
+            </div>
+          </div>
+        ))}
+      </motion.div>
 
-          </motion.div>
-        </div>
+    </motion.div>
+  </div>
 
-        {/* Banner callout */}
-        <div className="absolute bottom-12 left-12 hidden md:block">
-           <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">System Node: Central Architecture / 001</span>
-        </div>
-      </section>
+  {/* Banner callout */}
+  <div className="absolute bottom-12 left-12 hidden md:block">
+     <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">GLOBAL FOOTBALL NETWORK</span>
+  </div>
+</section>
+
+
+
 
       {/* 2. THE SEASONAL CADENCE - VISUAL TIMELINE */}
       <section className="py-48 relative border-y border-white/5 bg-card/5">
