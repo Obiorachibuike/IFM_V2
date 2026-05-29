@@ -45,68 +45,97 @@ export default function GameplayPage() {
   return (
     <div className="flex flex-col w-full bg-background font-body selection:bg-primary selection:text-white">
 
-      {/* 1. HERO - THE COMMAND CENTER */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Background Layer: 100% raw image, no overlay filters */}
-        <div className="absolute inset-0 z-0 w-full h-full">
-          {heroImg && (
-            <Image 
-              src={heroImg.imageUrl} 
-              alt="IFM Universe" 
-              fill 
-              className="absolute top-0 left-0 w-full h-full object-cover"
-              priority
-            />
-          )}
-        </div>
+     {/* 1. HERO - THE COMMAND CENTER */}
+<section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
 
-        {/* Content Layer: Wrapped in a targeted high-contrast backdrop panel for visibility */}
-        <div className="container relative z-10 mx-auto px-6 max-w-5xl text-center">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="space-y-8 bg-black/70 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] border border-white/10 shadow-2xl"
-          >
-            <motion.div variants={fadeIn}>
-              <Badge className="bg-primary/20 text-white border-primary/40 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full glow-blue">
-                Tactical Intelligence v2.4
-              </Badge>
-            </motion.div>
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
+    {heroImg && (
+      <Image
+        src={heroImg.imageUrl}
+        alt="IFM Universe"
+        fill
+        priority
+        className="object-cover object-center"
+      />
+    )}
+  </div>
 
-            <motion.h1 
-              variants={fadeIn}
-              className="text-5xl md:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white"
-            >
-              LEARN TO <br />
-              <span className="text-gradient-blue italic">COMMAND.</span>
-            </motion.h1>
+  {/* Optional subtle gradient for readability */}
+  <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-            <motion.p 
-              variants={fadeIn}
-              className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-normal leading-relaxed"
-            >
-              Build squads, set tactics, develop players, compete in leagues, and earn rewards—all in a living football universe.
-            </motion.p>
+  {/* Content */}
+  <div className="relative z-10 w-full flex items-center justify-center px-6">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={staggerContainer}
+      className="w-full max-w-5xl text-center space-y-8 bg-black/60 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] border border-white/10 shadow-2xl"
+    >
 
-            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-6">
-              <Button asChild size="lg" className="h-16 px-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue text-lg uppercase tracking-widest">
-                <Link href="/early-access">START YOUR CLUB</Link>
-              </Button>
-              <Button variant="outline" size="lg" className="h-16 px-12 border-white/20 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-lg uppercase tracking-widest backdrop-blur-sm">
-                <Link href="#loop">VIEW PROTOCOLS</Link>
-              </Button>
-            </motion.div>
+      <motion.div variants={fadeIn}>
+        <Badge className="bg-primary/20 text-white border-primary/40 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full">
+          Tactical Intelligence v2.4
+        </Badge>
+      </motion.div>
 
-            {/* Repositioned protocol text directly to the center inside the visible wrapper */}
-            <motion.div variants={fadeIn} className="pt-4 border-t border-white/10">
-               <span className="text-[11px] font-bold text-primary uppercase tracking-[0.4em]">
-                 Command Center Protocol: Operational
-               </span>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <motion.h1
+        variants={fadeIn}
+        className="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white"
+      >
+        LEARN TO <br />
+        <span className="text-gradient-blue italic">
+          COMMAND.
+        </span>
+      </motion.h1>
+
+      <motion.p
+        variants={fadeIn}
+        className="max-w-3xl mx-auto text-base md:text-xl text-white/90 leading-relaxed"
+      >
+        Build squads, set tactics, develop players, compete in leagues,
+        and earn rewards—all in a living football universe.
+      </motion.p>
+
+      <motion.div
+        variants={fadeIn}
+        className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="h-16 px-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl text-lg uppercase tracking-widest"
+        >
+          <Link href="/early-access">
+            START YOUR CLUB
+          </Link>
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          className="h-16 px-12 border-white/20 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-lg uppercase tracking-widest backdrop-blur-sm"
+        >
+          <Link href="#loop">
+            VIEW PROTOCOLS
+          </Link>
+        </Button>
+      </motion.div>
+
+      <motion.div
+        variants={fadeIn}
+        className="pt-4 border-t border-white/10"
+      >
+        <span className="text-[11px] font-bold text-primary uppercase tracking-[0.4em]">
+          Command Center Protocol: Operational
+        </span>
+      </motion.div>
+
+    </motion.div>
+  </div>
+</section>
+
+
 
       {/* 2. CORE GAME LOOP - THE PROGRESSION CYCLE */}
       <section id="loop" className="py-48 relative border-y border-white/5 bg-card/5">
