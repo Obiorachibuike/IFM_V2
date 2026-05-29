@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -6,19 +5,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip 
-} from 'recharts'
-import { 
-  Coins, Lock, Zap, TrendingUp, ShieldCheck, 
-  Rocket, ArrowRight, Target, Activity,
-  Globe, BarChart3, Microscope, LayoutDashboard,
-  Users, Layers, Sparkles, Trophy
+  Lock, Zap, ShieldCheck, 
+  Rocket, Activity, Microscope, 
+  Users, Trophy
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { cn } from "@/lib/utils"
 
 // Data for Token Allocation
 const allocationData = [
@@ -30,8 +24,17 @@ const allocationData = [
   { name: 'Liquidity Pool', value: 5, color: '#60A5FA' }, // Blue Accent
 ]
 
+// Base fade configuration
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+}
+
+// Added missing variant configuration requested by your hero update
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
@@ -52,8 +55,8 @@ export default function TokenomicsPage() {
   const tokenVisual = PlaceHolderImages.find(i => i.id === "token-visual")
   const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
-  
-  // Prevent hydration error with charting library
+
+  // Prevent hydration error with charting library if needed later
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => {
     setMounted(true)
@@ -61,121 +64,116 @@ export default function TokenomicsPage() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-accent selection:text-background">
-      
-     {/* 1. PROTOCOL HERO - THE ECONOMIC ENGINE */}
-{/* LOCKED HEIGHT AT 100% VIEWPORT */}
-<section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-  {/* BACKGROUND IMAGE - CLEAN & FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
-  <div className="absolute inset-0 z-0 w-full h-full">
-    {tokenVisual?.imageUrl && (
-      <Image
-        src={tokenVisual.imageUrl}
-        alt="IFM Token"
-        fill
-        priority
-        className="object-fill md:object-cover w-full h-full"
-      />
-    )}
-  </div>
+      {/* 1. PROTOCOL HERO - THE ECONOMIC ENGINE */}
+      {/* LOCKED HEIGHT AT 100% VIEWPORT */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
 
-  {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
-  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+        {/* BACKGROUND IMAGE - CLEAN & FORCED 100% WIDTH AND HEIGHT VIA OBJECT-FILL */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          {tokenVisual?.imageUrl && (
+            <Image
+              src={tokenVisual.imageUrl}
+              alt="IFM Token"
+              fill
+              priority
+              className="object-fill md:object-cover w-full h-full"
+            />
+          )}
+        </div>
 
-    <motion.div
-      initial="initial"
-      whileInView="whileInView"
-      variants={staggerContainer}
-      className="flex flex-col items-center text-center space-y-6 md:space-y-12"
-    >
+        {/* CONTENT - TIGHTENED MOBILE SPACING TO REMAIN COMPACT WITHIN SCREEN BOUNDS */}
+        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
 
-      {/* BADGE */}
-      <motion.div variants={fadeInUp}>
-        <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
-          Protocol Architecture v4.0
-        </Badge>
-      </motion.div>
+          <motion.div
+            initial="initial"
+            whileInView="whileInView"
+            variants={staggerContainer}
+            className="flex flex-col items-center text-center space-y-6 md:space-y-12"
+          >
 
-      {/* TITLE */}
-      <motion.h1
-        variants={fadeInUp}
-        className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
-      >
-        OWN THE <br />
-        <span className="text-gradient-gold italic">
-          ECONOMY.
-        </span>
-      </motion.h1>
+            {/* BADGE */}
+            <motion.div variants={fadeInUp}>
+              <Badge className="bg-white/5 text-white border-white/10 px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.6em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
+                Protocol Architecture v4.0
+              </Badge>
+            </motion.div>
 
-      {/* DESCRIPTION */}
-      <motion.p
-        variants={fadeInUp}
-        className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
-      >
-        The $IFM token is a gameplay-driven utility layer designed to power progression, ownership, and rewards within a persistent football universe.
-      </motion.p>
+            {/* TITLE */}
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl md:text-7xl lg:text-[8rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
+            >
+              OWN THE <br />
+              <span className="text-gradient-gold italic">
+                ECONOMY.
+              </span>
+            </motion.h1>
 
-      {/* CTA */}
-      <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
+            {/* DESCRIPTION */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-sm md:text-2xl text-white/80 max-w-4xl mx-auto font-light leading-relaxed px-4 md:px-0"
+            >
+              The $IFM token is a gameplay-driven utility layer designed to power progression, ownership, and rewards within a persistent football universe.
+            </motion.p>
 
-        <Button
-          asChild
-          size="lg"
-          className="h-14 sm:h-20 px-8 sm:px-16 bg-accent hover:bg-accent/90 text-background font-bold rounded-xl sm:rounded-2xl glow-gold text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto border-none"
-        >
-          <Link href="/early-access">
-            SECURE FOUNDER STATUS
-          </Link>
-        </Button>
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 pt-4 md:pt-10 w-full sm:w-auto px-6 sm:px-0">
 
-        <Button
-          asChild
-          size="lg"
-          variant="outline"
-          className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
-        >
-          <Link href="#utility">
-            EXPLORE UTILITY
-          </Link>
-        </Button>
+              <Button
+                asChild
+                size="lg"
+                className="h-14 sm:h-20 px-8 sm:px-16 bg-accent hover:bg-accent/90 text-background font-bold rounded-xl sm:rounded-2xl glow-gold text-lg sm:text-xl uppercase tracking-widest w-full sm:w-auto border-none"
+              >
+                <Link href="/early-access">
+                  SECURE FOUNDER STATUS
+                </Link>
+              </Button>
 
-      </motion.div>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-14 sm:h-20 px-8 sm:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl sm:rounded-2xl text-lg sm:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
+              >
+                <Link href="#utility">
+                  EXPLORE UTILITY
+                </Link>
+              </Button>
 
-      {/* STATS */}
-      <motion.div
-        variants={fadeInUp}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
-      >
-        {[
-          { label: "Circulating Pool", value: "250M $IFM" },
-          { label: "Treasury Nodes", value: "Active" },
-          { label: "Ecosystem Yield", value: "Dynamic" },
-          { label: "On-Chain Value", value: "Persistent" }
-        ].map((stat, i) => (
-          <div key={i}>
-            <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
-              {stat.label}
-            </div>
-            <div className="text-xl md:text-3xl font-bold text-white mt-1">
-              {stat.value}
-            </div>
-          </div>
-        ))}
-      </motion.div>
+            </motion.div>
 
-    </motion.div>
-  </div>
+            {/* STATS */}
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 pt-8 md:pt-20 border-t border-white/10 w-full max-w-5xl"
+            >
+              {[
+                { label: "Circulating Pool", value: "250M $IFM" },
+                { label: "Treasury Nodes", value: "Active" },
+                { label: "Ecosystem Yield", value: "Dynamic" },
+                { label: "On-Chain Value", value: "Persistent" }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
+                    {stat.label}
+                  </div>
+                  <div className="text-xl md:text-3xl font-bold text-white mt-1">
+                    {stat.value}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
 
-  {/* Banner callout */}
-  <div className="absolute bottom-12 left-12 hidden md:block">
-     <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">Economic Protocol // Node: Treasury_Alpha_Active</span>
-  </div>
-</section>
+          </motion.div>
+        </div>
 
-
-
-
-
+        {/* Banner callout */}
+        <div className="absolute bottom-12 left-12 hidden md:block">
+           <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">Economic Protocol // Node: Treasury_Alpha_Active</span>
+        </div>
+      </section>
 
       {/* 2. THE UTILITY HUB - REAL GAMEPLAY FUNCTION */}
       <section id="utility" className="py-48 relative overflow-hidden bg-background">
@@ -208,7 +206,7 @@ export default function TokenomicsPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
                   {economyImg && (
@@ -217,7 +215,7 @@ export default function TokenomicsPage() {
                   <div className="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-background via-transparent to-transparent">
                      <div className="space-y-6">
                         <Badge className="bg-primary text-white font-bold px-6 py-2 uppercase tracking-widest text-[10px]">Verified Token Logic</Badge>
-                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white">THE ENGINE <br />ROOM</h3>
+                        <h3 className="text-4xl font-bold font-headline uppercase leading-tight text-white"> THE ENGINE <br />ROOM</h3>
                         <p className="text-muted-foreground text-sm font-light">Watch your club's token treasury grow as you master the tactical simulation and progress through the pyramid.</p>
                      </div>
                   </div>
@@ -259,7 +257,7 @@ export default function TokenomicsPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[4/5]" hoverable={false}>
                   {rewardsImg && (
