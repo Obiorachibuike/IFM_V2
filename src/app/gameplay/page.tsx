@@ -47,6 +47,7 @@ export default function GameplayPage() {
 
       {/* 1. HERO - THE COMMAND CENTER */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Background Layer: No overlays, 100% explicit parent sizing */}
         <div className="absolute inset-0 z-0 w-full h-full">
           {heroImg && (
             <Image 
@@ -59,6 +60,7 @@ export default function GameplayPage() {
           )}
         </div>
 
+        {/* Content Layer */}
         <div className="container relative z-10 mx-auto px-6 max-w-7xl text-center">
           <motion.div 
             initial="initial"
@@ -98,9 +100,11 @@ export default function GameplayPage() {
           </motion.div>
         </div>
 
-        {/* Banner Text overlay remains visible */}
-        <div className="absolute top-24 left-12 hidden md:block z-10">
-           <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.5em]">Command Center Protocol: Operational</span>
+        {/* Floating Text Overlay Layer - Fully visible across screen sizes */}
+        <div className="absolute bottom-12 left-12 z-20">
+           <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] drop-shadow-md">
+             Command Center Protocol: Operational
+           </span>
         </div>
       </section>
 
