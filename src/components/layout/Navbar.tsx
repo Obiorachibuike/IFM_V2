@@ -73,7 +73,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav Links */}
         <nav className="hidden xl:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href
@@ -99,7 +99,9 @@ export function Navbar() {
           })}
         </nav>
 
+        {/* Action Controls Frame */}
         <div className="flex items-center gap-2 md:gap-4">
+          {/* Main Action Button (Hidden on tiny screens, pops up from small breakout point onwards) */}
           <Button asChild className={cn(
             "hidden sm:flex font-bold h-10 px-6 md:px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px]",
             isScrolled 
@@ -109,12 +111,13 @@ export function Navbar() {
             <Link href="/early-access">Early Access</Link>
           </Button>
 
+          {/* Hamburger / Close Icon Switcher Trigger */}
           <Button 
             variant="ghost" 
             size="icon" 
             className="xl:hidden text-white rounded-full hover:bg-white/5 active:scale-95 transition-all" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle structural routing directory menu"
+            aria-label="Toggle layout routing navigation"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -136,7 +139,7 @@ export function Navbar() {
                 : "top-24 max-h-[calc(100vh-7rem)]"
             )}
           >
-            {/* Scroll-fitted navigation drawer engine block */}
+            {/* Scrollable Navigation Items Container */}
             <nav className="flex flex-col gap-2 overflow-y-auto overflow-x-hidden scrollbar-none py-2 pr-1 overscroll-contain flex-1">
               {navItems.map((item) => {
                 const ItemIcon = item.icon
@@ -163,7 +166,7 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Bottom Form Action Area */}
+            {/* Mobile Action Button Footer (Stays anchored at the bottom) */}
             <div className="pt-4 mt-2 border-t border-white/5 shrink-0">
               <Button 
                 asChild 
