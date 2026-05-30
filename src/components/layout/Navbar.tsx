@@ -101,7 +101,6 @@ export function Navbar() {
 
         {/* Action Controls Frame */}
         <div className="flex items-center gap-2 md:gap-4">
-          {/* Main Action Button (Hidden on tiny screens, pops up from small breakout point onwards) */}
           <Button asChild className={cn(
             "hidden sm:flex font-bold h-10 px-6 md:px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px]",
             isScrolled 
@@ -111,7 +110,6 @@ export function Navbar() {
             <Link href="/early-access">Early Access</Link>
           </Button>
 
-          {/* Hamburger / Close Icon Switcher Trigger */}
           <Button 
             variant="ghost" 
             size="icon" 
@@ -133,14 +131,14 @@ export function Navbar() {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 md:p-6 border border-white/10 z-40 bg-[#05070D]/95 backdrop-blur-2xl shadow-2xl flex flex-col",
+              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 border border-white/10 z-40 bg-[#05070D]/95 backdrop-blur-2xl shadow-2xl flex flex-col justify-between gap-4",
               isScrolled 
-                ? "top-16 max-h-[calc(100vh-5rem)]" 
-                : "top-24 max-h-[calc(100vh-7rem)]"
+                ? "top-16 max-h-[calc(100vh-5.5rem)]" 
+                : "top-24 max-h-[calc(100vh-7.5rem)]"
             )}
           >
             {/* Scrollable Navigation Items Container */}
-            <nav className="flex flex-col gap-2 overflow-y-auto overflow-x-hidden scrollbar-none py-2 pr-1 overscroll-contain flex-1">
+            <nav className="flex flex-col gap-1.5 overflow-y-auto overflow-x-hidden scrollbar-none py-1 pr-1 overscroll-contain flex-1">
               {navItems.map((item) => {
                 const ItemIcon = item.icon
                 const isActive = pathname === item.href
@@ -150,7 +148,7 @@ export function Navbar() {
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center justify-between p-4 rounded-xl transition-all border border-transparent active:scale-[0.99] group",
+                      "flex items-center justify-between p-3 rounded-xl transition-all border border-transparent active:scale-[0.99] group",
                       isActive 
                         ? "bg-primary/10 border-primary/20 text-primary font-bold" 
                         : "text-white/70 hover:text-white hover:bg-white/5"
@@ -158,7 +156,7 @@ export function Navbar() {
                   >
                     <div className="flex items-center gap-4">
                       <ItemIcon className={cn("h-4 w-4 shrink-0", isActive ? "text-primary" : "text-white/40")} />
-                      <span className="font-headline text-lg tracking-tight uppercase">{item.name}</span>
+                      <span className="font-headline text-base tracking-tight uppercase">{item.name}</span>
                     </div>
                     <ChevronRight className={cn("h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0", isActive && "opacity-100 translate-x-0")} />
                   </Link>
@@ -166,8 +164,8 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Mobile Action Button Footer (Stays anchored at the bottom) */}
-            <div className="pt-4 mt-2 border-t border-white/5 shrink-0">
+            {/* Mobile Action Button Footer (Locked and safe at the bottom) */}
+            <div className="pt-3 border-t border-white/5 shrink-0 w-full">
               <Button 
                 asChild 
                 className="w-full h-12 bg-primary text-white font-bold tracking-widest text-xs glow-blue rounded-xl"
