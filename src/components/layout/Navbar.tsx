@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, LayoutDashboard, Menu, X, Rocket, Info, BookOpen } from "lucide-react"
+import { Trophy, Shield, Coins, Map, LayoutDashboard, Menu, X, Rocket, Info, BookOpen, Users } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -13,6 +13,7 @@ const navItems = [
   { name: "About", href: "/about", icon: Info },
   { name: "Gameplay", href: "/gameplay", icon: Shield },
   { name: "Ecosystem", href: "/ecosystem", icon: LayoutDashboard },
+  { name: "Team", href: "/team", icon: Users },
   { name: "Tokenomics", href: "/tokenomics", icon: Coins },
   { name: "Insights", href: "/blog", icon: BookOpen },
   { name: "Roadmap", href: "/roadmap", icon: Map },
@@ -128,10 +129,15 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-24 left-4 right-4 xl:hidden rounded-[2rem] p-5 md:p-6 border border-white/10 z-40 bg-[#05070D]/95 backdrop-blur-2xl shadow-2xl flex flex-col max-h-[calc(100vh-7rem)]"
+            className={cn(
+              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 md:p-6 border border-white/10 z-40 bg-[#05070D]/95 backdrop-blur-2xl shadow-2xl flex flex-col",
+              isScrolled 
+                ? "top-16 max-h-[calc(100vh-5rem)]" 
+                : "top-24 max-h-[calc(100vh-7rem)]"
+            )}
           >
             {/* Scroll-fitted navigation drawer engine block */}
-            <nav className="flex flex-col gap-2 overflow-y-auto no-scrollbar py-2 pr-1 native-scroll-momentum flex-1">
+            <nav className="flex flex-col gap-2 overflow-y-auto overflow-x-hidden scrollbar-none py-2 pr-1 overscroll-contain flex-1">
               {navItems.map((item) => {
                 const ItemIcon = item.icon
                 const isActive = pathname === item.href
@@ -141,7 +147,7 @@ export function Navbar() {
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center justify-between p-4 rounded-xl transition-all border border-transparent active:scale-[0.99]",
+                      "flex items-center justify-between p-4 rounded-xl transition-all border border-transparent active:scale-[0.99] group",
                       isActive 
                         ? "bg-primary/10 border-primary/20 text-primary font-bold" 
                         : "text-white/70 hover:text-white hover:bg-white/5"
@@ -157,7 +163,7 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Bottom Form Action Area (Remains visual focal breakpoint anchor context) */}
+            {/* Bottom Form Action Area */}
             <div className="pt-4 mt-2 border-t border-white/5 shrink-0">
               <Button 
                 asChild 
@@ -174,7 +180,6 @@ export function Navbar() {
   )
 }
 
-// Inline helper pattern utility supporting explicit scroll concealment rules across variants
 const ChevronRight = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
