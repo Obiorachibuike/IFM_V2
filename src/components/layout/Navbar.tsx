@@ -131,7 +131,10 @@ export function Navbar() {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 border border-white/10 z-40 bg-[#05070D]/95 backdrop-blur-2xl shadow-2xl flex flex-col justify-between gap-4",
+              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 border border-white/10 flex flex-col justify-between gap-4",
+              // CRITICAL FIXES: Changed bg selection from opacity fallback to solid #05070D hex base color,
+              // and bumped stack importance explicitly to z-50 to cleanly separate above the landing page components.
+              "z-50 bg-[#05070D] shadow-2xl",
               isScrolled 
                 ? "top-16 max-h-[calc(100vh-5.5rem)]" 
                 : "top-24 max-h-[calc(100vh-7.5rem)]"
@@ -164,7 +167,7 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Mobile Action Button Footer (Locked and safe at the bottom) */}
+            {/* Mobile Action Button Footer */}
             <div className="pt-3 border-t border-white/5 shrink-0 w-full">
               <Button 
                 asChild 
