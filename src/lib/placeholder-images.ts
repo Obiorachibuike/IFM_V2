@@ -78,6 +78,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "trading dashboard"
   },
   {
+    id: "blog-hero",
+    description: "Golden IFM rewards flowing through a digital ecosystem network",
+    imageUrl: "https://img.ge/i/qDq4s11.png",
+    imageHint: "golden trophy coins"
+  },
+  {
     id: "league-table-ui",
     description: "Esports broadcast style league table with global rankings",
     imageUrl: "https://picsum.photos/seed/ifm-league-1/800/1000",
