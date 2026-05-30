@@ -378,13 +378,19 @@ export default function HomePage() {
               START YOUR <br />
               <span className="text-gradient-blue italic">DYNASTY.</span>
             </h2>
-            <div className="flex flex-col sm:flex-row justify-center gap-8">
-              <Button asChild size="lg" className="h-24 px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-3xl glow-blue text-2xl uppercase tracking-[0.2em]">
-                <Link href="/early-access" className="flex items-center gap-6">
-                  CLAIM FOUNDING STATUS <Rocket className="h-8 w-8" />
-                </Link>
-              </Button>
-            </div>
+            <div className="w-full max-w-md mx-auto sm:max-w-none flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 px-4 sm:px-0">
+  <Button 
+    asChild 
+    size="lg" 
+    className="w-full sm:w-auto h-16 sm:h-24 px-6 sm:px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl sm:rounded-3xl glow-blue text-lg sm:text-2xl uppercase tracking-[0.1em] sm:tracking-[0.2em]"
+  >
+    <Link href="/early-access" className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+      <span className="whitespace-nowrap">CLAIM FOUNDING STATUS</span> 
+      <Rocket className="h-6 w-6 sm:h-8 sm:w-8 shrink-0" />
+    </Link>
+  </Button>
+</div>
+
             <p className="text-muted-foreground uppercase tracking-[0.5em] text-[10px] mt-12 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
         </div>
