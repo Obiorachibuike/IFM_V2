@@ -94,8 +94,12 @@ export default function BlogPage() {
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = activeCategory === "All" || post.category === activeCategory
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    
+    // SAFE PARSING: Searches using title only, protected with string fallbacks to prevent crashes
+    const safeTitle = post.title?.toLowerCase() || ""
+    const safeQuery = searchQuery?.toLowerCase() || ""
+    const matchesSearch = safeTitle.includes(safeQuery)
+    
     return matchesCategory && matchesSearch
   })
 
@@ -148,9 +152,9 @@ export default function BlogPage() {
               <div className="relative w-full sm:w-96 drop-shadow-2xl">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60" />
                 <Input 
-                  placeholder="Search intelligence database..." 
+                  placeholder="Search by title..." 
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.value)}
+                  onChange={(e) => setSearchQuery(e.target.value)} // FIXED: correctly queries standard change element value
                   className="pl-12 h-14 bg-black/40 border-white/20 rounded-2xl text-white placeholder:text-white/40 backdrop-blur-xl focus:border-primary/50 focus:bg-black/60 transition-all"
                 />
               </div>
