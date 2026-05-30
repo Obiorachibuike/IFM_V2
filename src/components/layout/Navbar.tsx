@@ -1,9 +1,23 @@
 "use client"
 
 import * as React from "react"
+import { createPortal } from "react-dom"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Trophy, Shield, Coins, Map, LayoutDashboard, Menu, X, Rocket, Info, BookOpen, Users } from "lucide-react"
+import {
+  Trophy,
+  Shield,
+  Coins,
+  Map,
+  LayoutDashboard,
+  Menu,
+  X,
+  Rocket,
+  Info,
+  BookOpen,
+  Users,
+} from "lucide-react"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -23,6 +37,11 @@ export function Navbar() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -33,48 +52,75 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Lock body document viewport scrolling when mobile menu state is engaged
   React.useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "unset"
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset"
     return () => {
       document.body.style.overflow = "unset"
     }
   }, [isMobileMenuOpen])
 
+  const ChevronRightIcon = ({ className }: { className?: string }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2.5}
+      stroke="currentColor"
+      className={className}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  )
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      // Enforced global wrapper root dominance
       className={cn(
-        "fixed top-0 z-[999] w-full transition-all duration-500",
-        isScrolled ? "py-3 px-4 md:py-4 md:px-6" : "py-6 px-4 md:py-8 md:px-6"
+        "fixed top-0 z-[9990] w-full transition-all duration-500",
+        isScrolled
+          ? "py-3 px-4 md:py-4 md:px-6"
+          : "py-6 px-4 md:py-8 md:px-6"
       )}
     >
-      <div className={cn(
-        "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-4 py-2 md:px-6 transition-all duration-500",
-        isScrolled 
-          ? "bg-secondary/80 backdrop-blur-2xl border border-white/10 shadow-2xl" 
-          : "bg-transparent border-transparent"
-      )}>
-        <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className={cn(
-            "relative h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-xl transition-all duration-500",
-            isScrolled ? "bg-primary text-white glow-blue" : "bg-white/10 text-white"
-          )}>
+      <div
+        className={cn(
+          "container mx-auto max-w-7xl flex items-center justify-between rounded-full px-4 py-2 md:px-6 transition-all duration-500",
+          isScrolled
+            ? "bg-secondary/80 backdrop-blur-2xl border border-white/10 shadow-2xl"
+            : "bg-transparent border-transparent"
+        )}
+      >
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 group"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            className={cn(
+              "relative h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-xl transition-all duration-500",
+              isScrolled ? "bg-primary text-white" : "bg-white/10 text-white"
+            )}
+          >
             <Trophy className="h-5 w-5 md:h-6 md:w-6" />
           </div>
+
           <div className="flex flex-col">
-            <span className="font-headline text-xl md:text-2xl font-bold tracking-tighter text-white leading-none">IFM</span>
-            <span className="text-[7px] md:text-[8px] font-bold tracking-[0.4em] uppercase text-primary">Empire</span>
+            <span className="font-headline text-xl md:text-2xl font-bold tracking-tighter text-white leading-none">
+              IFM
+            </span>
+            <span className="text-[7px] md:text-[8px] font-bold tracking-[0.4em] uppercase text-primary">
+              Empire
+            </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav */}
         <nav className="hidden xl:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href
@@ -83,16 +129,17 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-full group",
-                  isActive ? "text-primary" : "text-white/70 hover:text-white"
+                  "relative flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-full",
+                  isActive
+                    ? "text-primary"
+                    : "text-white/70 hover:text-white"
                 )}
               >
                 {item.name}
                 {isActive && (
-                  <motion.span 
+                  <motion.span
                     layoutId="nav-active"
                     className="absolute inset-0 bg-white/10 rounded-full -z-10"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
               </Link>
@@ -100,92 +147,106 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Action Controls Frame */}
+        {/* Actions */}
         <div className="flex items-center gap-2 md:gap-4">
-          <Button asChild className={cn(
-            "hidden sm:flex font-bold h-10 px-6 md:px-8 rounded-full transition-all duration-500 uppercase tracking-widest text-[10px]",
-            isScrolled 
-              ? "bg-primary hover:bg-primary/90 text-white glow-blue" 
-              : "bg-white/10 hover:bg-white/20 text-white border border-white/10"
-          )}>
+          <Button
+            asChild
+            className="hidden sm:flex font-bold h-10 px-6 md:px-8 rounded-full uppercase tracking-widest text-[10px] bg-primary text-white"
+          >
             <Link href="/early-access">Early Access</Link>
           </Button>
 
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="xl:hidden text-white rounded-full hover:bg-white/5 active:scale-95 transition-all" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle layout routing navigation"
+          <Button
+            variant="ghost"
+            size="icon"
+            className="xl:hidden text-white rounded-full"
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Dynamic Full Menu Dropdown Panel */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(
-              "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 border border-white/10 flex flex-col justify-between gap-4",
-              // CRITICAL FIXED HIGHER LAYER STACK INDEX VALUE:
-              "z-[1000] bg-[#05070D] shadow-2xl", 
-              isScrolled 
-                ? "top-16 max-h-[calc(100vh-5.5rem)]" 
-                : "top-24 max-h-[calc(100vh-7.5rem)]"
-            )}
-          >
-            {/* Scrollable Navigation Items Container */}
-            <nav className="flex flex-col gap-1.5 overflow-y-auto overflow-x-hidden scrollbar-none py-1 pr-1 overscroll-contain flex-1">
-              {navItems.map((item) => {
-                const ItemIcon = item.icon
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={cn(
-                      "flex items-center justify-between p-3 rounded-xl transition-all border border-transparent active:scale-[0.99] group",
-                      isActive 
-                        ? "bg-primary/10 border-primary/20 text-primary font-bold" 
-                        : "text-white/70 hover:text-white hover:bg-white/5"
-                    )}
-                  >
-                    <div className="flex items-center gap-4">
-                      <ItemIcon className={cn("h-4 w-4 shrink-0", isActive ? "text-primary" : "text-white/40")} />
-                      <span className="font-headline text-base tracking-tight uppercase">{item.name}</span>
-                    </div>
-                    <ChevronRight className={cn("h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0", isActive && "opacity-100 translate-x-0")} />
-                  </Link>
-                )
-              })}
-            </nav>
+      {/* MOBILE MENU PORTAL */}
+      {mounted &&
+        isMobileMenuOpen &&
+        createPortal(
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className={cn(
+                "fixed left-4 right-4 xl:hidden rounded-[2rem] p-5 border border-white/10 flex flex-col gap-4",
+                "z-[99999] bg-[#05070D] shadow-2xl",
+                isScrolled
+                  ? "top-16 max-h-[calc(100vh-5.5rem)]"
+                  : "top-24 max-h-[calc(100vh-7.5rem)]"
+              )}
+            >
+              <nav className="flex flex-col gap-1.5 overflow-y-auto flex-1">
+                {navItems.map((item) => {
+                  const Icon = item.icon
+                  const isActive = pathname === item.href
 
-            {/* Mobile Action Button Footer */}
-            <div className="pt-3 border-t border-white/5 shrink-0 w-full">
-              <Button 
-                asChild 
-                className="w-full h-12 bg-primary text-white font-bold tracking-widest text-xs glow-blue rounded-xl"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Link href="/early-access">EARLY ACCESS</Link>
-              </Button>
-            </div>
-          </motion.div>
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        "flex items-center justify-between p-3 rounded-xl transition-all border",
+                        isActive
+                          ? "bg-primary/10 border-primary/20 text-primary"
+                          : "text-white/70 hover:text-white hover:bg-white/5 border-transparent"
+                      )}
+                    >
+                      <div className="flex items-center gap-4">
+                        <Icon
+                          className={cn(
+                            "h-4 w-4",
+                            isActive ? "text-primary" : "text-white/40"
+                          )}
+                        />
+                        <span className="font-headline uppercase text-base">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      <ChevronRightIcon
+                        className={cn(
+                          "h-4 w-4 transition-all",
+                          isActive
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                        )}
+                      />
+                    </Link>
+                  )
+                })}
+              </nav>
+
+              <div className="pt-3 border-t border-white/5">
+                <Button
+                  asChild
+                  className="w-full h-12 bg-primary text-white font-bold tracking-widest text-xs rounded-xl"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Link href="/early-access">EARLY ACCESS</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </motion.header>
   )
 }
-
-const ChevronRight = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-  </svg>
-)
