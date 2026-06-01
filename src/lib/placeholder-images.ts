@@ -128,7 +128,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "nova-league-board",
     description: "Futuristic league table dashboard with global rankings and dynamic competition tracking",
-    imageUrl: "https://picsum.photos/seed/nova-league-board/1200/800",
+    imageUrl: "https://img.ge/i/06x0k65.png",
     imageHint: "sports leaderboard UI"
   },
   {
