@@ -8,7 +8,7 @@ import {
   Trophy, Rocket, Shield, Target, Cpu, Zap, 
   Coins, Play, Users, BarChart3, Microscope, 
   ShieldCheck, Sparkles, ChevronRight, Activity,
-  History, Star, HelpCircle, ChevronDown
+  History, Star, HelpCircle, ChevronDown, Network
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -21,6 +21,17 @@ const fadeIn = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+}
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { 
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true }
 }
 
 const faqData = [
@@ -50,17 +61,14 @@ export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null)
 
   // Assets
-
-const genesisBanner = PlaceHolderImages.find(i => i.id === "hero-stadium")
-
-const tacticsImg = PlaceHolderImages.find(i => i.id === "alpha-tactics-grid")
-const matchImg = PlaceHolderImages.find(i => i.id === "orion-live-match")
-const marketImg = PlaceHolderImages.find(i => i.id === "zenith-transfer-hub")
-const leagueImg = PlaceHolderImages.find(i => i.id === "nova-league-board")
-const academyImg = PlaceHolderImages.find(i => i.id === "vertex-academy-prospect")
-const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
-
-
+  const genesisBanner = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const tacticsImg = PlaceHolderImages.find(i => i.id === "alpha-tactics-grid")
+  const matchImg = PlaceHolderImages.find(i => i.id === "orion-live-match")
+  const marketImg = PlaceHolderImages.find(i => i.id === "zenith-transfer-hub")
+  const leagueImg = PlaceHolderImages.find(i => i.id === "nova-league-board")
+  const academyImg = PlaceHolderImages.find(i => i.id === "vertex-academy-prospect")
+  const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
+  const scaleImg = PlaceHolderImages.find(i => i.id === "scale-architecture-blueprint")
 
   return (
     <div className="flex flex-col w-full bg-background selection:bg-primary selection:text-white overflow-x-hidden">
@@ -285,7 +293,7 @@ const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
                    </div>
                 </div>
              </motion.div>
-             
+
              <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-2xl mx-auto">
                 <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
                   {matchImg && (
@@ -309,7 +317,137 @@ const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
         </div>
       </section>
 
-      {/* 5. FAQ SECTION - INTELLIGENCE BASE */}
+      {/* 5. PROACTIVE SCALING & LEAGUE ARCHITECTURE */}
+      <section className="py-20 md:py-36 relative border-t border-white/5 bg-card/5 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 lg:gap-32 items-center">
+            
+            {/* LEFT SIDE: CONCEPT & VALUE PROPOSITION */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+              <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
+                <div className="flex justify-center lg:justify-start">
+                  <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">
+                    Dynamic Architecture
+                  </Badge>
+                </div>
+                
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
+                  INFINITE SCALING. <br />
+                  <span className="text-gradient-blue italic">FLUID IDENTITIES.</span>
+                </h2>
+                
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  The mathematical structure of global football allows the game to expand infinitely without diluting elite competition. While the pinnacle remains hyper-exclusive, the foundation scales automatically to accommodate an unlimited influx of new clubs, managers, and regional communities.
+                </p>
+
+                <div className="space-y-3 sm:space-y-4 text-left max-w-xl mx-auto lg:mx-0">
+                  {[
+                    { 
+                      title: "Exponential Progression Layers", 
+                      desc: "Just like traditional setups where an elite top division sits above thousands of lower tiers, every new club injection organically spawns deeper regional divisions.",
+                      icon: Network 
+                    },
+                    { 
+                      title: "Dynamic Commercial Adaptability", 
+                      desc: "The structural integrity of a division remains absolute, but its branding layer is modular—allowing live commercial partnerships, title sponsorships, and brand alignment to swap fluidly over time.", 
+                      icon: Sparkles 
+                    }
+                  ].map((item, k) => (
+                    <div key={k} className="flex gap-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default group">
+                      <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-sm uppercase tracking-tight text-white">{item.title}</div>
+                        <div className="text-xs text-muted-foreground font-light mt-0.5 leading-relaxed">{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT SIDE: ARCHITECTURAL DEEP DIVE WITH BACKGROUND IMAGE */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full h-full min-h-[500px] lg:min-h-0">
+              <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square lg:aspect-auto lg:h-full min-h-[500px]" hoverable={false}>
+                
+                {/* IMAGE CONTAINER LAYER */}
+                {scaleImg && (
+                  <Image 
+                    src={scaleImg.imageUrl} 
+                    alt="Ecosystem Scale Architecture" 
+                    fill 
+                    className="object-cover opacity-20 grayscale brightness-[0.4] transition-all duration-700" 
+                  />
+                )}
+
+                {/* COLOR AND GRID OVERLAYS */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 z-0" />
+                <div className="absolute inset-0 football-grid opacity-10 z-0" />
+                
+                {/* CONTENT FOREGROUND LAYER */}
+                <div className="relative z-10 p-6 sm:p-10 flex flex-col justify-between h-full space-y-8">
+                  
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-center border-b border-white/10 pb-6">
+                      <div>
+                        <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">System Module // Scale_Engine</span>
+                        <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-white mt-1">Decentralized Pyramid Model</h3>
+                      </div>
+                      <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[9px] uppercase tracking-widest font-mono">Elastic</Badge>
+                    </div>
+
+                    {/* THE TWO CORE STRUCTURAL PILLARS */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                      
+                      {/* Pillar 1 */}
+                      <div className="space-y-2 p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5">
+                        <div className="flex items-center gap-2 text-primary">
+                          <Target className="h-4 w-4" />
+                          <span className="text-xs font-bold uppercase tracking-wider">Structural Core</span>
+                        </div>
+                        <div className="text-xl sm:text-2xl font-headline font-bold text-white uppercase tracking-tight">Fixed Tiers</div>
+                        <p className="text-xs text-muted-foreground font-light leading-relaxed">
+                          The competitive blueprint remains static. Promotion, relegation, and scheduling metrics are mathematically protected to guarantee real competitive stakes at every layer.
+                        </p>
+                      </div>
+
+                      {/* Pillar 2 */}
+                      <div className="space-y-2 p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5">
+                        <div className="flex items-center gap-2 text-accent">
+                          <BarChart3 className="h-4 w-4" />
+                          <span className="text-xs font-bold uppercase tracking-wider">Identity Layer</span>
+                        </div>
+                        <div className="text-xl sm:text-2xl font-headline font-bold text-white uppercase tracking-tight">Modular Branding</div>
+                        <p className="text-xs text-muted-foreground font-light leading-relaxed">
+                          League naming schemes, UI asset cosmetics, and partnership rights update dynamically without interrupting underlying tournament mechanics.
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {/* HISTORICAL PARALLEL QUOTE */}
+                    <div className="p-4 sm:p-5 rounded-xl bg-primary/5 border border-primary/10 text-xs text-white/80 font-light leading-relaxed backdrop-blur-sm">
+                      <span className="font-bold text-primary uppercase tracking-wider block mb-1 text-[10px]">Real-World Proof of Concept</span>
+                      Much like the English Premier League seamlessly transitioning its title identity across corporate evolutions without modifying its 20-club formula, this network isolates backend engine configurations from client branding to allow endless, organic expansion.
+                    </div>
+
+                    <div className="text-center">
+                      <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.4em]">Pyramid Protocol // Auto_Expand_Enabled</span>
+                    </div>
+                  </div>
+
+                </div>
+              </GlassCard>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ SECTION - INTELLIGENCE BASE */}
       <section className="py-20 md:py-36 relative border-t border-white/5 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           <div className="text-center mb-16 sm:mb-24 space-y-4 sm:space-y-6">
@@ -367,7 +505,6 @@ const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {/* Fixed mobile horizontal paddings */}
                         <div className="px-6 pb-6 sm:px-24 sm:pb-10 text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg font-light border-t border-white/5 pt-6 sm:pt-8">
                           {faq.a}
                         </div>
@@ -390,7 +527,7 @@ const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
               START YOUR <br />
               <span className="text-gradient-blue italic">DYNASTY.</span>
             </h2>
-            
+
             <div className="w-full max-w-md mx-auto sm:max-w-none flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
               <Button 
                 asChild 
@@ -410,7 +547,6 @@ const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
           </motion.div>
         </div>
 
-        {/* Banner Background Text Overlay - Responsive hide on micro viewports to avoid overflows */}
         <div className="absolute top-1/2 left-0 w-full text-center pointer-events-none opacity-5 hidden sm:block">
            <h4 className="text-[20vw] font-bold text-white uppercase tracking-tighter italic select-none">SOVEREIGNTY</h4>
         </div>
