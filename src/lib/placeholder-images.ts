@@ -137,6 +137,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://picsum.photos/seed/vertex-academy-prospect/1200/800",
     imageHint: "youth football scouting"
   },
+{
+  id: "scale-architecture-blueprint",
+  imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+  description: "Cinematic dark command center with high-contrast amber and cyber tactical display lighting"
+},
+
   {
     id: "aurora-player-card",
     description: "Holographic elite player card with glowing stats and rarity effects",
