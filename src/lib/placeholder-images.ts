@@ -134,7 +134,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "vertex-academy-prospect",
     description: "Top-tier academy prospect reveal system with scouting intelligence overlays",
-    imageUrl: "https://picsum.photos/seed/vertex-academy-prospect/1200/800",
+    imageUrl: "https://img.ge/i/KNkw01.png",
     imageHint: "youth football scouting"
   },
 {
