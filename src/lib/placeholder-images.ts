@@ -122,7 +122,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "zenith-transfer-hub",
     description: "Elite transfer negotiation hub with real-time player valuation and market analytics",
-    imageUrl: "https://picsum.photos/seed/zenith-transfer-hub/1200/800",
+    imageUrl: "https://img.ge/i/06x0k65.png",
     imageHint: "football transfer market"
   },
   {
