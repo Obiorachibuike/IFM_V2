@@ -416,31 +416,41 @@ export default function HomePage() {
 
 
 
-
       {/* 5. PROACTIVE SCALING & LEAGUE ARCHITECTURE */}
-      <section className="py-20 md:py-36 relative border-t border-white/5 bg-card/5 overflow-hidden">
+      <section className="py-16 md:py-28 lg:py-36 relative border-b border-white/[0.02] bg-gradient-to-b from-[#03060F] via-[#060D1F] to-[#03060F] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.03),transparent_60%)] pointer-events-none" />
+        
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 lg:gap-32 items-center">
-            
-            {/* LEFT SIDE: CONCEPT & VALUE PROPOSITION */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-              <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
+          {/* Main Grid: Stacks on mobile/tablet (cols-1), splits on large desktops (cols-12) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 lg:gap-8 xl:gap-16 items-stretch">
+
+            {/* LEFT SIDE: CONCEPT & VALUE PROPOSITION (5 Columns on Desktop) */}
+            <motion.div 
+              variants={fadeIn} 
+              initial="initial" 
+              whileInView="whileInView"
+              className="lg:col-span-5 flex flex-col justify-center"
+            >
+              <div className="space-y-6 md:space-y-8 text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start">
-                  <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">
+                  <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 sm:px-4 sm:py-1.5 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
                     Dynamic Architecture
                   </Badge>
                 </div>
-                
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
-                  INFINITE SCALING. <br />
-                  <span className="text-gradient-blue italic">FLUID IDENTITIES.</span>
-                </h2>
-                
-                <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  The mathematical structure of global football allows the game to expand infinitely without diluting elite competition. While the pinnacle remains hyper-exclusive, the foundation scales automatically to accommodate an unlimited influx of new clubs, managers, and regional communities.
-                </p>
 
-                <div className="space-y-3 sm:space-y-4 text-left max-w-xl mx-auto lg:mx-0">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[1.05]">
+                    INFINITE SCALING. <br />
+                    <span className="text-gradient-blue italic">FLUID IDENTITIES.</span>
+                  </h2>
+
+                  <p className="text-xs sm:text-sm md:text-base text-slate-300 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    The mathematical structure of global football allows the game to expand infinitely without diluting elite competition. While the pinnacle remains hyper-exclusive, the foundation scales automatically to accommodate an unlimited influx of new clubs and managers.
+                  </p>
+                </div>
+
+                {/* Technical Metric Row Blocks */}
+                <div className="space-y-3 text-left max-w-xl mx-auto lg:mx-0">
                   {[
                     { 
                       title: "Exponential Progression Layers", 
@@ -449,17 +459,20 @@ export default function HomePage() {
                     },
                     { 
                       title: "Dynamic Commercial Adaptability", 
-                      desc: "The structural integrity of a division remains absolute, but its branding layer is modular—allowing live commercial partnerships, title sponsorships, and brand alignment to swap fluidly over time.", 
+                      desc: "The structural integrity of a division remains absolute, but its branding layer is modular—allowing live commercial partnerships and brand alignment to swap fluidly.", 
                       icon: Sparkles 
                     }
                   ].map((item, k) => (
-                    <div key={k} className="flex gap-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all cursor-default group">
-                      <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors">
-                        <item.icon className="h-5 w-5" />
+                    <div 
+                      key={k} 
+                      className="group/item flex gap-4 p-4 rounded-xl bg-gradient-to-r from-white/[0.01] to-transparent border border-white/5 hover:border-primary/20 hover:bg-[#040914] transition-all duration-300 cursor-default"
+                    >
+                      <div className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg bg-primary/5 border border-white/5 text-primary flex items-center justify-center group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300">
+                        <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                       </div>
-                      <div>
-                        <div className="font-bold text-sm uppercase tracking-tight text-white">{item.title}</div>
-                        <div className="text-xs text-muted-foreground font-light mt-0.5 leading-relaxed">{item.desc}</div>
+                      <div className="space-y-0.5 min-w-0 flex-1">
+                        <div className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white truncate">{item.title}</div>
+                        <div className="text-[11px] sm:text-xs text-slate-400 font-light leading-relaxed">{item.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -467,85 +480,110 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* RIGHT SIDE: ARCHITECTURAL DEEP DIVE WITH BACKGROUND IMAGE */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full h-full min-h-[500px] lg:min-h-0">
-              <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square lg:aspect-auto lg:h-full min-h-[500px]" hoverable={false}>
+            {/* RIGHT SIDE: ARCHITECTURAL BLUEPRINT PANEL (7 Columns on Desktop) */}
+            <motion.div 
+              variants={fadeIn} 
+              initial="initial" 
+              whileInView="whileInView" 
+              className="lg:col-span-7 w-full flex"
+            >
+              <div className="relative group w-full flex">
+                {/* Backing Ambient Glow */}
+                <div className="absolute -inset-1 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-500/10 via-primary/5 to-blue-500/10 blur-xl opacity-40 group-hover:opacity-60 transition duration-1000" />
                 
-                {/* IMAGE CONTAINER LAYER */}
-                {scaleImg && (
-                  <Image 
-                    src={scaleImg.imageUrl} 
-                    alt="Ecosystem Scale Architecture" 
-                    fill 
-                    className="object-cover opacity-20 grayscale brightness-[0.4] transition-all duration-700" 
-                  />
-                )}
+                {/* 
+                  Removed restrictive min-h/aspect-square constraints. 
+                  Used h-full + flex to adjust naturally based entirely on dynamic text size metrics.
+                */}
+                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative w-full h-full rounded-2xl sm:rounded-3xl bg-[#040914]/90 backdrop-blur-2xl flex flex-col" hoverable={false}>
 
-                {/* COLOR AND GRID OVERLAYS */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40 z-0" />
-                <div className="absolute inset-0 football-grid opacity-10 z-0" />
-                
-                {/* CONTENT FOREGROUND LAYER */}
-                <div className="relative z-10 p-6 sm:p-10 flex flex-col justify-between h-full space-y-8">
-                  
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-center border-b border-white/10 pb-6">
-                      <div>
-                        <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em]">System Module // Scale_Engine</span>
-                        <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-white mt-1">Decentralized Pyramid Model</h3>
-                      </div>
-                      <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[9px] uppercase tracking-widest font-mono">Elastic</Badge>
+                  {/* BACKGROUND DECORATIVE BLUEPRINT */}
+                  {scaleImg && (
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-2xl sm:rounded-3xl">
+                      <Image 
+                        src={scaleImg.imageUrl} 
+                        alt="Ecosystem Scale Architecture Blueprint" 
+                        fill 
+                        className="object-cover opacity-[0.08] sm:opacity-[0.12] grayscale brightness-[0.3] mix-blend-screen transition-all duration-1000 group-hover:scale-[1.01]" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#03060F] via-[#03060F]/60 to-transparent" />
+                      <div className="absolute inset-0 bg-football-grid opacity-[0.06] sm:opacity-[0.08]" />
                     </div>
+                  )}
 
-                    {/* THE TWO CORE STRUCTURAL PILLARS */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                      
-                      {/* Pillar 1 */}
-                      <div className="space-y-2 p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5">
-                        <div className="flex items-center gap-2 text-primary">
-                          <Target className="h-4 w-4" />
-                          <span className="text-xs font-bold uppercase tracking-wider">Structural Core</span>
+                  {/* FOREGROUND PANEL DATA WRAPPER */}
+                  <div className="relative z-10 p-5 sm:p-8 lg:p-8 xl:p-10 flex flex-col justify-between flex-1 gap-6 sm:gap-8">
+
+                    {/* Top Header Module */}
+                    <div className="space-y-6">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-white/5 pb-4">
+                        <div className="space-y-0.5">
+                          <span className="text-[8px] sm:text-[9px] font-mono font-semibold text-primary uppercase tracking-[0.25em]">System Module // Scale_Engine</span>
+                          <h3 className="text-sm sm:text-base md:text-lg font-bold uppercase tracking-wider text-white">Decentralized Pyramid Model</h3>
                         </div>
-                        <div className="text-xl sm:text-2xl font-headline font-bold text-white uppercase tracking-tight">Fixed Tiers</div>
-                        <p className="text-xs text-muted-foreground font-light leading-relaxed">
-                          The competitive blueprint remains static. Promotion, relegation, and scheduling metrics are mathematically protected to guarantee real competitive stakes at every layer.
-                        </p>
+                        <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[8px] sm:text-[9px] uppercase tracking-widest font-mono font-medium rounded px-2 py-0.5 shrink-0">
+                          Elastic_Core
+                        </Badge>
                       </div>
 
-                      {/* Pillar 2 */}
-                      <div className="space-y-2 p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5">
-                        <div className="flex items-center gap-2 text-accent">
-                          <BarChart3 className="h-4 w-4" />
-                          <span className="text-xs font-bold uppercase tracking-wider">Identity Layer</span>
+                      {/* STRUCTURAL ENGINE PILLARS ROW SPLIT: Stacks on mobile, splits 50/50 on tablets and above */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+
+                        {/* Structural Core Column */}
+                        <div className="space-y-2 p-4 sm:p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-colors duration-300">
+                          <div className="flex items-center gap-2 text-primary">
+                            <Target className="h-3.5 w-3.5" />
+                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest font-mono">Core_Spec</span>
+                          </div>
+                          <div className="space-y-1">
+                            <div className="text-base sm:text-lg font-headline font-bold text-white uppercase tracking-wider">Fixed Tiers</div>
+                            <p className="text-[11px] sm:text-xs text-slate-400 font-light leading-relaxed">
+                              The competitive blueprint remains static. Promotion, relegation, and scheduling metrics are mathematically protected to guarantee real competitive stakes at every layer.
+                            </p>
+                          </div>
                         </div>
-                        <div className="text-xl sm:text-2xl font-headline font-bold text-white uppercase tracking-tight">Modular Branding</div>
-                        <p className="text-xs text-muted-foreground font-light leading-relaxed">
-                          League naming schemes, UI asset cosmetics, and partnership rights update dynamically without interrupting underlying tournament mechanics.
-                        </p>
+
+                        {/* Identity Layer Column */}
+                        <div className="space-y-2 p-4 sm:p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-colors duration-300">
+                          <div className="flex items-center gap-2 text-blue-400">
+                            <BarChart3 className="h-3.5 w-3.5" />
+                            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest font-mono">Branding_Spec</span>
+                          </div>
+                          <div className="space-y-1">
+                            <div className="text-base sm:text-lg font-headline font-bold text-white uppercase tracking-wider">Modular Branding</div>
+                            <p className="text-[11px] sm:text-xs text-slate-400 font-light leading-relaxed">
+                              League naming schemes, UI asset cosmetics, and partnership rights update dynamically without interrupting underlying tournament mechanics.
+                            </p>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    {/* FOOTER METRIC FRAMEWORK */}
+                    <div className="space-y-4 mt-auto">
+                      <div className="p-3 sm:p-4 rounded-xl bg-primary/[0.01] border border-white/5 text-[11px] sm:text-xs text-slate-300 font-light leading-relaxed backdrop-blur-md relative overflow-hidden">
+                        <div className="absolute top-0 left-0 h-full w-[2px] bg-primary/40" />
+                        <span className="font-bold text-primary uppercase tracking-widest block mb-1 text-[8px] sm:text-[9px] font-mono">Real-World Reference Data</span>
+                        Much like traditional top flights seamlessly transitioning title identities across corporate eras without modifying the core division formula, this network completely isolates backend calculation mechanics from client branding filters to support infinite, organic community scaling.
                       </div>
 
+                      <div className="text-center pt-1">
+                        <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.35em] block sm:inline">Pyramid Protocol // Auto_Expand_Nodes_Enabled</span>
+                      </div>
                     </div>
+
                   </div>
-
-                  <div className="space-y-4">
-                    {/* HISTORICAL PARALLEL QUOTE */}
-                    <div className="p-4 sm:p-5 rounded-xl bg-primary/5 border border-primary/10 text-xs text-white/80 font-light leading-relaxed backdrop-blur-sm">
-                      <span className="font-bold text-primary uppercase tracking-wider block mb-1 text-[10px]">Real-World Proof of Concept</span>
-                      Much like the English Premier League seamlessly transitioning its title identity across corporate evolutions without modifying its 20-club formula, this network isolates backend engine configurations from client branding to allow endless, organic expansion.
-                    </div>
-
-                    <div className="text-center">
-                      <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.4em]">Pyramid Protocol // Auto_Expand_Enabled</span>
-                    </div>
-                  </div>
-
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </div>
             </motion.div>
 
           </div>
         </div>
       </section>
+
+
+
 
       {/* 6. FAQ SECTION - INTELLIGENCE BASE */}
       <section className="py-20 md:py-36 relative border-t border-white/5 bg-background overflow-hidden">
