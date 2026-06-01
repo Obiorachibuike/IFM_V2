@@ -110,7 +110,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "alpha-tactics-grid",
     description: "Advanced tactical grid system showing real-time formations and predictive movement lines",
-    imageUrl: "https://img.ge/i/jDkgn99.png",
+    imageUrl: "https://img.ge/i/q9uIk37.png",
     imageHint: "football tactics interface"
   },
   {
