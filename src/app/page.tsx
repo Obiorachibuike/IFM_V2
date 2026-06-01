@@ -212,7 +212,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. GAMEPLAY PILLARS GRID */}
+            {/* 3. GAMEPLAY PILLARS GRID */}
       <section className="py-20 md:py-36 bg-card/5">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="text-center mb-16 sm:mb-24 md:mb-32 space-y-4 sm:space-y-8">
@@ -226,10 +226,34 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-md sm:max-w-none mx-auto">
             {[
-              { title: "Squad Building", desc: "Scout, trade, and build a world-class squad in the transfer market.", icon: Users, image: marketImg, label: "Market Intel" },
-              { title: "Competition", desc: "Compete in an 8-division decentralized pyramid for global glory.", icon: Trophy, image: leagueImg, label: "Pyramid Data" },
-              { title: "Development", desc: "Evolve academy prospects into legendary digital assets.", icon: Microscope, image: academyImg, label: "Academy Scan" },
-              { title: "Ownership", desc: "True ownership of your club, stadium, and legacy assets.", icon: ShieldCheck, image: playerCardImg, label: "Asset Verify" }
+              { 
+                title: "Build Your Team", 
+                desc: "Scout talent globally, sign superstars, and assemble an elite squad via the real-time peer-to-peer transfer market.", 
+                icon: Users, 
+                image: marketImg, 
+                label: "Roster Management" 
+              },
+              { 
+                title: "Compete globally", 
+                desc: "Climb an aggressive 8-division decentralized league pyramid, dominate live tournaments, and secure seasonal ecosystem promotions.", 
+                icon: Trophy, 
+                image: leagueImg, 
+                label: "League Standings" 
+              },
+              { 
+                title: "Upgrade Facilities", 
+                desc: "Expand your stadium capacity, unlock advanced corporate infrastructure, and build state-of-the-art youth academies to supercharge training.", 
+                icon: Microscope, 
+                image: academyImg, 
+                label: "Infrastructure Scan" 
+              },
+              { 
+                title: "Own Digital Tokens", 
+                desc: "Exercise complete sovereignty with player and club NFTs, while earning governance and utility rewards directly in native $IFM coin.", 
+                icon: ShieldCheck, 
+                image: playerCardImg, 
+                label: "Asset Valuation" 
+              }
             ].map((pillar, i) => (
               <GlassCard key={i} className="p-0 group overflow-hidden border-white/5 flex flex-col h-full" glowColor={i % 2 === 0 ? "blue" : "gold"}>
                 <div className="relative aspect-[4/5] w-full">
@@ -260,6 +284,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+
 
       {/* 4. MATCH ENGINE SHOWCASE */}
       <section className="py-20 md:py-36 relative bg-accent/5">
