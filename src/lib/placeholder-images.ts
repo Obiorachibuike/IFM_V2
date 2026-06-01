@@ -139,14 +139,14 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   },
 {
   id: "scale-architecture-blueprint",
-  imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+  imageUrl: "https://img.ge/i/lhktd71.png",
   description: "Cinematic dark command center with high-contrast amber and cyber tactical display lighting"
 },
 
   {
     id: "aurora-player-card",
     description: "Holographic elite player card with glowing stats and rarity effects",
-    imageUrl: "https://picsum.photos/seed/aurora-player-card/1200/800",
+    imageUrl: "https://img.ge/i/lhktd71.png",
     imageHint: "holographic player card"
   }
 ];
