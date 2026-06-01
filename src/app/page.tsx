@@ -286,33 +286,123 @@ export default function HomePage() {
       </section>
 
 
-
       {/* 4. MATCH ENGINE SHOWCASE */}
-      <section className="py-20 md:py-36 relative bg-accent/5">
+      <section className="py-20 md:py-36 relative bg-gradient-to-b from-[#03060F] via-[#08152E]/20 to-[#03060F] border-y border-white/[0.02]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(29,78,216,0.04),transparent_70%)] pointer-events-none" />
+        
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 xl:gap-32 items-center">
-             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
-                <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+             
+             {/* LEFT SIDE: GAMEPLAY LIVE SCREEN PREVIEW */}
+             <motion.div 
+               variants={fadeIn} 
+               initial="initial" 
+               whileInView="whileInView" 
+               className="lg:col-span-7 w-full order-2 lg:order-1"
+             >
+                <div className="relative group">
+                  {/* Outer Tech Accents */}
+                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/10 via-blue-500/5 to-primary/20 blur-xl opacity-30 group-hover:opacity-50 transition duration-1000" />
+                  
+                  <GlassCard className="p-2 sm:p-3 border-white/10 glow-blue overflow-hidden relative rounded-2xl sm:rounded-3xl bg-[#040914]/90 backdrop-blur-2xl" hoverable={false}>
+                    <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden group">
+                      {matchImg && (
+                        <Image 
+                          src={matchImg.imageUrl} 
+                          alt="Neural Match Engine Interface" 
+                          fill 
+                          className="object-cover brightness-75 group-hover:scale-[1.02] transition-transform duration-700" 
+                        />
+                      )}
+                      
+                      {/* Technical HUD Grid Overlays */}
+                      <div className="absolute inset-0 bg-football-grid opacity-[0.12] mix-blend-overlay pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#03060F]/90 via-transparent to-black/20 pointer-events-none" />
+                      
+                      {/* Header System Label */}
+                      <div className="absolute top-3 left-3 sm:top-5 sm:left-5 max-w-[70%]">
+                        <div className="text-[8px] sm:text-[10px] font-bold text-white/90 uppercase tracking-[0.2em] bg-primary/80 border border-primary/40 backdrop-blur-sm px-3 py-1 rounded-sm">
+                          NEURAL ENGINE SIMULATION v2.4
+                        </div>
+                      </div>
+
+                      {/* Bottom Interface Telemetry */}
+                      <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
+                         <Badge variant="outline" className="border-white/10 text-white/60 bg-black/40 backdrop-blur-sm uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-0.5">
+                           Interface View: HUD_LIVE_MAIN
+                         </Badge>
+                      </div>
+                    </div>
+                  </GlassCard>
+
+                  {/* Tactical Analytics Floating Module Data Stream */}
+                  <div className="absolute -bottom-6 -right-2 sm:right-6 bg-[#060D1F] border border-white/10 backdrop-blur-xl p-3 rounded-xl shadow-2xl hidden sm:flex items-center gap-4 max-w-xs animate-bounce-slow">
+                    <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                      <Cpu className="h-4 w-4" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-medium">Processing Rate</p>
+                      <p className="text-xs font-bold text-white uppercase tracking-tight">15,000+ Variables / Sec</p>
+                    </div>
+                  </div>
+                </div>
+             </motion.div>
+
+             {/* RIGHT SIDE: CORE TECH SYSTEM METRICS */}
+             <motion.div 
+               variants={fadeIn} 
+               initial="initial" 
+               whileInView="whileInView" 
+               className="lg:col-span-5 w-full order-1 lg:order-2"
+             >
+                <div className="space-y-6 sm:space-y-8 lg:space-y-10 text-center lg:text-left">
                    <div className="flex justify-center lg:justify-start">
-                     <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">Neural Core v2.4</Badge>
+                     <Badge className="bg-primary/10 text-primary border-primary/30 px-4 py-1 sm:px-5 sm:py-1.5 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
+                       Neural Core Matrix
+                     </Badge>
                    </div>
-                   <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
-                     REACTIVE <br />
-                     <span className="text-gradient-blue italic">SIMULATION.</span>
-                   </h2>
-                   <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                     Matches in IFM are not just static results. Our Neural Match Engine processes 15,000+ tactical variables per cycle, reacting to your real-time adjustments, substitutions, and momentum shifts.
-                   </p>
-                   <div className="space-y-4 text-left max-w-xl mx-auto lg:mx-0">
+                   
+                   <div className="space-y-3 sm:space-y-4">
+                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.05]">
+                       REACTIVE <br />
+                       <span className="text-gradient-blue italic">SIMULATION.</span>
+                     </h2>
+                     <p className="text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                       Matches in IFM are dynamic tactical operations. Every substitution, real-time mentality adjustment, and dynamic system tweak instantly cascades through our match calculations framework.
+                     </p>
+                   </div>
+
+                   {/* Command Dashboard Controls List */}
+                   <div className="space-y-3 text-left max-w-xl mx-auto lg:mx-0">
                       {[
-                        { label: "Real-time Overrides", desc: "Change intensity and formation mid-match." },
-                        { label: "Psychological States", desc: "Players react to fatigue and match pressure." }
+                        { 
+                          label: "Real-time Overrides", 
+                          desc: "Instantly change intensity parameters, adjustments, and team formatting mid-match.",
+                          icon: Zap,
+                          status: "System Active" 
+                        },
+                        { 
+                          label: "Psychological States", 
+                          desc: "Players react organically to mental fatigue, crowd pressure fluctuations, and tactical flow.",
+                          icon: Activity,
+                          status: "Tracking Node" 
+                        }
                       ].map((item, i) => (
-                        <div key={i} className="flex gap-4 sm:gap-6 items-center p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/5">
-                           <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center"><Activity className="h-5 w-5" /></div>
-                           <div>
-                              <div className="font-bold text-xs sm:text-sm uppercase tracking-tight">{item.label}</div>
-                              <div className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">{item.desc}</div>
+                        <div 
+                          key={i} 
+                          className="group/item flex gap-4 p-4 sm:p-5 rounded-xl bg-gradient-to-r from-white/[0.01] to-transparent border border-white/5 hover:border-primary/20 hover:bg-[#050B1A] transition-all duration-300"
+                        >
+                           <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/5 border border-white/5 text-primary flex items-center justify-center group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300">
+                              <item.icon className="h-5 w-5" />
+                           </div>
+                           <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <div className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white">{item.label}</div>
+                                <span className="text-[8px] uppercase tracking-widest text-primary/60 font-mono font-semibold bg-primary/5 px-2 py-0.5 rounded border border-primary/10">
+                                  {item.status}
+                                </span>
+                              </div>
+                              <div className="text-[11px] sm:text-xs text-slate-400 mt-1 font-light leading-relaxed">{item.desc}</div>
                            </div>
                         </div>
                       ))}
@@ -320,28 +410,12 @@ export default function HomePage() {
                 </div>
              </motion.div>
 
-             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-2xl mx-auto">
-                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video" hoverable={false}>
-                  {matchImg && (
-                    <Image src={matchImg.imageUrl} alt="Match Engine" fill className="object-cover brightness-75" />
-                  )}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center space-y-3 sm:space-y-4">
-                    <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center backdrop-blur-xl animate-pulse cursor-pointer">
-                      <Play className="h-6 w-6 sm:h-8 sm:w-8 text-primary fill-current" />
-                    </div>
-                    <span className="text-[8px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] sm:tracking-[0.4em] bg-black/40 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">Live Stream: Cycle 8.42</span>
-                  </div>
-                  <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8">
-                     <Badge variant="outline" className="border-primary/40 text-primary uppercase text-[7px] sm:text-[8px] tracking-widest bg-black/40">Broadcast Feed: High Fidelity</Badge>
-                  </div>
-                  <div className="absolute top-4 left-4 sm:top-6 sm:left-8 max-w-[60%] sm:max-w-none">
-                    <span className="text-[8px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] sm:tracking-[0.3em] bg-primary px-3 py-1 block">NEURAL ENGINE SIMULATION v2.4</span>
-                  </div>
-                </GlassCard>
-             </motion.div>
           </div>
         </div>
       </section>
+
+
+
 
       {/* 5. PROACTIVE SCALING & LEAGUE ARCHITECTURE */}
       <section className="py-20 md:py-36 relative border-t border-white/5 bg-card/5 overflow-hidden">
