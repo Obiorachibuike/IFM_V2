@@ -116,7 +116,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "orion-live-match",
     description: "High-intensity live match feed with immersive broadcast analytics and motion tracking",
-    imageUrl: "https://picsum.photos/seed/orion-live-match/1200/800",
+    imageUrl: "https://img.ge/i/qWBtr21.png",
     imageHint: "live football broadcast"
   },
   {
