@@ -50,13 +50,17 @@ export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null)
 
   // Assets
-  const genesisBanner = PlaceHolderImages.find(i => i.id === "hero-stadium")
-  const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-board")
-  const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
-  const marketImg = PlaceHolderImages.find(i => i.id === "transfer-market-ui")
-  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
-  const academyImg = PlaceHolderImages.find(i => i.id === "academy-reveal")
-  const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
+
+const genesisBanner = PlaceHolderImages.find(i => i.id === "hero-stadium")
+
+const tacticsImg = PlaceHolderImages.find(i => i.id === "alpha-tactics-grid")
+const matchImg = PlaceHolderImages.find(i => i.id === "orion-live-match")
+const marketImg = PlaceHolderImages.find(i => i.id === "zenith-transfer-hub")
+const leagueImg = PlaceHolderImages.find(i => i.id === "nova-league-board")
+const academyImg = PlaceHolderImages.find(i => i.id === "vertex-academy-prospect")
+const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
+
+
 
   return (
     <div className="flex flex-col w-full bg-background selection:bg-primary selection:text-white overflow-x-hidden">
