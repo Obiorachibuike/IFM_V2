@@ -69,7 +69,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "player-card-gold",
     description: "Futuristic gold football player card",
-    imageUrl: "https://picsum.photos/seed/ifm-player-gold/400/600",
+    imageUrl: "https://img.ge/i/Dp4Ix5.png",
     imageHint: "holographic soccer card"
   },
   {
