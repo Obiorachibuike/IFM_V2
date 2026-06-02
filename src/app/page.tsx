@@ -159,59 +159,84 @@ export default function HomePage() {
       </section>
 
 
-      {/* 2. "WHAT IS IFM?" - THE FANTASY */}
-      <section className="py-20 md:py-36 relative border-y border-white/5">
+            {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+      <section className="py-16 md:py-28 lg:py-36 relative border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+          {/* Layout Wrapper: Stacks full-width on mobile/tablet, splits 50/50 on large desktops */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+            
+            {/* LEFT SIDE: VALUE PROPOSITION */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full">
               <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start">
-                  <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">
+                  <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
                     The Core Mission
                   </Badge>
                 </div>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
+                
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
                   BEYOND THE <br />
                   <span className="text-gradient-gold italic">SIMULATION.</span>
                 </h2>
-                <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                
+                <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   IFM is more than a manager game. It is a living football economy where every decision you make—from tactical shifts to stadium investments—creates permanent value on the blockchain.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left max-w-md mx-auto lg:mx-0">
+                
+                {/* Metric Pillar Row Blocks: Wraps naturally, scales font footprints based on screen limits */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left max-w-md sm:max-w-xl mx-auto lg:mx-0">
                   {[
-                    { label: "Strategic Depth", desc: "Manage squads across seasons." },
-                    { label: "Digital Sovereignty", desc: "Own your players and assets." }
+                    { label: "Strategic Depth", desc: "Manage squads across seasons with real consequences." },
+                    { label: "Digital Sovereignty", desc: "Complete cryptographic ownership over your players and training assets." }
                   ].map((item, i) => (
-                    <div key={i} className="space-y-2 sm:space-y-3">
+                    <div key={i} className="space-y-2 sm:space-y-3 flex flex-col items-center sm:items-start text-center sm:text-left">
                       <div className="h-1 w-12 bg-accent hidden lg:block" />
-                      <div className="font-bold text-base sm:text-lg uppercase tracking-tight text-center sm:text-left">{item.label}</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground font-light text-center sm:text-left">{item.desc}</div>
+                      <div className="font-bold text-base sm:text-lg uppercase tracking-tight text-white">{item.label}</div>
+                      <div className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">{item.desc}</div>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
 
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-md lg:max-w-none mx-auto">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square" hoverable={false}>
+            {/* RIGHT SIDE: INTERACTIVE PANEL CARD */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-xl lg:max-w-none mx-auto">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[4/3] sm:aspect-square rounded-2xl sm:rounded-3xl bg-[#040914]/40" hoverable={false}>
                   {tacticsImg && (
-                    <Image src={tacticsImg.imageUrl} alt="Tactical Board" fill className="object-cover brightness-50" />
+                    <Image 
+                      src={tacticsImg.imageUrl} 
+                      alt="Tactical Board Blueprint" 
+                      fill 
+                      className="object-cover brightness-50 select-none transition-transform duration-700 hover:scale-[1.02]" 
+                    />
                   )}
-                  <div className="absolute inset-0 p-6 sm:p-12 flex flex-col justify-end bg-gradient-to-t from-background via-transparent to-transparent">
-                     <div className="space-y-3 sm:space-y-6">
-                        <Badge className="bg-primary text-white font-bold px-3 py-0.5 sm:px-4 sm:py-1 uppercase tracking-widest text-[8px] sm:text-[10px]">Command Overlay Active</Badge>
-                        <h3 className="text-2xl sm:text-4xl font-bold font-headline uppercase leading-tight">THE ARCHITECT'S <br />HUB</h3>
-                        <p className="text-muted-foreground text-[10px] sm:text-sm font-light uppercase tracking-widest">Processing Tactical Data: 12.8M Iterations/sec</p>
+                  
+                  {/* Bottom Panel Text Layer */}
+                  <div className="absolute inset-0 p-5 sm:p-8 lg:p-12 flex flex-col justify-end bg-gradient-to-t from-[#03060F] via-[#03060F]/40 to-transparent z-10">
+                     <div className="space-y-2 sm:space-y-4">
+                        <div className="flex">
+                          <Badge className="bg-primary text-white font-bold px-2.5 py-0.5 sm:px-4 sm:py-1 uppercase tracking-widest text-[8px] sm:text-[9px] rounded-sm">
+                            Command Overlay Active
+                          </Badge>
+                        </div>
+                        <h3 className="text-xl sm:text-3xl font-bold font-headline uppercase leading-tight text-white">THE ARCHITECT'S <br />HUB</h3>
+                        <p className="text-slate-400 text-[9px] sm:text-xs font-light uppercase tracking-widest font-mono">Processing Tactical Data: 12.8M Iterations/sec</p>
                      </div>
                   </div>
-                  <div className="absolute top-4 right-4 sm:top-8 sm:right-8 max-w-[70%] sm:max-w-none text-right">
-                    <span className="text-[8px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] sm:tracking-[0.4em] bg-primary px-3 py-1 block sm:inline">TACTICAL INTERFACE: HUD_SQUAD_V2</span>
+                  
+                  {/* Top Floating Badge Component */}
+                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 max-w-[85%] sm:max-w-none text-right z-10">
+                    <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-primary/90 border border-white/10 backdrop-blur-md px-3 py-1 rounded">
+                      TACTICAL INTERFACE // HUD_SQUAD_V2
+                    </span>
                   </div>
                </GlassCard>
             </motion.div>
+
           </div>
         </div>
       </section>
+
 
             {/* 3. GAMEPLAY PILLARS GRID */}
       <section className="py-20 md:py-36 bg-card/5">
