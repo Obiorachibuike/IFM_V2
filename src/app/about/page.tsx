@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins, ShieldAlert, Terminal, ArrowDown, HelpCircle, Layers, Milestone, Sliders, Eye
+  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -41,7 +41,6 @@ const staggerContainer = {
 export default function AboutPage() {
   // Assets mapping
   const heroImg = PlaceHolderImages.find(i => i.id === "about-hero")
-  const stadiumBg = PlaceHolderImages.find(i => i.id === "hero-stadium")
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
@@ -50,121 +49,102 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
 
-      {/* 1. CINEMATIC MANIFESTO HERO */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center border-b border-white/5 bg-[#03060F] py-24 sm:py-32 overflow-hidden w-full">
-        
-        {/* BACKGROUND GRAPHIC ARCHITECTURE */}
-        <div className="absolute inset-0 z-0">
-          {stadiumBg && (
+      {/* 1. CINEMATIC HERO - THE VISION */}
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-20 md:py-0">
+        {/* BACKGROUND IMAGE - RESPONSIVE OBJECT COVER */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          {heroImg?.imageUrl && (
             <Image
-              src={stadiumBg.imageUrl}
-              alt="IFM Matrix Environment Core"
+              src={heroImg.imageUrl}
+              alt="IFM Vision"
               fill
               priority
-              className="object-cover opacity-[0.12] grayscale scale-105 transition-all duration-1000 mix-blend-screen select-none pointer-events-none"
+              className="object-cover w-full h-full brightness-[0.4]"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#03060F] via-[#03060F]/75 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#03060F] via-transparent to-[#03060F]" />
-          <div className="absolute inset-0 football-grid opacity-[0.04] pointer-events-none" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[500px] w-[500px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05070D]/50 to-[#05070D]" />
         </div>
 
-        {/* FOREGROUND HERO CONTENT WRAPPER */}
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-7xl text-center flex flex-col items-center justify-center flex-1">
-          <div className="space-y-8 sm:space-y-12 max-w-5xl mx-auto">
-            
-            {/* SYSTEM DIRECTIVE FLAG HEADER */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-3"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/5 border border-accent/20 rounded-md backdrop-blur-md">
-                <ShieldAlert className="h-3.5 w-3.5 text-accent animate-pulse" />
-                <span className="text-[9px] font-mono font-bold text-accent uppercase tracking-[0.3em] whitespace-nowrap">
-                  System Directive // Sovereignty Matrix
-                </span>
-              </div>
-              
-              <span className="hidden sm:inline text-white/20 font-mono text-[10px]">|</span>
-
-              <div className="inline-flex items-center gap-1.5 text-white/40 font-mono text-[9px] uppercase tracking-wider">
-                <Terminal className="h-3 w-3" />
-                Node_ID: IFM_MANIFESTO_CORE
-              </div>
+        {/* CONTENT */}
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <motion.div
+            initial="initial"
+            whileInView="whileInView"
+            variants={staggerContainer}
+            className="flex flex-col items-center text-center space-y-6 md:space-y-10"
+          >
+            {/* BADGE */}
+            <motion.div variants={fadeInUp}>
+              <Badge className="bg-white/5 text-white border-white/10 px-4 sm:px-8 py-2 uppercase tracking-[0.4em] sm:tracking-[0.6em] md:tracking-[0.8em] text-[9px] sm:text-[10px] font-bold rounded-full backdrop-blur-xl">
+                The Architect Protocol
+              </Badge>
             </motion.div>
 
-            {/* DYNAMIC SCALE DISPLAY HEADLINE */}
-            <div className="space-y-4">
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold font-headline tracking-tighter uppercase leading-[0.95] text-white"
-              >
-                WE ARE NOT BUILDING <br />
-                <span className="text-gradient-gold italic font-extrabold">A WALLED GARDEN.</span>
-              </motion.h1>
-            </div>
-
-            {/* SYSTEM DESCRIPTION LOG FRAMEWORK */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              className="text-sm sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed px-4"
+            {/* TITLE */}
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl sm:text-6xl md:text-8xl lg:text-[7.5rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] md:leading-[0.9] text-white"
             >
-              Traditional manager titles lock your decisions, data metrics, and time investment inside corporate servers that inevitably phase out. 
-              <span className="text-white font-medium"> IFM replaces centralized loops</span> with an immutable on-chain architecture designed to protect your physical and financial legacy across generations.
+              BUILD. OWN. <br />
+              <span className="text-gradient-blue italic">DOMINATE.</span>
+            </motion.h1>
+
+            {/* DESCRIPTION */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed px-2 sm:px-0"
+            >
+              IFM is a persistent football management simulation where strategic intelligence meets digital sovereignty.
             </motion.p>
 
-            {/* PREMIUM LAYOUT CALL TO ACTIONS */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto sm:max-w-none px-4"
-            >
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-4 pt-4 md:pt-6 w-full sm:w-auto px-4 sm:px-0">
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto h-12 px-8 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl tracking-widest text-xs uppercase glow-blue transition-all duration-300"
+                className="h-14 sm:h-16 md:h-20 px-8 md:px-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl md:rounded-2xl glow-blue text-base md:text-lg uppercase tracking-widest w-full sm:w-auto"
               >
-                <Link href="/whitepaper">
-                  EXAMINE THE BLUEPRINT
-                </Link>
+                <Link href="/early-access">START YOUR CLUB</Link>
               </Button>
 
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="w-full sm:w-auto h-12 px-8 border-white/10 hover:bg-white/5 hover:text-white font-bold rounded-xl tracking-widest text-xs uppercase backdrop-blur-md transition-all duration-300"
+                variant="outline"
+                className="h-14 sm:h-16 md:h-20 px-8 md:px-12 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl md:rounded-2xl text-base md:text-lg uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto"
               >
-                <Link href="/early-access" className="flex items-center justify-center gap-2">
-                  ACQUIRE CLUB LICENSE
-                </Link>
+                <Link href="/gameplay">WATCH GAMEPLAY</Link>
               </Button>
             </motion.div>
 
-          </div>
+            {/* STATS */}
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-16 border-t border-white/10 w-full max-w-4xl mt-4"
+            >
+              {[
+                { label: "Active Clubs", value: "85,420" },
+                { label: "Matches Played", value: "1.2M+" },
+                { label: "Players Developed", value: "3.5M" },
+                { label: "Rewards Paid", value: "4.8M $IFM" }
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col justify-center">
+                  <div className="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-widest font-bold mb-1">
+                    {stat.label}
+                  </div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                    {stat.value}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* METRIC FOOTER BAR - ASYMMETRIC UI DESIGN EDGE */}
-        <div className="absolute bottom-6 left-0 w-full px-6 md:px-12 z-20 flex flex-col sm:flex-row justify-between items-center gap-4 pointer-events-none">
-          <div className="flex items-center gap-6 text-white/20 font-mono text-[8px] sm:text-[9px] uppercase tracking-widest">
-            <div>SCALE: 1:1 COMPETITIVE REALISM</div>
-            <div className="hidden sm:block">STATUS: ALPHA_VER_2.6</div>
-          </div>
-          
-          <div className="flex items-center gap-2 text-primary/60 font-mono text-[9px] uppercase tracking-widest animate-pulse">
-            <span>SCROLL TO SYSTEM CORE</span>
-            <ArrowDown className="h-3 w-3" />
-          </div>
+        {/* Banner callout */}
+        <div className="absolute bottom-8 left-8 hidden lg:block">
+           <span className="text-[10px] font-bold text-white uppercase tracking-[0.5em] opacity-40">System Node: Central Architecture / 001</span>
         </div>
-
       </section>
 
       {/* 2. WHAT IS IFM - CORE MATRIX FEATURE GRID */}
@@ -264,230 +244,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* STRATEGIC PILLARS & TECHNOLOGICAL CORE */}
-      <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-[#03060F] border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <motion.div 
-            variants={fadeIn} 
-            initial="initial" 
-            whileInView="whileInView"
-            className="text-center space-y-4 mb-16 sm:mb-24"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/20 rounded-md">
-              <Cpu className="h-3.5 w-3.5 text-primary animate-pulse" />
-              <span className="text-[9px] font-mono font-bold text-primary uppercase tracking-[0.3em]">System Architecture Core</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-headline uppercase tracking-tighter text-white">
-              STRATEGIC PILLARS & <br />
-              <span className="text-gradient-blue italic">TECHNOLOGICAL CORE</span>
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-light">
-              Architectural engineering protocols verifying mechanical performance depth and multi-layered mathematical execution models.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Neural Match Engine",
-                subtitle: "CRITICAL COMPUTE NODES",
-                icon: Gauge,
-                desc: "Calculating over 15,000 real-time simulation datasets per tick cycle. The framework maps structural team geometry alongside intricate physiological curves, cognitive pressure biases, and custom spatial parameters.",
-                tag: "15K+ VARIABLES/SEC",
-                glow: "blue"
-              },
-              {
-                title: "Infinite Scaling Pyramid",
-                subtitle: "DECENTRALIZED MATRIX STRUCT",
-                icon: Layers,
-                desc: "A multi-tier global competitive hierarchy engineered to dynamically expand to ingest hundreds of thousands of active managers, protecting tier integrity and asset isolation from hyperinflation layers.",
-                tag: "8-DIVISION SCALING",
-                glow: "gold"
-              },
-              {
-                title: "Sovereignty Token Loop",
-                subtitle: "LIQUID FLUID UTILITY LOOP",
-                icon: Coins,
-                desc: "The symbiotic framework binding player property, transfer ecosystems, performance payouts, and dynamic smart-contract structures to validate programmatic wealth creation across individual managers.",
-                tag: "$IFM NATIVE FLOW",
-                glow: "blue"
-              }
-            ].map((pillar, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeIn}
-                initial="initial"
-                whileInView="whileInView"
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <GlassCard 
-                  className="p-8 h-full flex flex-col justify-between border-white/5 bg-[#040914]/40 hover:bg-[#050B1A]/60 transition-all duration-500 rounded-2xl relative overflow-hidden group"
-                  glowColor={pillar.glow as "blue" | "gold"}
-                >
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-start">
-                      <div className={cn(
-                        "h-12 w-12 rounded-xl border flex items-center justify-center transition-all duration-500",
-                        pillar.glow === "gold" ? "bg-accent/5 border-accent/20 text-accent" : "bg-primary/5 border-primary/20 text-primary"
-                      )}>
-                        <pillar.icon className="h-5 w-5" />
-                      </div>
-                      <Badge variant="outline" className={cn("font-mono text-[9px] px-2 py-0.5", pillar.glow === "gold" ? "border-accent/30 text-accent" : "border-primary/30 text-primary")}>
-                        {pillar.tag}
-                      </Badge>
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="text-[8px] font-mono font-bold tracking-widest text-white/30 uppercase">{pillar.subtitle}</div>
-                      <h3 className="text-xl sm:text-2xl font-bold font-headline text-white uppercase group-hover:text-primary transition-colors duration-300">{pillar.title}</h3>
-                      <p className="text-sm text-muted-foreground font-light leading-relaxed">{pillar.desc}</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* THE ECOSYSTEM TIMELINE */}
-      <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden border-t border-white/5 bg-[#05070D]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <motion.div 
-            variants={fadeIn} 
-            initial="initial" 
-            whileInView="whileInView"
-            className="text-center space-y-4 mb-20"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/5 border border-accent/20 rounded-md">
-              <Milestone className="h-3.5 w-3.5 text-accent animate-pulse" />
-              <span className="text-[9px] font-mono font-bold text-accent uppercase tracking-[0.3em]">Ecosystem Timeline Log</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-headline uppercase tracking-tighter text-white">
-              DEVELOPMENT PROJECTIONS & <br />
-              <span className="text-gradient-gold italic">LINEAGE MAP</span>
-            </h2>
-          </motion.div>
-
-          <div className="relative max-w-4xl mx-auto before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:h-full before:w-[1px] before:bg-white/10 before:pointer-events-none">
-            {[
-              {
-                phase: "Phase 1: Genesis Matrix",
-                date: "Q3 - Q4 2025",
-                items: [
-                  "Architectural blueprint finalization and tokenomic structure stabilization.",
-                  "Internal simulation testing on the Neural Match Engine core environment.",
-                  "Whitepaper deployment and smart contract verification protocols initiated."
-                ],
-                side: "left"
-              },
-              {
-                phase: "Phase 2: Tactical Alpha Deployment",
-                date: "Q1 - Q2 2026",
-                items: [
-                  "Launch of the private gameplay sandboxes across segmented validation pools.",
-                  "Onboarding founding managers for UI strategy reviews and network optimization.",
-                  "Custom brand alignment iterations and matrix infrastructure stress testing."
-                ],
-                side: "right"
-              },
-              {
-                phase: "Phase 3: Decentralized League Expansion",
-                date: "Q3 - Q4 2026",
-                items: [
-                  "Public implementation of the 8-division competitive pyramid structure.",
-                  "Deployment of real-time peer-to-peer asset transfer hubs.",
-                  "Activation of dynamic utility token minting pipelines and open registration."
-                ],
-                side: "left"
-              }
-            ].map((item, idx) => (
-              <div key={idx} className={cn("relative min-h-[150px] mb-12 md:mb-16 flex flex-col md:flex-row", item.side === "right" ? "md:justify-end" : "")}>
-                {/* Node Dot Indicator */}
-                <div className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 h-3 w-3 bg-[#05070D] border-2 border-accent rounded-full z-10 hidden md:block" />
-                
-                <motion.div 
-                  variants={fadeIn}
-                  initial="initial"
-                  whileInView="whileInView"
-                  className={cn("w-full md:w-[45%] pl-10 md:pl-0", item.side === "right" ? "md:text-left" : "md:text-right")}
-                >
-                  <div className="bg-white/[0.02] border border-white/5 p-6 rounded-xl hover:border-accent/20 transition-colors">
-                    <span className="font-mono text-xs text-accent font-bold tracking-wider uppercase block mb-1">{item.date}</span>
-                    <h3 className="text-lg font-bold uppercase text-white mb-4 tracking-tight">{item.phase}</h3>
-                    <ul className={cn("space-y-2 text-xs text-muted-foreground font-light text-left", item.side === "left" ? "md:text-right md:list-none" : "list-none")}>
-                      {item.items.map((bullet, bIdx) => (
-                        <li key={bIdx} className="relative pl-4 md:pl-0">
-                          <span className={cn("absolute left-0 top-1.5 h-1 w-1 bg-accent/40 rounded-full md:hidden", item.side === "left" ? "md:right-0 md:left-auto" : "")} />
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* STUDIO VALUES & ARCHITECTURAL DNA */}
-      <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden border-t border-white/5 bg-[#03060F]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:sticky lg:top-24 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/20 rounded-md">
-                <Sliders className="h-3.5 w-3.5 text-primary" />
-                <span className="text-[9px] font-mono font-bold text-primary uppercase tracking-[0.3em]">Core Values // Engineering</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-bold font-headline uppercase tracking-tighter text-white">
-                STUDIO VALUES & <br />
-                <span className="text-gradient-blue italic">ARCHITECTURAL DNA</span>
-              </h2>
-              <p className="text-sm text-muted-foreground font-light leading-relaxed">
-                The absolute parameters dictate every block verification, simulation engine adjustment, and frontend layout rendering inside the ecosystem.
-              </p>
-            </motion.div>
-
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Football-First Philosophy",
-                  desc: "Gameplay metrics will never be sacrificed for financial speculation. If a mechanic isn't strategically compelling or lacks deep realism, it is permanently purged from the match matrix.",
-                  icon: Target
-                },
-                {
-                  title: "Cryptographic Transparency",
-                  desc: "Every transfer fee, ledger standing validation, and youth academy parameter operates with clean architectural visibility. No hidden modifiers, no black-box manipulation layers.",
-                  icon: Eye
-                },
-                {
-                  title: "Modular Commercial Adaptability",
-                  desc: "The architecture decouples algorithmic competitive computation from frontend rendering states, empowering partner sports labels and global media hubs to align natively with user nodes.",
-                  icon: Cpu
-                }
-              ].map((value, vIdx) => (
-                <motion.div 
-                  key={vIdx}
-                  variants={fadeIn}
-                  initial="initial"
-                  whileInView="whileInView"
-                  className={cn("p-6 bg-white/[0.01] border border-white/5 rounded-xl space-y-4 hover:bg-white/[0.03] transition-colors", vIdx === 2 ? "sm:col-span-2" : "")}
-                >
-                  <div className="h-10 w-10 bg-primary/5 border border-primary/20 text-primary rounded-lg flex items-center justify-center">
-                    <value.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-bold uppercase text-white tracking-tight">{value.title}</h3>
-                  <p className="text-xs text-muted-foreground font-light leading-relaxed">{value.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 3. THE REWARD PROTOCOL - MATCH PERFORMANCE REWARDS */}
-      <section className="py-16 sm:py-24 md:py-32 relative border-t border-white/5 bg-background">
+      <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
             
@@ -513,7 +271,7 @@ export default function AboutPage() {
                         <feat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex justify-between items-center gap-2 mb-1">
+                        <div className="flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 mb-1">
                            <div className="font-bold text-sm sm:text-base uppercase tracking-tight">{feat.title}</div>
                            <Badge variant="outline" className="text-[8px] border-primary/20 text-primary px-2 py-0.5 shrink-0">{feat.status}</Badge>
                         </div>
@@ -695,34 +453,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* GLOBAL COMMAND FRAMEWORK (FINAL CTA) */}
-      <section className="py-24 sm:py-36 md:py-48 relative text-center overflow-hidden border-t border-white/5 bg-[#03060F]">
+      {/* FINAL CTA */}
+      <section className="py-24 sm:py-36 md:py-48 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-8 sm:space-y-12">
           <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6">
-            <div className="inline-flex items-center justify-center gap-1.5 text-accent font-mono text-[10px] uppercase tracking-[0.4em] font-bold">
-              // Global Command Framework
-            </div>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tighter uppercase leading-none text-white">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tighter uppercase leading-none">
               START YOUR <br />
-              <span className="text-gradient-gold italic">DYNASTY</span>
+              <span className="text-gradient-blue italic">DYNASTY</span>
             </h2>
-            
-            <p className="text-sm md:text-base text-muted-foreground font-light max-w-lg mx-auto leading-relaxed">
-              Pivot from studying history to crafting it. Access ecosystem whitepapers, technical codebases, and claim verification portals.
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 px-4 sm:px-0 max-w-md mx-auto sm:max-w-none">
-              <Button asChild size="lg" className="h-16 w-full sm:w-auto px-10 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue text-xs uppercase tracking-widest">
-                <Link href="/early-access" className="flex items-center justify-center gap-3">
-                  CLAIM YOUR LICENSE <Rocket className="h-4 w-4 shrink-0" />
+            <div className="flex justify-center pt-4 px-4 sm:px-0">
+              <Button asChild size="lg" className="h-16 sm:h-20 md:h-24 w-full sm:w-auto px-8 sm:px-14 md:px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl md:rounded-3xl glow-blue text-lg sm:text-xl md:text-2xl uppercase tracking-widest">
+                <Link href="/early-access" className="flex items-center justify-center gap-4 sm:gap-6">
+                  CLAIM YOUR LICENSE <Rocket className="h-6 w-6 sm:h-8 sm:w-8 shrink-0" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-16 w-full sm:w-auto px-10 border-white/10 hover:bg-white/5 text-white font-bold rounded-xl text-xs uppercase tracking-widest backdrop-blur-md">
-                <Link href="/whitepaper">TECHNICAL DOCS</Link>
-              </Button>
             </div>
-            
             <p className="text-muted-foreground uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[9px] sm:text-[10px] pt-4 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
         </div>
