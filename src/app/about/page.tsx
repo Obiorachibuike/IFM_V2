@@ -631,61 +631,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. MATCH ENGINE SHOWCASE / INFINITE SCALING ARCHITECTURE */}
-      <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
-
-            {/* TEXT ROW */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
-              <div className="space-y-6 sm:space-y-8">
-                <div>
-                  <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold mb-4">Neural Engine v2.4</Badge>
-                  <h2 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-none">SIMULATION <br /><span className="text-gradient-blue italic">SUPREMACY.</span></h2>
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed">
-                  The IFM Match Engine processes 15,000+ tactical variables per cycle. Every momentum shift, fatigue trigger, and tactical override is calculated in real-time to determine match outcomes and subsequent rewards.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    { label: "Reactive AI", desc: "Players adjust behavior based on match pressure and chemistry.", icon: Cpu },
-                    { label: "Real-time Overrides", desc: "Managers can change intensity and shape mid-match.", icon: Gauge },
-                    { label: "Physics Integrated", desc: "Ball physics and player collisions are 60Hz deterministic.", icon: Database }
-                  ].map((step, i) => (
-                    <div key={i} className="flex gap-4 sm:gap-6 items-start p-4 rounded-xl bg-white/5 border border-white/5">
-                      <div className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                        <step.icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                      </div>
-                      <div className="space-y-0.5">
-                        <div className="font-bold text-base sm:text-lg uppercase tracking-tight text-white">{step.label}</div>
-                        <div className="text-xs sm:text-sm text-muted-foreground font-light leading-normal">{step.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-           {/* CARD COMPONENT - ALL TEXT AND OVERLAYS REMOVED */}
-<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-sm lg:max-w-md mx-auto">
-   <div className="relative aspect-[3/4] w-full">
-      <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative rounded-2xl" hoverable={false}>
-        {playerCardImg && (
-          <Image 
-            src={playerCardImg.imageUrl} 
-            alt="NFT Card" 
-            fill 
-            className="object-cover" 
-          />
-        )}
-      </GlassCard>
-   </div>
-</motion.div>
-
-          </div>
-        </div>
-      </section>
-
+      
       {/* FINAL CTA & GLOBAL COMMAND FRAMEWORK */}
       <section className="py-24 sm:py-36 md:py-48 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
