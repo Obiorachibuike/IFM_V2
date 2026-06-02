@@ -357,26 +357,10 @@ export default function AboutPage() {
               </GlassCard>
             ))}
           </div>
-
-          {/* Studio Engineering Values Subgrid */}
-          <div className="mt-16 pt-16 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-            {[
-              { title: "Football-First Philosophy", text: "Gameplay metrics will never be sacrificed for financial speculation. If a mechanic isn't strategically compelling, it doesn't enter the match matrix." },
-              { title: "Cryptographic Transparency", text: "Every transfer fee, league standing validation, and academy generation parameter operates with absolute, audit-clean architectural visibility." },
-              { title: "Modular Adaptability", text: "The system isolates core mathematical competition from fluid client styling layers, allowing global brands and partners to align seamlessly." }
-            ].map((value, idx) => (
-              <div key={idx} className="space-y-3">
-                <h4 className="text-sm font-bold uppercase text-white tracking-wider flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> {value.title}
-                </h4>
-                <p className="text-xs text-muted-foreground font-light leading-relaxed">{value.text}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* LAYER 3: THE ECOSYSTEM TIMELINE - MODIFIED FOR ACTIVE PHASE 1 CARD PRECEDENCE */}
+      {/* LAYER 3: THE ECOSYSTEM TIMELINE */}
       <section className="py-16 sm:py-24 md:py-32 relative border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.005] to-transparent">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div 
@@ -399,7 +383,7 @@ export default function AboutPage() {
           {/* Card-Based Timeline Matrix */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-sm sm:max-w-none mx-auto">
             
-            {/* Phase 1 Card (Highlighted / Current Focus) */}
+            {/* Phase 1 Card (Highlighted / Current Focus with Studio Engineering Principles inside) */}
             <GlassCard 
               className="p-8 border-accent/30 bg-[#060F22]/90 rounded-2xl space-y-6 relative flex flex-col justify-between h-full group"
               glowColor="gold"
@@ -434,6 +418,35 @@ export default function AboutPage() {
                     Whitepaper global engineering deployment and foundational smart contract verification protocols initiated.
                   </li>
                 </ul>
+
+                <hr className="border-accent/10" />
+
+                {/* INTEGRATED CORE VALUES SUBGRID */}
+                <div className="space-y-4 pt-2">
+                  <div className="font-mono text-[8px] text-accent/60 tracking-widest font-bold uppercase">// CORE SYSTEM PHILOSOPHY</div>
+                  
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold uppercase text-white tracking-wider flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-full"></span> Football-First Philosophy
+                    </h4>
+                    <p className="text-[11px] text-neutral-300 font-light leading-relaxed">Gameplay metrics will never be sacrificed for financial speculation. If a mechanic isn't strategically compelling, it doesn't enter the match matrix.</p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold uppercase text-white tracking-wider flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-full"></span> Cryptographic Transparency
+                    </h4>
+                    <p className="text-[11px] text-neutral-300 font-light leading-relaxed">Every transfer fee, league standing validation, and academy generation parameter operates with absolute, audit-clean architectural visibility.</p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold uppercase text-white tracking-wider flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-full"></span> Modular Adaptability
+                    </h4>
+                    <p className="text-[11px] text-neutral-300 font-light leading-relaxed">The system isolates core mathematical competition from fluid client styling layers, allowing global brands and partners to align seamlessly.</p>
+                  </div>
+                </div>
+
               </div>
             </GlassCard>
 
