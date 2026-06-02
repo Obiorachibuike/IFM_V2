@@ -685,26 +685,22 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* ATMOSPHERIC BACKGROUND CARD REFERENCING 1001706686.png */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-xl lg:max-w-none mx-auto">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video rounded-2xl" hoverable={false}>
-                  <Image 
-                    src="/1001706686.png" 
-                    alt="IFM Genesis Command Station" 
-                    fill 
-                    className="object-cover opacity-40 md:opacity-60 contrast-125 brightness-[0.45] saturate-[0.85]" 
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-50" />
-                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-8 flex items-center gap-3">
-                     <div className="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse" />
-                     <span className="text-[8px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em]">Live Session: Tactical Alpha Engine</span>
-                  </div>
-                  <div className="absolute top-4 left-4 sm:top-6 sm:left-8">
-                     <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-widest italic bg-primary px-3 sm:px-4 py-1">NEURAL BROADCAST</h4>
-                  </div>
-               </GlassCard>
-            </motion.div>
+           {/* CARD COMPONENT - ALL TEXT AND OVERLAYS REMOVED */}
+<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-sm lg:max-w-md mx-auto">
+   <div className="relative aspect-[3/4] w-full">
+      <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative rounded-2xl" hoverable={false}>
+        {playerCardImg && (
+          <Image 
+            src={playerCardImg.imageUrl} 
+            alt="NFT Card" 
+            fill 
+            className="object-cover" 
+          />
+        )}
+      </GlassCard>
+   </div>
+</motion.div>
+
           </div>
         </div>
       </section>
