@@ -148,6 +148,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://img.ge/i/qWBtr21.png",
     imageHint: "football broadcast simulation"
   },
+  {
+    id: "token-reward",
+    description: "Ultra-premium cinematic hero shot of a futuristic football stadium at night, manager silhouette, electric blue lighting, holographic dashboards",
+    imageUrl: "https://img.ge/i/TTjT648.png",
+    imageHint: "futuristic stadium manager"
+  },
 
   {
     id: "aurora-player-card",
