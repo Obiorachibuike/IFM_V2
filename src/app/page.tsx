@@ -159,7 +159,7 @@ export default function HomePage() {
       </section>
 
 
-                  {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+                        {/* 2. "WHAT IS IFM?" - THE FANTASY */}
       <section className="py-16 md:py-28 lg:py-36 relative border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           {/* Layout Wrapper: Stacks full-width on mobile/tablet, splits 50/50 on large desktops */}
@@ -200,20 +200,21 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* RIGHT SIDE: INTERACTIVE PANEL CARD */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-xl lg:max-w-none mx-auto">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[4/3] sm:aspect-square rounded-2xl sm:rounded-3xl bg-[#040914]/40" hoverable={false}>
+            {/* RIGHT SIDE: INTERACTIVE PANEL CARD (Removed max-w limits to take absolute full space) */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full mx-auto">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[4/3] sm:aspect-square rounded-2xl sm:rounded-3xl bg-[#040914]/40 w-full" hoverable={false}>
                   {tacticsImg && (
                     <Image 
                       src={tacticsImg.imageUrl} 
                       alt="Tactical Board Blueprint" 
                       fill 
-                      className="object-cover brightness-50 select-none transition-transform duration-700 hover:scale-[1.02]" 
+                      {/* Changed from brightness-50 to brightness-75 to let more image light through */}
+                      className="object-cover brightness-75 select-none transition-transform duration-700 hover:scale-[1.02]" 
                     />
                   )}
                   
-                  {/* Bottom Panel Text Layer */}
-                  <div className="absolute inset-0 p-5 sm:p-8 lg:p-12 flex flex-col justify-end bg-gradient-to-t from-[#03060F] via-[#03060F]/40 to-transparent z-10">
+                  {/* Bottom Panel Text Layer: Softened the gradient color stop thresholds */}
+                  <div className="absolute inset-0 p-5 sm:p-8 lg:p-12 flex flex-col justify-end bg-gradient-to-t from-[#03060F]/90 via-[#03060F]/20 to-transparent z-10">
                      <div className="space-y-2 sm:space-y-4 text-left">
                         <div className="flex">
                           <Badge className="bg-primary text-white font-bold px-2.5 py-0.5 sm:px-4 sm:py-1 uppercase tracking-widest text-[8px] sm:text-[9px] rounded-sm">
@@ -221,13 +222,13 @@ export default function HomePage() {
                           </Badge>
                         </div>
                         <h3 className="text-xl sm:text-3xl font-bold font-headline uppercase leading-tight text-white">THE ARCHITECT'S <br />HUB</h3>
-                        <p className="text-slate-400 text-[9px] sm:text-xs font-light uppercase tracking-widest font-mono">Processing Tactical Data: 12.8M Iterations/sec</p>
+                        <p className="text-slate-200 text-[9px] sm:text-xs font-light uppercase tracking-widest font-mono drop-shadow-md">Processing Tactical Data: 12.8M Iterations/sec</p>
                      </div>
                   </div>
                   
                   {/* Top Floating Badge Component */}
                   <div className="absolute top-4 right-4 sm:top-6 sm:right-6 max-w-[85%] sm:max-w-none text-right z-10">
-                    <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-primary/90 border border-white/10 backdrop-blur-md px-3 py-1 rounded">
+                    <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-primary/90 border border-white/10 backdrop-blur-md px-3 py-1 rounded shadow-lg">
                       TACTICAL INTERFACE // HUD_SQUAD_V2
                     </span>
                   </div>
