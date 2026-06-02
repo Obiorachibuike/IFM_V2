@@ -151,7 +151,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "token-reward",
     description: "Ultra-premium cinematic hero shot of a futuristic football stadium at night, manager silhouette, electric blue lighting, holographic dashboards",
-    imageUrl: "https://img.ge/i/TTjT648.png",
+    imageUrl: "https://img.ge/i/oS75N7.png",
     imageHint: "futuristic stadium manager"
   },
 
