@@ -656,9 +656,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CALL TO ACTION */}
-      <section className="py-24 md:py-48 xl:py-64 relative text-center overflow-hidden">
-        <div className="absolute inset-0 radial-glow-blue opacity-20" />
+           {/* FINAL CALL TO ACTION */}
+      <section className="py-24 md:py-48 xl:py-64 relative text-center overflow-hidden border-t border-white/[0.02] bg-[#03060F]">
+        
+        {/* BACKGROUND IMAGE LAYER WITH FILTERS */}
+        {ctaImg && (
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image 
+              src={ctaImg.imageUrl} 
+              alt="Dynasty Background Texture" 
+              fill 
+              priority
+              className="object-cover opacity-[0.07] grayscale brightness-50 mix-blend-screen scale-105" 
+            />
+            {/* Ambient vignette and section blend gradients */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#03060F] via-transparent to-[#03060F]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#03060F] via-transparent to-[#03060F]" />
+            <div className="absolute inset-0 bg-football-grid opacity-[0.04]" />
+          </div>
+        )}
+
+        <div className="absolute inset-0 radial-glow-blue opacity-25 pointer-events-none" />
+        
         <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-5xl space-y-10 sm:space-y-16">
           <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.95] sm:leading-[0.7] mb-8 sm:mb-12">
@@ -685,8 +704,9 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        <div className="absolute top-1/2 left-0 w-full text-center pointer-events-none opacity-5 hidden sm:block">
-           <h4 className="text-[20vw] font-bold text-white uppercase tracking-tighter italic select-none">SOVEREIGNTY</h4>
+        {/* Large Decorative Backdrop Watermark Text */}
+        <div className="absolute top-1/2 left-0 w-full text-center pointer-events-none opacity-[0.03] hidden sm:block -translate-y-1/2 select-none z-0">
+           <h4 className="text-[20vw] font-bold text-white uppercase tracking-tighter italic">SOVEREIGNTY</h4>
         </div>
       </section>
 
