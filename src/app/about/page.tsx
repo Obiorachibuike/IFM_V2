@@ -163,96 +163,103 @@ export default function AboutPage() {
 
 
 
-
-      {/* 2. THE SEASONAL CADENCE - VISUAL TIMELINE */}
-      <section className="py-48 relative border-y border-white/5 bg-card/5">
-        <div className="container mx-auto px-6 max-w-7xl">
+      {/* WHAT IS IFM - CORE MATRIX FEATURE GRID */}
+      <section className="py-20 md:py-36 relative overflow-hidden border-t border-white/[0.02]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,185,11,0.02),transparent_60%)] pointer-events-none" />
+        
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl text-center">
           <motion.div 
-            variants={fadeIn}
-            initial="initial"
+            variants={fadeIn} 
+            initial="initial" 
             whileInView="whileInView"
-            className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32"
+            className="space-y-4 sm:space-y-6 mb-16 sm:mb-24"
           >
-            <div className="space-y-6 text-left">
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-6 py-2 uppercase tracking-widest text-[10px] font-bold">Temporal Loop</Badge>
-              <h2 className="text-5xl md:text-8xl font-headline font-bold uppercase tracking-tighter leading-none">THE SEASONAL <br /><span className="text-primary italic">CADENCE</span></h2>
+            {/* Subheading Label */}
+            <div className="flex items-center justify-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold text-accent">
+              <span className="w-8 h-[1px] bg-accent/30"></span>
+              WHAT IS IFM
+              <span className="w-8 h-[1px] bg-accent/30"></span>
             </div>
-            <p className="text-muted-foreground text-xl font-light max-w-md lg:text-right">
-              Every IFM season is a 4-week tactical marathon. Consistent management is rewarded with persistent club growth and asset appreciation.
+
+            {/* Main Heading */}
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter leading-none max-w-4xl mx-auto">
+              A football manager brand with a <br />
+              <span className="text-gradient-gold italic">real ownership layer.</span>
+            </h2>
+
+            {/* Description Paragraph */}
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed px-4">
+              Football-first gameplay. A competitive ecosystem. An economy that rewards ambition.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-24">
+          {/* 4-Column Feature Grid (Adapts responsively to flex-stretch on large viewports) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-md sm:max-w-none mx-auto text-left">
             {[
-              { 
-                title: "Pre-Season Ops", 
-                desc: "Strengthen squads, finalize tactics, and define the seasonal objective during the 48-hour window. Infrastructure upgrades are prioritized here.", 
-                icon: Target, 
-                day: "Day 1-2",
-                image: tacticsImg,
-                overlay: "Tactical Configuration"
+              {
+                title: "Football Manager Game",
+                desc: "Build your squad, shape tactics, develop talent, and compete across a long-term football management ecosystem.",
+                icon: Activity,
+                glow: "blue"
               },
-              { 
-                title: "Academy Reveal", 
-                desc: "Every club generates unique youth prospects as NFTs. Analyze their genetic potential and secure them to your academy registry.", 
-                icon: Microscope, 
-                day: "Day 3",
-                image: academyImg,
-                overlay: "Prospect Discovery"
+              {
+                title: "Digital Ownership",
+                desc: "Players, assets, and progression systems are designed to create real value and persistent engagement across the platform.",
+                icon: ShieldCheck,
+                glow: "gold"
               },
-              { 
-                title: "Daily Matches", 
-                desc: "22 days of competitive league fixtures against real managers worldwide. Live tactical adjustments and Neural Fatigue management are critical.", 
-                icon: Play, 
-                day: "Days 4-25",
-                image: matchImg,
-                overlay: "Live Competition"
+              {
+                title: "Competitive Leagues",
+                desc: "Rise through divisions, chase rewards, strengthen your club, and compete for status in a global manager economy.",
+                icon: Trophy,
+                glow: "blue"
               },
-              { 
-                title: "The Payout", 
-                desc: "Final standings determine promotion, relegation, and reward distributions from the global treasury. Your on-chain history is permanently recorded.", 
-                icon: Trophy, 
-                day: "Days 26-28",
-                image: rewardsImg,
-                overlay: "Yield Calculation"
-              },
-            ].map((step, i) => (
-              <motion.div 
-                key={i} 
+              {
+                title: "IFM Economy",
+                desc: "The IFM token powers transfers, upgrades, marketplace activity, competitions, and the wider economic loop.",
+                icon: Coins,
+                glow: "gold"
+              }
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
                 variants={fadeIn}
                 initial="initial"
                 whileInView="whileInView"
-                className={cn(
-                  "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center",
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
-                )}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="h-full"
               >
-                <div className={cn("space-y-8", i % 2 === 1 ? "lg:order-2" : "lg:order-1")}>
-                  <div className="flex items-center gap-6">
-                    <div className="text-6xl font-headline font-bold text-primary/10 italic">0{i+1}</div>
-                    <div>
-                      <Badge className="bg-primary/10 text-primary uppercase text-[10px] font-bold tracking-widest">{step.day}</Badge>
-                      <h3 className="text-4xl font-headline font-bold uppercase mt-2">{step.title}</h3>
+                <GlassCard 
+                  className="p-6 sm:p-8 h-full flex flex-col justify-between border-white/5 group bg-[#040914]/40 hover:bg-[#050B1A]/60 transition-all duration-500 rounded-2xl" 
+                  glowColor={feature.glow as "blue" | "gold"}
+                >
+                  <div className="space-y-4 sm:space-y-6">
+                    {/* Icon Housing */}
+                    <div className={cn(
+                      "h-12 w-12 rounded-xl border flex items-center justify-center transition-all duration-500",
+                      feature.glow === "gold" 
+                        ? "bg-accent/5 border-accent/10 text-accent group-hover:bg-accent group-hover:text-black" 
+                        : "bg-primary/5 border-primary/10 text-primary group-hover:bg-primary group-hover:text-white"
+                    )}>
+                      <feature.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+
+                    {/* Meta structural type code tag */}
+                    <div className="text-[7px] font-mono font-bold tracking-widest text-white/30 uppercase">
+                      SYSTEM_NODE // 00{idx + 1}_PRTCL
+                    </div>
+
+                    {/* Content */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl sm:text-2xl font-bold font-headline uppercase text-white group-hover:text-primary transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground font-light leading-relaxed">
+                        {feature.desc}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-xl text-muted-foreground font-light leading-relaxed">{step.desc}</p>
-                </div>
-                <div className={cn(i % 2 === 1 ? "lg:order-1" : "lg:order-2")}>
-                   <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden aspect-video relative" hoverable={false}>
-                      {step.image && (
-                        <Image src={step.image.imageUrl} alt={step.title} fill className="object-cover brightness-75 hover:scale-105 transition-transform duration-1000" data-ai-hint={step.image.imageHint} />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                         <span className="text-[10px] font-bold text-white uppercase tracking-[0.8em] bg-black/40 px-6 py-2 rounded-full backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                           {step.overlay}
-                         </span>
-                      </div>
-                      <div className="absolute bottom-4 left-6">
-                        <span className="text-[8px] font-bold text-primary uppercase tracking-[0.4em]">{step.day} Phase active</span>
-                      </div>
-                   </GlassCard>
-                </div>
+                </GlassCard>
               </motion.div>
             ))}
           </div>
