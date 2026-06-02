@@ -142,6 +142,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   imageUrl: "https://img.ge/i/lhktd71.png",
   description: "Cinematic dark command center with high-contrast amber and cyber tactical display lighting"
 },
+  {
+    id: "cta-img",
+    description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
+    imageUrl: "https://picsum.photos/seed/ifm-live-1/1200/800",
+    imageHint: "football broadcast simulation"
+  },
 
   {
     id: "aurora-player-card",
