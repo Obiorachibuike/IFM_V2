@@ -99,7 +99,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "rewards-visual",
     description: "Golden IFM coins flowing into a digital vault",
-    imageUrl: "https://picsum.photos/seed/ifm-vault/1200/800",
+    imageUrl: "https://img.ge/i/Dp4Ix5.png",
     imageHint: "golden trophy coins"
   },
 
