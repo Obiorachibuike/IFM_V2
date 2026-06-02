@@ -44,7 +44,7 @@ export default function AboutPage() {
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
-  const tokenImg = PlaceHolderImages.find(i => i.id === "token-visual")
+  const tokenImg = PlaceHolderImages.find(i => i.id === "token-reward")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] overflow-hidden font-body selection:bg-primary selection:text-white">
