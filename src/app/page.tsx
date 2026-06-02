@@ -159,7 +159,7 @@ export default function HomePage() {
       </section>
 
 
-            {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+                  {/* 2. "WHAT IS IFM?" - THE FANTASY */}
       <section className="py-16 md:py-28 lg:py-36 relative border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           {/* Layout Wrapper: Stacks full-width on mobile/tablet, splits 50/50 on large desktops */}
@@ -167,8 +167,9 @@ export default function HomePage() {
             
             {/* LEFT SIDE: VALUE PROPOSITION */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full">
-              <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-center lg:text-left">
-                <div className="flex justify-center lg:justify-start">
+              {/* Force text-left alignment globally for this block instead of centering on mobile */}
+              <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-left">
+                <div className="flex justify-start">
                   <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
                     The Core Mission
                   </Badge>
@@ -179,17 +180,17 @@ export default function HomePage() {
                   <span className="text-gradient-gold italic">SIMULATION.</span>
                 </h2>
                 
-                <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl">
                   IFM is more than a manager game. It is a living football economy where every decision you make—from tactical shifts to stadium investments—creates permanent value on the blockchain.
                 </p>
                 
-                {/* Metric Pillar Row Blocks: Wraps naturally, scales font footprints based on screen limits */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left max-w-md sm:max-w-xl mx-auto lg:mx-0">
+                {/* Metric Pillar Row Blocks: Structured text alignment directly to the left */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-xl">
                   {[
                     { label: "Strategic Depth", desc: "Manage squads across seasons with real consequences." },
                     { label: "Digital Sovereignty", desc: "Complete cryptographic ownership over your players and training assets." }
                   ].map((item, i) => (
-                    <div key={i} className="space-y-2 sm:space-y-3 flex flex-col items-center sm:items-start text-center sm:text-left">
+                    <div key={i} className="space-y-2 sm:space-y-3 flex flex-col items-start text-left">
                       <div className="h-1 w-12 bg-accent hidden lg:block" />
                       <div className="font-bold text-base sm:text-lg uppercase tracking-tight text-white">{item.label}</div>
                       <div className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">{item.desc}</div>
@@ -213,7 +214,7 @@ export default function HomePage() {
                   
                   {/* Bottom Panel Text Layer */}
                   <div className="absolute inset-0 p-5 sm:p-8 lg:p-12 flex flex-col justify-end bg-gradient-to-t from-[#03060F] via-[#03060F]/40 to-transparent z-10">
-                     <div className="space-y-2 sm:space-y-4">
+                     <div className="space-y-2 sm:space-y-4 text-left">
                         <div className="flex">
                           <Badge className="bg-primary text-white font-bold px-2.5 py-0.5 sm:px-4 sm:py-1 uppercase tracking-widest text-[8px] sm:text-[9px] rounded-sm">
                             Command Overlay Active
@@ -236,6 +237,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
 
 
             {/* 3. GAMEPLAY PILLARS GRID */}
