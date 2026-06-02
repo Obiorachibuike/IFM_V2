@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins, Terminal, Layers, Network, Milestone
+  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins, Terminal, Layers, Network, Milestone, Hammer
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -267,7 +267,7 @@ export default function AboutPage() {
 
             <div className="lg:col-span-7 space-y-6 text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
               <p>
-                For decades, football management simulations have extracted your most valuable currencies: <strong class="text-white font-semibold">your time, your tactical intellect, and your psychological obsession.</strong>
+                For decades, football management simulations have extracted your most valuable currencies: <strong className="text-white font-semibold">your time, your tactical intellect, and your psychological obsession.</strong>
               </p>
               <p>
                 You have spent countless late nights building generational talent, engineering flawless tactical presses, and lifting trophies in empty rooms. But when the next annual iteration arrives, your legacy is wiped. The walled gardens of traditional gaming lock your achievements behind a digital curtain. Your triumphs reset to zero. Your commitment is treated as depreciating data.
@@ -287,7 +287,7 @@ export default function AboutPage() {
           >
             <div className="absolute top-0 right-0 p-4 font-mono text-[7px] tracking-widest text-white/10">// IMMUTABLE_CORE</div>
             <p className="text-lg sm:text-xl md:text-2xl font-light text-neutral-200 italic relative z-10 max-w-3xl mx-auto leading-relaxed">
-              "We aren't just building a game; we are codifying a persistent, living football universe where management decisions carry <span class="text-gradient-gold font-medium">immutable real-world value</span>."
+              "We aren't just building a game; we are codifying a persistent, living football universe where management decisions carry <span className="text-gradient-gold font-medium">immutable real-world value</span>."
             </p>
           </motion.div>
         </div>
@@ -377,14 +377,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* LAYER 3: THE ECOSYSTEM TIMELINE */}
+      {/* LAYER 3: THE ECOSYSTEM TIMELINE - MODIFIED FOR ACTIVE PHASE 1 CARD PRECEDENCE */}
       <section className="py-16 sm:py-24 md:py-32 relative border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.005] to-transparent">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div 
             variants={fadeIn}
             initial="initial"
             whileInView="whileInView"
-            className="text-center space-y-4 mb-20"
+            className="text-center space-y-4 mb-16"
           >
             <div className="flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.4em] text-accent font-bold uppercase">
               <Milestone className="h-3 w-3 text-accent" /> // 03 . ECOSYSTEM DEVELOPMENT TIMELINE
@@ -392,55 +392,115 @@ export default function AboutPage() {
             <h2 className="text-3xl sm:text-5xl font-headline font-bold uppercase tracking-tighter text-white">
               THE PIPELINE OF <span className="text-gradient-gold italic">MOMENTUM.</span>
             </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-xl mx-auto">
+              We build in the open, tracking milestones transparently. We are currently deployed and operating exclusively inside Phase 1.
+            </p>
           </motion.div>
 
-          {/* Linear Chronology Layout */}
-          <div className="relative border-l border-white/10 ml-4 md:ml-12 space-y-16">
+          {/* Card-Based Timeline Matrix */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-sm sm:max-w-none mx-auto">
             
-            {/* Phase 1 */}
-            <div className="relative pl-8 md:pl-12 group">
-              <div className="absolute -left-[5px] top-1.5 bg-neutral-800 border border-neutral-600 rounded-full w-2.5 h-2.5" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
-                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-white">Phase 1: Genesis Matrix</h3>
-                <div class="font-mono text-xs text-muted-foreground flex items-center gap-2">
-                  Q3 - Q4 2025 
-                  <span class="px-2 py-0.5 border border-white/10 rounded text-[9px] text-neutral-400 bg-white/5 uppercase font-bold tracking-widest">Completed</span>
-                </div>
+            {/* Phase 1 Card (Highlighted / Current Focus) */}
+            <GlassCard 
+              className="p-8 border-accent/30 bg-[#060F22]/90 rounded-2xl space-y-6 relative flex flex-col justify-between h-full group"
+              glowColor="gold"
+              hoverable={false}
+            >
+              {/* Active Pulse Identifier */}
+              <div className="absolute top-4 right-4 flex items-center gap-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">
+                <Hammer className="h-3 w-3 text-accent animate-spin" style={{ animationDuration: '3s' }} />
+                <span className="text-[9px] font-mono font-bold tracking-widest text-accent uppercase animate-pulse">UNDER CONSTRUCTION</span>
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-3xl leading-relaxed">
-                Architectural blueprint finalization. Internal simulation tests on the Neural Match Engine core. Whitepaper deployment and smart contract verification protocols initiated.
-              </p>
-            </div>
 
-            {/* Phase 2 */}
-            <div className="relative pl-8 md:pl-12 group">
-              <div className="absolute -left-[6px] top-1 bg-accent rounded-full w-3 h-3 shadow-[0_0_10px_rgba(240,185,11,0.5)] animate-pulse" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
-                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-accent">Phase 2: Tactical Alpha Deployment</h3>
-                <div class="font-mono text-xs text-accent flex items-center gap-2">
-                  Q1 - Q2 2026 
-                  <span class="px-2 py-0.5 border border-accent/20 rounded text-[9px] bg-accent/5 font-bold uppercase tracking-widest">Active Execution</span>
+              <div className="space-y-6">
+                <div>
+                  <div className="font-mono text-[9px] text-accent font-bold tracking-widest uppercase mb-1">CURRENT PHASE // STEP 01</div>
+                  <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-white">Phase 1: Genesis Matrix</h3>
+                  <div className="font-mono text-xs text-accent/70 mt-1">Q3 - Q4 2025 (Active Development)</div>
                 </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-3xl leading-relaxed">
-                Launch of the private gameplay sandboxes. Onboarding founding managers for UI strategy reviews, custom brand alignment iterations, and network infrastructure stress testing.
-              </p>
-            </div>
 
-            {/* Phase 3 */}
-            <div className="relative pl-8 md:pl-12 group">
-              <div className="absolute -left-[5px] top-1.5 bg-neutral-950 border border-white/10 rounded-full w-2.5 h-2.5" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
-                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-neutral-500">Phase 3: Decentralized League Expansion</h3>
-                <div class="font-mono text-xs text-neutral-600 flex items-center gap-2">
-                  Q3 - Q4 2026 
-                  <span class="px-2 py-0.5 border border-white/5 rounded text-[9px] bg-black text-neutral-600 uppercase font-bold tracking-widest">Upcoming</span>
-                </div>
+                <hr className="border-accent/10" />
+
+                <ul className="space-y-3 text-sm text-neutral-200 font-light leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent font-bold mt-0.5 shrink-0">▪</span>
+                    Architectural blueprint finalization and asset layer deployment vectors.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent font-bold mt-0.5 shrink-0">▪</span>
+                    Internal computational simulation tests on the Neural Match Engine core.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent font-bold mt-0.5 shrink-0">▪</span>
+                    Whitepaper global engineering deployment and foundational smart contract verification protocols initiated.
+                  </li>
+                </ul>
               </div>
-              <p className="text-xs sm:text-sm text-neutral-500 font-light max-w-3xl leading-relaxed">
-                Public implementation of the 8-division competitive pyramid structure. Deployment of real-time peer-to-peer asset transfer hubs and initial utility token minting pipelines.
-              </p>
-            </div>
+            </GlassCard>
+
+            {/* Phase 2 Card (Lock / Future) */}
+            <GlassCard 
+              className="p-8 border-white/5 bg-white/[0.01] opacity-50 rounded-2xl space-y-6 flex flex-col justify-between h-full hover:opacity-70 transition-opacity duration-300"
+              glowColor="blue"
+              hoverable={false}
+            >
+              <div className="space-y-6">
+                <div>
+                  <div className="font-mono text-[9px] text-muted-foreground tracking-widest uppercase mb-1">NEXT HORIZON // STEP 02</div>
+                  <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-neutral-400">Phase 2: Tactical Alpha Deployment</h3>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">Q1 - Q2 2026 (Queued)</div>
+                </div>
+
+                <hr className="border-white/5" />
+
+                <ul className="space-y-3 text-sm text-muted-foreground font-light leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Launch of the private gameplay sandboxes for stress environments.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Onboarding founding managers for UI strategy reviews and custom brand alignment iterations.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Network core infrastructure validation under concurrent ecosystem loads.
+                  </li>
+                </ul>
+              </div>
+            </GlassCard>
+
+            {/* Phase 3 Card (Lock / Future) */}
+            <GlassCard 
+              className="p-8 border-white/5 bg-white/[0.01] opacity-50 rounded-2xl space-y-6 flex flex-col justify-between h-full hover:opacity-70 transition-opacity duration-300"
+              glowColor="blue"
+              hoverable={false}
+            >
+              <div className="space-y-6">
+                <div>
+                  <div className="font-mono text-[9px] text-muted-foreground tracking-widest uppercase mb-1">SCALING PHASE // STEP 03</div>
+                  <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-neutral-400">Phase 3: Decentralized Leagues</h3>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">Q3 - Q4 2026 (Queued)</div>
+                </div>
+
+                <hr className="border-white/5" />
+
+                <ul className="space-y-3 text-sm text-muted-foreground font-light leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Public implementation of the 8-division competitive pyramid structure.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Deployment of real-time peer-to-peer asset transfer hubs on production layers.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary/40 font-bold mt-0.5 shrink-0">▪</span>
+                    Execution of initial utility token minting pipelines and performance rewards.
+                  </li>
+                </ul>
+              </div>
+            </GlassCard>
 
           </div>
         </div>
