@@ -5,7 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins
+  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, 
+  ShieldCheck, Rocket, Gauge, Database, Coins, ShieldAlert, Terminal, ArrowDown
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -41,8 +42,8 @@ const staggerContainer = {
 export default function AboutPage() {
   // Assets mapping
   const heroImg = PlaceHolderImages.find(i => i.id === "about-hero")
+  const stadiumBg = PlaceHolderImages.find(i => i.id === "tactical-board") // Mapping to background asset
   const matchImg = PlaceHolderImages.find(i => i.id === "match-engine-live")
-  const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "player-card-gold")
   const tokenImg = PlaceHolderImages.find(i => i.id === "token-visual")
 
@@ -147,7 +148,130 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. WHAT IS IFM - CORE MATRIX FEATURE GRID */}
+
+      {/* 2. MANIFESTO - SOVEREIGNTY MATRIX */}
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center border-b border-white/5 bg-[#03060F] py-24 sm:py-32 overflow-hidden w-full">
+        
+        {/* BACKGROUND GRAPHIC ARCHITECTURE */}
+        <div className="absolute inset-0 z-0">
+          {stadiumBg && (
+            <Image
+              src={stadiumBg.imageUrl}
+              alt="IFM Matrix Environment Core"
+              fill
+              priority
+              className="object-cover opacity-[0.12] grayscale scale-105 transition-all duration-1000 mix-blend-screen select-none pointer-events-none"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#03060F] via-[#03060F]/75 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#03060F] via-transparent to-[#03060F]" />
+          <div className="absolute inset-0 football-grid opacity-[0.04] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[500px] w-[500px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
+        </div>
+
+        {/* FOREGROUND HERO CONTENT WRAPPER */}
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-7xl text-center flex flex-col items-center justify-center flex-1">
+          <div className="space-y-8 sm:space-y-12 max-w-5xl mx-auto">
+            
+            {/* SYSTEM DIRECTIVE FLAG HEADER */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/5 border border-accent/20 rounded-md backdrop-blur-md">
+                <ShieldAlert className="h-3.5 w-3.5 text-accent animate-pulse" />
+                <span className="text-[9px] font-mono font-bold text-accent uppercase tracking-[0.3em] whitespace-nowrap">
+                  System Directive // Sovereignty Matrix
+                </span>
+              </div>
+              
+              <span className="hidden sm:inline text-white/20 font-mono text-[10px]">|</span>
+
+              <div className="inline-flex items-center gap-1.5 text-white/40 font-mono text-[9px] uppercase tracking-wider">
+                <Terminal className="h-3 w-3" />
+                Node_ID: IFM_MANIFESTO_CORE
+              </div>
+            </motion.div>
+
+            {/* DYNAMIC SCALE DISPLAY HEADLINE */}
+            <div className="space-y-4">
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold font-headline tracking-tighter uppercase leading-[0.95] text-white"
+              >
+                WE ARE NOT BUILDING <br />
+                <span className="text-gradient-gold italic font-extrabold">A WALLED GARDEN.</span>
+              </motion.h1>
+            </div>
+
+            {/* SYSTEM DESCRIPTION LOG FRAMEWORK */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="text-sm sm:text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed px-4"
+            >
+              Traditional manager titles lock your decisions, data metrics, and time investment inside corporate servers that inevitably phase out. 
+              <span className="text-white font-medium"> IFM replaces centralized loops</span> with an immutable on-chain architecture designed to protect your physical and financial legacy across generations.
+            </motion.p>
+
+            {/* PREMIUM LAYOUT CALL TO ACTIONS */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto sm:max-w-none px-4"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto h-12 px-8 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl tracking-widest text-xs uppercase glow-blue transition-all duration-300"
+              >
+                <Link href="/whitepaper">
+                  EXAMINE THE BLUEPRINT
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto h-12 px-8 border-white/10 hover:bg-white/5 hover:text-white font-bold rounded-xl tracking-widest text-xs uppercase backdrop-blur-md transition-all duration-300"
+              >
+                <Link href="/early-access" className="flex items-center justify-center gap-2">
+                  ACQUIRE CLUB LICENSE
+                </Link>
+              </Button>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* METRIC FOOTER BAR - ASYMMETRIC UI DESIGN EDGE */}
+        <div className="absolute bottom-6 left-0 w-full px-6 md:px-12 z-20 flex flex-col sm:flex-row justify-between items-center gap-4 pointer-events-none">
+          <div className="flex items-center gap-6 text-white/20 font-mono text-[8px] sm:text-[9px] uppercase tracking-widest">
+            <div>SCALE: 1:1 COMPETITIVE REALISM</div>
+            <div className="hidden sm:block">STATUS: ALPHA_VER_2.6</div>
+          </div>
+          
+          <div className="flex items-center gap-2 text-primary/60 font-mono text-[9px] uppercase tracking-widest animate-pulse">
+            <span>SCROLL TO SYSTEM CORE</span>
+            <ArrowDown className="h-3 w-3" />
+          </div>
+        </div>
+
+      </section>
+
+
+      {/* 3. WHAT IS IFM - CORE MATRIX FEATURE GRID */}
       <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden border-t border-white/[0.02]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,185,11,0.02),transparent_60%)] pointer-events-none" />
 
@@ -244,7 +368,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. THE REWARD PROTOCOL - MATCH PERFORMANCE REWARDS */}
+      {/* 4. THE REWARD PROTOCOL - MATCH PERFORMANCE REWARDS */}
       <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
@@ -321,7 +445,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. SOVEREIGN ASSETS - NFT SYSTEM */}
+      {/* 5. SOVEREIGN ASSETS - NFT SYSTEM */}
       <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-accent/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
@@ -394,7 +518,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. MATCH ENGINE SHOWCASE / INFINITE SCALING ARCHITECTURE */}
+      {/* 6. MATCH ENGINE SHOWCASE / INFINITE SCALING ARCHITECTURE */}
       <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
@@ -429,7 +553,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* ATMOSPHERIC BACKGROUND CARD REFERENCING 1001706686.png */}
+            {/* ATMOSPHERIC BACKGROUND CARD */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-xl lg:max-w-none mx-auto">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-video rounded-2xl" hoverable={false}>
                   <Image 
