@@ -59,10 +59,9 @@ export default function AboutPage() {
               alt="IFM Vision"
               fill
               priority
-              className="object-cover w-full h-full brightness-[0.4]"
+              className="object-cover w-full h-full"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05070D]/50 to-[#05070D]" />
         </div>
 
         {/* CONTENT */}
