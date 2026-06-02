@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins
+  Trophy, Cpu, Zap, Activity, History, Microscope, Target, Play, LayoutDashboard, ShieldCheck, Rocket, Gauge, Database, Coins, Terminal, Layers, Network, Milestone
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -244,11 +244,215 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* --- INTEGRATED FRAMEWORK LAYERS --- */}
+
+      {/* LAYER 1: THE MANIFESTO */}
+      <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-gradient-to-b from-transparent via-white/[0.01] to-transparent border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+          >
+            <div className="lg:col-span-5 space-y-4">
+              <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.4em] text-accent font-bold uppercase">
+                <Terminal className="h-3 w-3 text-accent" /> // 01 . THE MANIFESTO
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-headline font-bold uppercase tracking-tighter leading-none text-white">
+                THE SOVEREIGN <br />
+                <span className="text-gradient-gold italic">ANOMALY.</span>
+              </h2>
+            </div>
+
+            <div className="lg:col-span-7 space-y-6 text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
+              <p>
+                For decades, football management simulations have extracted your most valuable currencies: <strong class="text-white font-semibold">your time, your tactical intellect, and your psychological obsession.</strong>
+              </p>
+              <p>
+                You have spent countless late nights building generational talent, engineering flawless tactical presses, and lifting trophies in empty rooms. But when the next annual iteration arrives, your legacy is wiped. The walled gardens of traditional gaming lock your achievements behind a digital curtain. Your triumphs reset to zero. Your commitment is treated as depreciating data.
+              </p>
+              <p>
+                <span className="text-white font-semibold">Invincible Football Manager (IFM)</span> is the end of the disposable legacy. We bridge the gap between absolute tactical simulation and permanent cryptographic asset ownership. Every tactical masterstroke, every scouting discovery, and every stadium expansion you execute is etched permanently into a living ecosystem.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Visionary Manifesto Callout */}
+          <motion.div 
+            variants={fadeIn}
+            initial="initial"
+            whileInView="whileInView"
+            className="mt-16 bg-gradient-to-r from-[#0D1527] to-[#050A14] border border-white/5 p-8 md:p-12 rounded-2xl max-w-4xl mx-auto text-center relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-4 font-mono text-[7px] tracking-widest text-white/10">// IMMUTABLE_CORE</div>
+            <p className="text-lg sm:text-xl md:text-2xl font-light text-neutral-200 italic relative z-10 max-w-3xl mx-auto leading-relaxed">
+              "We aren't just building a game; we are codifying a persistent, living football universe where management decisions carry <span class="text-gradient-gold font-medium">immutable real-world value</span>."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* LAYER 2: STRATEGIC PILLARS & ARCHITECTURAL DNA */}
+      <section className="py-16 sm:py-24 md:py-32 relative border-t border-white/5 bg-[#03060B]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <motion.div 
+            variants={fadeIn}
+            initial="initial"
+            whileInView="whileInView"
+            className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16"
+          >
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.4em] text-primary font-bold uppercase">
+                <Layers className="h-3 w-3 text-primary" /> // 02 . CORE ARCHITECTURE
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-headline font-bold uppercase tracking-tighter text-white">
+                STRATEGIC PILLARS & <br /><span className="text-gradient-blue italic">ARCHITECTURAL DNA.</span>
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-md leading-relaxed">
+              The IFM ecosystem is engineered for the elite, combining hyper-detailed tactical depth with zero compromised scalability.
+            </p>
+          </motion.div>
+
+          {/* Architectural Technical Pillars */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                tag: "// SYSTEM_ENGINE_CORE",
+                title: "The Neural Match Engine",
+                desc: "The heart of IFM does not rely on simplistic dice-rolls or pre-baked animations. Our proprietary engine calculates thousands of live tactical variables per second. Spatial matrix positioning, dynamic fatigue decay, psychological shifts, and micro-tactical counters are processed in real-time.",
+                icon: Cpu,
+                color: "blue"
+              },
+              {
+                tag: "// MATRIX_SCALING_NODE",
+                title: "The Infinite Scaling Pyramid",
+                desc: "Traditional leagues suffer from dilution as user bases grow. IFM solves this via a multi-tier decentralized division matrix. This autonomous architecture accommodates hundreds of thousands of concurrent clubs organically without inflating or diluting top-tier championships.",
+                icon: Network,
+                color: "gold"
+              },
+              {
+                tag: "// TOKEN_LOOP_STABILITY",
+                title: "The Sovereign Token Loop",
+                desc: "A closed-loop, hyper-sustainable economy. Native assets ($IFM token and player card NFTs) interact fluidly to power transfer hubs, infrastructure nodes, and seasonal rewards without relying on inflationary printing mechanisms.",
+                icon: Coins,
+                color: "blue"
+              }
+            ].map((pillar, idx) => (
+              <GlassCard 
+                key={idx}
+                className="p-8 border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 rounded-2xl flex flex-col justify-between"
+                glowColor={pillar.color as "blue" | "gold"}
+              >
+                <div className="space-y-6">
+                  <div className="font-mono text-[8px] text-muted-foreground uppercase tracking-widest">{pillar.tag}</div>
+                  <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-white flex items-center gap-3">
+                    <pillar.icon className={cn("h-5 w-5", pillar.color === "gold" ? "text-accent" : "text-primary")} />
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground font-light leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
+
+          {/* Studio Engineering Values Subgrid */}
+          <div className="mt-16 pt-16 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {[
+              { title: "Football-First Philosophy", text: "Gameplay metrics will never be sacrificed for financial speculation. If a mechanic isn't strategically compelling, it doesn't enter the match matrix." },
+              { title: "Cryptographic Transparency", text: "Every transfer fee, league standing validation, and academy generation parameter operates with absolute, audit-clean architectural visibility." },
+              { title: "Modular Adaptability", text: "The system isolates core mathematical competition from fluid client styling layers, allowing global brands and partners to align seamlessly." }
+            ].map((value, idx) => (
+              <div key={idx} className="space-y-3">
+                <h4 className="text-sm font-bold uppercase text-white tracking-wider flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> {value.title}
+                </h4>
+                <p className="text-xs text-muted-foreground font-light leading-relaxed">{value.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LAYER 3: THE ECOSYSTEM TIMELINE */}
+      <section className="py-16 sm:py-24 md:py-32 relative border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.005] to-transparent">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <motion.div 
+            variants={fadeIn}
+            initial="initial"
+            whileInView="whileInView"
+            className="text-center space-y-4 mb-20"
+          >
+            <div className="flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.4em] text-accent font-bold uppercase">
+              <Milestone className="h-3 w-3 text-accent" /> // 03 . ECOSYSTEM DEVELOPMENT TIMELINE
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-headline font-bold uppercase tracking-tighter text-white">
+              THE PIPELINE OF <span className="text-gradient-gold italic">MOMENTUM.</span>
+            </h2>
+          </motion.div>
+
+          {/* Linear Chronology Layout */}
+          <div className="relative border-l border-white/10 ml-4 md:ml-12 space-y-16">
+            
+            {/* Phase 1 */}
+            <div className="relative pl-8 md:pl-12 group">
+              <div className="absolute -left-[5px] top-1.5 bg-neutral-800 border border-neutral-600 rounded-full w-2.5 h-2.5" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
+                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-white">Phase 1: Genesis Matrix</h3>
+                <div class="font-mono text-xs text-muted-foreground flex items-center gap-2">
+                  Q3 - Q4 2025 
+                  <span class="px-2 py-0.5 border border-white/10 rounded text-[9px] text-neutral-400 bg-white/5 uppercase font-bold tracking-widest">Completed</span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-3xl leading-relaxed">
+                Architectural blueprint finalization. Internal simulation tests on the Neural Match Engine core. Whitepaper deployment and smart contract verification protocols initiated.
+              </p>
+            </div>
+
+            {/* Phase 2 */}
+            <div className="relative pl-8 md:pl-12 group">
+              <div className="absolute -left-[6px] top-1 bg-accent rounded-full w-3 h-3 shadow-[0_0_10px_rgba(240,185,11,0.5)] animate-pulse" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
+                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-accent">Phase 2: Tactical Alpha Deployment</h3>
+                <div class="font-mono text-xs text-accent flex items-center gap-2">
+                  Q1 - Q2 2026 
+                  <span class="px-2 py-0.5 border border-accent/20 rounded text-[9px] bg-accent/5 font-bold uppercase tracking-widest">Active Execution</span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-3xl leading-relaxed">
+                Launch of the private gameplay sandboxes. Onboarding founding managers for UI strategy reviews, custom brand alignment iterations, and network infrastructure stress testing.
+              </p>
+            </div>
+
+            {/* Phase 3 */}
+            <div className="relative pl-8 md:pl-12 group">
+              <div className="absolute -left-[5px] top-1.5 bg-neutral-950 border border-white/10 rounded-full w-2.5 h-2.5" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
+                <h3 class="text-lg sm:text-xl font-bold tracking-wide uppercase text-neutral-500">Phase 3: Decentralized League Expansion</h3>
+                <div class="font-mono text-xs text-neutral-600 flex items-center gap-2">
+                  Q3 - Q4 2026 
+                  <span class="px-2 py-0.5 border border-white/5 rounded text-[9px] bg-black text-neutral-600 uppercase font-bold tracking-widest">Upcoming</span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-neutral-500 font-light max-w-3xl leading-relaxed">
+                Public implementation of the 8-division competitive pyramid structure. Deployment of real-time peer-to-peer asset transfer hubs and initial utility token minting pipelines.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* --- END INTEGRATED FRAMEWORK LAYERS --- */}
+
       {/* 3. THE REWARD PROTOCOL - MATCH PERFORMANCE REWARDS */}
       <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
-            
+
             {/* TEXT ROW */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
               <div className="space-y-6 sm:space-y-8">
@@ -271,7 +475,7 @@ export default function AboutPage() {
                         <feat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 mb-1">
+                        <div className="flex justify-wrap sm:flex-nowrap justify-between items-center gap-2 mb-1">
                            <div className="font-bold text-sm sm:text-base uppercase tracking-tight">{feat.title}</div>
                            <Badge variant="outline" className="text-[8px] border-primary/20 text-primary px-2 py-0.5 shrink-0">{feat.status}</Badge>
                         </div>
@@ -325,7 +529,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-accent/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
-            
+
             {/* TEXT ROW */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
               <div className="space-y-6 sm:space-y-8">
@@ -398,7 +602,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-24 md:py-32 relative border-y border-white/5 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-center">
-            
+
             {/* TEXT ROW */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-2">
               <div className="space-y-6 sm:space-y-8">
@@ -453,22 +657,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* FINAL CTA & GLOBAL COMMAND FRAMEWORK */}
       <section className="py-24 sm:py-36 md:py-48 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-8 sm:space-y-12">
           <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6">
+            <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.4em] text-accent font-bold uppercase">// 05 . GLOBAL COMMAND FRAMEWORK</div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-headline tracking-tighter uppercase leading-none">
               START YOUR <br />
               <span className="text-gradient-blue italic">DYNASTY</span>
             </h2>
-            <div className="flex justify-center pt-4 px-4 sm:px-0">
-              <Button asChild size="lg" className="h-16 sm:h-20 md:h-24 w-full sm:w-auto px-8 sm:px-14 md:px-20 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl sm:rounded-2xl md:rounded-3xl glow-blue text-lg sm:text-xl md:text-2xl uppercase tracking-widest">
-                <Link href="/early-access" className="flex items-center justify-center gap-4 sm:gap-6">
-                  CLAIM YOUR LICENSE <Rocket className="h-6 w-6 sm:h-8 sm:w-8 shrink-0" />
+            
+            <p className="text-sm sm:text-base text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+              The era of passive consumption is over. The digital turf is cleared, the ledger is live, and the technical infrastructure is primed for the next generation of sporting executives. Take command of your legacy today.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-6 px-4 sm:px-0">
+              <Button asChild size="lg" className="h-16 w-full sm:w-auto px-8 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl glow-blue text-sm uppercase tracking-widest">
+                <Link href="/early-access" className="flex items-center justify-center gap-3">
+                  CLAIM YOUR LICENSE <Rocket className="h-4 w-4 shrink-0" />
                 </Link>
               </Button>
+
+              <Button asChild size="lg" variant="outline" className="h-16 w-full sm:w-auto px-8 border-white/10 hover:bg-white/5 text-white font-bold rounded-xl text-sm uppercase tracking-widest backdrop-blur-xl">
+                <Link href="/whitepaper">EXPLORE WHITEPAPER</Link>
+              </Button>
+
+              <Button asChild size="lg" variant="ghost" className="h-16 w-full sm:w-auto px-8 text-neutral-400 hover:text-white text-sm uppercase tracking-widest">
+                <Link href="/tokenomics">TOKENOMICS BLUEPRINT</Link>
+              </Button>
             </div>
+            
             <p className="text-muted-foreground uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[9px] sm:text-[10px] pt-4 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
         </div>
