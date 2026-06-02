@@ -266,9 +266,14 @@ export default function HomePage() {
               <GlassCard key={i} className="p-0 group overflow-hidden border-white/5 flex flex-col h-full" glowColor={i % 2 === 0 ? "blue" : "gold"}>
                 <div className="relative aspect-[4/5] w-full">
                   {pillar.image && (
-                    <Image src={pillar.image.imageUrl} alt={pillar.title} fill className="object-cover brightness-50 group-hover:scale-105 transition-transform duration-1000" />
+                    <Image 
+                      src={pillar.image.imageUrl} 
+                      alt={pillar.title} 
+                      fill 
+                      className="object-cover brightness-75 group-hover:scale-105 transition-transform duration-1000" 
+                    />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] via-[#0A0F1C]/40 to-transparent" />
                   <div className="absolute top-4 left-4">
                      <Badge className="bg-black/60 backdrop-blur-md text-[8px] uppercase tracking-widest border-white/10">{pillar.label}</Badge>
                   </div>
