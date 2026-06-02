@@ -23,17 +23,6 @@ const fadeIn = {
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
 }
 
-const staggerContainer = {
-  initial: { opacity: 0 },
-  whileInView: { 
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  },
-  viewport: { once: true }
-}
-
 const faqData = [
   {
     q: "What is Invincible Football Manager (IFM)?",
@@ -67,7 +56,7 @@ export default function HomePage() {
   const marketImg = PlaceHolderImages.find(i => i.id === "zenith-transfer-hub")
   const leagueImg = PlaceHolderImages.find(i => i.id === "nova-league-board")
   const academyImg = PlaceHolderImages.find(i => i.id === "vertex-academy-prospect")
-    const ctaImg = PlaceHolderImages.find(i => i.id === "cta-img")
+  const ctaImg = PlaceHolderImages.find(i => i.id === "cta-img")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
   const scaleImg = PlaceHolderImages.find(i => i.id === "scale-architecture-blueprint")
 
@@ -84,7 +73,6 @@ export default function HomePage() {
               fill
               priority
               className="object-cover scale-[1.02]"
-              data-ai-hint="IFM Genesis stadium"
             />
           )}
 
@@ -158,33 +146,29 @@ export default function HomePage() {
         </div>
       </section>
 
-
-                        {/* 2. "WHAT IS IFM?" - THE FANTASY */}
+      {/* 2. "WHAT IS IFM?" - THE FANTASY */}
       <section className="py-16 md:py-28 lg:py-36 relative border-y border-white/5 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          {/* Layout Wrapper: Stacks full-width on mobile/tablet, splits 50/50 on large desktops */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             {/* LEFT SIDE: VALUE PROPOSITION */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full">
-              {/* Force text-left alignment globally for this block instead of centering on mobile */}
               <div className="space-y-6 sm:space-y-8 lg:space-y-12 text-left">
                 <div className="flex justify-start">
                   <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
                     The Core Mission
                   </Badge>
                 </div>
-                
+
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.1] lg:leading-[0.9]">
                   BEYOND THE <br />
                   <span className="text-gradient-gold italic">SIMULATION.</span>
                 </h2>
-                
+
                 <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl">
                   IFM is more than a manager game. It is a living football economy where every decision you make—from tactical shifts to stadium investments—creates permanent value on the blockchain.
                 </p>
-                
-                {/* Metric Pillar Row Blocks: Structured text alignment directly to the left */}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-xl">
                   {[
                     { label: "Strategic Depth", desc: "Manage squads across seasons with real consequences." },
@@ -200,7 +184,7 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* RIGHT SIDE: INTERACTIVE PANEL CARD (Removed max-w limits to take absolute full space) */}
+            {/* RIGHT SIDE: INTERACTIVE PANEL CARD */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full mx-auto">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-[4/3] sm:aspect-square rounded-2xl sm:rounded-3xl bg-[#040914]/40 w-full" hoverable={false}>
                   {tacticsImg && (
@@ -208,12 +192,10 @@ export default function HomePage() {
                       src={tacticsImg.imageUrl} 
                       alt="Tactical Board Blueprint" 
                       fill 
-                      {/* Changed from brightness-50 to brightness-75 to let more image light through */}
                       className="object-cover brightness-75 select-none transition-transform duration-700 hover:scale-[1.02]" 
                     />
                   )}
-                  
-                  {/* Bottom Panel Text Layer: Softened the gradient color stop thresholds */}
+
                   <div className="absolute inset-0 p-5 sm:p-8 lg:p-12 flex flex-col justify-end bg-gradient-to-t from-[#03060F]/90 via-[#03060F]/20 to-transparent z-10">
                      <div className="space-y-2 sm:space-y-4 text-left">
                         <div className="flex">
@@ -225,8 +207,7 @@ export default function HomePage() {
                         <p className="text-slate-200 text-[9px] sm:text-xs font-light uppercase tracking-widest font-mono drop-shadow-md">Processing Tactical Data: 12.8M Iterations/sec</p>
                      </div>
                   </div>
-                  
-                  {/* Top Floating Badge Component */}
+
                   <div className="absolute top-4 right-4 sm:top-6 sm:right-6 max-w-[85%] sm:max-w-none text-right z-10">
                     <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-primary/90 border border-white/10 backdrop-blur-md px-3 py-1 rounded shadow-lg">
                       TACTICAL INTERFACE // HUD_SQUAD_V2
@@ -239,9 +220,7 @@ export default function HomePage() {
         </div>
       </section>
 
-
-
-            {/* 3. GAMEPLAY PILLARS GRID */}
+      {/* 3. GAMEPLAY PILLARS GRID */}
       <section className="py-20 md:py-36 bg-card/5">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="text-center mb-16 sm:mb-24 md:mb-32 space-y-4 sm:space-y-8">
@@ -314,25 +293,18 @@ export default function HomePage() {
         </div>
       </section>
 
-
       {/* 4. MATCH ENGINE SHOWCASE */}
       <section className="py-20 md:py-36 relative bg-gradient-to-b from-[#03060F] via-[#08152E]/20 to-[#03060F] border-y border-white/[0.02]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(29,78,216,0.04),transparent_70%)] pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-             
+
              {/* LEFT SIDE: GAMEPLAY LIVE SCREEN PREVIEW */}
-             <motion.div 
-               variants={fadeIn} 
-               initial="initial" 
-               whileInView="whileInView" 
-               className="lg:col-span-7 w-full order-2 lg:order-1"
-             >
+             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:col-span-7 w-full order-2 lg:order-1">
                 <div className="relative group">
-                  {/* Outer Tech Accents */}
                   <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/10 via-blue-500/5 to-primary/20 blur-xl opacity-30 group-hover:opacity-50 transition duration-1000" />
-                  
+
                   <GlassCard className="p-2 sm:p-3 border-white/10 glow-blue overflow-hidden relative rounded-2xl sm:rounded-3xl bg-[#040914]/90 backdrop-blur-2xl" hoverable={false}>
                     <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden group">
                       {matchImg && (
@@ -343,19 +315,16 @@ export default function HomePage() {
                           className="object-cover brightness-75 group-hover:scale-[1.02] transition-transform duration-700" 
                         />
                       )}
-                      
-                      {/* Technical HUD Grid Overlays */}
+
                       <div className="absolute inset-0 bg-football-grid opacity-[0.12] mix-blend-overlay pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#03060F]/90 via-transparent to-black/20 pointer-events-none" />
-                      
-                      {/* Header System Label */}
+
                       <div className="absolute top-3 left-3 sm:top-5 sm:left-5 max-w-[70%]">
                         <div className="text-[8px] sm:text-[10px] font-bold text-white/90 uppercase tracking-[0.2em] bg-primary/80 border border-primary/40 backdrop-blur-sm px-3 py-1 rounded-sm">
                           NEURAL ENGINE SIMULATION v2.4
                         </div>
                       </div>
 
-                      {/* Bottom Interface Telemetry */}
                       <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
                          <Badge variant="outline" className="border-white/10 text-white/60 bg-black/40 backdrop-blur-sm uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-0.5">
                            Interface View: HUD_LIVE_MAIN
@@ -364,7 +333,6 @@ export default function HomePage() {
                     </div>
                   </GlassCard>
 
-                  {/* Tactical Analytics Floating Module Data Stream */}
                   <div className="absolute -bottom-6 -right-2 sm:right-6 bg-[#060D1F] border border-white/10 backdrop-blur-xl p-3 rounded-xl shadow-2xl hidden sm:flex items-center gap-4 max-w-xs animate-bounce-slow">
                     <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0">
                       <Cpu className="h-4 w-4" />
@@ -378,19 +346,14 @@ export default function HomePage() {
              </motion.div>
 
              {/* RIGHT SIDE: CORE TECH SYSTEM METRICS */}
-             <motion.div 
-               variants={fadeIn} 
-               initial="initial" 
-               whileInView="whileInView" 
-               className="lg:col-span-5 w-full order-1 lg:order-2"
-             >
+             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:col-span-5 w-full order-1 lg:order-2">
                 <div className="space-y-6 sm:space-y-8 lg:space-y-10 text-center lg:text-left">
                    <div className="flex justify-center lg:justify-start">
                      <Badge className="bg-primary/10 text-primary border-primary/30 px-4 py-1 sm:px-5 sm:py-1.5 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
                        Neural Core Matrix
                      </Badge>
                    </div>
-                   
+
                    <div className="space-y-3 sm:space-y-4">
                      <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1.05]">
                        REACTIVE <br />
@@ -401,7 +364,6 @@ export default function HomePage() {
                      </p>
                    </div>
 
-                   {/* Command Dashboard Controls List */}
                    <div className="space-y-3 text-left max-w-xl mx-auto lg:mx-0">
                       {[
                         { 
@@ -443,23 +405,15 @@ export default function HomePage() {
         </div>
       </section>
 
-
-
       {/* 5. PROACTIVE SCALING & LEAGUE ARCHITECTURE */}
       <section className="py-16 md:py-28 lg:py-36 relative border-b border-white/[0.02] bg-gradient-to-b from-[#03060F] via-[#060D1F] to-[#03060F] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.03),transparent_60%)] pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          {/* Main Grid: Stacks on mobile/tablet (cols-1), splits on large desktops (cols-12) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 lg:gap-8 xl:gap-16 items-stretch">
 
-            {/* LEFT SIDE: CONCEPT & VALUE PROPOSITION (5 Columns on Desktop) */}
-            <motion.div 
-              variants={fadeIn} 
-              initial="initial" 
-              whileInView="whileInView"
-              className="lg:col-span-5 flex flex-col justify-center"
-            >
+            {/* LEFT SIDE: CONCEPT & VALUE PROPOSITION */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:col-span-5 flex flex-col justify-center">
               <div className="space-y-6 md:space-y-8 text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start">
                   <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 sm:px-4 sm:py-1.5 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold rounded-md">
@@ -478,7 +432,6 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* Technical Metric Row Blocks */}
                 <div className="space-y-3 text-left max-w-xl mx-auto lg:mx-0">
                   {[
                     { 
@@ -509,24 +462,12 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* RIGHT SIDE: ARCHITECTURAL BLUEPRINT PANEL (7 Columns on Desktop) */}
-            <motion.div 
-              variants={fadeIn} 
-              initial="initial" 
-              whileInView="whileInView" 
-              className="lg:col-span-7 w-full flex"
-            >
+            {/* RIGHT SIDE: ARCHITECTURAL BLUEPRINT PANEL */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:col-span-7 w-full flex">
               <div className="relative group w-full flex">
-                {/* Backing Ambient Glow */}
                 <div className="absolute -inset-1 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-500/10 via-primary/5 to-blue-500/10 blur-xl opacity-40 group-hover:opacity-60 transition duration-1000" />
-                
-                {/* 
-                  Removed restrictive min-h/aspect-square constraints. 
-                  Used h-full + flex to adjust naturally based entirely on dynamic text size metrics.
-                */}
-                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative w-full h-full rounded-2xl sm:rounded-3xl bg-[#040914]/90 backdrop-blur-2xl flex flex-col" hoverable={false}>
 
-                  {/* BACKGROUND DECORATIVE BLUEPRINT */}
+                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative w-full h-full rounded-2xl sm:rounded-3xl bg-[#040914]/90 backdrop-blur-2xl flex flex-col" hoverable={false}>
                   {scaleImg && (
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-2xl sm:rounded-3xl">
                       <Image 
@@ -540,10 +481,7 @@ export default function HomePage() {
                     </div>
                   )}
 
-                  {/* FOREGROUND PANEL DATA WRAPPER */}
                   <div className="relative z-10 p-5 sm:p-8 lg:p-8 xl:p-10 flex flex-col justify-between flex-1 gap-6 sm:gap-8">
-
-                    {/* Top Header Module */}
                     <div className="space-y-6">
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-white/5 pb-4">
                         <div className="space-y-0.5">
@@ -555,10 +493,7 @@ export default function HomePage() {
                         </Badge>
                       </div>
 
-                      {/* STRUCTURAL ENGINE PILLARS ROW SPLIT: Stacks on mobile, splits 50/50 on tablets and above */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-
-                        {/* Structural Core Column */}
                         <div className="space-y-2 p-4 sm:p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-colors duration-300">
                           <div className="flex items-center gap-2 text-primary">
                             <Target className="h-3.5 w-3.5" />
@@ -572,7 +507,6 @@ export default function HomePage() {
                           </div>
                         </div>
 
-                        {/* Identity Layer Column */}
                         <div className="space-y-2 p-4 sm:p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-colors duration-300">
                           <div className="flex items-center gap-2 text-blue-400">
                             <BarChart3 className="h-3.5 w-3.5" />
@@ -585,11 +519,9 @@ export default function HomePage() {
                             </p>
                           </div>
                         </div>
-
                       </div>
                     </div>
 
-                    {/* FOOTER METRIC FRAMEWORK */}
                     <div className="space-y-4 mt-auto">
                       <div className="p-3 sm:p-4 rounded-xl bg-primary/[0.01] border border-white/5 text-[11px] sm:text-xs text-slate-300 font-light leading-relaxed backdrop-blur-md relative overflow-hidden">
                         <div className="absolute top-0 left-0 h-full w-[2px] bg-primary/40" />
@@ -601,7 +533,6 @@ export default function HomePage() {
                         <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.35em] block sm:inline">Pyramid Protocol // Auto_Expand_Nodes_Enabled</span>
                       </div>
                     </div>
-
                   </div>
                 </GlassCard>
               </div>
@@ -610,9 +541,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-
-
 
       {/* 6. FAQ SECTION - INTELLIGENCE BASE */}
       <section className="py-20 md:py-36 relative border-t border-white/5 bg-background overflow-hidden">
@@ -685,7 +613,7 @@ export default function HomePage() {
         </div>
       </section>
 
-                 {/* FINAL CALL TO ACTION */}
+      {/* FINAL CALL TO ACTION */}
       <section className="py-24 md:py-48 xl:py-64 relative text-center overflow-hidden border-t border-white/[0.02] bg-[#03060F]">
 
         {/* BACKGROUND IMAGE LAYER WITH FILTERS */}
@@ -697,7 +625,6 @@ export default function HomePage() {
             priority
             className="object-cover opacity-[0.07] grayscale brightness-50 mix-blend-screen scale-105 select-none" 
           />
-          {/* Ambient vignette and section blend gradients */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#03060F] via-transparent to-[#03060F]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#03060F] via-transparent to-[#03060F]" />
           <div className="absolute inset-0 bg-football-grid opacity-[0.04]" />
@@ -730,13 +657,7 @@ export default function HomePage() {
             </p>
           </motion.div>
         </div>
-
-        {/* Large Decorative Backdrop Watermark Text */}
-        <div className="absolute top-1/2 left-0 w-full text-center pointer-events-none opacity-[0.03] hidden sm:block -translate-y-1/2 select-none z-0">
-           <h4 className="text-[20vw] font-bold text-white uppercase tracking-tighter italic">SOVEREIGNTY</h4>
-        </div>
       </section>
-
 
     </div>
   )
