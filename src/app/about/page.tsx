@@ -382,7 +382,7 @@ export default function AboutPage() {
 
           {/* Card-Based Timeline Matrix */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-sm sm:max-w-none mx-auto">
-            
+
             {/* Phase 1 Card (Highlighted / Current Focus with Studio Engineering Principles inside) */}
             <GlassCard 
               className="p-8 border-accent/30 bg-[#060F22]/90 rounded-2xl space-y-6 relative flex flex-col justify-between h-full group"
@@ -424,7 +424,7 @@ export default function AboutPage() {
                 {/* INTEGRATED CORE VALUES SUBGRID */}
                 <div className="space-y-4 pt-2">
                   <div className="font-mono text-[8px] text-accent/60 tracking-widest font-bold uppercase">// CORE SYSTEM PHILOSOPHY</div>
-                  
+
                   <div className="space-y-1">
                     <h4 className="text-xs font-bold uppercase text-white tracking-wider flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-accent rounded-full"></span> Football-First Philosophy
@@ -559,19 +559,19 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-           {/* VISUAL IMAGE CARD - OVERLAYS REMOVED AS REQUESTED */}
-<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-md lg:max-w-none mx-auto">
-   <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square rounded-2xl" hoverable={false}>
-      {tokenImg && (
-        <Image 
-          src={tokenImg.imageUrl} 
-          alt="Reward Engine" 
-          fill 
-          className="object-cover" 
-        />
-      )}
-   </GlassCard>
-</motion.div>
+            {/* VISUAL IMAGE CARD - FIXED WRAPPER STRETCH FOR 100% CONTAINER WIDTH */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full mx-auto">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square w-full rounded-2xl" hoverable={false}>
+                  {tokenImg && (
+                    <Image 
+                      src={tokenImg.imageUrl} 
+                      alt="Reward Engine" 
+                      fill 
+                      className="object-cover w-full h-full" 
+                    />
+                  )}
+               </GlassCard>
+            </motion.div>
 
           </div>
         </div>
@@ -611,27 +611,27 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-           {/* CARD COMPONENT - ONLY THE IMAGE WITHOUT OVERLAYS */}
-<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-sm lg:max-w-md mx-auto">
-   <div className="relative aspect-[3/4] w-full">
-      <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative rounded-2xl" hoverable={false}>
-        {playerCardImg && (
-          <Image 
-            src={playerCardImg.imageUrl} 
-            alt="NFT Card" 
-            fill 
-            className="object-cover" 
-          />
-        )}
-      </GlassCard>
-   </div>
-</motion.div>
+            {/* CARD COMPONENT - FIXED WRAPPER STRETCH FOR 100% CONTAINER WIDTH */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full mx-auto">
+               <div className="relative aspect-[3/4] w-full">
+                  <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative rounded-2xl" hoverable={false}>
+                    {playerCardImg && (
+                      <Image 
+                        src={playerCardImg.imageUrl} 
+                        alt="NFT Card" 
+                        fill 
+                        className="object-cover w-full h-full" 
+                      />
+                    )}
+                  </GlassCard>
+               </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
-      
+
       {/* FINAL CTA & GLOBAL COMMAND FRAMEWORK */}
       <section className="py-24 sm:py-36 md:py-48 relative text-center overflow-hidden">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
@@ -642,7 +642,7 @@ export default function AboutPage() {
               START YOUR <br />
               <span className="text-gradient-blue italic">DYNASTY</span>
             </h2>
-            
+
             <p className="text-sm sm:text-base text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
               The era of passive consumption is over. The digital turf is cleared, the ledger is live, and the technical infrastructure is primed for the next generation of sporting executives. Take command of your legacy today.
             </p>
@@ -662,7 +662,7 @@ export default function AboutPage() {
                 <Link href="/tokenomics">TOKENOMICS BLUEPRINT</Link>
               </Button>
             </div>
-            
+
             <p className="text-muted-foreground uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[9px] sm:text-[10px] pt-4 font-bold opacity-60">Phase 1 enrollment is currently 84% full.</p>
           </motion.div>
         </div>
