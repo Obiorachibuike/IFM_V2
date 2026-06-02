@@ -559,14 +559,20 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* VISUAL IMAGE CARD - OVERLAYS REMOVED AS REQUESTED */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-md lg:max-w-none mx-auto">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square rounded-2xl" hoverable={false}>
-                  {tokenImg && (
-                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-80 md:opacity-100" data-ai-hint="digital crypto coin" />
-                  )}
-               </GlassCard>
-            </motion.div>
+           {/* VISUAL IMAGE CARD - OVERLAYS REMOVED AS REQUESTED */}
+<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-md lg:max-w-none mx-auto">
+   <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square rounded-2xl" hoverable={false}>
+      {tokenImg && (
+        <Image 
+          src={tokenImg.imageUrl} 
+          alt="Reward Engine" 
+          fill 
+          className="object-cover" 
+        />
+      )}
+   </GlassCard>
+</motion.div>
+
           </div>
         </div>
       </section>
