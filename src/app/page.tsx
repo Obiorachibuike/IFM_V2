@@ -67,6 +67,7 @@ export default function HomePage() {
   const marketImg = PlaceHolderImages.find(i => i.id === "zenith-transfer-hub")
   const leagueImg = PlaceHolderImages.find(i => i.id === "nova-league-board")
   const academyImg = PlaceHolderImages.find(i => i.id === "vertex-academy-prospect")
+    const ctaImg = PlaceHolderImages.find(i => i.id === "cta-img")
   const playerCardImg = PlaceHolderImages.find(i => i.id === "aurora-player-card")
   const scaleImg = PlaceHolderImages.find(i => i.id === "scale-architecture-blueprint")
 
