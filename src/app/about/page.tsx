@@ -611,41 +611,22 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* CARD COMPONENT */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-sm lg:max-w-md mx-auto">
-               <div className="relative aspect-[3/4] w-full">
-                  <div className="absolute -inset-4 sm:-inset-10 bg-accent/10 blur-[60px] sm:blur-[100px] rounded-full animate-pulse pointer-events-none" />
-                  <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative group rounded-2xl" hoverable={false}>
-                    {playerCardImg && (
-                      <Image src={playerCardImg.imageUrl} alt="NFT Card" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" data-ai-hint="holographic soccer card" />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                    <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
-                       <Badge className="bg-accent text-background font-bold px-4 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] shadow-2xl">LEGENDARY</Badge>
-                    </div>
-                    <div className="absolute top-4 left-4 sm:top-8 sm:left-8">
-                       <span className="text-[8px] sm:text-[10px] font-bold text-accent uppercase tracking-widest">Digital Asset: PLR_942</span>
-                    </div>
-                    <div className="absolute bottom-6 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8">
-                       <div className="p-4 sm:p-6 bg-black/70 backdrop-blur-3xl rounded-xl border border-white/10 space-y-3 sm:space-y-4">
-                          <div className="flex justify-between items-end gap-4">
-                             <div className="min-w-0">
-                                <div className="text-[8px] sm:text-[10px] text-accent font-bold uppercase tracking-widest mb-1 truncate">On-Chain Identity</div>
-                                <div className="text-xl sm:text-2xl md:text-3xl font-bold font-headline uppercase leading-none truncate">STORM v1.0</div>
-                             </div>
-                             <div className="text-right shrink-0">
-                                <div className="text-[8px] sm:text-[10px] text-muted-foreground font-bold uppercase">Potential</div>
-                                <div className="text-xl sm:text-2xl font-bold text-accent">98</div>
-                             </div>
-                          </div>
-                          <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                             <div className="h-full w-4/5 bg-accent" />
-                          </div>
-                       </div>
-                    </div>
-                  </GlassCard>
-               </div>
-            </motion.div>
+           {/* CARD COMPONENT - ONLY THE IMAGE WITHOUT OVERLAYS */}
+<motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full max-w-sm lg:max-w-md mx-auto">
+   <div className="relative aspect-[3/4] w-full">
+      <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden h-full w-full relative rounded-2xl" hoverable={false}>
+        {playerCardImg && (
+          <Image 
+            src={playerCardImg.imageUrl} 
+            alt="NFT Card" 
+            fill 
+            className="object-cover" 
+          />
+        )}
+      </GlassCard>
+   </div>
+</motion.div>
+
           </div>
         </div>
       </section>
