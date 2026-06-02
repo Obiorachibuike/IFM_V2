@@ -145,7 +145,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "cta-img",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
-    imageUrl: "https://picsum.photos/seed/ifm-live-1/1200/800",
+    imageUrl: "https://img.ge/i/qWBtr21.png",
     imageHint: "football broadcast simulation"
   },
 
