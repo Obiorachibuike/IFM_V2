@@ -559,38 +559,12 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* VISUAL IMAGE CARD */}
+            {/* VISUAL IMAGE CARD - OVERLAYS REMOVED AS REQUESTED */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="lg:order-1 w-full max-w-md lg:max-w-none mx-auto">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square rounded-2xl" hoverable={false}>
                   {tokenImg && (
-                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-40 lg:opacity-60" data-ai-hint="digital crypto coin" />
+                    <Image src={tokenImg.imageUrl} alt="Reward Engine" fill className="object-cover opacity-80 md:opacity-100" data-ai-hint="digital crypto coin" />
                   )}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-8 lg:p-12 bg-gradient-to-t from-background via-transparent to-transparent">
-                     <div className="p-4 sm:p-6 lg:p-8 bg-black/70 backdrop-blur-3xl rounded-xl sm:rounded-3xl border border-white/10 space-y-4 sm:space-y-6">
-                        <div className="flex justify-between items-center gap-2">
-                           <Badge className="bg-primary text-white font-bold px-3 sm:px-4 lg:px-6 py-1.5 uppercase tracking-widest text-[8px] sm:text-[10px]">Active Session Payout</Badge>
-                           <span className="text-[8px] sm:text-[10px] font-bold text-primary animate-pulse whitespace-nowrap">CALCULATING YIELD...</span>
-                        </div>
-                        <div className="space-y-3 sm:space-y-4">
-                           <div className="flex justify-between items-end gap-4">
-                              <div className="min-w-0">
-                                 <div className="text-[8px] sm:text-[10px] text-muted-foreground uppercase truncate mb-1">Last Match: Neo London (W)</div>
-                                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-headline text-white truncate">4,250 $IFM</div>
-                              </div>
-                              <div className="text-right shrink-0">
-                                 <div className="text-[8px] sm:text-[10px] text-primary font-bold uppercase">Performance</div>
-                                 <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">S-TIER</div>
-                              </div>
-                           </div>
-                           <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                              <div className="h-full w-[85%] bg-primary glow-blue" />
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div className="absolute top-4 left-4 sm:top-8 sm:left-8 lg:top-12 lg:left-12">
-                     <h4 className="text-xs sm:text-sm lg:text-xl font-bold text-white uppercase tracking-[0.2em] sm:tracking-[0.3em]">IFM PROTOCOL: TREASURY_V4</h4>
-                  </div>
                </GlassCard>
             </motion.div>
           </div>
