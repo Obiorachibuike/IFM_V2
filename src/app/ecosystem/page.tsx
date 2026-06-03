@@ -260,7 +260,109 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 4. FINAL ECOSYSTEM CTA */}
+      {/* 4. CRYPTO-ECONOMIC ASSET FOUNDATION */}
+      <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-[#05070D]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.03),transparent_50%)] pointer-events-none" />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          {/* SECTION HEADER */}
+          <motion.div 
+            variants={fadeIn} 
+            initial="initial" 
+            whileInView="whileInView" 
+            className="text-center space-y-4 mb-16 sm:mb-20 md:mb-28 max-w-3xl mx-auto"
+          >
+            <div>
+              <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">
+                Sovereign Registry
+              </Badge>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1] sm:leading-[0.95] text-white">
+              CRYPTO-ECONOMIC <br />
+              <span className="text-gradient-gold italic font-extrabold">FOUNDATION.</span>
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed px-2">
+              Every crucial element within the IFM universe exists as an autonomous asset on-chain, securing absolute sovereignty and cross-platform interoperability for managers.
+            </p>
+          </motion.div>
+
+          {/* THREE-COLUMN ASSET ARCHITECTURE GRID */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 items-stretch"
+          >
+            {[
+              {
+                badge: "$IFM Utility",
+                title: "The Ecosystem Currency",
+                desc: "The programmatic engine powering the entire economy. Earned through competitive fixtures, spent on operations, system upgrades, and high-tier scouting missions.",
+                metric: "Fixed Cap: 500M",
+                color: "glow-gold",
+                border: "hover:border-accent/30",
+                bgBadge: "bg-accent/10 text-accent border-accent/20"
+              },
+              {
+                badge: "ERC-721",
+                title: "Dynamic Athlete Contracts",
+                desc: "Your players are complex, evolving smart contracts. Performance data, physical progression, and structural trait shifts are written permanently to the ledger.",
+                metric: "100% Player Owned",
+                color: "glow-blue",
+                border: "hover:border-primary/30",
+                bgBadge: "bg-primary/10 text-primary border-primary/20"
+              },
+              {
+                badge: "ERC-1155",
+                title: "Infrastructure & Real Estate",
+                desc: "Stadiums, training matrices, and youth academies are fractional digital assets. Upgrade infrastructure to structurally increase matchday yields and mint premium rewards.",
+                metric: "Yield Generating",
+                color: "glow-blue",
+                border: "hover:border-primary/30",
+                bgBadge: "bg-primary/10 text-primary border-primary/20"
+              }
+            ].map((asset, index) => (
+              <motion.div key={index} variants={fadeIn} className="flex h-full">
+                <GlassCard 
+                  className={`p-6 sm:p-8 flex flex-col justify-between bg-white/[0.02] border-white/5 transition-all duration-500 rounded-2xl w-full group ${asset.border} ${asset.color}`}
+                  hoverable={true}
+                >
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-center">
+                      <Badge className={`${asset.bgBadge} px-3 py-1 text-[9px] uppercase tracking-wider font-bold`}>
+                        {asset.badge}
+                      </Badge>
+                      <span className="text-[10px] font-mono text-white/30 group-hover:text-white/60 transition-colors">
+                        // 0{index + 1}
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <h3 className="text-xl sm:text-2xl font-headline font-bold uppercase tracking-tight text-white leading-tight">
+                        {asset.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground font-light leading-relaxed">
+                        {asset.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-8 mt-6 border-t border-white/5 flex justify-between items-center">
+                    <span className="text-[9px] sm:text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                      Protocol Parameter
+                    </span>
+                    <span className="text-xs sm:text-sm font-mono font-bold text-white tracking-tight">
+                      {asset.metric}
+                    </span>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 5. FINAL ECOSYSTEM CTA */}
       <section className="py-20 sm:py-32 lg:py-48 relative text-center overflow-hidden bg-[#03060F]">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8 sm:space-y-12">
