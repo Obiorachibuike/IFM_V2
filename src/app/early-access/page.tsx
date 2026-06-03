@@ -77,74 +77,72 @@ export default function EarlyAccessPage() {
     <div className="flex flex-col w-full min-h-screen bg-background overflow-hidden selection:bg-accent selection:text-background">
       
       {/* 1. CINEMATIC HERO - THE CALL */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background to-background" />
-          {stadiumHero && (
-            <Image 
-              src={stadiumHero.imageUrl} 
-              alt="IFM Universe" 
-              fill 
-              className="object-cover opacity-30 grayscale-[0.2] brightness-[0.4]"
-              priority
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          <div className="stadium-light-sweep" />
-          <div className="absolute inset-0 radial-glow-blue opacity-40" />
-        </div>
+<section className="relative min-h-[80vh] flex items-center justify-center border-b border-white/5 py-20">
+  <div className="absolute inset-0 z-0">
+    {stadiumHero && (
+      <Image 
+        src={stadiumHero.imageUrl} 
+        alt="IFM Universe" 
+        fill 
+        className="object-cover opacity-20"
+        priority
+      />
+    )}
+  </div>
 
-        <div className="container relative z-10 mx-auto px-6 max-w-7xl">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            className="flex flex-col items-center text-center space-y-12"
-          >
-            <motion.div variants={fadeIn}>
-              <Badge className="bg-accent/10 text-accent border-accent/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl glow-gold animate-pulse">
-                Phase 1: Genesis Enrollment
-              </Badge>
-            </motion.div>
-            
-            <motion.h1 
-              variants={fadeIn}
-              className="text-6xl md:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
-            >
-              BECOME A <br />
-              <span className="text-gradient-gold italic">FOUNDING MANAGER</span>
-            </motion.h1>
-            
-            <motion.p 
-              variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed opacity-80"
-            >
-              The IFM football universe is expanding. Secure your license, register your club, and start building your legacy before the global kick-off.
-            </motion.p>
+  <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+    <motion.div 
+      initial="initial"
+      animate="animate"
+      className="flex flex-col items-center text-center space-y-12"
+    >
+      <motion.div variants={fadeIn}>
+        <Badge className="bg-accent/10 text-accent border-accent/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl glow-gold animate-pulse">
+          Phase 1: Genesis Enrollment
+        </Badge>
+      </motion.div>
+      
+      <motion.h1 
+        variants={fadeIn}
+        className="text-6xl md:text-[10rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]"
+      >
+        BECOME A <br />
+        <span className="text-gradient-gold italic">FOUNDING MANAGER</span>
+      </motion.h1>
+      
+      <motion.p 
+        variants={fadeIn}
+        className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed"
+      >
+        The IFM football universe is expanding. Secure your license, register your club, and start building your legacy before the global kick-off.
+      </motion.p>
 
-            <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
-              <Button asChild size="lg" className="h-20 px-16 bg-accent hover:bg-accent/90 text-background font-bold rounded-2xl glow-gold text-xl uppercase tracking-widest">
-                <Link href="#signup-form">SECURE ACCESS</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-20 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
-                <Link href="/gameplay">WATCH GAMEPLAY</Link>
-              </Button>
-            </motion.div>
+      {/* Button sizing adjusted to be responsive/flexible */}
+      <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-6 pt-10">
+        <Button asChild size="lg" className="h-auto py-6 px-16 bg-accent hover:bg-accent/90 text-background font-bold rounded-2xl glow-gold text-xl uppercase tracking-widest">
+          <Link href="#signup-form">SECURE ACCESS</Link>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="h-auto py-6 px-16 border-white/10 hover:bg-white/5 font-bold rounded-2xl text-xl uppercase tracking-widest backdrop-blur-xl">
+          <Link href="/gameplay">WATCH GAMEPLAY</Link>
+        </Button>
+      </motion.div>
 
-            <motion.div variants={fadeIn} className="flex gap-16 pt-16">
-              {[
-                { label: "FOUNDER SLOTS", value: "2,500" },
-                { label: "Genesis Tier", value: "ALPHA" },
-                { label: "Rewards Multiplier", value: "2.5x" }
-              ].map((m, i) => (
-                <div key={i} className="text-center space-y-2">
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{m.label}</div>
-                  <div className="text-2xl font-bold font-headline text-white">{m.value}</div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <motion.div variants={fadeIn} className="flex flex-wrap justify-center gap-16 pt-16">
+        {[
+          { label: "FOUNDER SLOTS", value: "2,500" },
+          { label: "Genesis Tier", value: "ALPHA" },
+          { label: "Rewards Multiplier", value: "2.5x" }
+        ].map((m, i) => (
+          <div key={i} className="text-center space-y-2">
+            <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{m.label}</div>
+            <div className="text-2xl font-bold font-headline text-white">{m.value}</div>
+          </div>
+        ))}
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* 2. VALUE RECAP - THE ADVANTAGE */}
       <section className="py-32 relative bg-card/10">
