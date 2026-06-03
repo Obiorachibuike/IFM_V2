@@ -172,5 +172,40 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     description: "Holographic elite player card with glowing stats and rarity effects",
     imageUrl: "https://img.ge/i/lhktd71.png",
     imageHint: "holographic player card"
+  } 
+  // ============================
+  // GAMEPLAY PAGE ASSETS
+  // ============================
+
+  {
+    id: "game-loop-visual",
+    description: "Visual representation of the progression cycle, showing the flow from matches to facility upgrades and rewards.",
+    imageUrl: "https://picsum.photos/seed/ifm-loop/1200/1200",
+    imageHint: "progression cycle infographic"
+  },
+  {
+    id: "tactical-interface",
+    description: "High-tech tactical command console featuring formation grids, role assignments, and chemistry links.",
+    imageUrl: "https://img.ge/i/q9uIk37.png",
+    imageHint: "football tactical dashboard"
+  },
+  {
+    id: "simulation-engine",
+    description: "Data-driven match simulation visualization displaying real-time trajectory calculations and physical metrics.",
+    imageUrl: "https://img.ge/i/AVRQB68.png",
+    imageHint: "match simulation engine data"
+  },
+  {
+    id: "academy-infrastructure",
+    description: "Futuristic facility blueprint and scouting network interface for uncovering generational talent.",
+    imageUrl: "https://img.ge/i/KNkw01.png",
+    imageHint: "youth academy scouting interface"
+  },
+  {
+    id: "development-matrix",
+    description: "Dynamic skill tree visualization for player training, attribute distribution, and trait unlocking.",
+    imageUrl: "https://img.ge/i/06x0k65.png",
+    imageHint: "player development skill tree"
   }
+
 ];
