@@ -31,6 +31,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "soccer tactics board"
   },
   {
+    id: "stadium",
+    description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
+    imageUrl: "https://img.ge/i/sc8vM23.jpg",
+    imageHint: "football broadcast simulation"
+  },
+  {
     id: "academy-reveal",
     description: "Holographic academy reveal screen showing a legendary youth prospect",
     imageUrl: "https://picsum.photos/seed/ifm-scout-1/800/600",
