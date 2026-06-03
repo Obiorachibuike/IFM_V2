@@ -5,10 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Trophy, Shield, Cpu, Target, Globe, 
-  Linkedin, Twitter, Github, Rocket, 
-  MessageSquare, Users, Sparkles, ChevronRight,
-  LayoutDashboard, Network, BarChart3, Microscope
+  Cpu, LayoutDashboard, BarChart3, Rocket,
+  Linkedin, Twitter, Github
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -70,25 +68,25 @@ export default function TeamPage() {
       {/* 1. CINEMATIC HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
           {hqImg && (
-            <Image src={hqImg.imageUrl} alt="IFM Studio HQ" fill className="object-cover opacity-20 grayscale brightness-50" priority />
+            <Image src={hqImg.imageUrl} alt="IFM Studio HQ" fill className="object-cover" priority />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-transparent to-transparent" />
+          {/* Subtle scrim for text readability */}
+          <div className="absolute inset-0 bg-black/40" /> 
         </div>
 
         <div className="container relative z-10 mx-auto px-6 max-w-7xl">
           <motion.div initial="initial" animate="animate" className="flex flex-col items-center text-center space-y-12">
             <motion.div variants={fadeIn}>
-              <Badge className="bg-primary/10 text-primary border-primary/30 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-3xl">
+              <Badge className="bg-white/10 text-white border-white/20 px-10 py-3 uppercase tracking-[0.8em] text-[10px] font-bold rounded-full backdrop-blur-md">
                 The Executive Roster
               </Badge>
             </motion.div>
-            <motion.h1 variants={fadeIn} className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8]">
+            <motion.h1 variants={fadeIn} className="text-6xl md:text-[11rem] font-bold font-headline tracking-tighter uppercase leading-[0.8] text-white drop-shadow-2xl">
               ARCHITECTS OF <br />
-              <span className="text-gradient-blue italic">LEGACY.</span>
+              <span className="text-blue-400 italic">LEGACY.</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed opacity-80">
+            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto font-light leading-relaxed drop-shadow-lg">
               Meet the specialized coalition of veterans from AAA gaming, professional football, and blockchain infrastructure.
             </motion.p>
           </motion.div>
@@ -120,14 +118,14 @@ export default function TeamPage() {
 
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden rounded-2xl aspect-[4/5] relative" hoverable={false}>
-                  {hqImg && <Image src={hqImg.imageUrl} alt="Studio Life" fill className="object-cover brightness-50" />}
+                  {hqImg && <Image src={hqImg.imageUrl} alt="Studio Life" fill className="object-cover" />}
                </GlassCard>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 3. CORE TEAM - WITH ROUNDED CORNERS */}
+      {/* 3. CORE TEAM */}
       <section className="py-48 relative overflow-hidden bg-background">
         <div className="container mx-auto px-6 max-w-7xl">
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
