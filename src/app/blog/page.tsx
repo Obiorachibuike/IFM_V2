@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { cn } from "@/lib/utils"
 
-// Helper to retrieve image from your central object
+// Centralized image helper for total consistency across the application
 const getImg = (id: string) => PlaceHolderImages.find((i) => i.id === id)
 
 const categories = [
@@ -95,8 +95,7 @@ export default function BlogPage() {
   const [emailError, setEmailError] = React.useState("")
   const [isSubmitted, setIsSubmitted] = React.useState(false)
 
-  // Use the helper for the hero
-  const heroImage = getImg("blog-hero")
+  const blogHero = getImg("blog-hero")
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -108,6 +107,7 @@ export default function BlogPage() {
     e.preventDefault()
     setEmailError("")
     const trimmedEmail = email.trim()
+
     if (!trimmedEmail) {
       setEmailError("Access credentials required. Email cannot be blank.")
       return
@@ -134,13 +134,12 @@ export default function BlogPage() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-accent selection:text-background">
-      {/* 1. CINEMATIC HERO SECTION */}
       <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden min-h-[50vh] md:min-h-[55vh] flex items-center border-b border-white/5">
         <div className="absolute inset-0 z-0 w-full h-full">
-          {heroImage && (
+          {blogHero && (
             <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
+              src={blogHero.imageUrl}
+              alt={blogHero.description}
               fill
               priority
               className="object-cover w-full h-full opacity-60 object-center"
@@ -149,27 +148,85 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-black/40 backdrop-blur-md pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-background/60 pointer-events-none mix-blend-color-dodge" />
         </div>
-        
+
         <div className="container relative z-10 px-4 sm:px-6 max-w-7xl mx-auto">
-          <motion.div className="space-y-6 md:space-y-8 max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-6 md:space-y-8 max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-xl">
+              <BookOpen className="h-3 w-3 text-primary" /> Intelligence Hub
+            </div>
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-headline tracking-tighter uppercase leading-[0.9] text-white">
               IFM <span className="text-gradient-blue italic">INSIGHTS</span>
             </h1>
             <div className="pt-2 w-full max-w-md">
-              <Input 
-                type="text"
-                placeholder="Search by title..." 
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="pl-12 h-12 md:h-14 w-full bg-black/40 border-white/20 rounded-2xl text-white backdrop-blur-xl"
-              />
+              <div className="relative w-full">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+                <Input type="text" maxLength={60} placeholder="Search by title..." value={searchQuery} onChange={handleSearchChange} className="pl-12 h-12 w-full bg-black/40 border-white/20 rounded-2xl text-white text-sm backdrop-blur-xl" />
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Grid rendering (same logic as before, now calling getImg(post.imageId)) */}
-      {/* ... [Rest of your layout remains identical, just update the Image source to: getImg(post.imageId)?.imageUrl] ... */}
+      <section className="sticky top-[72px] md:top-20 z-40 bg-[#05070D]/80 backdrop-blur-xl border-b border-white/5 py-4">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            {categories.map((cat) => (
+              <button key={cat} onClick={() => setActiveCategory(cat)} className={cn("px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all border", activeCategory === cat ? "bg-primary text-white border-primary" : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10")}>
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {featuredPosts.length > 0 && activeCategory === "All" && (
+        <section className="py-20 bg-white/[0.01]">
+          <div className="container mx-auto px-6 max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              {featuredPosts.map((post) => {
+                const img = getImg(post.imageId)
+                return (
+                  <Link href={`/blog/${post.id}`} key={post.id}>
+                    <GlassCard className="group p-0 overflow-hidden h-full">
+                      <div className="relative aspect-[16/9] w-full">
+                        {img && <Image src={img.imageUrl} alt={img.description} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />}
+                      </div>
+                      <div className="p-8 space-y-4">
+                        <Badge className="bg-primary/20 text-primary">{post.category}</Badge>
+                        <h3 className="text-3xl font-bold font-headline uppercase text-white">{post.title}</h3>
+                        <p className="text-white/60 text-sm">{post.excerpt}</p>
+                      </div>
+                    </GlassCard>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-20">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {regularPosts.map((post) => {
+              const img = getImg(post.imageId)
+              return (
+                <Link href={`/blog/${post.id}`} key={post.id}>
+                  <GlassCard className="p-0 overflow-hidden group h-full">
+                    <div className="relative aspect-video">
+                      {img && <Image src={img.imageUrl} alt={img.description} fill className="object-cover transition-all group-hover:scale-105" />}
+                    </div>
+                    <div className="p-6 space-y-3">
+                      <Badge className="text-[8px]">{post.category}</Badge>
+                      <h4 className="font-bold text-white leading-snug">{post.title}</h4>
+                    </div>
+                  </GlassCard>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
