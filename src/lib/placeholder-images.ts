@@ -186,7 +186,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "tactical-interface",
     description: "High-tech tactical command console featuring formation grids, role assignments, and chemistry links.",
-    imageUrl: "https://img.ge/i/q9uIk37.png",
+    imageUrl: "https://img.ge/i/DKOiv33.png",
     imageHint: "football tactical dashboard"
   },
   {
