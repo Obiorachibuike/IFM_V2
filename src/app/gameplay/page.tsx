@@ -34,7 +34,7 @@ const staggerContainer = {
 
 export default function GameplayPage() {
   const heroImg = PlaceHolderImages.find(i => i.id === "gameplay-hero")
-  
+
   // Updated IDs for non-hero sections
   const loopImg = PlaceHolderImages.find(i => i.id === "game-loop-visual")
   const tacticsImg = PlaceHolderImages.find(i => i.id === "tactical-interface")
