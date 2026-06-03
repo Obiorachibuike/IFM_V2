@@ -33,7 +33,7 @@ const staggerContainer = {
 export default function EcosystemPage() {
   const universeImg = PlaceHolderImages.find(i => i.id === "ecosystem-network")
   const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
-  const leagueImg = PlaceHolderImages.find(i => i.id === "league-table-ui")
+  const leagueImg = PlaceHolderImages.find(i => i.id === "stadium")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-primary selection:text-white overflow-x-hidden">
