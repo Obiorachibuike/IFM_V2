@@ -13,6 +13,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "futuristic stadium manager"
   },
   {
+    id: "ecosystem-pillar",
+    description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
+    imageUrl: "https://img.ge/i/9CsfS42.png",
+    imageHint: "football broadcast simulation"
+  },
+  {
     id: "match-engine-live",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
     imageUrl: "https://picsum.photos/seed/ifm-live-1/1200/800",
