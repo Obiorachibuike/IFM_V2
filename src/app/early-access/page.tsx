@@ -84,7 +84,7 @@ export default function EarlyAccessPage() {
         src={stadiumHero.imageUrl} 
         alt="IFM Universe" 
         fill 
-        className="object-cover opacity-20"
+        className="object-cover"
         priority
       />
     )}
