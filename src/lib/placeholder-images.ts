@@ -27,7 +27,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "studio-hq",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
-    imageUrl: "https://img.ge/i/9CsfS42.png",
+    imageUrl: "https://img.ge/i/eYCjs8.png",
     imageHint: "football broadcast simulation"
   },
   {
