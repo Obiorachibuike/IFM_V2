@@ -41,7 +41,7 @@ export default function EcosystemPage() {
       {/* 1. CINEMATIC ECOSYSTEM HERO */}
       <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-20 md:py-0 border-b border-white/5">
 
-        {/* BACKGROUND IMAGE - RESPONSIVE OBJECT POSITIONING */}
+        {/* BACKGROUND IMAGE - NO OVERLAYS OR OPACITY RESTRICTIONS */}
         <div className="absolute inset-0 z-0 w-full h-full">
           {universeImg?.imageUrl && (
             <Image
@@ -49,10 +49,9 @@ export default function EcosystemPage() {
               alt="IFM Universe Core"
               fill
               priority
-              className="object-cover object-center w-full h-full opacity-25 md:opacity-100"
+              className="object-cover object-center w-full h-full"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05070D] via-[#05070D]/80 to-transparent md:hidden" />
         </div>
 
         {/* CONTENT WRAPPER */}
@@ -147,7 +146,7 @@ export default function EcosystemPage() {
       <section id="loop" className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background border-b border-white/[0.02]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8 lg:space-y-10 order-1">
               <div>
                 <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Temporal Cycle</Badge>
@@ -176,19 +175,19 @@ export default function EcosystemPage() {
               </div>
             </motion.div>
 
-            {/* ARTWORK CARD */}
+            {/* ARTWORK CARD - CLEANED UP OVERLAY */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2">
                <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {economyImg && (
-                    <Image src={economyImg.imageUrl} alt="Economy Flow Hub Diagram" fill className="object-cover opacity-30 lg:opacity-60 w-full h-full" />
+                    <Image src={economyImg.imageUrl} alt="Economy Flow Hub Diagram" fill className="object-cover w-full h-full" />
                   )}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 md:p-10 bg-gradient-to-t from-background via-background/40 to-transparent">
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 md:p-10 bg-black/60 backdrop-blur-sm">
                      <div className="space-y-3 sm:space-y-4">
                         <div>
                           <Badge className="bg-accent text-background font-bold px-3 sm:px-4 py-1 uppercase tracking-widest text-[9px] sm:text-[10px]">Verified Loop v1.0</Badge>
                         </div>
                         <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-headline uppercase leading-none text-white"> THE REWARD <br />ENGINE</h3>
-                        <p className="text-muted-foreground text-xs sm:text-sm font-light max-w-sm leading-relaxed">Watch your club&apos;s valuation grow as you progress through the divisions. Every win is a permanent investment.</p>
+                        <p className="text-white/90 text-xs sm:text-sm font-light max-w-sm leading-relaxed">Watch your club&apos;s valuation grow as you progress through the divisions. Every win is a permanent investment.</p>
                      </div>
                   </div>
                   <div className="absolute top-4 left-4 max-w-[calc(100%-2rem)]">
@@ -205,7 +204,7 @@ export default function EcosystemPage() {
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-card/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="order-1 lg:order-2 space-y-6 sm:space-y-8 lg:space-y-10">
                <div>
                  <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Global Pyramid</Badge>
@@ -233,14 +232,14 @@ export default function EcosystemPage() {
                </div>
             </motion.div>
 
-            {/* PYRAMID CARD */}
+            {/* PYRAMID CARD - CLEANED UP OVERLAY */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2 lg:order-1">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {leagueImg && (
-                    <Image src={leagueImg.imageUrl} alt="League Pyramid Interface" fill className="object-cover opacity-30 lg:opacity-60 w-full h-full" />
+                    <Image src={leagueImg.imageUrl} alt="League Pyramid Interface" fill className="object-cover w-full h-full" />
                   )}
-                  <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 text-center bg-gradient-to-t from-background via-background/20 to-background">
-                     <div className="p-5 sm:p-8 bg-black/70 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4 max-w-xs sm:max-w-sm w-full mx-auto">
+                  <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 text-center bg-black/40">
+                     <div className="p-5 sm:p-8 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 space-y-4 max-w-xs sm:max-w-sm w-full mx-auto">
                         <div>
                           <Badge className="bg-primary text-white font-bold px-4 py-1 text-[10px] sm:text-xs">LIVE PYRAMID DATA</Badge>
                         </div>
@@ -252,7 +251,7 @@ export default function EcosystemPage() {
                      </div>
                   </div>
                   <div className="absolute bottom-4 left-4">
-                     <span className="text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider">INTERFACE: PYRAMID_STRUCTURE_V2</span>
+                     <span className="text-[8px] sm:text-[9px] font-bold text-primary uppercase tracking-wider bg-black/60 px-2 py-1 rounded">INTERFACE: PYRAMID_STRUCTURE_V2</span>
                   </div>
                </GlassCard>
             </motion.div>
@@ -264,7 +263,7 @@ export default function EcosystemPage() {
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background border-b border-white/[0.02]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8 lg:space-y-10 order-1">
               <div>
                 <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">Simulative Rigor</Badge>
@@ -314,8 +313,6 @@ export default function EcosystemPage() {
 
       {/* 5. CRYPTO-ECONOMIC ASSET FOUNDATION */}
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-[#05070D]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.03),transparent_50%)] pointer-events-none" />
-        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* SECTION HEADER */}
           <motion.div 
@@ -388,7 +385,7 @@ export default function EcosystemPage() {
                         // 0{index + 1}
                       </span>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <h3 className="text-xl sm:text-2xl font-headline font-bold uppercase tracking-tight text-white leading-tight">
                         {asset.title}
@@ -418,7 +415,7 @@ export default function EcosystemPage() {
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-card/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="order-1 space-y-6 sm:space-y-8 lg:space-y-10">
                <div>
                  <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Collective Syndicate</Badge>
@@ -456,7 +453,7 @@ export default function EcosystemPage() {
                       <span className="text-[9px] font-bold font-mono text-emerald-400 uppercase">Active Proposal</span>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <h3 className="text-2xl sm:text-3xl font-headline font-bold text-white uppercase tracking-tight leading-tight">
                       PROP-142: ADJUST DEFIANCE MATCHDAY REWARD POOLS
@@ -470,7 +467,7 @@ export default function EcosystemPage() {
                       <span>28% Dissenting</span>
                     </div>
                   </div>
-                  
+
                   <div className="pt-4 border-t border-white/5 text-[9px] text-muted-foreground font-light">
                     Quorum requirement: 40,000,000 active voting credits.
                   </div>
@@ -484,7 +481,7 @@ export default function EcosystemPage() {
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background border-b border-white/[0.02]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-            
+
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8 lg:space-y-10 order-1">
               <div>
                 <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Hive Matrix</Badge>
@@ -493,7 +490,7 @@ export default function EcosystemPage() {
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed">
                 Connect directly with tens of thousands of digital tacticians, engineering minds, and football theorists shaping the next decade of decentralized athletics.
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { label: "Tactical Hub", desc: "Share formation templates and contract scouting portfolios on Discord.", icon: MessageSquare, href: "https://discord.gg" },
@@ -526,7 +523,7 @@ export default function EcosystemPage() {
                   </div>
                   <span className="text-[9px] font-mono font-bold text-white/40">🔴 LIVE TRANSMISSION</span>
                 </div>
-                
+
                 <div className="space-y-4">
                   {[
                     { user: "Manager_0x8f2", action: "Minted Grade-A Youth Forward contract", channel: "#scouting-floor", time: "2m ago" },
@@ -552,15 +549,14 @@ export default function EcosystemPage() {
 
       {/* 8. FINAL ECOSYSTEM CTA */}
       <section className="py-20 sm:py-32 lg:py-48 relative text-center overflow-hidden bg-[#03060F]">
-        <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8 sm:space-y-12">
-          
+
           <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8">
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9.5rem] font-bold font-headline tracking-tighter uppercase leading-[1] sm:leading-[0.9] text-white">
               JOIN THE <br />
               <span className="text-gradient-blue italic font-extrabold">NETWORK.</span>
             </h2>
-            
+
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0 max-w-sm mx-auto sm:max-w-none">
               <Button 
                 asChild 
@@ -572,7 +568,7 @@ export default function EcosystemPage() {
                 </Link>
               </Button>
             </div>
-            
+
             <p className="text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.4em] md:tracking-[0.5em] text-[9px] sm:text-[10px] font-bold opacity-60 px-4">
               Phase 1 enrollment is currently 84% full.
             </p>
