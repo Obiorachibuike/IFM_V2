@@ -22,6 +22,19 @@ import { blogPosts } from "@/lib/blog-posts"
 export default function BlogDetailPage() {
   const params = useParams()
   const id = params?.id as string
+// Change the beginning of your component to this:
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  
+  // Now proceed with your useMemo or find logic
+  const post = blogPosts.find((p) => p.id === id);
+  // ...
+}
+
 
   const post = React.useMemo(
     () => blogPosts.find((p) => p.id === id),
