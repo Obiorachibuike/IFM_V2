@@ -22,19 +22,6 @@ import { blogPosts } from "@/lib/blog-posts"
 export default function BlogDetailPage() {
   const params = useParams()
   const id = params?.id as string
-// Change the beginning of your component to this:
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  
-  // Now proceed with your useMemo or find logic
-  const post = blogPosts.find((p) => p.id === id);
-  // ...
-}
-
 
   const post = React.useMemo(
     () => blogPosts.find((p) => p.id === id),
@@ -140,7 +127,6 @@ export default async function BlogDetailPage({
       {/* CONTENT */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-4xl space-y-16">
-
           {post.content?.map((section: any, idx: number) => {
             const key = `${section.type}-${idx}`
 
@@ -169,7 +155,6 @@ export default async function BlogDetailPage({
                 return (
                   <motion.div key={key} className="space-y-4">
                     <GlassCard className="p-0 overflow-hidden aspect-video relative">
-                      {/* FIX: use section.imageUrl OR fallback mapping */}
                       {section.imageUrl ? (
                         <Image
                           src={section.imageUrl}
@@ -181,7 +166,6 @@ export default async function BlogDetailPage({
                         <div className="w-full h-full bg-white/5" />
                       )}
                     </GlassCard>
-
                     <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-4">
                       {section.caption}
                     </p>
@@ -196,13 +180,10 @@ export default async function BlogDetailPage({
                         <Target className="h-5 w-5" />
                         {section.title}
                       </h3>
-
                       <ul className="space-y-3">
                         {section.items.map((item: string, i: number) => (
                           <li key={i} className="flex gap-3 text-white/80">
-                            <span className="text-accent font-bold">
-                              {i + 1}.
-                            </span>
+                            <span className="text-accent font-bold">{i + 1}.</span>
                             {item}
                           </li>
                         ))}
@@ -219,7 +200,7 @@ export default async function BlogDetailPage({
       </section>
 
       {/* FOOTER */}
-      <section className="pt-20 border-t border-white/5 flex justify-between px-6 max-w-4xl mx-auto">
+      <section className="pt-20 border-t border-white/5 flex justify-between px-6 max-w-4xl mx-auto pb-20">
         <Button variant="outline">
           <Share2 className="h-4 w-4 mr-2" />
           Share
