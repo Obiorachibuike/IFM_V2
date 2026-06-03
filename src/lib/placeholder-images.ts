@@ -180,7 +180,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     id: "game-loop-visual",
     description: "Visual representation of the progression cycle, showing the flow from matches to facility upgrades and rewards.",
-    imageUrl: "https://picsum.photos/seed/ifm-loop/1200/1200",
+    imageUrl: "https://img.ge/i/9CsfS42.png",
     imageHint: "progression cycle infographic"
   },
   {
