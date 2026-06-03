@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Activity, Coins, Rocket, TrendingUp, Trophy, Cpu, ShieldAlert, Zap, Landmark, Vote, Milestone
+  Activity, Coins, Rocket, TrendingUp, Trophy, Cpu, ShieldAlert, Zap, Landmark, Vote, Milestone, Users, MessageSquare, Radio, Terminal
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -187,7 +187,7 @@ export default function EcosystemPage() {
                         <div>
                           <Badge className="bg-accent text-background font-bold px-3 sm:px-4 py-1 uppercase tracking-widest text-[9px] sm:text-[10px]">Verified Loop v1.0</Badge>
                         </div>
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-headline uppercase leading-none text-white">THE REWARD <br />ENGINE</h3>
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-headline uppercase leading-none text-white"> THE REWARD <br />ENGINE</h3>
                         <p className="text-muted-foreground text-xs sm:text-sm font-light max-w-sm leading-relaxed">Watch your club&apos;s valuation grow as you progress through the divisions. Every win is a permanent investment.</p>
                      </div>
                   </div>
@@ -480,7 +480,77 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 7. FINAL ECOSYSTEM CTA */}
+      {/* 7. GLOBAL SUPPORTERS SYNDICATE (COMMUNITY LAYER) */}
+      <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background border-b border-white/[0.02]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8 lg:space-y-10 order-1">
+              <div>
+                <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Hive Matrix</Badge>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1] sm:leading-[0.95]">THE MANAGEMENT <br /><span className="text-gradient-blue italic font-extrabold">COMMUNITY.</span></h2>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                Connect directly with tens of thousands of digital tacticians, engineering minds, and football theorists shaping the next decade of decentralized athletics.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { label: "Tactical Hub", desc: "Share formation templates and contract scouting portfolios on Discord.", icon: MessageSquare, href: "https://discord.gg" },
+                  { label: "Dev Core Diaries", desc: "Track code upgrades, match physics revisions, and framework logs.", icon: Terminal, href: "/dev-logs" },
+                  { label: "Live Town Halls", desc: "Bi-weekly operational briefings detailing game mechanics directly.", icon: Radio, href: "/town-halls" },
+                  { label: "Global Matrix Open", desc: "Collaborate on structural application modules using open APIs.", icon: Users, href: "/developers" }
+                ].map((channel, i) => (
+                  <Link href={channel.href} key={i} className="block group">
+                    <div className="flex gap-4 items-center p-4 rounded-xl bg-white/[0.02] border border-white/5 group-hover:border-primary/30 transition-all duration-300 h-full">
+                      <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                        <channel.icon className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-bold text-xs sm:text-sm uppercase tracking-tight text-white truncate group-hover:text-primary transition-colors">{channel.label}</div>
+                        <div className="text-[11px] text-muted-foreground font-light line-clamp-1 mt-0.5">{channel.desc}</div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* LIVE FEED VISUAL EMULATION */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2">
+              <GlassCard className="p-6 border-white/10 glow-blue bg-black/40 relative w-full rounded-2xl space-y-6" hoverable={false}>
+                <div className="flex justify-between items-center pb-4 border-b border-white/5">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-primary" />
+                    <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">Syndicate Node Activity</span>
+                  </div>
+                  <span className="text-[9px] font-mono font-bold text-white/40">🔴 LIVE TRANSMISSION</span>
+                </div>
+                
+                <div className="space-y-4">
+                  {[
+                    { user: "Manager_0x8f2", action: "Minted Grade-A Youth Forward contract", channel: "#scouting-floor", time: "2m ago" },
+                    { user: "Tactician_Klaus", action: "Submitted revision block to Match Engine simulation parameters", channel: "#engine-dev", time: "11m ago" },
+                    { user: "Club_Vanguard", action: "Staked 25k $IFM for Division 1 Governance Quorum", channel: "#governance", time: "34m ago" }
+                  ].map((log, idx) => (
+                    <div key={idx} className="flex justify-between items-start text-[11px] font-mono bg-white/[0.01] p-3 rounded-lg border border-white/[0.03]">
+                      <div className="space-y-1 max-w-[80%]">
+                        <span className="text-primary font-bold">{log.user}</span>
+                        <p className="text-white/80 font-sans font-light leading-snug">{log.action}</p>
+                        <span className="inline-block text-[9px] bg-white/5 px-2 py-0.5 rounded text-white/50">{log.channel}</span>
+                      </div>
+                      <span className="text-[10px] text-white/30 whitespace-nowrap">{log.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </GlassCard>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FINAL ECOSYSTEM CTA */}
       <section className="py-20 sm:py-32 lg:py-48 relative text-center overflow-hidden bg-[#03060F]">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8 sm:space-y-12">
