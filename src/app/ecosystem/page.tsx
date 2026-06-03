@@ -176,10 +176,11 @@ export default function EcosystemPage() {
               </div>
             </motion.div>
 
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full">
+            {/* FIXED WRAPPER MATRIX FOR 100% CONTAINER WIDTH */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full mx-auto">
                <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {economyImg && (
-                    <Image src={economyImg.imageUrl} alt="Economy Flow Hub Diagram" fill className="object-cover opacity-40 lg:opacity-60" />
+                    <Image src={economyImg.imageUrl} alt="Economy Flow Hub Diagram" fill className="object-cover opacity-40 lg:opacity-60 w-full h-full" />
                   )}
                   <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-background via-background/40 to-transparent">
                      <div className="space-y-3 sm:space-y-4">
@@ -232,10 +233,11 @@ export default function EcosystemPage() {
                </div>
             </motion.div>
 
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2 lg:order-1">
-               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square rounded-2xl" hoverable={false}>
+            {/* FIXED WRAPPER MATRIX FOR 100% CONTAINER WIDTH */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2 lg:order-1 mx-auto">
+               <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {leagueImg && (
-                    <Image src={leagueImg.imageUrl} alt="League Pyramid Interface" fill className="object-cover opacity-40 lg:opacity-60" />
+                    <Image src={leagueImg.imageUrl} alt="League Pyramid Interface" fill className="object-cover opacity-40 lg:opacity-60 w-full h-full" />
                   )}
                   <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-8 text-center bg-gradient-to-t from-background via-background/20 to-background">
                      <div className="p-6 sm:p-8 bg-black/70 backdrop-blur-3xl rounded-2xl border border-white/10 space-y-4 max-w-xs sm:max-w-sm w-full">
