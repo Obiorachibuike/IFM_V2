@@ -71,8 +71,6 @@ export default function TeamPage() {
           {hqImg && (
             <Image src={hqImg.imageUrl} alt="IFM Studio HQ" fill className="object-cover" priority />
           )}
-          {/* Subtle scrim for text readability */}
-          <div className="absolute inset-0 bg-black/40" /> 
         </div>
 
         <div className="container relative z-10 mx-auto px-6 max-w-7xl">
