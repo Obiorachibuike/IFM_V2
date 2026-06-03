@@ -46,7 +46,7 @@ export default function EarlyAccessPage() {
   const [isSuccess, setIsSuccess] = React.useState(false)
 
   // Assets
-  const stadiumHero = PlaceHolderImages.find(i => i.id === "hero-stadium")
+  const stadiumHero = PlaceHolderImages.find(i => i.id === "early-hero-stadium")
   const founderBadge = PlaceHolderImages.find(i => i.id === "nft-club-1")
   const dashboardPreview = PlaceHolderImages.find(i => i.id === "tactical-board")
   const rewardPreview = PlaceHolderImages.find(i => i.id === "rewards-visual")
