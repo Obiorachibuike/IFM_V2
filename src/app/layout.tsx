@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'IFM | Invincible Football Manager Empire',
   description: 'The future of digital football ownership. Elite management simulation meets persistent blockchain rewards.',
   icons: {
-    icon: 'https://your-icon-url.com/favicon.ico',
+    icon: 'https://img.ge/i/gD2Ri68.png',
   },
 };
 
