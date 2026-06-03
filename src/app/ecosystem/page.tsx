@@ -41,7 +41,7 @@ export default function EcosystemPage() {
       {/* 1. CINEMATIC ECOSYSTEM HERO */}
       <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-20 md:py-0 border-b border-white/5">
 
-        {/* BACKGROUND IMAGE - NO OVERLAYS OR OPACITY RESTRICTIONS */}
+        {/* BACKGROUND IMAGE - BALANCED LAYER FOR CONTRAST */}
         <div className="absolute inset-0 z-0 w-full h-full">
           {universeImg?.imageUrl && (
             <Image
@@ -49,33 +49,35 @@ export default function EcosystemPage() {
               alt="IFM Universe Core"
               fill
               priority
-              className="object-cover object-center w-full h-full"
+              className="object-cover object-center w-full h-full opacity-60 mix-blend-screen"
             />
           )}
+          {/* Subtle radial dark drop just behind the center text zone to fix the wash-out seen in 1001711224.jpg */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,7,13,0.4)_0%,rgba(5,7,13,0.8)_80%)]" />
         </div>
 
-        {/* CONTENT WRAPPER */}
+        {/* CONTENT WRAPPER - USING BACKDROP BLUR TO CREATE A LAYER OF SEPARATION */}
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="initial"
             whileInView="whileInView"
             variants={staggerContainer}
-            className="flex flex-col items-center text-center space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12"
+            className="flex flex-col items-center text-center space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 bg-[#05070D]/40 backdrop-blur-md py-10 rounded-3xl border border-white/5 shadow-2xl max-w-5xl mx-auto px-4 sm:px-8"
           >
             {/* BADGE */}
             <motion.div variants={fadeIn}>
-              <Badge className="bg-white/5 text-white border-white/10 px-4 sm:px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.3em] sm:tracking-[0.5em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
+              <Badge className="bg-white/10 text-white border-white/20 px-4 sm:px-6 md:px-10 py-2 md:py-3 uppercase tracking-[0.3em] sm:tracking-[0.5em] md:tracking-[0.8em] text-[9px] md:text-[10px] font-bold rounded-full backdrop-blur-xl">
                 The Living Universe
               </Badge>
             </motion.div>
 
-            {/* TITLE */}
+            {/* TITLE - SHADOWS ADDED FOR TEXT SEPARATION FROM COLOURED LIGHTS */}
             <motion.h1
               variants={fadeIn}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] xl:text-[8.5rem] font-bold font-headline tracking-tighter uppercase leading-[1] md:leading-[0.9] text-white"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] xl:text-[8.5rem] font-bold font-headline tracking-tighter uppercase leading-[1] md:leading-[0.9] text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
             >
               A WORLD OF <br />
-              <span className="text-gradient-blue italic font-extrabold">
+              <span className="text-gradient-blue italic font-extrabold drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
                 SOVEREIGNTY.
               </span>
             </motion.h1>
@@ -83,17 +85,17 @@ export default function EcosystemPage() {
             {/* DESCRIPTION */}
             <motion.p
               variants={fadeIn}
-              className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed px-2 sm:px-4 md:px-0"
+              className="text-sm sm:text-base md:text-xl lg:text-2xl text-white font-normal max-w-3xl mx-auto leading-relaxed px-2 sm:px-4 md:px-0 drop-shadow-md"
             >
               Every decision, every match, and every player development shapes your club’s long-term legacy in a persistent football economy.
             </motion.p>
 
             {/* CTA ACTION ENGINE */}
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0 max-w-sm sm:max-w-none">
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0 max-w-sm sm:max-w-none relative z-20">
               <Button
                 asChild
                 size="lg"
-                className="h-14 sm:h-16 lg:h-20 px-6 sm:px-10 lg:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl lg:rounded-2xl glow-blue text-xs sm:text-sm lg:text-xl uppercase tracking-widest w-full sm:w-auto transition-all duration-300"
+                className="h-14 sm:h-16 lg:h-20 px-6 sm:px-10 lg:px-16 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl lg:rounded-2xl glow-blue text-xs sm:text-sm lg:text-xl uppercase tracking-widest w-full sm:w-auto transition-all duration-300 shadow-lg"
               >
                 <Link href="/early-access">
                   START YOUR CLUB
@@ -104,7 +106,7 @@ export default function EcosystemPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-14 sm:h-16 lg:h-20 px-6 sm:px-10 lg:px-16 border-white/20 hover:bg-white/10 text-white font-bold rounded-xl lg:rounded-2xl text-xs sm:text-sm lg:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto transition-all duration-300"
+                className="h-14 sm:h-16 lg:h-20 px-6 sm:px-10 lg:px-16 bg-black/40 border-white/30 hover:bg-white/10 text-white font-bold rounded-xl lg:rounded-2xl text-xs sm:text-sm lg:text-xl uppercase tracking-widest backdrop-blur-xl w-full sm:w-auto transition-all duration-300 shadow-lg"
               >
                 <Link href="#loop">
                   VIEW PROTOCOL
@@ -115,7 +117,7 @@ export default function EcosystemPage() {
             {/* STATS MATRIX DISPLAY */}
             <motion.div
               variants={fadeIn}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12 pt-8 md:pt-12 lg:pt-20 border-t border-white/10 w-full max-w-5xl"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12 pt-8 md:pt-12 lg:pt-20 border-t border-white/10 w-full"
             >
               {[
                 { label: "Active Clubs", value: "85,420" },
@@ -124,10 +126,10 @@ export default function EcosystemPage() {
                 { label: "Rewards Paid", value: "4.8M $IFM" }
               ].map((stat, i) => (
                 <div key={i} className="space-y-1 text-center md:text-left">
-                  <div className="text-[8px] sm:text-[9px] md:text-[10px] text-white/50 uppercase tracking-widest font-bold">
+                  <div className="text-[10px] sm:text-[11px] text-white/70 uppercase tracking-widest font-bold">
                     {stat.label}
                   </div>
-                  <div className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+                  <div className="text-base sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white tracking-tight drop-shadow-sm">
                     {stat.value}
                   </div>
                 </div>
@@ -175,7 +177,7 @@ export default function EcosystemPage() {
               </div>
             </motion.div>
 
-            {/* ARTWORK CARD - CLEANED UP OVERLAY */}
+            {/* ARTWORK CARD */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2">
                <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {economyImg && (
@@ -232,7 +234,7 @@ export default function EcosystemPage() {
                </div>
             </motion.div>
 
-            {/* PYRAMID CARD - CLEANED UP OVERLAY */}
+            {/* PYRAMID CARD */}
             <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2 lg:order-1">
                <GlassCard className="p-0 border-white/10 glow-blue overflow-hidden relative aspect-square sm:aspect-video lg:aspect-square w-full rounded-2xl" hoverable={false}>
                   {leagueImg && (
