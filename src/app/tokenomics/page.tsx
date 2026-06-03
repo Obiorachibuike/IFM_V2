@@ -52,7 +52,7 @@ const staggerContainer = {
 }
 
 export default function TokenomicsPage() {
-  const tokenVisual = PlaceHolderImages.find(i => i.id === "token-visual")
+  const tokenVisual = PlaceHolderImages.find(i => i.id === "token-hero")
   const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
   const rewardsImg = PlaceHolderImages.find(i => i.id === "rewards-visual")
 
