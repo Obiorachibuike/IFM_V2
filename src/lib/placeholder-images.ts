@@ -31,6 +31,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "football broadcast simulation"
   },
   {
+    id: "nft-club-1",
+    description: "Cinematic evolution stages of a digital football stadium from amateur to elite",
+    imageUrl: "https://img.ge/i/mqnWn89.png",
+    imageHint: "cinematic football tech"
+  },
+  {
     id: "match-engine-live",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
     imageUrl: "https://img.ge/i/eYCjs8.png",
