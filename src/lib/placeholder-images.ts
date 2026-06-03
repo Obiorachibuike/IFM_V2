@@ -13,6 +13,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageHint: "futuristic stadium manager"
   },
   {
+    id: "token-hero",
+    description: "Cinematic evolution stages of a digital football stadium from amateur to elite",
+    imageUrl: "https://img.ge/i/oYMvm86.png",
+    imageHint: "cinematic football tech"
+  },
+  {
     id: "economy-pillar",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
     imageUrl: "https://img.ge/i/gktOz85.png",
