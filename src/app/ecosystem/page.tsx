@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Activity, Coins, Rocket, TrendingUp, Trophy 
+  Activity, Coins, Rocket, TrendingUp, Trophy, Cpu, ShieldAlert, Zap, Landmark, Vote, Milestone
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
@@ -260,7 +260,59 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 4. CRYPTO-ECONOMIC ASSET FOUNDATION */}
+      {/* 4. CINEMATIC MATCH ENGINE DETONATOR */}
+      <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background border-b border-white/[0.02]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="space-y-6 sm:space-y-8 lg:space-y-10 order-1">
+              <div>
+                <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">Simulative Rigor</Badge>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1] sm:leading-[0.95]">CINEMATIC MATCH <br /><span className="text-gradient-blue italic font-extrabold">DYNAMICS.</span></h2>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                Matches are not arbitrary dice rolls. Our high-fidelity simulator evaluates thousands of physical attributes, weather conditions, tactical modifications, and individual traits in real-time.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { label: "Deterministic Engine", desc: "No random values; pure mathematics handles performance mechanics.", icon: Cpu },
+                  { label: "Tactical Adaptability", desc: "Change lines, team mentality, and press patterns mid-match.", icon: Zap },
+                  { label: "Fatigue Algorithms", desc: "Real-time structural physics track contract muscle load.", icon: ShieldAlert }
+                ].map((stat, i) => (
+                  <div key={i} className="p-5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-4 group hover:border-primary/20 transition-all duration-300">
+                    <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                      <stat.icon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-xs uppercase tracking-tight text-white mb-1">{stat.label}</div>
+                      <div className="text-[11px] text-muted-foreground font-light leading-snug">{stat.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* ENGINE STATS DISPLAY BLOCK */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 space-y-2">
+                  <span className="text-[9px] text-primary font-mono tracking-widest uppercase">// FRAME_RATE_EVAL</span>
+                  <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight">600 FPS</div>
+                  <p className="text-[11px] text-muted-foreground font-light">Calculations parsed over virtual physics frames to calculate trajectories perfectly.</p>
+                </div>
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 space-y-2">
+                  <span className="text-[9px] text-accent font-mono tracking-widest uppercase">// VARIABLE_MATRICES</span>
+                  <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight">2.4k / SEC</div>
+                  <p className="text-[11px] text-muted-foreground font-light">Individual data vectors verified continuously per athlete during active match simulation.</p>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CRYPTO-ECONOMIC ASSET FOUNDATION */}
       <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-[#05070D]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.03),transparent_50%)] pointer-events-none" />
         
@@ -362,7 +414,73 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* 5. FINAL ECOSYSTEM CTA */}
+      {/* 6. DECENTRALIZED GOVERNANCE SYNDICATE */}
+      <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative border-t border-white/5 bg-card/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+            
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="order-1 space-y-6 sm:space-y-8 lg:space-y-10">
+               <div>
+                 <Badge className="bg-accent/10 text-accent border-accent/20 px-4 py-1.5 sm:px-6 sm:py-2 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold">The Collective Syndicate</Badge>
+               </div>
+               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-headline font-bold uppercase tracking-tighter leading-[1] sm:leading-[0.95]">THE GOVERNANCE <br /><span className="text-gradient-gold italic font-extrabold">COUNCIL.</span></h2>
+               <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                 The direction of the IFM development pipeline belongs to its license holders. Stake $IFM or execute top-tier competitive results to claim voting tokens used to alter macro parameters.
+               </p>
+               <div className="space-y-3">
+                 {[
+                   { title: "Treasury Allocation Votes", desc: "Determine global payout multipliers and milestone structures.", icon: Landmark },
+                   { title: "Rulebook Upgrades", desc: "Propose modifications to tactical caps, league limits, or match algorithms.", icon: Vote },
+                   { title: "Ecosystem Expansion", desc: "Approve integration structures for external community client layers.", icon: Milestone }
+                 ].map((item, k) => (
+                   <div key={k} className="flex gap-4 p-4 rounded-xl bg-white/[0.01] border border-white/5 hover:border-accent/30 transition-all duration-300 cursor-default">
+                     <div className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                       <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                     </div>
+                     <div className="min-w-0">
+                       <div className="font-bold text-xs sm:text-sm uppercase tracking-tight text-white">{item.title}</div>
+                       <div className="text-[11px] text-muted-foreground font-light mt-0.5">{item.desc}</div>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+            </motion.div>
+
+            {/* COUNCIL BRAND CARD EMBLEM */}
+            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView" className="w-full order-2">
+               <GlassCard className="p-8 border-white/10 glow-gold bg-gradient-to-b from-white/[0.03] to-transparent relative w-full rounded-2xl flex flex-col justify-between h-80 sm:h-96" hoverable={false}>
+                  <div className="flex justify-between items-start">
+                    <span className="font-mono text-[9px] text-accent tracking-widest">// SECURE_LEDGER_AUTH</span>
+                    <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-1.5">
+                      <div className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[9px] font-bold font-mono text-emerald-400 uppercase">Active Proposal</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-2xl sm:text-3xl font-headline font-bold text-white uppercase tracking-tight leading-tight">
+                      PROP-142: ADJUST DEFIANCE MATCHDAY REWARD POOLS
+                    </h3>
+                    <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden flex">
+                      <div className="bg-accent h-full w-[72%]" />
+                      <div className="bg-white/20 h-full w-[28%]" />
+                    </div>
+                    <div className="flex justify-between text-[10px] font-mono font-bold text-white/50 uppercase">
+                      <span>72% Affirmative</span>
+                      <span>28% Dissenting</span>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-white/5 text-[9px] text-muted-foreground font-light">
+                    Quorum requirement: 40,000,000 active voting credits.
+                  </div>
+               </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FINAL ECOSYSTEM CTA */}
       <section className="py-20 sm:py-32 lg:py-48 relative text-center overflow-hidden bg-[#03060F]">
         <div className="absolute inset-0 radial-glow-blue opacity-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8 sm:space-y-12">
