@@ -145,51 +145,59 @@ export default function EarlyAccessPage() {
 
 
       {/* 2. VALUE RECAP - THE ADVANTAGE */}
-      <section className="py-32 relative bg-card/10">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-              <div className="space-y-12">
-                <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2">Founding Advantage</Badge>
-                <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter leading-none">THE STRATEGIC <br /><span className="text-primary italic">EDGE</span></h2>
-                <div className="space-y-8">
-                  {[
-                    { title: "Priority Progression", desc: "Gain 3 seasons of head-start progression in the league pyramid before public launch." },
-                    { title: "Genesis Asset Multiplier", desc: "Founding Managers receive permanent +25% reward yields on all matchday achievements." },
-                    { title: "Immutable Legacy", desc: "Your club name and history are permanently recorded on-chain with Founder's credentials." }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-6 items-start group">
-                      <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
-                        <Star className="h-5 w-5" />
-                      </div>
-                      <div className="space-y-1">
-                        <div className="font-bold text-lg uppercase tracking-tight">{item.title}</div>
-                        <div className="text-muted-foreground font-light">{item.desc}</div>
-                      </div>
-                    </div>
-                  ))}
+<section className="py-32 relative bg-card/10">
+  <div className="container mx-auto px-6 max-w-7xl">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+        <div className="space-y-12">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2">Founding Advantage</Badge>
+          <h2 className="text-5xl md:text-7xl font-bold font-headline uppercase tracking-tighter leading-none">THE STRATEGIC <br /><span className="text-primary italic">EDGE</span></h2>
+          <div className="space-y-8">
+            {[
+              { title: "Priority Progression", desc: "Gain 3 seasons of head-start progression in the league pyramid before public launch." },
+              { title: "Genesis Asset Multiplier", desc: "Founding Managers receive permanent +25% reward yields on all matchday achievements." },
+              { title: "Immutable Legacy", desc: "Your club name and history are permanently recorded on-chain with Founder's credentials." }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-6 items-start group">
+                <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
+                  <Star className="h-5 w-5" />
+                </div>
+                <div className="space-y-1">
+                  <div className="font-bold text-lg uppercase tracking-tight">{item.title}</div>
+                  <div className="text-muted-foreground font-light">{item.desc}</div>
                 </div>
               </div>
-            </motion.div>
-            <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
-              <GlassCard className="p-0 border-white/10 glow-gold overflow-hidden aspect-[4/5] relative" hoverable={false}>
-                {founderBadge && (
-                  <Image src={founderBadge.imageUrl} alt="Founder Badge" fill className="object-cover brightness-50" />
-                )}
-                <div className="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-background via-transparent to-transparent">
-                  <div className="space-y-6">
-                    <Badge className="bg-accent text-background font-bold px-6 py-2">GENESIS LICENSE v1.0</Badge>
-                    <div className="p-6 bg-black/60 backdrop-blur-3xl rounded-2xl border border-white/10">
-                      <div className="text-[10px] font-bold text-accent uppercase tracking-[0.4em] mb-4">Ownership Verified</div>
-                      <p className="text-sm font-light text-white/80 italic leading-relaxed">"This license grants the bearer permanent founding status and priority access to all future IFM expansions."</p>
-                    </div>
-                  </div>
-                </div>
-              </GlassCard>
-            </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.div>
+
+      {/* IMAGE CONTAINER WITHOUT OVERLAYS */}
+      <motion.div variants={fadeIn} initial="initial" whileInView="whileInView">
+        <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
+          {founderBadge && (
+            <Image 
+              src={founderBadge.imageUrl} 
+              alt="Founder Badge" 
+              fill 
+              className="object-cover" 
+            />
+          )}
+          
+          {/* Text content placed outside/below or in a clean, non-gradient container */}
+          <div className="absolute bottom-0 left-0 right-0 p-8">
+            <div className="bg-background/80 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+              <Badge className="bg-accent text-background font-bold mb-4">GENESIS LICENSE v1.0</Badge>
+              <p className="text-sm font-light text-foreground italic">
+                "This license grants the bearer permanent founding status and priority access to all future IFM expansions."
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* 3. REWARDS PREVIEW */}
       <section className="py-32 relative overflow-hidden bg-accent/5">
