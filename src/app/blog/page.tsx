@@ -22,74 +22,116 @@ const categories = [
   "Developer Logs"
 ]
 
-const blogPosts = [
+export const blogPosts = [
   {
     id: "hero-stadium",
     title: "IFM Genesis: The Architect's Guide to Club Ownership",
+    subtitle:
+      "Everything you need to know about the Phase 1 Genesis enrollment and building a digital football empire.",
     excerpt:
       "Learn the foundational principles of building a digital football empire in IFM. From License minting to squad registration.",
     category: "Gameplay Guides",
     date: "May 12, 2024",
     readTime: "8 min read",
-    image: PlaceHolderImages.find(i => i.id === "hero-stadium"),
     featured: true,
+
+    image: PlaceHolderImages.find(i => i.id === "hero-stadium"),
+
+    author: {
+      name: "Marcus Thorne",
+      role: "Founder & CEO",
+      image: "https://picsum.photos/seed/marcus/100/100",
+    },
+
+    content: [
+      {
+        type: "paragraph",
+        text: "Welcome to the first chapter of your dynasty. Club ownership in IFM is not just about a seat at the table; it's about owning a piece of the ecosystem's foundation. As an IFM manager, you aren't just playing a game—you are architecting a persistent digital legacy that evolves across seasons."
+      },
+      {
+        type: "heading",
+        text: "The Genesis License Protocol"
+      },
+      {
+        type: "paragraph",
+        text: "The core of your ownership is the Genesis License. This isn't a generic subscription; it's an immutable record of your club's birth."
+      },
+      {
+        type: "visual",
+        id: "mint-preview",
+        caption:
+          "Module Verification: The Genesis Minting process ensures unique club identifiers for every manager."
+      },
+      {
+        type: "takeaways",
+        title: "Key Onboarding Protocols",
+        items: [
+          "Secure your license during the 48-hour Genesis window.",
+          "Register your club name on the global registry immediately.",
+          "Activate your first scouting bot.",
+          "Review the Division 8 league structure."
+        ]
+      }
+    ]
   },
+
   {
     id: "tactical-board",
     title: "The 4-3-3 Meta: Tactical Masterclass for Season 1",
+    subtitle:
+      "A deep dive into the dominant formation of the preseason. How to set your defensive line and high-press triggers.",
     excerpt:
       "A deep dive into the dominant formation of the preseason. How to set your defensive line and high-press triggers.",
     category: "Strategy",
     date: "May 10, 2024",
     readTime: "12 min read",
-    image: PlaceHolderImages.find(i => i.id === "tactical-board"),
     featured: true,
+
+    image: PlaceHolderImages.find(i => i.id === "tactical-board"),
+
+    author: {
+      name: "David 'Gaffer' Chen",
+      role: "Lead Game Engineer",
+      image: "https://picsum.photos/seed/david/100/100",
+    },
+
+    content: [
+      {
+        type: "paragraph",
+        text: "Tactical mastery is the ultimate currency in IFM."
+      },
+      {
+        type: "heading",
+        text: "The Neural Fatigue Variable"
+      },
+      {
+        type: "paragraph",
+        text: "The IFM Match Engine v2.4 introduces Neural Fatigue."
+      },
+      {
+        type: "visual",
+        id: "match-engine-live",
+        caption:
+          "Live heatmaps showing the dominance of the 4-3-3 transition phase."
+      },
+      {
+        type: "takeaways",
+        title: "Tactical Takeaways",
+        items: [
+          "Set High Press to 85%.",
+          "CDM Work Rate should be 78+.",
+          "Switch to 4-4-2 if possession drops below 40%."
+        ]
+      }
+    ]
   },
-  {
-    id: "token-visual",
-    title: "Understanding $IFM: The Utility Protocol Breakdown",
-    excerpt:
-      "How the ecosystem token powers club progression, stadium upgrades, and the transfer market without speculation.",
-    category: "Ecosystem",
-    date: "May 8, 2024",
-    readTime: "10 min read",
-    image: PlaceHolderImages.find(i => i.id === "token-visual"),
-    featured: false,
-  },
-  {
-    id: "match-engine-live",
-    title: "Match Engine v2.4: Neural Fatigue & Ball Physics",
-    excerpt:
-      "Engineering the most realistic football simulation on the blockchain. Our latest dev log on matchday authenticity.",
-    category: "Developer Logs",
-    date: "May 5, 2024",
-    readTime: "15 min read",
-    image: PlaceHolderImages.find(i => i.id === "match-engine-live"),
-    featured: false,
-  },
-  {
-    id: "scouting-ui",
-    title: "Scouting the Alpha Window: Finding Undervalued Talent",
-    excerpt:
-      "Strategic insights for the transfer market. How to use neural scouting bots to identify youth prospects early.",
-    category: "Strategy",
-    date: "May 2, 2024",
-    readTime: "6 min read",
-    image: PlaceHolderImages.find(i => i.id === "scouting-ui"),
-    featured: false,
-  },
-  {
-    id: "nova-league-board",
-    title: "The Road to Division 1: A Manager's Journey",
-    excerpt:
-      "Exclusive interview with the top-ranked manager from the closed beta. Discipline, data, and digital dominance.",
-    category: "Season Stories",
-    date: "Apr 28, 2024",
-    readTime: "9 min read",
-    image: PlaceHolderImages.find(i => i.id === "nova-league-board"),
-    featured: false,
-  },
+
+  // token-visual
+  // match-engine-live
+  // scouting-ui
+  // nova-league-board
 ]
+
 
 
 export default function BlogPage() {
