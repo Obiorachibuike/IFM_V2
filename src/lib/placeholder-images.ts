@@ -114,11 +114,6 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://img.ge/i/Dp4Ix5.png",
     imageHint: "golden trophy coins"
   },
-
-  // ============================
-  // NEW ASSETS (APPENDED BELOW)
-  // ============================
-
   {
     id: "alpha-tactics-grid",
     description: "Advanced tactical grid system showing real-time formations and predictive movement lines",
@@ -149,11 +144,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://img.ge/i/KNkw01.png",
     imageHint: "youth football scouting"
   },
-{
-  id: "scale-architecture-blueprint",
-  imageUrl: "https://img.ge/i/lhktd71.png",
-  description: "Cinematic dark command center with high-contrast amber and cyber tactical display lighting"
-},
+  {
+    id: "scale-architecture-blueprint",
+    imageUrl: "https://img.ge/i/lhktd71.png",
+    description: "Cinematic dark command center with high-contrast amber and cyber tactical display lighting",
+    imageHint: "dark command center"
+  },
   {
     id: "cta-img",
     description: "Live match simulation with broadcast graphics, tactical heatmaps, and player metrics",
@@ -166,17 +162,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://img.ge/i/oS75N7.png",
     imageHint: "futuristic stadium manager"
   },
-
   {
     id: "aurora-player-card",
     description: "Holographic elite player card with glowing stats and rarity effects",
     imageUrl: "https://img.ge/i/lhktd71.png",
     imageHint: "holographic player card"
-  } 
-  // ============================
-  // GAMEPLAY PAGE ASSETS
-  // ============================
-
+  },
   {
     id: "game-loop-visual",
     description: "Visual representation of the progression cycle, showing the flow from matches to facility upgrades and rewards.",
@@ -207,5 +198,4 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     imageUrl: "https://img.ge/i/06x0k65.png",
     imageHint: "player development skill tree"
   }
-
 ];
