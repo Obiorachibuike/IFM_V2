@@ -5,14 +5,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
-  Cpu, LayoutDashboard, BarChart3, Rocket,
   Linkedin, Twitter, Github
 } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { cn } from "@/lib/utils"
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -58,9 +55,6 @@ const teamMembers = [
 
 export default function TeamPage() {
   const hqImg = PlaceHolderImages.find(i => i.id === "studio-hq")
-  const techImg = PlaceHolderImages.find(i => i.id === "tech-pillar")
-  const designImg = PlaceHolderImages.find(i => i.id === "design-pillar")
-  const economyImg = PlaceHolderImages.find(i => i.id === "economy-pillar")
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#05070D] font-body selection:bg-primary selection:text-white">
@@ -136,9 +130,28 @@ export default function TeamPage() {
                     <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                       <Image src={member.image} alt={member.name} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                     </div>
-                    <div className="p-8 space-y-6">
-                      <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{member.name}</h3>
-                      <p className="text-sm text-muted-foreground">{member.bio}</p>
+                    <div className="p-8 space-y-6 flex flex-col flex-grow">
+                      <div className="space-y-1">
+                        <h3 className="text-2xl font-bold font-headline uppercase tracking-tighter">{member.name}</h3>
+                        <p className="text-xs text-accent font-bold tracking-widest uppercase">{member.role}</p>
+                      </div>
+                      <p className="text-sm text-muted-foreground flex-grow">{member.bio}</p>
+                      
+                      {/* Social Links */}
+                      <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                        {Object.entries(member.social).map(([platform, url]) => {
+                          const Icon = platform === 'linkedin' ? Linkedin : platform === 'twitter' ? Twitter : Github;
+                          return (
+                            <Link 
+                              key={platform} 
+                              href={url} 
+                              className="text-white/40 hover:text-white transition-colors"
+                            >
+                              <Icon size={18} />
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </GlassCard>
                 </motion.div>
